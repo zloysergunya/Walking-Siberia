@@ -27,7 +27,7 @@
 		C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA3F27AFFC8C004B82CB /* Animations.swift */; };
 		C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4027AFFC8C004B82CB /* UserSettings.swift */; };
 		C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4127AFFC8C004B82CB /* Utils.swift */; };
-		C408EA8027AFFC8C004B82CB /* LaunchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4227AFFC8C004B82CB /* LaunchHelper.swift */; };
+		C408EA8027AFFC8C004B82CB /* LaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4227AFFC8C004B82CB /* LaunchService.swift */; };
 		C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4427AFFC8C004B82CB /* APIHelper.swift */; };
 		C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4527AFFC8C004B82CB /* AlamofireImplementations.swift */; };
 		C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA4627AFFC8C004B82CB /* JSONValue.swift */; };
@@ -92,7 +92,7 @@
 		C408EA3F27AFFC8C004B82CB /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		C408EA4027AFFC8C004B82CB /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		C408EA4127AFFC8C004B82CB /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		C408EA4227AFFC8C004B82CB /* LaunchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchHelper.swift; sourceTree = "<group>"; };
+		C408EA4227AFFC8C004B82CB /* LaunchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
 		C408EA4427AFFC8C004B82CB /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		C408EA4527AFFC8C004B82CB /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
 		C408EA4627AFFC8C004B82CB /* JSONValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
@@ -310,7 +310,6 @@
 				C408EA3F27AFFC8C004B82CB /* Animations.swift */,
 				C408EA4027AFFC8C004B82CB /* UserSettings.swift */,
 				C408EA4127AFFC8C004B82CB /* Utils.swift */,
-				C408EA4227AFFC8C004B82CB /* LaunchHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -449,6 +448,7 @@
 		C408EAA827AFFE32004B82CB /* Launch */ = {
 			isa = PBXGroup;
 			children = (
+				C408EAB227B00402004B82CB /* Service */,
 				C408EAAB27AFFF76004B82CB /* View */,
 				C408EAA927AFFF72004B82CB /* LaunchViewController.swift */,
 			);
@@ -461,6 +461,14 @@
 				C408EAAC27AFFF88004B82CB /* LaunchView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C408EAB227B00402004B82CB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C408EA4227AFFC8C004B82CB /* LaunchService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -663,7 +671,7 @@
 				C408EAAF27B0005F004B82CB /* R.generated.swift in Sources */,
 				C408EA9527AFFC8C004B82CB /* AuthGoggleResponse.swift in Sources */,
 				C408EA8427AFFC8C004B82CB /* PetAPI.swift in Sources */,
-				C408EA8027AFFC8C004B82CB /* LaunchHelper.swift in Sources */,
+				C408EA8027AFFC8C004B82CB /* LaunchService.swift in Sources */,
 				C408EA9627AFFC8C004B82CB /* PetResponse.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
@@ -806,7 +814,7 @@
 				DEVELOPMENT_TEAM = ZDQ89335V8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Шагающая Сибирь";
+				INFOPLIST_KEY_CFBundleDisplayName = "Сибирь Шагающая";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -837,7 +845,7 @@
 				DEVELOPMENT_TEAM = ZDQ89335V8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Шагающая Сибирь";
+				INFOPLIST_KEY_CFBundleDisplayName = "Сибирь Шагающая";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
