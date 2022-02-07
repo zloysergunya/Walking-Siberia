@@ -18,6 +18,7 @@ class PhoneAuthView: RootView {
     
     let phoneTextField: FloatingTextField = {
         let textField = FloatingTextField()
+        textField.text = "+7"
         textField.placeholder = "+7 (ХХХ) ХХХ ХХ ХХ"
         textField.title = "Телефон"
         textField.keyboardType = .phonePad
@@ -55,13 +56,14 @@ class PhoneAuthView: RootView {
         }
         
         titleLabel.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(logoImageView.snp.bottom).offset(40.0)
             make.left.right.equalToSuperview().inset(12.0)
-            make.bottom.equalTo(phoneTextField.snp.top).offset(-12.0)
         }
         
         phoneTextField.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(12.0)
+            make.centerY.lessThanOrEqualToSuperview()
             make.left.right.equalToSuperview().inset(12.0)
-            make.centerY.equalToSuperview()
             make.bottom.lessThanOrEqualTo(continueButton.snp.top).offset(-20.0)
             make.height.greaterThanOrEqualTo(44.0)
         }
