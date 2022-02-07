@@ -48,7 +48,7 @@ class PhoneAuthView: RootView {
     override func setupConstraints() {
         
         logoImageView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(24.0)
+            make.top.lessThanOrEqualTo(safeAreaLayoutGuide.snp.top).offset(24.0)
             make.centerX.equalToSuperview()
             make.height.equalTo(120.0)
             make.width.equalTo(216.0)
