@@ -22,6 +22,8 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
         let formattedPhone =  String(phone.phonePattern(pattern: "###########", replacmentCharacter: "#").dropFirst())
         
         print("phone", phone, "formattedPhone", formattedPhone)
+        
+        navigationController?.pushViewController(PhoneCodeAuthViewController(), animated: true)
     }
     
 }

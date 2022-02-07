@@ -33,10 +33,6 @@ class ViewController<View: RootView>: UIViewController {
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if automaticKeyboardObserverControl, self is KeyboardObserver {
-            view.window?.endEditing(true)
-        }
-        
         mainView.willDisappear()
     }
     

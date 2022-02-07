@@ -81,6 +81,11 @@
 		C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515427B0FCCB00C95344 /* KeyboardMonitor.swift */; };
 		C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515A27B1030C00C95344 /* FloatingTextField.swift */; };
 		C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515C27B111DE00C95344 /* String+PhonePattern.swift */; };
+		C4A1516127B11D2100C95344 /* PhoneCodeAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515F27B11D2100C95344 /* PhoneCodeAuthViewController.swift */; };
+		C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516027B11D2100C95344 /* PhoneCodeAuthView.swift */; };
+		C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516927B1232800C95344 /* UIView+Shadow.swift */; };
+		C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516C27B1356F00C95344 /* OTPTextField.swift */; };
+		C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +166,11 @@
 		C4A1515427B0FCCB00C95344 /* KeyboardMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardMonitor.swift; sourceTree = "<group>"; };
 		C4A1515A27B1030C00C95344 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		C4A1515C27B111DE00C95344 /* String+PhonePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PhonePattern.swift"; sourceTree = "<group>"; };
+		C4A1515F27B11D2100C95344 /* PhoneCodeAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeAuthViewController.swift; sourceTree = "<group>"; };
+		C4A1516027B11D2100C95344 /* PhoneCodeAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeAuthView.swift; sourceTree = "<group>"; };
+		C4A1516927B1232800C95344 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		C4A1516C27B1356F00C95344 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
+		C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldImplementation.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -305,6 +315,7 @@
 				C408EA3227AFFC8C004B82CB /* UIColor+Hex.swift */,
 				C408EA3327AFFC8C004B82CB /* UIViewController+HideKeyboard.swift */,
 				C408EA3427AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift */,
+				C4A1516927B1232800C95344 /* UIView+Shadow.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -474,6 +485,7 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1515E27B11D1100C95344 /* PhoneCodeAuth */,
 				C4A1514A27B0FADB00C95344 /* PhoneAuth */,
 				C4A1513327B0EC9500C95344 /* Onboarding */,
 				C408EAA827AFFE32004B82CB /* Launch */,
@@ -583,9 +595,36 @@
 		C4A1515927B102FA00C95344 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1516B27B1356600C95344 /* OTPTextField */,
 				C4A1515A27B1030C00C95344 /* FloatingTextField.swift */,
 			);
 			path = TextFields;
+			sourceTree = "<group>";
+		};
+		C4A1515E27B11D1100C95344 /* PhoneCodeAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1516327B11D2400C95344 /* View */,
+				C4A1515F27B11D2100C95344 /* PhoneCodeAuthViewController.swift */,
+			);
+			path = PhoneCodeAuth;
+			sourceTree = "<group>";
+		};
+		C4A1516327B11D2400C95344 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1516027B11D2100C95344 /* PhoneCodeAuthView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4A1516B27B1356600C95344 /* OTPTextField */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1516C27B1356F00C95344 /* OTPTextField.swift */,
+				C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */,
+			);
+			path = OTPTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -752,6 +791,7 @@
 				C408EA7127AFFC8C004B82CB /* RootViewController.swift in Sources */,
 				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
 				C408EA9B27AFFC8C004B82CB /* Models.swift in Sources */,
+				C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
@@ -772,6 +812,7 @@
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
+				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
@@ -785,12 +826,14 @@
 				C408EA9727AFFC8C004B82CB /* PetRandomNameResponse.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
+				C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */,
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
 				C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8D27AFFC8C004B82CB /* UserCheckUsernameResponse.swift in Sources */,
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
+				C4A1516127B11D2100C95344 /* PhoneCodeAuthViewController.swift in Sources */,
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,
 				C408EA8B27AFFC8C004B82CB /* UserAvatarResponse.swift in Sources */,
 				C408EA9327AFFC8C004B82CB /* User.swift in Sources */,
@@ -806,6 +849,7 @@
 				C408EA9627AFFC8C004B82CB /* PetResponse.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
+				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
 				C408EA9027AFFC8C004B82CB /* UserUsernameTranslitRequest.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
