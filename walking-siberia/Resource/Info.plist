@@ -3,6 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>Geometria-Regular.ttf</string>
+		<string>Geometria-Medium.ttf</string>
+		<string>Geometria-Light.ttf</string>
+		<string>Geometria-Bold.ttf</string>
+	</array>
 </dict>
 </plist>
