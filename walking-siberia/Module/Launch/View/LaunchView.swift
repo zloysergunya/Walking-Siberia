@@ -11,6 +11,8 @@ class LaunchView: RootView {
     }()
 
     override func setup() {
+        backgroundColor = R.color.greyBackground()
+        
         addSubview(backgroundImageView)
         
         super.setup()

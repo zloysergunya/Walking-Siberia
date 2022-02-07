@@ -16,7 +16,7 @@ class LaunchService {
     }
     
     private func openAuth() {
-//        setWindowRoot(viewController: OnboardingViewController())
+        setWindowRoot(viewController: OnboardingViewController())
     }
     
     private func openAccountSetup() {
