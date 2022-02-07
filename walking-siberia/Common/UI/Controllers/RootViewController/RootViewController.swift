@@ -1,6 +1,10 @@
 import UIKit
 
 class ViewController<View: RootView>: UIViewController {
+    
+    lazy var keyboardMonitor = KeyboardMonitor()
+    
+    var automaticKeyboardObserverControl: Bool { true }
         
     var mainView: View! {
         view as? View
@@ -12,6 +16,10 @@ class ViewController<View: RootView>: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let self = self as? KeyboardObserver {
+            keyboardMonitor.observer = self
+        }
         
         mainView.didLoad()
     }
@@ -25,17 +33,29 @@ class ViewController<View: RootView>: UIViewController {
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        if automaticKeyboardObserverControl, self is KeyboardObserver {
+            view.window?.endEditing(true)
+        }
+        
         mainView.willDisappear()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if let self = self as? KeyboardObserver, automaticKeyboardObserverControl {
+            keyboardMonitor.observer = self
+        }
+        
         mainView.didAppear()
     }
     
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        if self is KeyboardObserver, automaticKeyboardObserverControl {
+            keyboardMonitor.observer = nil
+        }
         
         mainView.didDisappear()
     }
