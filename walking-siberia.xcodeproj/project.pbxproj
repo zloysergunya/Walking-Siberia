@@ -66,6 +66,21 @@
 		C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAAC27AFFF88004B82CB /* LaunchView.swift */; };
 		C408EAAF27B0005F004B82CB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAAE27B0005F004B82CB /* R.generated.swift */; };
 		C408EAB127B000D7004B82CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAB027B000D7004B82CB /* Constants.swift */; };
+		C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */; };
+		C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513727B0ECD000C95344 /* OnboardingView.swift */; };
+		C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */; };
+		C4A1514327B0F3D000C95344 /* Geometria-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1513F27B0F3D000C95344 /* Geometria-Light.ttf */; };
+		C4A1514427B0F3D000C95344 /* Geometria-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1514027B0F3D000C95344 /* Geometria-Regular.ttf */; };
+		C4A1514527B0F3D000C95344 /* Geometria-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1514127B0F3D000C95344 /* Geometria-Medium.ttf */; };
+		C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1514827B0F8A700C95344 /* ActiveButton.swift */; };
+		C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1514C27B0FB9300C95344 /* PhoneAuthViewController.swift */; };
+		C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1514D27B0FB9300C95344 /* PhoneAuthView.swift */; };
+		C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515127B0FCCB00C95344 /* KeyboardObserver.swift */; };
+		C4A1515627B0FCCB00C95344 /* ConstraintKeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515227B0FCCB00C95344 /* ConstraintKeyboardObserver.swift */; };
+		C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515327B0FCCB00C95344 /* ViewProviding.swift */; };
+		C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515427B0FCCB00C95344 /* KeyboardMonitor.swift */; };
+		C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515A27B1030C00C95344 /* FloatingTextField.swift */; };
+		C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1515C27B111DE00C95344 /* String+PhonePattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +146,21 @@
 		C408EAAC27AFFF88004B82CB /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		C408EAAE27B0005F004B82CB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C408EAB027B000D7004B82CB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C4A1513727B0ECD000C95344 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Bold.ttf"; sourceTree = "<group>"; };
+		C4A1513F27B0F3D000C95344 /* Geometria-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Light.ttf"; sourceTree = "<group>"; };
+		C4A1514027B0F3D000C95344 /* Geometria-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Regular.ttf"; sourceTree = "<group>"; };
+		C4A1514127B0F3D000C95344 /* Geometria-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Medium.ttf"; sourceTree = "<group>"; };
+		C4A1514827B0F8A700C95344 /* ActiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveButton.swift; sourceTree = "<group>"; };
+		C4A1514C27B0FB9300C95344 /* PhoneAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthViewController.swift; sourceTree = "<group>"; };
+		C4A1514D27B0FB9300C95344 /* PhoneAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthView.swift; sourceTree = "<group>"; };
+		C4A1515127B0FCCB00C95344 /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		C4A1515227B0FCCB00C95344 /* ConstraintKeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintKeyboardObserver.swift; sourceTree = "<group>"; };
+		C4A1515327B0FCCB00C95344 /* ViewProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviding.swift; sourceTree = "<group>"; };
+		C4A1515427B0FCCB00C95344 /* KeyboardMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardMonitor.swift; sourceTree = "<group>"; };
+		C4A1515A27B1030C00C95344 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
+		C4A1515C27B111DE00C95344 /* String+PhonePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PhonePattern.swift"; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,9 +237,10 @@
 		C408EA2427AFFC8C004B82CB /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C408EA2727AFFC8C004B82CB /* UIDevice+Model.swift */,
+				C4A1515027B0FCCB00C95344 /* Keyboard */,
 				C408EA2527AFFC8C004B82CB /* CollectionViewLayout */,
 				C408EA2827AFFC8C004B82CB /* Controllers */,
+				C4A1514627B0F72B00C95344 /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -269,6 +300,7 @@
 		C408EA3027AFFC8C004B82CB /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C408EA2727AFFC8C004B82CB /* UIDevice+Model.swift */,
 				C408EA3127AFFC8C004B82CB /* UIView+Underlined.swift */,
 				C408EA3227AFFC8C004B82CB /* UIColor+Hex.swift */,
 				C408EA3327AFFC8C004B82CB /* UIViewController+HideKeyboard.swift */,
@@ -280,6 +312,7 @@
 		C408EA3527AFFC8C004B82CB /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1515C27B111DE00C95344 /* String+PhonePattern.swift */,
 				C408EA3627AFFC8C004B82CB /* Bundle+Version.swift */,
 				C408EA3727AFFC8C004B82CB /* UserDefaults+SaveStruct.swift */,
 				C408EA3827AFFC8C004B82CB /* Bundle+Current.swift */,
@@ -421,6 +454,7 @@
 		C408EAA327AFFCB9004B82CB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1513D27B0F31300C95344 /* Fonts */,
 				C408EAA427AFFCC9004B82CB /* Generated */,
 				C408EA1D27AFFA08004B82CB /* Info.plist */,
 				C408EA1827AFFA08004B82CB /* Assets.xcassets */,
@@ -440,6 +474,8 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1514A27B0FADB00C95344 /* PhoneAuth */,
+				C4A1513327B0EC9500C95344 /* Onboarding */,
 				C408EAA827AFFE32004B82CB /* Launch */,
 			);
 			path = Module;
@@ -469,6 +505,87 @@
 				C408EA4227AFFC8C004B82CB /* LaunchService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		C4A1513327B0EC9500C95344 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1513627B0ECB400C95344 /* View */,
+				C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C4A1513627B0ECB400C95344 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1513727B0ECD000C95344 /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4A1513D27B0F31300C95344 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */,
+				C4A1513F27B0F3D000C95344 /* Geometria-Light.ttf */,
+				C4A1514127B0F3D000C95344 /* Geometria-Medium.ttf */,
+				C4A1514027B0F3D000C95344 /* Geometria-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C4A1514627B0F72B00C95344 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1515927B102FA00C95344 /* TextFields */,
+				C4A1514727B0F89500C95344 /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C4A1514727B0F89500C95344 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1514827B0F8A700C95344 /* ActiveButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C4A1514A27B0FADB00C95344 /* PhoneAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1514B27B0FB7500C95344 /* View */,
+				C4A1514C27B0FB9300C95344 /* PhoneAuthViewController.swift */,
+			);
+			path = PhoneAuth;
+			sourceTree = "<group>";
+		};
+		C4A1514B27B0FB7500C95344 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1514D27B0FB9300C95344 /* PhoneAuthView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4A1515027B0FCCB00C95344 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1515127B0FCCB00C95344 /* KeyboardObserver.swift */,
+				C4A1515227B0FCCB00C95344 /* ConstraintKeyboardObserver.swift */,
+				C4A1515327B0FCCB00C95344 /* ViewProviding.swift */,
+				C4A1515427B0FCCB00C95344 /* KeyboardMonitor.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		C4A1515927B102FA00C95344 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1515A27B1030C00C95344 /* FloatingTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,7 +650,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A1514527B0F3D000C95344 /* Geometria-Medium.ttf in Resources */,
 				C408EA1927AFFA08004B82CB /* Assets.xcassets in Resources */,
+				C4A1514427B0F3D000C95344 /* Geometria-Regular.ttf in Resources */,
+				C4A1514327B0F3D000C95344 /* Geometria-Light.ttf in Resources */,
+				C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +719,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n/usr/libexec/PlistBuddy -c \"Delete :UIAppFonts\" \"${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Add :UIAppFonts array\" \"${INFOPLIST_FILE}\"\nfor fn in `ls -1 ${PROJECT_NAME}/Resources/Fonts`; do\n    /usr/libexec/PlistBuddy -c \"Add :UIAppFonts:0 string \\\"${fn}\\\"\" \"${INFOPLIST_FILE}\"\ndone\n";
+			shellScript = "#!/bin/bash\n/usr/libexec/PlistBuddy -c \"Delete :UIAppFonts\" \"${INFOPLIST_FILE}\"\n/usr/libexec/PlistBuddy -c \"Add :UIAppFonts array\" \"${INFOPLIST_FILE}\"\nfor fn in `ls -1 ${PROJECT_NAME}/Resource/Fonts`; do\n    /usr/libexec/PlistBuddy -c \"Add :UIAppFonts:0 string \\\"${fn}\\\"\" \"${INFOPLIST_FILE}\"\ndone\n";
 		};
 		CB2083DD4EA6B7B142323C65 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -629,18 +750,23 @@
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
 				C408EA9827AFFC8C004B82CB /* PetAnimation.swift in Sources */,
 				C408EA7127AFFC8C004B82CB /* RootViewController.swift in Sources */,
+				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
 				C408EA9B27AFFC8C004B82CB /* Models.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
 				C408EA9427AFFC8C004B82CB /* Pet.swift in Sources */,
+				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
 				C408EA8F27AFFC8C004B82CB /* UserUsernameTranslitResponse.swift in Sources */,
 				C408EA9127AFFC8C004B82CB /* OkResponse.swift in Sources */,
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
+				C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */,
+				C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */,
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
+				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
 				C408EA8C27AFFC8C004B82CB /* UserMeRequest.swift in Sources */,
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
@@ -651,12 +777,16 @@
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
 				C408EA9227AFFC8C004B82CB /* UserPet.swift in Sources */,
+				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
 				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
+				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C408EA9727AFFC8C004B82CB /* PetRandomNameResponse.swift in Sources */,
+				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
+				C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8D27AFFC8C004B82CB /* UserCheckUsernameResponse.swift in Sources */,
@@ -669,6 +799,7 @@
 				C408EA8E27AFFC8C004B82CB /* UserPetUserPetIdRequest.swift in Sources */,
 				C408EA7B27AFFC8C004B82CB /* LoadingState.swift in Sources */,
 				C408EAAF27B0005F004B82CB /* R.generated.swift in Sources */,
+				C4A1515627B0FCCB00C95344 /* ConstraintKeyboardObserver.swift in Sources */,
 				C408EA9527AFFC8C004B82CB /* AuthGoggleResponse.swift in Sources */,
 				C408EA8427AFFC8C004B82CB /* PetAPI.swift in Sources */,
 				C408EA8027AFFC8C004B82CB /* LaunchService.swift in Sources */,
@@ -679,6 +810,7 @@
 				C408EA9027AFFC8C004B82CB /* UserUsernameTranslitRequest.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
 				C408EA8527AFFC8C004B82CB /* UserAPI.swift in Sources */,
+				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
 				C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */,
 				C408EA8A27AFFC8C004B82CB /* UserCheckUsernameRequest.swift in Sources */,
 			);
