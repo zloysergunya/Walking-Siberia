@@ -1,4 +1,5 @@
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchService.selectViewController()
         ServiceLocator.shared.add(service: launchService)
                         
+//        setupKeyboardManager()
+        
         return true
+    }
+    
+    private func setupKeyboardManager() {
+        let manager = IQKeyboardManager.shared
+        manager.enable = true
+        manager.toolbarTintColor = R.color.mainContent()
+        manager.toolbarDoneBarButtonItemText = "Скрыть"
+        manager.placeholderColor = R.color.mainContent()
+        manager.toolbarBarTintColor = R.color.greyBackground()
     }
 
 }
