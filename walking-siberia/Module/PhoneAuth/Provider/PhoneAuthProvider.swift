@@ -2,7 +2,7 @@ import Foundation
 
 class PhoneAuthProvider {
     
-    func sendCode(phone: String, completion: @escaping(Result<SuccessResponse, Error>) -> Void) {
+    func sendCode(phone: String, completion: @escaping(Result<SuccessResponse<EmptyData>, Error>) -> Void) {
         AuthAPI.authPost(auth: AuthRequest(phone: phone)) { response, error in
             if let response = response {
                 completion(.success(response))

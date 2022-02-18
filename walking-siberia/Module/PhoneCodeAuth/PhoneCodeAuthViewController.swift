@@ -2,9 +2,21 @@ import UIKit
 import SnapKit
 
 class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
+
+    private let phone: String
+    private let provider = PhoneCodeAuthProvider()
     
     private var timer: Timer?
-
+    
+    init(phone: String) {
+        self.phone = phone
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +51,46 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
         }
     }
     
+    private func confirm(with code: String) {
+        provider.confirmPhone(phone: phone, code: code) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+                        
+            switch result {
+            case .success(let response):
+                UserSettings.token = response.data?.accessToken
+                UserSettings.user = response.data?.user
+                self.navigationController?.pushViewController(AccountRegisterStepOneViewController(), animated: true)
+                
+            case .failure(let error):
+                if let error = error as? ModelError {
+                   // todo
+                }
+            }
+        }
+    }
+    
     @objc private func resendCode() {
-        startTimer()
+        mainView.resendCodeButton.isLoading = true
+        provider.resendCode(phone: phone) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            self.mainView.resendCodeButton.isLoading = false
+            
+            switch result {
+            case .success(let response):
+                print(response)
+                self.startTimer()
+                
+            case .failure(let error):
+                if let error = error as? ModelError {
+                   // todo
+                }
+            }
+        }
     }
     
     @objc private func changePhone() {
@@ -53,7 +103,7 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
 extension PhoneCodeAuthViewController: OTPTextFieldDelegate {
     
     func didUserFinishEnter(the code: String) {
-        print("didUserFinishEnter", code)
+        confirm(with: code)
     }
     
 }

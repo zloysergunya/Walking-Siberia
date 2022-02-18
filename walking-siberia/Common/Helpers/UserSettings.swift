@@ -22,14 +22,14 @@ import Foundation
         }
     }
     
-//    static var user: User? {
-//        get {
-//            return try? defaults.get(objectType: User.self, forKey: Keys.user.rawValue)
-//        }
-//        set {
-//            try? defaults.set(object: newValue, forKey: Keys.user.rawValue)
-//        }
-//    }
+    static var user: User? {
+        get {
+            return try? defaults.get(objectType: User.self, forKey: Keys.user.rawValue)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: Keys.user.rawValue)
+        }
+    }
     
     static var userReady: Bool {
         get {
