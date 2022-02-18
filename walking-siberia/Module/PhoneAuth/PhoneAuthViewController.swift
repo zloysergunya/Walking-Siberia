@@ -2,6 +2,8 @@ import UIKit
 import SnapKit
 
 class PhoneAuthViewController: ViewController<PhoneAuthView> {
+    
+    private let provider = PhoneAuthProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +21,30 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
             return
         }
         
-        let formattedPhone =  String(phone.phonePattern(pattern: "###########", replacmentCharacter: "#").dropFirst())
-        
-        print("phone", phone, "formattedPhone", formattedPhone)
-        
-        navigationController?.pushViewController(PhoneCodeAuthViewController(), animated: true)
+        let formattedPhone =  String(phone.phonePattern(pattern: "###########", replacmentCharacter: "#").dropFirst())        
+        sendCode(to: formattedPhone)
+    }
+    
+    private func sendCode(to phone: String) {
+        mainView.continueButton.isLoading = true
+        provider.sendCode(phone: phone) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            self.mainView.continueButton.isLoading = false
+            
+            switch result {
+            case .success(let response):
+                print(response)
+                self.navigationController?.pushViewController(PhoneCodeAuthViewController(phone: phone), animated: true)
+                
+            case .failure(let error):
+                if let error = error as? ModelError {
+                    // todo
+                }
+            }
+        }
     }
     
 }
