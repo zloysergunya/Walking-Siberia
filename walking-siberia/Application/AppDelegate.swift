@@ -23,17 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ServiceLocator.shared.add(service: loggerService)
         
         let launchService = LaunchService()
-        launchService.selectViewController()
+        launchService.openModule()
         ServiceLocator.shared.add(service: launchService)
                         
-//        setupKeyboardManager()
+        setupKeyboardManager()
         
         return true
     }
     
     private func setupKeyboardManager() {
         let manager = IQKeyboardManager.shared
-        manager.enable = true
         manager.toolbarTintColor = R.color.mainContent()
         manager.toolbarDoneBarButtonItemText = "Скрыть"
         manager.placeholderColor = R.color.mainContent()

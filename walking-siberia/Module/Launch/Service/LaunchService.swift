@@ -2,6 +2,18 @@ import UIKit
 
 class LaunchService {
     
+    private var notificationTokens: [Any] = []
+    
+    init() {
+        addObservers()
+    }
+
+    deinit {
+        notificationTokens.forEach {
+            NotificationCenter.default.removeObserver($0)
+        }
+    }
+    
     private func setWindowRoot(viewController: UIViewController) {
         let root = navController(viewController)
         
@@ -20,14 +32,14 @@ class LaunchService {
     }
     
     private func openAccountSetup() {
-//        setWindowRoot(viewController: RegisterUserInputViewController())
+        setWindowRoot(viewController: AccountRegisterPrimaryViewController())
     }
     
     private func openMain() {
 //        setWindowRoot(viewController: TabBarController())
     }
     
-    func selectViewController() {
+    func openModule() {
         let authService: AuthService? = ServiceLocator.getService()
         authService?.updateApi()
         
@@ -37,6 +49,30 @@ class LaunchService {
             openAccountSetup()
         } else {
             openMain()
+        }
+    }
+    
+    private func addObservers() {
+        let notificationNames: [Foundation.Notification.Name] = [
+            AuthService.statusChangedNotifiaction
+        ]
+
+        for name in notificationNames {
+            notificationTokens.append(NotificationCenter.default.addObserver(
+                                        forName: name,
+                                        object: nil,
+                                        queue: .main,
+                                        using: { [weak self] in self?.handleNotification($0) }
+            ))
+        }
+    }
+    
+    private func handleNotification(_ notification: Foundation.Notification) {
+        switch notification.name {
+        case AuthService.statusChangedNotifiaction:
+            openModule()
+        default:
+            break
         }
     }
     

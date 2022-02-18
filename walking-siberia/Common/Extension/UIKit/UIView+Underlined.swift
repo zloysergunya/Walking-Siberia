@@ -3,6 +3,10 @@ import UIKit
 extension UIView {
     
     func underlined(color: UIColor = UIColor.lightGray) {
+        if let layer = layer.sublayers?.first(where: { $0.name == "underlined" }) {
+            layer.removeFromSuperlayer()
+        }
+        
         let border = CALayer()
         border.name = "underlined"
         border.borderColor = color.cgColor

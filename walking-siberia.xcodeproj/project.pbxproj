@@ -69,8 +69,8 @@
 		C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516927B1232800C95344 /* UIView+Shadow.swift */; };
 		C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516C27B1356F00C95344 /* OTPTextField.swift */; };
 		C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */; };
-		C4A1517427B17E4B00C95344 /* AccountRegisterStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517227B17E4B00C95344 /* AccountRegisterStepOneViewController.swift */; };
-		C4A1517527B17E4B00C95344 /* AccountRegisterStepOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517327B17E4B00C95344 /* AccountRegisterStepOneView.swift */; };
+		C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */; };
+		C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */; };
 		C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8427BFDC960058334F /* AuthRequest.swift */; };
 		C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8927BFDCFC0058334F /* SuccessResponse.swift */; };
 		C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8B27BFDD480058334F /* AuthConfirmRequest.swift */; };
@@ -80,6 +80,10 @@
 		C4D82A9627BFE5A20058334F /* EmptyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A9527BFE5A20058334F /* EmptyData.swift */; };
 		C4D82A9827BFE7310058334F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A9727BFE7310058334F /* User.swift */; };
 		C4D82A9A27BFE7710058334F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A9927BFE7710058334F /* Profile.swift */; };
+		C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A9B27BFED200058334F /* UIStackView+Init.swift */; };
+		C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A9E27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift */; };
+		C4D82AA127BFF6F10058334F /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AA027BFF6F10058334F /* ProfileAPI.swift */; };
+		C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,8 +152,8 @@
 		C4A1516927B1232800C95344 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		C4A1516C27B1356F00C95344 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldImplementation.swift; sourceTree = "<group>"; };
-		C4A1517227B17E4B00C95344 /* AccountRegisterStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterStepOneViewController.swift; sourceTree = "<group>"; };
-		C4A1517327B17E4B00C95344 /* AccountRegisterStepOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterStepOneView.swift; sourceTree = "<group>"; };
+		C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryViewController.swift; sourceTree = "<group>"; };
+		C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryView.swift; sourceTree = "<group>"; };
 		C4D82A8427BFDC960058334F /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		C4D82A8927BFDCFC0058334F /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		C4D82A8B27BFDD480058334F /* AuthConfirmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfirmRequest.swift; sourceTree = "<group>"; };
@@ -159,6 +163,10 @@
 		C4D82A9527BFE5A20058334F /* EmptyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyData.swift; sourceTree = "<group>"; };
 		C4D82A9727BFE7310058334F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C4D82A9927BFE7710058334F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		C4D82A9B27BFED200058334F /* UIStackView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Init.swift"; sourceTree = "<group>"; };
+		C4D82A9E27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryProvider.swift; sourceTree = "<group>"; };
+		C4D82AA027BFF6F10058334F /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
+		C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateRequest.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +312,7 @@
 				C408EA3327AFFC8C004B82CB /* UIViewController+HideKeyboard.swift */,
 				C408EA3427AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift */,
 				C4A1516927B1232800C95344 /* UIView+Shadow.swift */,
+				C4D82A9B27BFED200058334F /* UIStackView+Init.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -371,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				C408EA4A27AFFC8C004B82CB /* AuthAPI.swift */,
+				C4D82AA027BFF6F10058334F /* ProfileAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -378,8 +388,9 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C4D82A8827BFDCED0058334F /* Common */,
 				C408EA5827AFFC8C004B82CB /* AuthAPI */,
+				C4D82A8827BFDCED0058334F /* Common */,
+				C4D82AA227BFF72E0058334F /* ProfileAPI */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,7 +457,7 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				C4A1517027B17E1700C95344 /* AccountRegisterStepOne */,
+				C4A1517027B17E1700C95344 /* AccountRegisterPrimary */,
 				C4A1515E27B11D1100C95344 /* PhoneCodeAuth */,
 				C4A1514A27B0FADB00C95344 /* PhoneAuth */,
 				C4A1513327B0EC9500C95344 /* Onboarding */,
@@ -591,19 +602,20 @@
 			path = OTPTextField;
 			sourceTree = "<group>";
 		};
-		C4A1517027B17E1700C95344 /* AccountRegisterStepOne */ = {
+		C4A1517027B17E1700C95344 /* AccountRegisterPrimary */ = {
 			isa = PBXGroup;
 			children = (
+				C4D82A9D27BFEFB60058334F /* Provider */,
 				C4A1517127B17E4200C95344 /* View */,
-				C4A1517227B17E4B00C95344 /* AccountRegisterStepOneViewController.swift */,
+				C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */,
 			);
-			path = AccountRegisterStepOne;
+			path = AccountRegisterPrimary;
 			sourceTree = "<group>";
 		};
 		C4A1517127B17E4200C95344 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C4A1517327B17E4B00C95344 /* AccountRegisterStepOneView.swift */,
+				C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -631,6 +643,22 @@
 				C4D82A9127BFE1BB0058334F /* PhoneCodeAuthProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4D82A9D27BFEFB60058334F /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82A9E27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4D82AA227BFF72E0058334F /* ProfileAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */,
+			);
+			path = ProfileAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -792,7 +820,7 @@
 			files = (
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
 				C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */,
-				C4A1517427B17E4B00C95344 /* AccountRegisterStepOneViewController.swift in Sources */,
+				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
 				C408EA7127AFFC8C004B82CB /* RootViewController.swift in Sources */,
 				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
@@ -802,6 +830,7 @@
 				C4D82A9227BFE1BB0058334F /* PhoneCodeAuthProvider.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
+				C4D82AA127BFF6F10058334F /* ProfileAPI.swift in Sources */,
 				C4D82A8F27BFDDD80058334F /* PhoneAuthProvider.swift in Sources */,
 				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
 				C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */,
@@ -819,8 +848,10 @@
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
+				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
+				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
@@ -835,8 +866,9 @@
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
 				C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */,
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
+				C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */,
 				C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */,
-				C4A1517527B17E4B00C95344 /* AccountRegisterStepOneView.swift in Sources */,
+				C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
@@ -996,7 +1028,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1027,7 +1059,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

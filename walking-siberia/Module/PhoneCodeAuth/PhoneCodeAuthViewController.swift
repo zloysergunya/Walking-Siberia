@@ -52,16 +52,14 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
     }
     
     private func confirm(with code: String) {
-        provider.confirmPhone(phone: phone, code: code) { [weak self] result in
-            guard let self = self else {
-                return
-            }
-                        
+        provider.confirmPhone(phone: phone, code: code) { [weak self] result in                        
             switch result {
             case .success(let response):
-                UserSettings.token = response.data?.accessToken
-                UserSettings.user = response.data?.user
-                self.navigationController?.pushViewController(AccountRegisterStepOneViewController(), animated: true)
+                let authService: AuthService? = ServiceLocator.getService()
+                if let token = response.data?.accessToken, let user = response.data?.user {
+                    UserSettings.user = user
+                    authService?.authorize(with: token, currentUserId: user.userID)
+                }
                 
             case .failure(let error):
                 if let error = error as? ModelError {

@@ -5,21 +5,11 @@ import Foundation
     static let defaults = UserDefaults.standard
 
     fileprivate enum Keys: String {
-        case token
         case user
         case pets
         case petAnimations
         case userReady
         case isLaunchedBefore
-    }
-    
-    static var token: String? {
-        get {
-            return defaults.string(forKey: Keys.token.rawValue)
-        }
-        set {
-            defaults.set(newValue, forKey: Keys.token.rawValue)
-        }
     }
     
     static var user: User? {
