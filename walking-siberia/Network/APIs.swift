@@ -6,8 +6,8 @@
 
 import Foundation
 
-open class iPetAPI {
-    public static var basePath = "https://dev.steppy.org/api"
+open class APIConfig {
+    public static var basePath = "http://151.248.122.140:8005/v1"
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
@@ -32,7 +32,7 @@ open class RequestBuilder<T> {
         self.isBody = isBody
         self.headers = headers
 
-        addHeaders(iPetAPI.customHeaders)
+        addHeaders(APIConfig.customHeaders)
     }
 
     open func addHeaders(_ aHeaders:[String:String]) {
@@ -51,7 +51,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        self.credential = iPetAPI.credential
+        self.credential = APIConfig.credential
         return self
     }
 }

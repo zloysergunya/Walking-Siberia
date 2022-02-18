@@ -3,46 +3,40 @@ import Alamofire
 
 class AuthAPI {
     
-    class func authApplePost(token: String, completion: @escaping ((_ data: AuthGoggleResponse?,_ error: ErrorResponse?) -> Void)) {
-        authApplePostWithRequestBuilder(token: token).execute { (response, error) -> Void in
+    class func authPost(auth: AuthRequest, completion: @escaping ((_ data: SuccessResponse?,_ error: ErrorResponse?) -> Void)) {
+        authPostWithRequestBuilder(auth: auth).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
     
-    private class func authApplePostWithRequestBuilder(token: String) -> RequestBuilder<AuthGoggleResponse> {
-        let path = "/auth/apple"
-        let URLString = iPetAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apple_token": token
-        ])
+    private class func authPostWithRequestBuilder(auth: AuthRequest) -> RequestBuilder<SuccessResponse> {
+        let path = "/auth"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: auth)
 
-        let requestBuilder: RequestBuilder<AuthGoggleResponse>.Type = iPetAPI.requestBuilderFactory.getBuilder()
+        let url = URLComponents(string: URLString)
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let requestBuilder: RequestBuilder<SuccessResponse>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
-    class func authGooglePost(token: String, completion: @escaping ((_ data: AuthGoggleResponse?,_ error: ErrorResponse?) -> Void)) {
-        authGooglePostWithRequestBuilder(token: token).execute { (response, error) -> Void in
+    class func authConfirmPost(authConfirm: AuthConfirmRequest, completion: @escaping ((_ data: SuccessResponse?,_ error: ErrorResponse?) -> Void)) {
+        authConfirmPostWithRequestBuilder(authConfirm: authConfirm).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
     
-    private class func authGooglePostWithRequestBuilder(token: String) -> RequestBuilder<AuthGoggleResponse> {
-        let path = "/auth/google"
-        let URLString = iPetAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "google_token": token
-        ])
+    private class func authConfirmPostWithRequestBuilder(authConfirm: AuthConfirmRequest) -> RequestBuilder<SuccessResponse> {
+        let path = "/auth/confirm"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authConfirm)
 
-        let requestBuilder: RequestBuilder<AuthGoggleResponse>.Type = iPetAPI.requestBuilderFactory.getBuilder()
+        let url = URLComponents(string: URLString)
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        let requestBuilder: RequestBuilder<SuccessResponse>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
 }
