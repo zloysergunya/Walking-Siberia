@@ -34,7 +34,7 @@ extension AuthService {
     }
     
     func updateApi() {
-        APIConfig.customHeaders["X-Token"] = KeychainService().token
+        APIConfig.customHeaders["Authorization"] = "Bearer \(KeychainService().token ?? "")"
         APIConfig.customHeaders["User-Agent"] = Constants.userAgent
     }
 
