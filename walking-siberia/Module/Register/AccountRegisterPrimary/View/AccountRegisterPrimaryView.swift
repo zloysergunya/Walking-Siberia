@@ -15,32 +15,26 @@ class AccountRegisterPrimaryView: RootView {
         return label
     }()
     
-    let nameField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = R.color.mainContent()
-        textField.font = R.font.geometriaMedium(size: 14.0)
+    let nameField: StyledTextField = {
+        let textField = StyledTextField()
         textField.textContentType = .name
-        textField.attributedPlaceholder = NSAttributedString(string: "Ваше имя", attributes: [.foregroundColor: R.color.greyText() ?? .gray])
+        textField.placeholder = "Ваше имя"
         
         return textField
     }()
     
-    let surnameField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = R.color.mainContent()
-        textField.font = R.font.geometriaMedium(size: 14.0)
+    let surnameField: StyledTextField = {
+        let textField = StyledTextField()
         textField.textContentType = .familyName
-        textField.attributedPlaceholder = NSAttributedString(string: "Ваша фамилия", attributes: [.foregroundColor: R.color.greyText() ?? .gray])
+        textField.placeholder = "Ваша фамилия"
         
         return textField
     }()
     
-    let cityField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = R.color.mainContent()
-        textField.font = R.font.geometriaMedium(size: 14.0)
+    let cityField: StyledTextField = {
+        let textField = StyledTextField()
         textField.textContentType = .addressCity
-        textField.attributedPlaceholder = NSAttributedString(string: "Город", attributes: [.foregroundColor: R.color.greyText() ?? .gray])
+        textField.placeholder = "Город"
         
         return textField
     }()
@@ -54,11 +48,9 @@ class AccountRegisterPrimaryView: RootView {
         return label
     }()
     
-    let dateOfBirthField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = R.color.mainContent()
-        textField.font = R.font.geometriaMedium(size: 14.0)
-        textField.attributedPlaceholder = NSAttributedString(string: "XX.XX.XXXX", attributes: [.foregroundColor: R.color.greyText() ?? .gray])
+    let dateOfBirthField: StyledTextField = {
+        let textField = StyledTextField()
+        textField.placeholder = "XX.XX.XXXX"
         
         return textField
     }()
@@ -90,14 +82,12 @@ class AccountRegisterPrimaryView: RootView {
         return label
     }()
     
-    let emailField: UITextField = {
-        let textField = UITextField()
-        textField.textColor = R.color.mainContent()
-        textField.font = R.font.geometriaMedium(size: 14.0)
+    let emailField: StyledTextField = {
+        let textField = StyledTextField()
         textField.keyboardType = .emailAddress
         textField.textContentType = .emailAddress
         textField.autocapitalizationType = .none
-        textField.attributedPlaceholder = NSAttributedString(string: "mail@gmail.com", attributes: [.foregroundColor: R.color.greyText() ?? .gray])
+        textField.placeholder = "mail@gmail.com"
         
         return textField
     }()
@@ -166,7 +156,7 @@ class AccountRegisterPrimaryView: RootView {
         return radioButton
     }()
     
-    private lazy var radioButtonsStackView = UIStackView(views: [
+    lazy var radioButtonsStackView = UIStackView(views: [
         schoolchildRadioButton,
         studentRadioButton,
         adultRadioButton,

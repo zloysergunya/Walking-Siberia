@@ -6,8 +6,8 @@ struct Profile: Codable {
     let city: String
     let birthDate: String?
     let aboutMe: String
-    let height: String
-    let weight: String
+    let height: Int
+    let weight: Int
     let telegram: String
     let instagram: String
     let vkontakte: String

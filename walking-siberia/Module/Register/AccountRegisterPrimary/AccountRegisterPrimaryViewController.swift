@@ -15,7 +15,9 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
          mainView.surnameField,
          mainView.cityField,
          mainView.dateOfBirthField,
-         mainView.emailField].forEach({ $0.addTarget(self, action: #selector(textFieldDidChangeText), for: .editingChanged) })
+         mainView.emailField].forEach {
+            $0.addTarget(self, action: #selector(textFieldDidChangeText), for: .editingChanged)
+        }
         
         mainView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.dateOfBirthField.inputView = mainView.datePicker
@@ -91,19 +93,16 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             return
         }
         
+        guard let type = mainView.radioButtonsStackView.arrangedSubviews.map({ $0 as? RadioButton }).firstIndex(where: { $0?.title(for: .normal) == selectedCategory }) else {
+            return
+        }
+        
         let profileUpdate = ProfileUpdateRequest(lastName: surname,
                                                  firstName: name,
                                                  city: city,
                                                  birthDay: dateOfBirth,
                                                  email: email,
-                                                 type: 0,
-                                                 aboutMe: nil,
-                                                 telegram: nil,
-                                                 instagram: nil,
-                                                 vkontakte: nil,
-                                                 odnoklassniki: nil,
-                                                 height: nil,
-                                                 weight: nil)
+                                                 type: type)
         
         mainView.continueButton.isLoading = true
         provider.profileUpdate(profileUpdate: profileUpdate) { [weak self] result in
@@ -115,7 +114,8 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             
             switch result {
             case .success(let response):
-                print(response)
+                UserSettings.user = response.data
+                self.navigationController?.pushViewController(AccountRegisterSecondaryViewController(), animated: true)
                 
             case .failure(let error):
                 if let error = error as? ModelError {

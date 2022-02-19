@@ -84,6 +84,10 @@
 		C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A9E27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift */; };
 		C4D82AA127BFF6F10058334F /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AA027BFF6F10058334F /* ProfileAPI.swift */; };
 		C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */; };
+		C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AA727C0AECE0058334F /* AccountRegisterSecondaryViewController.swift */; };
+		C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AA827C0AECE0058334F /* AccountRegisterSecondaryView.swift */; };
+		C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AAD27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift */; };
+		C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82AB127C0B8D50058334F /* StyledTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +171,10 @@
 		C4D82A9E27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryProvider.swift; sourceTree = "<group>"; };
 		C4D82AA027BFF6F10058334F /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
 		C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateRequest.swift; sourceTree = "<group>"; };
+		C4D82AA727C0AECE0058334F /* AccountRegisterSecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterSecondaryViewController.swift; sourceTree = "<group>"; };
+		C4D82AA827C0AECE0058334F /* AccountRegisterSecondaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterSecondaryView.swift; sourceTree = "<group>"; };
+		C4D82AAD27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterSecondaryProvider.swift; sourceTree = "<group>"; };
+		C4D82AB127C0B8D50058334F /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -457,10 +465,7 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				C4A1517027B17E1700C95344 /* AccountRegisterPrimary */,
-				C4A1515E27B11D1100C95344 /* PhoneCodeAuth */,
-				C4A1514A27B0FADB00C95344 /* PhoneAuth */,
-				C4A1513327B0EC9500C95344 /* Onboarding */,
+				C4D82AA627C0AEB40058334F /* Register */,
 				C408EAA827AFFE32004B82CB /* Launch */,
 			);
 			path = Module;
@@ -571,6 +576,7 @@
 			children = (
 				C4A1516B27B1356600C95344 /* OTPTextField */,
 				C4A1515A27B1030C00C95344 /* FloatingTextField.swift */,
+				C4D82AB127C0B8D50058334F /* StyledTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -659,6 +665,44 @@
 				C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */,
 			);
 			path = ProfileAPI;
+			sourceTree = "<group>";
+		};
+		C4D82AA527C0AEA70058334F /* AccountRegisterSecondary */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82AAC27C0AEDC0058334F /* Prrovider */,
+				C4D82AAB27C0AED30058334F /* View */,
+				C4D82AA727C0AECE0058334F /* AccountRegisterSecondaryViewController.swift */,
+			);
+			path = AccountRegisterSecondary;
+			sourceTree = "<group>";
+		};
+		C4D82AA627C0AEB40058334F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82AA527C0AEA70058334F /* AccountRegisterSecondary */,
+				C4A1517027B17E1700C95344 /* AccountRegisterPrimary */,
+				C4A1515E27B11D1100C95344 /* PhoneCodeAuth */,
+				C4A1514A27B0FADB00C95344 /* PhoneAuth */,
+				C4A1513327B0EC9500C95344 /* Onboarding */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		C4D82AAB27C0AED30058334F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82AA827C0AECE0058334F /* AccountRegisterSecondaryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4D82AAC27C0AEDC0058334F /* Prrovider */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82AAD27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift */,
+			);
+			path = Prrovider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -842,6 +886,7 @@
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
 				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
+				C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */,
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
@@ -860,6 +905,7 @@
 				C4D82A9427BFE4470058334F /* AuthConfirmResponse.swift in Sources */,
 				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
+				C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */,
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
@@ -872,6 +918,8 @@
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
+				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
+				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,
 				C4A1516127B11D2100C95344 /* PhoneCodeAuthViewController.swift in Sources */,
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,
 				C408EA7027AFFC8C004B82CB /* SwipeNavigationController.swift in Sources */,
