@@ -102,7 +102,7 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
                                                  city: city,
                                                  birthDay: dateOfBirth,
                                                  email: email,
-                                                 type: type)
+                                                 type: (type + 1) * 10)
         
         mainView.continueButton.isLoading = true
         provider.profileUpdate(profileUpdate: profileUpdate) { [weak self] result in

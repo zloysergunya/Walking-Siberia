@@ -33,7 +33,6 @@ class LaunchService {
     
     private func openAccountSetup() {
         setWindowRoot(viewController: AccountRegisterPrimaryViewController())
-//        setWindowRoot(viewController: AccountRegisterSecondaryViewController())
     }
     
     private func openMain() {
