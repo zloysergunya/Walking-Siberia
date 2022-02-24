@@ -75,16 +75,17 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
                 return
             }
             
+            UserSettings.userReady = true
             self.mainView.continueButton.isLoading = false
             
             switch result {
             case .success(let response):
                 UserSettings.user = response.data
+                let uiService: UIService? = ServiceLocator.getService()
+                uiService?.openModule()
                 
             case .failure(let error):
-                if let error = error as? ModelError {
-                    // todo
-                }
+                error.localizedDescription // todo
             }
         }
     }

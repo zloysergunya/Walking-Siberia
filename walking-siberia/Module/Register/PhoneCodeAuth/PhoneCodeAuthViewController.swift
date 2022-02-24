@@ -62,9 +62,7 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
                 }
                 
             case .failure(let error):
-                if let error = error as? ModelError {
-                   // todo
-                }
+                error.localizedDescription // todo
             }
         }
     }
@@ -84,9 +82,7 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
                 self.startTimer()
                 
             case .failure(let error):
-                if let error = error as? ModelError {
-                   // todo
-                }
+                error.localizedDescription // todo
             }
         }
     }

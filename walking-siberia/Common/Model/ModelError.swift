@@ -6,7 +6,7 @@ enum ApiErrorCode: String {
     case token
 }
 
-struct ModelError: Error, CustomDebugStringConvertible {
+struct ModelError: Error {
     let err: ErrorResponse
 
     func message() -> String {
@@ -48,7 +48,7 @@ struct ModelError: Error, CustomDebugStringConvertible {
         }
     } 
     
-    var debugDescription: String {
+    var localizedDescription: String {
         return message()
     }
     

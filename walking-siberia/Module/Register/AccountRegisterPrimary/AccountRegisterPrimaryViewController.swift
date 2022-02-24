@@ -115,12 +115,11 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             switch result {
             case .success(let response):
                 UserSettings.user = response.data
+                UserSettings.userReady = true
                 self.navigationController?.pushViewController(AccountRegisterSecondaryViewController(), animated: true)
                 
             case .failure(let error):
-                if let error = error as? ModelError {
-                    // todo
-                }
+                error.localizedDescription // todo
             }
         }
     }

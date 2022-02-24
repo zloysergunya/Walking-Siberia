@@ -1,6 +1,6 @@
 import UIKit
 
-class LaunchService {
+class UIService {
     
     private var notificationTokens: [Any] = []
     
@@ -36,7 +36,7 @@ class LaunchService {
     }
     
     private func openMain() {
-//        setWindowRoot(viewController: TabBarController())
+        setWindowRoot(viewController: TabBarController())
     }
     
     func openModule() {

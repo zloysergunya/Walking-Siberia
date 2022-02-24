@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loggerService = LoggerService()
         ServiceLocator.shared.add(service: loggerService)
         
-        let launchService = LaunchService()
+        let launchService = UIService()
         launchService.openModule()
         ServiceLocator.shared.add(service: launchService)
                         

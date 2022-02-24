@@ -6,6 +6,7 @@ target 'walking-siberia' do
   use_frameworks!
   
   # Network
+  pod 'Kingfisher'
   pod 'Alamofire', '~> 4.9.0'
   
   # Storage

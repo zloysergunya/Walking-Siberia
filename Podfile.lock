@@ -6,6 +6,7 @@ PODS:
     - IGListDiffKit (= 4.0.0)
   - IQKeyboardManagerSwift (6.5.9)
   - KeychainAccess (4.2.2)
+  - Kingfisher (7.1.2)
   - MBRadioButton (1.4)
   - PinLayout (1.10.1)
   - R.swift (5.4.0):
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - IGListKit (~> 4.0)
   - IQKeyboardManagerSwift
   - KeychainAccess
+  - Kingfisher
   - MBRadioButton
   - PinLayout (~> 1.8)
   - R.swift (~> 5.4.0)
@@ -36,6 +38,7 @@ SPEC REPOS:
     - IGListKit
     - IQKeyboardManagerSwift
     - KeychainAccess
+    - Kingfisher
     - MBRadioButton
     - PinLayout
     - R.swift
@@ -51,6 +54,7 @@ SPEC CHECKSUMS:
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   MBRadioButton: dcf111c9bb633d4cf6e83200d804af6e025033c8
   PinLayout: 8b3199b283d1b34e6b35a71d0202049b67551c96
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
@@ -59,6 +63,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: a3ec84f26e7611ce960318fa309005f68b9dd686
+PODFILE CHECKSUM: 0cd5a8ea2a001782e468e6251e7e88e4c1c2dc53
 
 COCOAPODS: 1.11.2
