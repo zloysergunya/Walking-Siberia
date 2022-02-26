@@ -12,4 +12,5 @@ struct Profile: Codable {
     let instagram: String
     let vkontakte: String
     let odnoklassniki: String
+    let avatar: String?
 }

@@ -109,6 +109,12 @@
 		C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A83F27C7D0D7004B552A /* RoutePlaceSectionModel.swift */; };
 		C4D9A84227C7D15F004B552A /* RoutePlaceSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A84127C7D15F004B552A /* RoutePlaceSectionController.swift */; };
 		C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A84327C7D170004B552A /* RoutePlaceCell.swift */; };
+		C4D9A86E27C90E3A004B552A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A86C27C90E3A004B552A /* ProfileViewController.swift */; };
+		C4D9A86F27C90E3A004B552A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A86D27C90E3A004B552A /* ProfileView.swift */; };
+		C4D9A87427C91330004B552A /* ProfileContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87327C91330004B552A /* ProfileContentView.swift */; };
+		C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87527CA4511004B552A /* ProfileProvider.swift */; };
+		C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */; };
+		C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87927CA4DA0004B552A /* Competition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +223,12 @@
 		C4D9A83F27C7D0D7004B552A /* RoutePlaceSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePlaceSectionModel.swift; sourceTree = "<group>"; };
 		C4D9A84127C7D15F004B552A /* RoutePlaceSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePlaceSectionController.swift; sourceTree = "<group>"; };
 		C4D9A84327C7D170004B552A /* RoutePlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePlaceCell.swift; sourceTree = "<group>"; };
+		C4D9A86C27C90E3A004B552A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C4D9A86D27C90E3A004B552A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C4D9A87327C91330004B552A /* ProfileContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentView.swift; sourceTree = "<group>"; };
+		C4D9A87527CA4511004B552A /* ProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProvider.swift; sourceTree = "<group>"; };
+		C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionAPI.swift; sourceTree = "<group>"; };
+		C4D9A87927CA4DA0004B552A /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -396,6 +408,7 @@
 				C4D8EC9827C364EA00BF0767 /* Route.swift */,
 				C4D82A9927BFE7710058334F /* Profile.swift */,
 				C4D8EC9D27C36C9400BF0767 /* Place.swift */,
+				C4D9A87927CA4DA0004B552A /* Competition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,6 +449,7 @@
 				C408EA4A27AFFC8C004B82CB /* AuthAPI.swift */,
 				C4D82AA027BFF6F10058334F /* ProfileAPI.swift */,
 				C4D8EC9527C3647900BF0767 /* MapsAPI.swift */,
+				C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -788,6 +802,7 @@
 		C4D8EC8B27C3639700BF0767 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C4D9A86B27C90E2F004B552A /* Profile */,
 				C40919CE27C72FB400E23AD8 /* RouteInfo */,
 				C4D8EC9A27C368EE00BF0767 /* TabBar */,
 				C4D8EC8C27C3639E00BF0767 /* Routes */,
@@ -894,6 +909,41 @@
 				C4D9A84327C7D170004B552A /* RoutePlaceCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C4D9A86B27C90E2F004B552A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C4D9A86C27C90E3A004B552A /* ProfileViewController.swift */,
+				C4D9A87027C90E3D004B552A /* Provider */,
+				C4D9A87127C90E43004B552A /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C4D9A87027C90E3D004B552A /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4D9A87527CA4511004B552A /* ProfileProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4D9A87127C90E43004B552A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4D9A87227C91321004B552A /* Subview */,
+				C4D9A86D27C90E3A004B552A /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4D9A87227C91321004B552A /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4D9A87327C91330004B552A /* ProfileContentView.swift */,
+			);
+			path = Subview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1064,6 +1114,7 @@
 				C408EA7127AFFC8C004B82CB /* RootViewController.swift in Sources */,
 				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
 				C4D8EC8F27C363B200BF0767 /* RoutesViewController.swift in Sources */,
+				C4D9A86E27C90E3A004B552A /* ProfileViewController.swift in Sources */,
 				C408EA9B27AFFC8C004B82CB /* Models.swift in Sources */,
 				C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
@@ -1071,6 +1122,7 @@
 				C4D82A9227BFE1BB0058334F /* PhoneCodeAuthProvider.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
+				C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */,
 				C4D82AA127BFF6F10058334F /* ProfileAPI.swift in Sources */,
 				C4D82A8F27BFDDD80058334F /* PhoneAuthProvider.swift in Sources */,
 				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
@@ -1078,6 +1130,7 @@
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
 				C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */,
 				C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */,
+				C4D9A86F27C90E3A004B552A /* ProfileView.swift in Sources */,
 				C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */,
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
@@ -1087,6 +1140,7 @@
 				C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */,
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
+				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
 				C4D8EC9E27C36C9400BF0767 /* Place.swift in Sources */,
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
@@ -1099,12 +1153,14 @@
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
+				C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */,
 				C4D8ECA727C37D6500BF0767 /* RouteCell.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
 				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
 				C4D82A9427BFE4470058334F /* AuthConfirmResponse.swift in Sources */,
+				C4D9A87427C91330004B552A /* ProfileContentView.swift in Sources */,
 				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
 				C4D8EC9027C363B200BF0767 /* RoutesView.swift in Sources */,

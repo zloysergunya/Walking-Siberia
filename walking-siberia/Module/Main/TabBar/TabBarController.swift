@@ -17,13 +17,22 @@ class TabBarController: UITabBarController {
                                                                  .foregroundColor: selectedColor]
         
         let routesViewController = RoutesViewController()
-        routesViewController.tabBarItem.setTitleTextAttributes(unselectedAttributes, for: .normal)
-        routesViewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
         routesViewController.tabBarItem.title = "Маршруты"
         routesViewController.tabBarItem.image = R.image.tabRoutes()?.withTintColor(unselectedColor)
         routesViewController.tabBarItem.selectedImage = R.image.tabRoutes()?.withTintColor(selectedColor)
         
-        viewControllers = [SwipeNavigationController(rootViewController: routesViewController)]
+        let profileViewController = ProfileViewController()
+        profileViewController.tabBarItem.title = "Профиль"
+        profileViewController.tabBarItem.image = R.image.tabProfile()?.withTintColor(unselectedColor)
+        profileViewController.tabBarItem.selectedImage = R.image.tabProfile()?.withTintColor(selectedColor)
+        
+        viewControllers = [SwipeNavigationController(rootViewController: routesViewController),
+                           SwipeNavigationController(rootViewController: profileViewController)]
+        
+        viewControllers?.forEach({ viewController in
+            viewController.tabBarItem.setTitleTextAttributes(unselectedAttributes, for: .normal)
+            viewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
+        })
     }
     
 }

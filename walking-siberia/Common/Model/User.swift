@@ -7,7 +7,7 @@ struct User: Codable {
     let type: Int
     let typeLabel: String
     let deviceID: String?
-    let profile: Profile
+    var profile: Profile
     let isFillProfile: Bool
 
     enum CodingKeys: String, CodingKey {

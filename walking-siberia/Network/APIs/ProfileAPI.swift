@@ -3,6 +3,24 @@ import Alamofire
 
 class ProfileAPI {
     
+    class func profileGet(completion: @escaping ((_ data: SuccessResponse<User>?,_ error: ErrorResponse?) -> Void)) {
+        profileGetWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func profileGetWithRequestBuilder() -> RequestBuilder<SuccessResponse<User>> {
+        let path = "/profile"
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<User>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
     class func profileUpdatePost(profileUpdate: ProfileUpdateRequest, completion: @escaping ((_ data: SuccessResponse<User>?,_ error: ErrorResponse?) -> Void)) {
         profileUpdatePostWithRequestBuilder(profileUpdate: profileUpdate).execute { (response, error) -> Void in
             completion(response?.body, error)
