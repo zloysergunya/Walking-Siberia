@@ -39,4 +39,27 @@ class ProfileAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func profileAvatarPost(photo: URL? = nil, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        profileAvatarPostWithRequestBuilder(photo: photo).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func profileAvatarPostWithRequestBuilder(photo: URL?) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/profile/avatar"
+        let URLString = APIConfig.basePath + path
+        let formParams: [String:Any?] = [
+            "avatarFile": photo
+        ]
+
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

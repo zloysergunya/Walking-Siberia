@@ -115,6 +115,7 @@
 		C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87527CA4511004B552A /* ProfileProvider.swift */; };
 		C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */; };
 		C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87927CA4DA0004B552A /* Competition.swift */; };
+		C4D9A87C27CA539A004B552A /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87B27CA539A004B552A /* UIImage+Compress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -229,6 +230,7 @@
 		C4D9A87527CA4511004B552A /* ProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProvider.swift; sourceTree = "<group>"; };
 		C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionAPI.swift; sourceTree = "<group>"; };
 		C4D9A87927CA4DA0004B552A /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
+		C4D9A87B27CA539A004B552A /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -376,6 +378,7 @@
 				C408EA3427AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift */,
 				C4A1516927B1232800C95344 /* UIView+Shadow.swift */,
 				C4D82A9B27BFED200058334F /* UIStackView+Init.swift */,
+				C4D9A87B27CA539A004B552A /* UIImage+Compress.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1105,6 +1108,7 @@
 			files = (
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
+				C4D9A87C27CA539A004B552A /* UIImage+Compress.swift in Sources */,
 				C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */,
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,

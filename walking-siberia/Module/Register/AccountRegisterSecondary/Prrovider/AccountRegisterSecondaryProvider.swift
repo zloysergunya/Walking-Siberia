@@ -14,4 +14,16 @@ class AccountRegisterSecondaryProvider {
         }
     }
     
+    func uploadAvatar(photo: URL?, completion: @escaping(Result<SuccessResponse<EmptyData>, Error>) -> Void) {
+        ProfileAPI.profileAvatarPost(photo: photo) { response, error in
+            if let response = response {
+                completion(.success(response))
+            } else if let error = error {
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(NSError()))
+            }
+        }
+    }
+    
 }

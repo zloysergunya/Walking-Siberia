@@ -90,6 +90,25 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
         }
     }
     
+    private func uploadUserPhoto(image: UIImage) {
+        let data = image.jpegData(compressionQuality: 0.5)
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let filename = paths[0].appendingPathComponent("image.jpg")
+        try? data?.write(to: filename)
+        
+        provider.uploadAvatar(photo: filename) { result in
+            switch result {
+            case .success:
+                break
+                
+            case .failure(let error):
+                if let error = error as? ModelError {
+                    print(error.message())
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -98,6 +117,7 @@ extension AccountRegisterSecondaryViewController: UIImagePickerControllerDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             mainView.addPhotoButton.setImage(image, for: .normal)
+            uploadUserPhoto(image: image)
         }
         
         picker.dismiss(animated: true)
