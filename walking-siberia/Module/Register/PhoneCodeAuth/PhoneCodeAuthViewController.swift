@@ -58,6 +58,7 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
                 let authService: AuthService? = ServiceLocator.getService()
                 if let token = response.data?.accessToken, let user = response.data?.user {
                     UserSettings.user = user
+                    UserSettings.userReady = user.isFillProfile
                     authService?.authorize(with: token, currentUserId: user.userID)
                 }
                 

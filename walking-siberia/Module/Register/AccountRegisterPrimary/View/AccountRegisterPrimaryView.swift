@@ -17,7 +17,7 @@ class AccountRegisterPrimaryView: RootView {
     
     let nameField: StyledTextField = {
         let textField = StyledTextField()
-        textField.textContentType = .name
+        textField.textContentType = .givenName
         textField.placeholder = "Ваше имя"
         
         return textField
@@ -193,13 +193,6 @@ class AccountRegisterPrimaryView: RootView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let underlineColor = R.color.greyText() ?? .gray
-        nameField.underlined(color: underlineColor)
-        surnameField.underlined(color: underlineColor)
-        cityField.underlined(color: underlineColor)
-        dateOfBirthField.underlined(color: underlineColor)
-        emailField.underlined(color: underlineColor)
         
         radioButtonsStackView.arrangedSubviews.map({ $0 as? RadioButton }).forEach({
             $0?.radioCircle = RadioButtonCircleStyle(outerCircle: 16.0, innerCircle: 8.0, outerCircleBorder: 1.0, contentPadding: 4.0)

@@ -3,20 +3,6 @@ import SnapKit
 
 class ProfileContentView: RootView {
     
-    let statsButton: UIButton = {
-        let button = UIButton()
-        button.setImage(R.image.chart28(), for: .normal)
-        
-        return button
-    }()
-    
-    let settingsButton: UIButton = {
-        let button = UIButton()
-        button.setImage(R.image.settings24(), for: .normal)
-        
-        return button
-    }()
-    
     private let headerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -75,30 +61,17 @@ class ProfileContentView: RootView {
         backgroundColor = R.color.greyBackground()
         
         addSubview(headerView)
-        addSubview(statsButton)
-        addSubview(settingsButton)
-        addSubview(avatarImageView)
-        addSubview(nameLabel)
-        addSubview(idLabel)
-        addSubview(bioLabel)
         addSubview(nothingWasFoundLabel)
+        
+        headerView.addSubview(avatarImageView)
+        headerView.addSubview(nameLabel)
+        headerView.addSubview(idLabel)
+        headerView.addSubview(bioLabel)
         
         super.setup()
     }
     
     override func setupConstraints() {
-        
-        statsButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
-            make.left.equalToSuperview().offset(24.0)
-            make.size.equalTo(28.0)
-        }
-        
-        settingsButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
-            make.right.equalToSuperview().offset(-24.0)
-            make.size.equalTo(28.0)
-        }
         
         headerView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
@@ -130,6 +103,7 @@ class ProfileContentView: RootView {
         nothingWasFoundLabel.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom).offset(64.0)
             make.left.right.equalToSuperview().inset(12.0)
+            make.bottom.lessThanOrEqualToSuperview().offset(-16.0)
         }
         
     }

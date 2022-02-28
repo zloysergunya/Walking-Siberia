@@ -3,11 +3,11 @@ import SnapKit
 
 protocol ConstraintKeyboardObserver: KeyboardObserver, ViewProviding {
     var keyboardConstraint: Constraint { get }
-    var inset: CGFloat { get }
 }
 
 private var oldConstraintValueAssociationKey: UInt8 = 0
 extension ConstraintKeyboardObserver {
+    
     private var oldConstraintConstant: CGFloat? {
         get { objc_getAssociatedObject(self, &oldConstraintValueAssociationKey) as? CGFloat }
         set {
@@ -18,9 +18,8 @@ extension ConstraintKeyboardObserver {
     
     func keyboardWillShowWithFrame(_ frame: CGRect, duration: TimeInterval, options: UIView.AnimationOptions) {
         oldConstraintConstant = oldConstraintConstant ?? self.keyboardConstraint.layoutConstraints.first?.constant
-        
-        let viewFrame = view.window.map({ $0.view.frame }) ?? view.frame
-        let keyboardInset = max(0, viewFrame.maxY - frame.minY + inset)
+
+        let keyboardInset = max(0, frame.height - (oldConstraintConstant ?? 0.0))
         UIView.performWithoutAnimation {
             view.layoutIfNeeded()
         }
@@ -44,4 +43,5 @@ extension ConstraintKeyboardObserver {
         self.keyboardConstraint.update(offset: keyboardInset)
         self.view.layoutIfNeeded()
     }
+    
 }

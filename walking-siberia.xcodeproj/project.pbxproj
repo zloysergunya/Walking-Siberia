@@ -53,6 +53,7 @@
 		C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D027C72FC700E23AD8 /* RouteInfoView.swift */; };
 		C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */; };
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
+		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */; };
 		C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513727B0ECD000C95344 /* OnboardingView.swift */; };
 		C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */; };
@@ -75,6 +76,10 @@
 		C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */; };
 		C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */; };
 		C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */; };
+		C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540227CA656F0004B5CE /* NavBarView.swift */; };
+		C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */; };
+		C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540627CA664A0004B5CE /* ProfileEditView.swift */; };
+		C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */; };
 		C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8427BFDC960058334F /* AuthRequest.swift */; };
 		C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8927BFDCFC0058334F /* SuccessResponse.swift */; };
 		C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8B27BFDD480058334F /* AuthConfirmRequest.swift */; };
@@ -115,7 +120,9 @@
 		C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87527CA4511004B552A /* ProfileProvider.swift */; };
 		C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */; };
 		C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87927CA4DA0004B552A /* Competition.swift */; };
-		C4D9A87C27CA539A004B552A /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87B27CA539A004B552A /* UIImage+Compress.swift */; };
+		C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */; };
+		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
+		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +175,7 @@
 		C40919D027C72FC700E23AD8 /* RouteInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoView.swift; sourceTree = "<group>"; };
 		C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoProvider.swift; sourceTree = "<group>"; };
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
+		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C4A1513727B0ECD000C95344 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Bold.ttf"; sourceTree = "<group>"; };
@@ -190,6 +198,10 @@
 		C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldImplementation.swift; sourceTree = "<group>"; };
 		C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryViewController.swift; sourceTree = "<group>"; };
 		C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryView.swift; sourceTree = "<group>"; };
+		C4AB540227CA656F0004B5CE /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
+		C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		C4AB540627CA664A0004B5CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditContentView.swift; sourceTree = "<group>"; };
 		C4D82A8427BFDC960058334F /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		C4D82A8927BFDCFC0058334F /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		C4D82A8B27BFDD480058334F /* AuthConfirmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfirmRequest.swift; sourceTree = "<group>"; };
@@ -230,7 +242,9 @@
 		C4D9A87527CA4511004B552A /* ProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProvider.swift; sourceTree = "<group>"; };
 		C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionAPI.swift; sourceTree = "<group>"; };
 		C4D9A87927CA4DA0004B552A /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
-		C4D9A87B27CA539A004B552A /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
+		C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
+		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -378,7 +392,7 @@
 				C408EA3427AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift */,
 				C4A1516927B1232800C95344 /* UIView+Shadow.swift */,
 				C4D82A9B27BFED200058334F /* UIStackView+Init.swift */,
-				C4D9A87B27CA539A004B552A /* UIImage+Compress.swift */,
+				C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -624,6 +638,7 @@
 		C4A1514627B0F72B00C95344 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C4AB540127CA65640004B5CE /* NavBar */,
 				C4A1515927B102FA00C95344 /* TextFields */,
 				C4A1514727B0F89500C95344 /* Buttons */,
 			);
@@ -671,9 +686,10 @@
 		C4A1515927B102FA00C95344 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
+				C4E1C2B027CD103700DA7F8F /* Styled */,
+				C4E1C2A627CCFB7100DA7F8F /* SkyFloatingLabelTextField */,
 				C4A1516B27B1356600C95344 /* OTPTextField */,
 				C4A1515A27B1030C00C95344 /* FloatingTextField.swift */,
-				C4D82AB127C0B8D50058334F /* StyledTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -721,6 +737,42 @@
 				C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C4AB540127CA65640004B5CE /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				C4AB540227CA656F0004B5CE /* NavBarView.swift */,
+			);
+			path = NavBar;
+			sourceTree = "<group>";
+		};
+		C4AB540427CA66350004B5CE /* ProfileEdit */ = {
+			isa = PBXGroup;
+			children = (
+				C4E1C2AB27CD0A2300DA7F8F /* Provider */,
+				C4AB540927CA66660004B5CE /* View */,
+				C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */,
+			);
+			path = ProfileEdit;
+			sourceTree = "<group>";
+		};
+		C4AB540927CA66660004B5CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4AB540A27CA666F0004B5CE /* Subview */,
+				C4AB540627CA664A0004B5CE /* ProfileEditView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4AB540A27CA666F0004B5CE /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */,
+				C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */,
+			);
+			path = Subview;
 			sourceTree = "<group>";
 		};
 		C4D82A8827BFDCED0058334F /* Common */ = {
@@ -805,6 +857,7 @@
 		C4D8EC8B27C3639700BF0767 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C4AB540427CA66350004B5CE /* ProfileEdit */,
 				C4D9A86B27C90E2F004B552A /* Profile */,
 				C40919CE27C72FB400E23AD8 /* RouteInfo */,
 				C4D8EC9A27C368EE00BF0767 /* TabBar */,
@@ -947,6 +1000,30 @@
 				C4D9A87327C91330004B552A /* ProfileContentView.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		C4E1C2A627CCFB7100DA7F8F /* SkyFloatingLabelTextField */ = {
+			isa = PBXGroup;
+			children = (
+				C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */,
+			);
+			path = SkyFloatingLabelTextField;
+			sourceTree = "<group>";
+		};
+		C4E1C2AB27CD0A2300DA7F8F /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4E1C2B027CD103700DA7F8F /* Styled */ = {
+			isa = PBXGroup;
+			children = (
+				C4D82AB127C0B8D50058334F /* StyledTextField.swift */,
+			);
+			path = Styled;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1107,8 +1184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
+				C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
-				C4D9A87C27CA539A004B552A /* UIImage+Compress.swift in Sources */,
 				C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */,
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
@@ -1149,11 +1226,14 @@
 				C4D8EC9E27C36C9400BF0767 /* Place.swift in Sources */,
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
+				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
 				C4D8ECAC27C3802500BF0767 /* ImageLoader.swift in Sources */,
+				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
 				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
+				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
@@ -1164,6 +1244,7 @@
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
 				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
 				C4D82A9427BFE4470058334F /* AuthConfirmResponse.swift in Sources */,
+				C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */,
 				C4D9A87427C91330004B552A /* ProfileContentView.swift in Sources */,
 				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
@@ -1172,6 +1253,7 @@
 				C4D8ECAF27C3867400BF0767 /* StepsCountView.swift in Sources */,
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
+				C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
 				C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */,
@@ -1181,6 +1263,7 @@
 				C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */,
 				C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */,
 				C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */,
+				C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */,
 				C4D8EC9C27C3690200BF0767 /* TabBarController.swift in Sources */,
 				C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
@@ -1206,6 +1289,7 @@
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
 				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
+				C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */,
 				C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */,
 				C4D82A9627BFE5A20058334F /* EmptyData.swift in Sources */,
 				C4D8ECA427C37CBC00BF0767 /* RouteSectionController.swift in Sources */,
@@ -1339,7 +1423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZDQ89335V8;
+				DEVELOPMENT_TEAM = BU2XWB73A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сибирь Шагающая";
@@ -1354,7 +1438,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.abs.walking-siberia";
+				PRODUCT_BUNDLE_IDENTIFIER = "pro.iteo.walking-siberia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1370,7 +1454,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZDQ89335V8;
+				DEVELOPMENT_TEAM = BU2XWB73A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сибирь Шагающая";
@@ -1385,7 +1469,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.abs.walking-siberia";
+				PRODUCT_BUNDLE_IDENTIFIER = "pro.iteo.walking-siberia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

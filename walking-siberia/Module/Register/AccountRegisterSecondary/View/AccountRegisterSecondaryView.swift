@@ -162,19 +162,6 @@ class AccountRegisterSecondaryView: RootView {
         super.setup()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let underlineColor = R.color.greyText() ?? .gray
-        bioField.underlined(color: underlineColor)
-        telegramField.underlined(color: underlineColor)
-        instagramField.underlined(color: underlineColor)
-        vkField.underlined(color: underlineColor)
-        okField.underlined(color: underlineColor)
-        heightField.underlined(color: underlineColor)
-        weightField.underlined(color: underlineColor)
-    }
-    
     override func setupConstraints() {
         
         titleLabel.snp.makeConstraints { make in

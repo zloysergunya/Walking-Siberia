@@ -7,6 +7,8 @@ class ProfileViewController: ViewController<ProfileView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.settingsButton.addTarget(self, action: #selector(openProfileEdit), for: .touchUpInside)
+        
         configure()
     }
     
@@ -73,6 +75,11 @@ class ProfileViewController: ViewController<ProfileView> {
         
         let age = Calendar.current.dateComponents([.year], from: birthdayDate, to: Date())
         return age.year
+    }
+    
+    @objc private func openProfileEdit() {
+        let viewController = ProfileEditViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
