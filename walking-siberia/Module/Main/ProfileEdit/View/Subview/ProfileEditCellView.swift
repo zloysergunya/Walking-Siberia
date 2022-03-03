@@ -42,6 +42,8 @@ class ProfileEditCellView: UIView {
         self.iconType = iconType
         super.init(frame: .zero)
         
+        isUserInteractionEnabled = true
+        
         titleLabel.text = title
         arrowImageView.isHidden = iconType != .arrow
         switcherView.isHidden = iconType != .switcher

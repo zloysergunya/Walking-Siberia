@@ -17,6 +17,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickPhoto)))
         mainView.contentView.changePhotoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickPhoto)))
         mainView.contentView.personalInfoEditButton.addTarget(self, action: #selector(toggleProfileEditing), for: .touchUpInside)
+        mainView.contentView.aboutAppActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openAboutApp)))
         mainView.contentView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         
         mainView.contentView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
@@ -180,6 +181,10 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         imagePicker.allowsEditing = false
         
         present(imagePicker, animated: true)
+    }
+    
+    @objc private func openAboutApp() {
+        navigationController?.pushViewController(AboutAppViewController(), animated: true)
     }
     
     @objc private func logout() {

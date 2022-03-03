@@ -123,6 +123,9 @@
 		C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */; };
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
+		C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */; };
+		C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */; };
+		C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -245,6 +248,9 @@
 		C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
+		C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
+		C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppContentView.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -545,6 +551,7 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C4F9FD3927D12CD100A6A2B0 /* AboutApp */,
 				C4D8EC8B27C3639700BF0767 /* Main */,
 				C4D82AA627C0AEB40058334F /* Register */,
 				C408EAA827AFFE32004B82CB /* Launch */,
@@ -1026,6 +1033,32 @@
 			path = Styled;
 			sourceTree = "<group>";
 		};
+		C4F9FD3927D12CD100A6A2B0 /* AboutApp */ = {
+			isa = PBXGroup;
+			children = (
+				C4F9FD3E27D12D6A00A6A2B0 /* View */,
+				C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */,
+			);
+			path = AboutApp;
+			sourceTree = "<group>";
+		};
+		C4F9FD3E27D12D6A00A6A2B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4F9FD3F27D12D7000A6A2B0 /* Subview */,
+				C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4F9FD3F27D12D7000A6A2B0 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1233,6 +1266,7 @@
 				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
+				C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
@@ -1265,6 +1299,7 @@
 				C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */,
 				C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */,
 				C4D8EC9C27C3690200BF0767 /* TabBarController.swift in Sources */,
+				C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */,
 				C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C4D8EC9627C3647900BF0767 /* MapsAPI.swift in Sources */,
@@ -1282,6 +1317,7 @@
 				C4D8ECAA27C37E0000BF0767 /* CGSize+InsetBy.swift in Sources */,
 				C4A1515627B0FCCB00C95344 /* ConstraintKeyboardObserver.swift in Sources */,
 				C408EA8027AFFC8C004B82CB /* UIService.swift in Sources */,
+				C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */,
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
