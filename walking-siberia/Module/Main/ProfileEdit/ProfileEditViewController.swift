@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import MBRadioButton
+import MessageUI
 
 class ProfileEditViewController: ViewController<ProfileEditView> {
     
@@ -18,6 +19,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.changePhotoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickPhoto)))
         mainView.contentView.personalInfoEditButton.addTarget(self, action: #selector(toggleProfileEditing), for: .touchUpInside)
         mainView.contentView.aboutAppActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openAboutApp)))
+        mainView.contentView.writeToDevelopersActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(contactDeveloper)))
         mainView.contentView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         
         mainView.contentView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
@@ -187,6 +189,17 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         navigationController?.pushViewController(AboutAppViewController(), animated: true)
     }
     
+    @objc private func contactDeveloper() {
+        let mailComposeViewController = MFMailComposeViewController()
+        mailComposeViewController.mailComposeDelegate = self
+        mailComposeViewController.setToRecipients(["info@iteo.pro"])
+        let from = (UserSettings.user?.profile.firstName ?? "пользователя") + (UserSettings.user?.profile.lastName ?? "")
+        mailComposeViewController.setSubject("Обращение от \(from)")
+        
+        let body = "\n\nbundleIdentifier: \(Constants.bundleIdentifier)\ndeviceModelName: \(Constants.deviceModelName)\nreleaseVersion: \(Constants.releaseVersion)\nbuildNumber: \(Constants.buildNumber)\nappVersion: \(Constants.appVersion)"
+        mailComposeViewController.setMessageBody(body, isHTML: false)
+    }
+    
     @objc private func logout() {
         let authService: AuthService? = ServiceLocator.getService()
         authService?.deauthorize()
@@ -227,6 +240,15 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate {
         }
         
         picker.dismiss(animated: true)
+    }
+    
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+extension ProfileEditViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
     
 }
