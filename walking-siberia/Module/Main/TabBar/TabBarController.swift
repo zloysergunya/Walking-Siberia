@@ -33,6 +33,9 @@ class TabBarController: UITabBarController {
             viewController.tabBarItem.setTitleTextAttributes(unselectedAttributes, for: .normal)
             viewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
         })
+        
+        tabBar.backgroundColor = .white
+        tabBar.isTranslucent = false
     }
     
 }
