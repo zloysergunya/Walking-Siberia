@@ -126,6 +126,9 @@
 		C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */; };
 		C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */; };
 		C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */; };
+		C4F9FD4527D1B67A00A6A2B0 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4327D1B67A00A6A2B0 /* InstructionViewController.swift */; };
+		C4F9FD4627D1B67A00A6A2B0 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4427D1B67A00A6A2B0 /* InstructionView.swift */; };
+		C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4927D1B6CC00A6A2B0 /* InstructionContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -251,6 +254,9 @@
 		C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppContentView.swift; sourceTree = "<group>"; };
+		C4F9FD4327D1B67A00A6A2B0 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		C4F9FD4427D1B67A00A6A2B0 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
+		C4F9FD4927D1B6CC00A6A2B0 /* InstructionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionContentView.swift; sourceTree = "<group>"; };
 		E226CEC760F49CA56911ADB2 /* Pods-walking-siberia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.debug.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -551,6 +557,7 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C4F9FD4227D1B66E00A6A2B0 /* Instruction */,
 				C4F9FD3927D12CD100A6A2B0 /* AboutApp */,
 				C4D8EC8B27C3639700BF0767 /* Main */,
 				C4D82AA627C0AEB40058334F /* Register */,
@@ -1059,6 +1066,32 @@
 			path = Subview;
 			sourceTree = "<group>";
 		};
+		C4F9FD4227D1B66E00A6A2B0 /* Instruction */ = {
+			isa = PBXGroup;
+			children = (
+				C4F9FD4727D1B6B100A6A2B0 /* View */,
+				C4F9FD4327D1B67A00A6A2B0 /* InstructionViewController.swift */,
+			);
+			path = Instruction;
+			sourceTree = "<group>";
+		};
+		C4F9FD4727D1B6B100A6A2B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4F9FD4827D1B6B700A6A2B0 /* Subview */,
+				C4F9FD4427D1B67A00A6A2B0 /* InstructionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4F9FD4827D1B6B700A6A2B0 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4F9FD4927D1B6CC00A6A2B0 /* InstructionContentView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1271,8 +1304,10 @@
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
+				C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */,
 				C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */,
 				C4D8ECA727C37D6500BF0767 /* RouteCell.swift in Sources */,
+				C4F9FD4527D1B67A00A6A2B0 /* InstructionViewController.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
@@ -1329,6 +1364,7 @@
 				C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */,
 				C4D82A9627BFE5A20058334F /* EmptyData.swift in Sources */,
 				C4D8ECA427C37CBC00BF0767 /* RouteSectionController.swift in Sources */,
+				C4F9FD4627D1B67A00A6A2B0 /* InstructionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
