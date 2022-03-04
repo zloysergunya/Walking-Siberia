@@ -25,9 +25,12 @@ class InstructionView: RootView {
     
     let contentView = InstructionContentView()
     
+    private let ribbonsImageView = UIImageView(image: R.image.ribbons230())
+    
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
+        addSubview(ribbonsImageView)
         addSubview(scrollView)
         addSubview(navBar)
         
@@ -52,6 +55,12 @@ class InstructionView: RootView {
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
+        }
+        
+        ribbonsImageView.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(80.0)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(40.0)
+            make.size.equalTo(230.0)
         }
         
     }

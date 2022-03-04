@@ -92,7 +92,7 @@ class InstructionContentView: RootView {
         
         return label
     }()
-
+    
     override func setup() {
         
         addSubview(mainTaskTitleLabel)
