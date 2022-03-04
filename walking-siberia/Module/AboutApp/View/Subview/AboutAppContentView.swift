@@ -83,7 +83,6 @@ class AboutAppContentView: RootView {
     }()
 
     override func setup() {
-        backgroundColor = R.color.greyBackground()
         
         addSubview(descriptionTitleLabel)
         addSubview(descriptionLabel)

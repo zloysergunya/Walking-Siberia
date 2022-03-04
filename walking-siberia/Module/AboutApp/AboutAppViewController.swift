@@ -9,6 +9,12 @@ class AboutAppViewController: ViewController<AboutAppView> {
         mainView.contentView.phoneLabel.text = "+7 123 456 78 90"
         mainView.contentView.emailLabel.text = "e-a-shestak@mail.ru"
         mainView.contentView.addressLabel.text = "Красноярск, ул. Ады Лебедевой, 64-37"
+        
+        mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+    }
+    
+    @objc private func close() {
+        navigationController?.popViewController(animated: true)
     }
     
 }
