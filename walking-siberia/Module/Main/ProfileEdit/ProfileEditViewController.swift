@@ -190,14 +190,15 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     }
     
     @objc private func contactDeveloper() {
-        let mailComposeViewController = MFMailComposeViewController()
-        mailComposeViewController.mailComposeDelegate = self
-        mailComposeViewController.setToRecipients(["info@iteo.pro"])
-        let from = (UserSettings.user?.profile.firstName ?? "пользователя") + (UserSettings.user?.profile.lastName ?? "")
-        mailComposeViewController.setSubject("Обращение от \(from)")
+        let viewController = MFMailComposeViewController()
+        viewController.mailComposeDelegate = self
+        viewController.setToRecipients(["info@iteo.pro"])
+        let from = (UserSettings.user?.profile.firstName ?? "пользователя") + " " + (UserSettings.user?.profile.lastName ?? "")
+        viewController.setSubject("Обращение от \(from)")
         
         let body = "\n\nbundleIdentifier: \(Constants.bundleIdentifier)\ndeviceModelName: \(Constants.deviceModelName)\nreleaseVersion: \(Constants.releaseVersion)\nbuildNumber: \(Constants.buildNumber)\nappVersion: \(Constants.appVersion)"
-        mailComposeViewController.setMessageBody(body, isHTML: false)
+        viewController.setMessageBody(body, isHTML: false)
+        present(viewController, animated: true)
     }
     
     @objc private func logout() {
