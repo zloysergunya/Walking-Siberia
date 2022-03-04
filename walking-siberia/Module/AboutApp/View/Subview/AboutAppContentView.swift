@@ -61,6 +61,7 @@ class AboutAppContentView: RootView {
         let label = UILabel()
         label.textColor = R.color.mainContent()
         label.font = R.font.geometriaMedium(size: 14.0)
+        label.isUserInteractionEnabled = true
         
         return label
     }()

@@ -1,5 +1,6 @@
 import UIKit
 import Atributika
+import MessageUI
 
 class AboutAppViewController: ViewController<AboutAppView> {
     
@@ -15,11 +16,12 @@ class AboutAppViewController: ViewController<AboutAppView> {
         let a = Style("a").underlineStyle(NSUnderlineStyle.single).underlineColor(mainView.contentView.phoneLabel.textColor)
         
         mainView.contentView.phoneLabel.attributedText = "<a>\(phone.phonePattern(pattern: "+# ### ### ## ##", replacmentCharacter: "#"))</a>".style(tags: a).attributedString
-        mainView.contentView.emailLabel.text = email
+        mainView.contentView.emailLabel.attributedText = "<a>\(email)</a>".style(tags: a).attributedString
         mainView.contentView.addressLabel.text = address
         
         mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         mainView.contentView.phoneLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(call)))
+        mainView.contentView.emailLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sendEmail)))
     }
     
     @objc private func call() {
@@ -28,8 +30,24 @@ class AboutAppViewController: ViewController<AboutAppView> {
         }
     }
     
+    @objc private func sendEmail() {
+        let viewController = MFMailComposeViewController()
+        viewController.mailComposeDelegate = self
+        viewController.setToRecipients([email])
+        present(viewController, animated: true)
+    }
+    
     @objc private func close() {
         navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+extension AboutAppViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
     
 }
