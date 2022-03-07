@@ -47,8 +47,8 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.surnameTextField.text = user.profile.lastName
         mainView.contentView.cityTextField.text = user.profile.city
         mainView.contentView.birthdayTextField.text = user.profile.birthDate
-        mainView.contentView.heightTextField.text = "\(user.profile.height)"
-        mainView.contentView.weightTextField.text = "\(user.profile.weight)"
+        mainView.contentView.heightTextField.text = "\(user.profile.height ?? 0)"
+        mainView.contentView.weightTextField.text = "\(user.profile.weight ?? 0)"
         mainView.contentView.phoneTextField.text = user.phone
         mainView.contentView.emailTextField.text = user.email
         mainView.contentView.bioTextField.text = user.profile.aboutMe
