@@ -48,7 +48,7 @@ class RouteCell: UICollectionViewCell {
         contentView.backgroundColor = .white
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 12.0
-        addShadow(color: .black.withAlphaComponent(0.08))
+        addShadow()
         
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)

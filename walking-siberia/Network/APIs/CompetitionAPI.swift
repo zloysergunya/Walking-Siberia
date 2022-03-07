@@ -10,7 +10,7 @@ class CompetitionAPI {
     }
     
     private class func competitionGetWithRequestBuilder() -> RequestBuilder<SuccessResponse<[Competition]>> {
-        let path = "/competition"
+        let path = "/competitions"
         let URLString = APIConfig.basePath + path
         let parameters: [String:Any]? = nil
 

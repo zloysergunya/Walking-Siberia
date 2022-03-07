@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "tabProfile.png",
+      "filename" : "tabCompetition.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tabProfile@2x.png",
+      "filename" : "tabCompetition@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tabProfile@3x.png",
+      "filename" : "tabCompetition@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -22,6 +22,7 @@ target 'walking-siberia' do
   pod 'MBRadioButton'
   # pod 'SPPermissions/Notification'
   # pod 'SPPermissions/Health'
+  pod 'Swift_PageMenu'
   
   # Utilities
   pod 'R.swift', '~> 5.4.0'

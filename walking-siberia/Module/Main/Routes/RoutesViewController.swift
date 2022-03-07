@@ -82,7 +82,7 @@ extension RoutesViewController: ListAdapterDataSource {
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return nil
+        return EmptyView()
     }
     
 }

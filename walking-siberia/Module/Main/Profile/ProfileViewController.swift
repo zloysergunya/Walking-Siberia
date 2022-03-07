@@ -18,7 +18,7 @@ class ProfileViewController: ViewController<ProfileView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadProfile()
-        loadCompetitions()
+//        loadCompetitions()
     }
     
     private func loadProfile() {
@@ -40,7 +40,7 @@ class ProfileViewController: ViewController<ProfileView> {
         provider.loadCompetitions { [weak self] result in
             switch result {
             case .success(let response):
-                self?.updateCompetitions(for: [.init(id: 0, name: "0"), .init(id: 1, name: "1")])
+                print(response)
                 
             case .failure(let error):
                 error.localizedDescription // todo
@@ -58,7 +58,7 @@ class ProfileViewController: ViewController<ProfileView> {
         
         let age = calculateAge(birthday: user.profile.birthDate ?? "")
         mainView.contentView.nameLabel.text = "\(user.profile.firstName) \(user.profile.lastName), \(age ?? 0)"
-        mainView.contentView.idLabel.text = "id: \(user.userID)"
+        mainView.contentView.idLabel.text = "id: \(user.userId)"
         mainView.contentView.bioLabel.text = user.profile.aboutMe
     }
     

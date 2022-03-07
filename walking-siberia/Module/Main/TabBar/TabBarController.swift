@@ -21,12 +21,20 @@ class TabBarController: UITabBarController {
         routesViewController.tabBarItem.image = R.image.tabRoutes()?.withTintColor(unselectedColor)
         routesViewController.tabBarItem.selectedImage = R.image.tabRoutes()?.withTintColor(selectedColor)
         
+        let currentCompetitionViewController = CompetitionViewController(type: .current)
+        let endedCompetitionViewController = CompetitionViewController(type: .ended)
+        let pagerViewController = PagerViewController(initialViewControllers: [currentCompetitionViewController, endedCompetitionViewController])
+        pagerViewController.title = "Соревнования"
+        pagerViewController.tabBarItem.image = R.image.tabCompetition()?.withTintColor(unselectedColor)
+        pagerViewController.tabBarItem.selectedImage = R.image.tabCompetition()?.withTintColor(selectedColor)
+        
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem.title = "Профиль"
         profileViewController.tabBarItem.image = R.image.tabProfile()?.withTintColor(unselectedColor)
         profileViewController.tabBarItem.selectedImage = R.image.tabProfile()?.withTintColor(selectedColor)
         
         viewControllers = [SwipeNavigationController(rootViewController: routesViewController),
+                           SwipeNavigationController(rootViewController: pagerViewController),
                            SwipeNavigationController(rootViewController: profileViewController)]
         
         viewControllers?.forEach({ viewController in

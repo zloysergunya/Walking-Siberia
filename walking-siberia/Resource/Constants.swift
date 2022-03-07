@@ -3,6 +3,8 @@ import UIKit
 
 enum Constants {
 
+    static let pageLimit = 20
+    
     static let appStoreId = ""
     static let bundleIdentifier = Bundle.current.bundleIdentifier ?? "ru.abs.walking-siberia"
 

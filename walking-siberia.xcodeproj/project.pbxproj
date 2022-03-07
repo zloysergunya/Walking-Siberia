@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		6AE455C44FAC7072F8EB820D /* Pods_walking_siberia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFB00D0C77B84E919FA658D /* Pods_walking_siberia.framework */; };
+		C400F44327D5ECDC00B1EAD9 /* CompetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F44127D5ECDC00B1EAD9 /* CompetitionViewController.swift */; };
+		C400F44427D5ECDC00B1EAD9 /* CompetitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F44227D5ECDC00B1EAD9 /* CompetitionView.swift */; };
+		C400F44C27D5EDFF00B1EAD9 /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F44B27D5EDFF00B1EAD9 /* PagerViewController.swift */; };
+		C400F44F27D5F29200B1EAD9 /* StyledPageMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F44E27D5F29200B1EAD9 /* StyledPageMenuOptions.swift */; };
+		C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45227D5FC7A00B1EAD9 /* CompetitionProvider.swift */; };
+		C400F45627D5FE4300B1EAD9 /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45527D5FE4300B1EAD9 /* Partner.swift */; };
+		C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45727D5FE7A00B1EAD9 /* Team.swift */; };
+		C400F45B27D6101A00B1EAD9 /* CompetitionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45A27D6101A00B1EAD9 /* CompetitionSectionModel.swift */; };
+		C400F45D27D6110000B1EAD9 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45C27D6110000B1EAD9 /* EmptyView.swift */; };
+		C400F46027D6121B00B1EAD9 /* CompetitionSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45F27D6121B00B1EAD9 /* CompetitionSectionController.swift */; };
+		C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F46227D6129300B1EAD9 /* CompetitionCell.swift */; };
 		C408EA1927AFFA08004B82CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C408EA1827AFFA08004B82CB /* Assets.xcassets */; };
 		C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA2627AFFC8C004B82CB /* PagingFlowLayout.swift */; };
 		C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA2727AFFC8C004B82CB /* UIDevice+Model.swift */; };
@@ -134,6 +145,17 @@
 /* Begin PBXFileReference section */
 		41034ADFBEC5F559FA43C170 /* Pods-walking-siberia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walking-siberia.release.xcconfig"; path = "Target Support Files/Pods-walking-siberia/Pods-walking-siberia.release.xcconfig"; sourceTree = "<group>"; };
 		8AFB00D0C77B84E919FA658D /* Pods_walking_siberia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_walking_siberia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C400F44127D5ECDC00B1EAD9 /* CompetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionViewController.swift; sourceTree = "<group>"; };
+		C400F44227D5ECDC00B1EAD9 /* CompetitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionView.swift; sourceTree = "<group>"; };
+		C400F44B27D5EDFF00B1EAD9 /* PagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
+		C400F44E27D5F29200B1EAD9 /* StyledPageMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledPageMenuOptions.swift; sourceTree = "<group>"; };
+		C400F45227D5FC7A00B1EAD9 /* CompetitionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionProvider.swift; sourceTree = "<group>"; };
+		C400F45527D5FE4300B1EAD9 /* Partner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
+		C400F45727D5FE7A00B1EAD9 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		C400F45A27D6101A00B1EAD9 /* CompetitionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionSectionModel.swift; sourceTree = "<group>"; };
+		C400F45C27D6110000B1EAD9 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		C400F45F27D6121B00B1EAD9 /* CompetitionSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionSectionController.swift; sourceTree = "<group>"; };
+		C400F46227D6129300B1EAD9 /* CompetitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCell.swift; sourceTree = "<group>"; };
 		C408EA0C27AFFA07004B82CB /* walking-siberia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "walking-siberia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C408EA1827AFFA08004B82CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C408EA1D27AFFA08004B82CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -289,6 +311,94 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C400F43E27D5EC8600B1EAD9 /* Competition */ = {
+			isa = PBXGroup;
+			children = (
+				C400F45E27D6121100B1EAD9 /* Section */,
+				C400F45927D6100C00B1EAD9 /* Model */,
+				C400F45127D5FC4300B1EAD9 /* Provider */,
+				C400F44527D5ECE000B1EAD9 /* View */,
+				C400F44127D5ECDC00B1EAD9 /* CompetitionViewController.swift */,
+			);
+			path = Competition;
+			sourceTree = "<group>";
+		};
+		C400F44527D5ECE000B1EAD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C400F46127D6127C00B1EAD9 /* Cell */,
+				C400F44227D5ECDC00B1EAD9 /* CompetitionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C400F44A27D5EDE900B1EAD9 /* Pager */ = {
+			isa = PBXGroup;
+			children = (
+				C400F45027D5F46D00B1EAD9 /* View */,
+				C400F44D27D5F28A00B1EAD9 /* Model */,
+				C400F44B27D5EDFF00B1EAD9 /* PagerViewController.swift */,
+			);
+			path = Pager;
+			sourceTree = "<group>";
+		};
+		C400F44D27D5F28A00B1EAD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C400F44E27D5F29200B1EAD9 /* StyledPageMenuOptions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C400F45027D5F46D00B1EAD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C400F45127D5FC4300B1EAD9 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C400F45227D5FC7A00B1EAD9 /* CompetitionProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C400F45427D5FE3500B1EAD9 /* Competition */ = {
+			isa = PBXGroup;
+			children = (
+				C4D9A87927CA4DA0004B552A /* Competition.swift */,
+				C400F45527D5FE4300B1EAD9 /* Partner.swift */,
+				C400F45727D5FE7A00B1EAD9 /* Team.swift */,
+			);
+			path = Competition;
+			sourceTree = "<group>";
+		};
+		C400F45927D6100C00B1EAD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C400F45A27D6101A00B1EAD9 /* CompetitionSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C400F45E27D6121100B1EAD9 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C400F45F27D6121B00B1EAD9 /* CompetitionSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C400F46127D6127C00B1EAD9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C400F46227D6129300B1EAD9 /* CompetitionCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C408EA0327AFFA06004B82CB = {
 			isa = PBXGroup;
 			children = (
@@ -431,13 +541,13 @@
 		C408EA3B27AFFC8C004B82CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C400F45427D5FE3500B1EAD9 /* Competition */,
 				C408EA3C27AFFC8C004B82CB /* LoadingState.swift */,
 				C408EA3D27AFFC8C004B82CB /* ModelError.swift */,
 				C4D82A9727BFE7310058334F /* User.swift */,
 				C4D8EC9827C364EA00BF0767 /* Route.swift */,
 				C4D82A9927BFE7710058334F /* Profile.swift */,
 				C4D8EC9D27C36C9400BF0767 /* Place.swift */,
-				C4D9A87927CA4DA0004B552A /* Competition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,6 +667,8 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C400F44A27D5EDE900B1EAD9 /* Pager */,
+				C400F43E27D5EC8600B1EAD9 /* Competition */,
 				C4F9FD4227D1B66E00A6A2B0 /* Instruction */,
 				C4F9FD3927D12CD100A6A2B0 /* AboutApp */,
 				C4D8EC8B27C3639700BF0767 /* Main */,
@@ -655,6 +767,7 @@
 				C4AB540127CA65640004B5CE /* NavBar */,
 				C4A1515927B102FA00C95344 /* TextFields */,
 				C4A1514727B0F89500C95344 /* Buttons */,
+				C400F45C27D6110000B1EAD9 /* EmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1249,6 +1362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C400F44C27D5EDFF00B1EAD9 /* PagerViewController.swift in Sources */,
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
 				C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
@@ -1267,11 +1381,15 @@
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
 				C4D9A84227C7D15F004B552A /* RoutePlaceSectionController.swift in Sources */,
 				C4D82A9227BFE1BB0058334F /* PhoneCodeAuthProvider.swift in Sources */,
+				C400F44427D5ECDC00B1EAD9 /* CompetitionView.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
+				C400F45D27D6110000B1EAD9 /* EmptyView.swift in Sources */,
+				C400F45B27D6101A00B1EAD9 /* CompetitionSectionModel.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
 				C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */,
 				C4D82AA127BFF6F10058334F /* ProfileAPI.swift in Sources */,
 				C4D82A8F27BFDDD80058334F /* PhoneAuthProvider.swift in Sources */,
+				C400F44327D5ECDC00B1EAD9 /* CompetitionViewController.swift in Sources */,
 				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
 				C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */,
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
@@ -1286,6 +1404,7 @@
 				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
 				C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */,
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
+				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
 				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
@@ -1293,12 +1412,14 @@
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
+				C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */,
 				C4D8ECAC27C3802500BF0767 /* ImageLoader.swift in Sources */,
 				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
 				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
+				C400F46027D6121B00B1EAD9 /* CompetitionSectionController.swift in Sources */,
 				C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
@@ -1311,6 +1432,7 @@
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
+				C400F44F27D5F29200B1EAD9 /* StyledPageMenuOptions.swift in Sources */,
 				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
 				C4D82A9427BFE4470058334F /* AuthConfirmResponse.swift in Sources */,
 				C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */,
@@ -1319,6 +1441,7 @@
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
 				C4D8EC9027C363B200BF0767 /* RoutesView.swift in Sources */,
 				C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */,
+				C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */,
 				C4D8ECAF27C3867400BF0767 /* StepsCountView.swift in Sources */,
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
@@ -1362,6 +1485,7 @@
 				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
 				C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */,
 				C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */,
+				C400F45627D5FE4300B1EAD9 /* Partner.swift in Sources */,
 				C4D82A9627BFE5A20058334F /* EmptyData.swift in Sources */,
 				C4D8ECA427C37CBC00BF0767 /* RouteSectionController.swift in Sources */,
 				C4F9FD4627D1B67A00A6A2B0 /* InstructionView.swift in Sources */,
