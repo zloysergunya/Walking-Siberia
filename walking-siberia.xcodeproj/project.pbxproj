@@ -131,6 +131,11 @@
 		C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87527CA4511004B552A /* ProfileProvider.swift */; };
 		C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */; };
 		C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87927CA4DA0004B552A /* Competition.swift */; };
+		C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */; };
+		C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */; };
+		C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */; };
+		C4E077BF27D78DE000D1711B /* CompetitionPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */; };
+		C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077C027D7946600D1711B /* CompetitionTakePartView.swift */; };
 		C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */; };
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
@@ -270,6 +275,11 @@
 		C4D9A87527CA4511004B552A /* ProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProvider.swift; sourceTree = "<group>"; };
 		C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionAPI.swift; sourceTree = "<group>"; };
 		C4D9A87927CA4DA0004B552A /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
+		C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitionInfoViewController.swift; path = ../../../../../../../Documents/CompetitionInfoViewController.swift; sourceTree = "<group>"; };
+		C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionInfoView.swift; sourceTree = "<group>"; };
+		C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoContentView.swift; sourceTree = "<group>"; };
+		C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionPartnerView.swift; sourceTree = "<group>"; };
+		C4E077C027D7946600D1711B /* CompetitionTakePartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTakePartView.swift; sourceTree = "<group>"; };
 		C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
@@ -335,7 +345,6 @@
 		C400F44A27D5EDE900B1EAD9 /* Pager */ = {
 			isa = PBXGroup;
 			children = (
-				C400F45027D5F46D00B1EAD9 /* View */,
 				C400F44D27D5F28A00B1EAD9 /* Model */,
 				C400F44B27D5EDFF00B1EAD9 /* PagerViewController.swift */,
 			);
@@ -348,13 +357,6 @@
 				C400F44E27D5F29200B1EAD9 /* StyledPageMenuOptions.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C400F45027D5F46D00B1EAD9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C400F45127D5FC4300B1EAD9 /* Provider */ = {
@@ -1132,9 +1134,38 @@
 		C4E077B127D7053800D1711B /* Competition */ = {
 			isa = PBXGroup;
 			children = (
+				C4E077B227D705CE00D1711B /* CompetitionInfo */,
 				C400F43E27D5EC8600B1EAD9 /* Competitions */,
 			);
 			path = Competition;
+			sourceTree = "<group>";
+		};
+		C4E077B227D705CE00D1711B /* CompetitionInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C4E077B727D7063A00D1711B /* View */,
+				C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */,
+			);
+			path = CompetitionInfo;
+			sourceTree = "<group>";
+		};
+		C4E077B727D7063A00D1711B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4E077BB27D788EE00D1711B /* Subview */,
+				C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4E077BB27D788EE00D1711B /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */,
+				C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */,
+				C4E077C027D7946600D1711B /* CompetitionTakePartView.swift */,
+			);
+			path = Subview;
 			sourceTree = "<group>";
 		};
 		C4E1C2A627CCFB7100DA7F8F /* SkyFloatingLabelTextField */ = {
@@ -1374,6 +1405,7 @@
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
 				C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
+				C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */,
 				C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */,
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
@@ -1428,6 +1460,7 @@
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
 				C400F46027D6121B00B1EAD9 /* CompetitionsSectionController.swift in Sources */,
+				C4E077BF27D78DE000D1711B /* CompetitionPartnerView.swift in Sources */,
 				C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
@@ -1486,9 +1519,12 @@
 				C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */,
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
+				C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */,
+				C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */,
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
+				C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
 				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
 				C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */,

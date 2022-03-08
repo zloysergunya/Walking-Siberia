@@ -23,7 +23,9 @@ class TabBarController: UITabBarController {
         
         let currentCompetitionViewController = CompetitionsViewController(type: .current)
         let endedCompetitionViewController = CompetitionsViewController(type: .ended)
-        let pagerViewController = PagerViewController(initialViewControllers: [currentCompetitionViewController, endedCompetitionViewController])
+        let initialViewControllers: [UIViewController] = [currentCompetitionViewController, endedCompetitionViewController]
+        let pagerViewController = PagerViewController(initialViewControllers: initialViewControllers,
+                                                      options: StyledPageMenuOptions(for: initialViewControllers.count))
         pagerViewController.title = "Соревнования"
         pagerViewController.tabBarItem.image = R.image.tabCompetition()?.withTintColor(unselectedColor)
         pagerViewController.tabBarItem.selectedImage = R.image.tabCompetition()?.withTintColor(selectedColor)

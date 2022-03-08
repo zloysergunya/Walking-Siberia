@@ -85,13 +85,26 @@ extension CompetitionsViewController: ListAdapterDataSource {
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         let sectionController = CompetitionsSectionController()
-//        sectionController.delegate = self
+        sectionController.delegate = self
         
         return sectionController
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return EmptyView()
+    }
+    
+}
+
+// MARK: - CompetitionsSectionControllerDelegate
+extension CompetitionsViewController: CompetitionsSectionControllerDelegate {
+    
+    func competitionsSectionController(didSelect competition: Competition) {
+        let competitionInfoViewController = CompetitionInfoViewController(competition: competition)
+        let initialViewControllers: [UIViewController] = [competitionInfoViewController]
+        let pagerViewController = PagerViewController(initialViewControllers: initialViewControllers, options: StyledPageMenuOptions(for: initialViewControllers.count))
+        pagerViewController.title = "О соревновании"
+        navigationController?.pushViewController(pagerViewController, animated: true)
     }
     
 }

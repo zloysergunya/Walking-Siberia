@@ -10,6 +10,7 @@ struct Competition: Codable {
     let toDate: String
     let partners: [Partner]
     let teams: [Team]
+    let countTeams: String
     let isClosed: Bool
     let isJoined: Bool
 }

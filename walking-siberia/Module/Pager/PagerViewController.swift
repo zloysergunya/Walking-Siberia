@@ -5,9 +5,9 @@ class PagerViewController: PageMenuController {
     
     private let initialViewControllers: [UIViewController]
 
-    init(initialViewControllers: [UIViewController]) {
+    init(initialViewControllers: [UIViewController], options: PageMenuOptions) {
         self.initialViewControllers = initialViewControllers
-        super.init(options: StyledPageMenuOptions(menuItemSize: .fixed(width: UIScreen.main.bounds.width / 2, height: 20.0)))
+        super.init(options: options)
     }
     
     required init?(coder: NSCoder) {

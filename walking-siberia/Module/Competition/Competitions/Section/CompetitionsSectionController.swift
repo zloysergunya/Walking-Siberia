@@ -1,8 +1,14 @@
 import IGListKit
 
+protocol CompetitionsSectionControllerDelegate: AnyObject {
+    func competitionsSectionController(didSelect competition: Competition)
+}
+
 class CompetitionsSectionController: ListSectionController {
         
     private var sectionModel: CompetitionSectionModel!
+    
+    weak var delegate: CompetitionsSectionControllerDelegate?
     
     override init() {
         super.init()
@@ -26,7 +32,7 @@ class CompetitionsSectionController: ListSectionController {
     
     private func configure(cell: CompetitionCell) -> UICollectionViewCell {
         cell.nameLabel.text = sectionModel.competition.name
-        cell.teamsLabel.text = "Команды: \(sectionModel.competition.teams.count)"
+        cell.teamsLabel.text = "Команды: \(sectionModel.competition.countTeams)"
         cell.datesLabel.text = "\(sectionModel.competition.fromDate)-\(sectionModel.competition.toDate)"
         
         return cell
@@ -40,7 +46,7 @@ class CompetitionsSectionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         super.didSelectItem(at: index)
         
-        
+        delegate?.competitionsSectionController(didSelect: sectionModel.competition)
     }
     
 }
