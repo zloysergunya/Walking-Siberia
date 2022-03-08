@@ -1,20 +1,20 @@
 import UIKit
 import IGListKit
 
-enum CompetitionType {
+enum CompetitionsType {
     case current, ended
 }
 
-class CompetitionViewController: ViewController<CompetitionView> {
+class CompetitionsViewController: ViewController<CompetitionsView> {
     
-    private let type: CompetitionType
-    private let provider = CompetitionProvider()
+    private let type: CompetitionsType
+    private let provider = CompetitionsProvider()
     
     private var loadingState: LoadingState = .none
     private var objects: [CompetitionSectionModel] = []
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
 
-    init(type: CompetitionType) {
+    init(type: CompetitionsType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
         
@@ -77,14 +77,14 @@ class CompetitionViewController: ViewController<CompetitionView> {
 }
 
 // MARK: - ListAdapterDataSource
-extension CompetitionViewController: ListAdapterDataSource {
+extension CompetitionsViewController: ListAdapterDataSource {
    
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return objects
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let sectionController = CompetitionSectionController()
+        let sectionController = CompetitionsSectionController()
 //        sectionController.delegate = self
         
         return sectionController

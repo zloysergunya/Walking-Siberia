@@ -1,6 +1,6 @@
 import Foundation
 
-class CompetitionProvider {
+class CompetitionsProvider {
     
     func loadCompetitions(completion: @escaping(Result<[Competition], Error>) -> Void) {
         CompetitionAPI.competitionGet { response, error in

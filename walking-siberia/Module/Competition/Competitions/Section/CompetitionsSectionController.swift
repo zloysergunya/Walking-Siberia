@@ -1,6 +1,6 @@
 import IGListKit
 
-class CompetitionSectionController: ListSectionController {
+class CompetitionsSectionController: ListSectionController {
         
     private var sectionModel: CompetitionSectionModel!
     

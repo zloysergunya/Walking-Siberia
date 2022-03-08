@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class CompetitionView: RootView {
+class CompetitionsView: RootView {
     
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
