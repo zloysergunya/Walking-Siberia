@@ -91,6 +91,21 @@
 		C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */; };
 		C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540627CA664A0004B5CE /* ProfileEditView.swift */; };
 		C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */; };
+		C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB890527DDACA70063C4EB /* ChipsButton.swift */; };
+		C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */; };
+		C4C9334D27DCAD720068D8D2 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9334B27DCAD720068D8D2 /* TeamsViewController.swift */; };
+		C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9334C27DCAD720068D8D2 /* TeamsView.swift */; };
+		C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335127DCADB00068D8D2 /* TeamsProvider.swift */; };
+		C4C9335627DCAFD70068D8D2 /* TeamSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335527DCAFD70068D8D2 /* TeamSectionModel.swift */; };
+		C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335727DCB0380068D8D2 /* Participant.swift */; };
+		C4C9335A27DCB1C60068D8D2 /* TeamsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */; };
+		C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335C27DCB2750068D8D2 /* TeamsRequest.swift */; };
+		C4C9335F27DCB5480068D8D2 /* TeamSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335E27DCB5480068D8D2 /* TeamSectionController.swift */; };
+		C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336127DCB6400068D8D2 /* TeamCell.swift */; };
+		C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336327DCBE360068D8D2 /* UserCategory.swift */; };
+		C4C9336627DCC1690068D8D2 /* GradientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336527DCC1690068D8D2 /* GradientHelper.swift */; };
+		C4C9336827DCC4820068D8D2 /* UIImage+BgColorFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336727DCC4820068D8D2 /* UIImage+BgColorFromText.swift */; };
+		C4C9336B27DCCC6C0068D8D2 /* CGRect+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336A27DCCC6C0068D8D2 /* CGRect+Init.swift */; };
 		C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8427BFDC960058334F /* AuthRequest.swift */; };
 		C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8927BFDCFC0058334F /* SuccessResponse.swift */; };
 		C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D82A8B27BFDD480058334F /* AuthConfirmRequest.swift */; };
@@ -235,6 +250,21 @@
 		C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C4AB540627CA664A0004B5CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditContentView.swift; sourceTree = "<group>"; };
+		C4BB890527DDACA70063C4EB /* ChipsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsButton.swift; sourceTree = "<group>"; };
+		C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsUidRequest.swift; sourceTree = "<group>"; };
+		C4C9334B27DCAD720068D8D2 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
+		C4C9334C27DCAD720068D8D2 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
+		C4C9335127DCADB00068D8D2 /* TeamsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsProvider.swift; sourceTree = "<group>"; };
+		C4C9335527DCAFD70068D8D2 /* TeamSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSectionModel.swift; sourceTree = "<group>"; };
+		C4C9335727DCB0380068D8D2 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
+		C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsAPI.swift; sourceTree = "<group>"; };
+		C4C9335C27DCB2750068D8D2 /* TeamsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsRequest.swift; sourceTree = "<group>"; };
+		C4C9335E27DCB5480068D8D2 /* TeamSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSectionController.swift; sourceTree = "<group>"; };
+		C4C9336127DCB6400068D8D2 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		C4C9336327DCBE360068D8D2 /* UserCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategory.swift; sourceTree = "<group>"; };
+		C4C9336527DCC1690068D8D2 /* GradientHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHelper.swift; sourceTree = "<group>"; };
+		C4C9336727DCC4820068D8D2 /* UIImage+BgColorFromText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BgColorFromText.swift"; sourceTree = "<group>"; };
+		C4C9336A27DCCC6C0068D8D2 /* CGRect+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Init.swift"; sourceTree = "<group>"; };
 		C4D82A8427BFDC960058334F /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		C4D82A8927BFDCFC0058334F /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		C4D82A8B27BFDD480058334F /* AuthConfirmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfirmRequest.swift; sourceTree = "<group>"; };
@@ -373,6 +403,7 @@
 				C4D9A87927CA4DA0004B552A /* Competition.swift */,
 				C400F45527D5FE4300B1EAD9 /* Partner.swift */,
 				C400F45727D5FE7A00B1EAD9 /* Team.swift */,
+				C4C9335727DCB0380068D8D2 /* Participant.swift */,
 			);
 			path = Competition;
 			sourceTree = "<group>";
@@ -498,6 +529,7 @@
 		C408EA2F27AFFC8C004B82CB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C4C9336927DCCC5D0068D8D2 /* CoreGraphics */,
 				C408EA3027AFFC8C004B82CB /* UIKit */,
 				C408EA3527AFFC8C004B82CB /* Foundation */,
 				C408EA3927AFFC8C004B82CB /* IGListKit */,
@@ -517,6 +549,7 @@
 				C4A1516927B1232800C95344 /* UIView+Shadow.swift */,
 				C4D82A9B27BFED200058334F /* UIStackView+Init.swift */,
 				C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */,
+				C4C9336727DCC4820068D8D2 /* UIImage+BgColorFromText.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -550,6 +583,7 @@
 				C4D8EC9827C364EA00BF0767 /* Route.swift */,
 				C4D82A9927BFE7710058334F /* Profile.swift */,
 				C4D8EC9D27C36C9400BF0767 /* Place.swift */,
+				C4C9336327DCBE360068D8D2 /* UserCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -561,6 +595,7 @@
 				C408EA4027AFFC8C004B82CB /* UserSettings.swift */,
 				C408EA4127AFFC8C004B82CB /* Utils.swift */,
 				C4D8ECAB27C3802500BF0767 /* ImageLoader.swift */,
+				C4C9336527DCC1690068D8D2 /* GradientHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -591,6 +626,7 @@
 				C4D82AA027BFF6F10058334F /* ProfileAPI.swift */,
 				C4D8EC9527C3647900BF0767 /* MapsAPI.swift */,
 				C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */,
+				C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -598,6 +634,7 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C4C9335B27DCB2650068D8D2 /* TeamsAPI */,
 				C408EA5827AFFC8C004B82CB /* AuthAPI */,
 				C4D82A8827BFDCED0058334F /* Common */,
 				C4D8EC9727C364D400BF0767 /* MapsAPI */,
@@ -904,6 +941,85 @@
 			path = Subview;
 			sourceTree = "<group>";
 		};
+		C4BB890427DDAC950063C4EB /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4BB890527DDACA70063C4EB /* ChipsButton.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		C4C9334A27DCAD640068D8D2 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9335427DCAF640068D8D2 /* Section */,
+				C4C9335327DCAF5F0068D8D2 /* Model */,
+				C4C9335027DCADA20068D8D2 /* Provider */,
+				C4C9334F27DCAD9E0068D8D2 /* View */,
+				C4C9334B27DCAD720068D8D2 /* TeamsViewController.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		C4C9334F27DCAD9E0068D8D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4BB890427DDAC950063C4EB /* Subview */,
+				C4C9336027DCB5B00068D8D2 /* Cell */,
+				C4C9334C27DCAD720068D8D2 /* TeamsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4C9335027DCADA20068D8D2 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9335127DCADB00068D8D2 /* TeamsProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4C9335327DCAF5F0068D8D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9335527DCAFD70068D8D2 /* TeamSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C4C9335427DCAF640068D8D2 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9335E27DCB5480068D8D2 /* TeamSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C4C9335B27DCB2650068D8D2 /* TeamsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9335C27DCB2750068D8D2 /* TeamsRequest.swift */,
+				C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */,
+			);
+			path = TeamsAPI;
+			sourceTree = "<group>";
+		};
+		C4C9336027DCB5B00068D8D2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9336127DCB6400068D8D2 /* TeamCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C4C9336927DCCC5D0068D8D2 /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				C4C9336A27DCCC6C0068D8D2 /* CGRect+Init.swift */,
+			);
+			path = CoreGraphics;
+			sourceTree = "<group>";
+		};
 		C4D82A8827BFDCED0058334F /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,6 +1250,7 @@
 		C4E077B127D7053800D1711B /* Competition */ = {
 			isa = PBXGroup;
 			children = (
+				C4C9334A27DCAD640068D8D2 /* Teams */,
 				C4E077B227D705CE00D1711B /* CompetitionInfo */,
 				C400F43E27D5EC8600B1EAD9 /* Competitions */,
 			);
@@ -1410,7 +1527,9 @@
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
+				C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */,
 				C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */,
+				C4C9336627DCC1690068D8D2 /* GradientHelper.swift in Sources */,
 				C40919D127C72FC700E23AD8 /* RouteInfoViewController.swift in Sources */,
 				C408EA7127AFFC8C004B82CB /* RootViewController.swift in Sources */,
 				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
@@ -1420,6 +1539,7 @@
 				C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
 				C4D9A84227C7D15F004B552A /* RoutePlaceSectionController.swift in Sources */,
+				C4C9336827DCC4820068D8D2 /* UIImage+BgColorFromText.swift in Sources */,
 				C4D82A9227BFE1BB0058334F /* PhoneCodeAuthProvider.swift in Sources */,
 				C400F44427D5ECDC00B1EAD9 /* CompetitionsView.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
@@ -1430,6 +1550,7 @@
 				C4D82AA127BFF6F10058334F /* ProfileAPI.swift in Sources */,
 				C4D82A8F27BFDDD80058334F /* PhoneAuthProvider.swift in Sources */,
 				C400F44327D5ECDC00B1EAD9 /* CompetitionsViewController.swift in Sources */,
+				C4C9335A27DCB1C60068D8D2 /* TeamsAPI.swift in Sources */,
 				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
 				C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */,
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
@@ -1437,7 +1558,9 @@
 				C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */,
 				C4D9A86F27C90E3A004B552A /* ProfileView.swift in Sources */,
 				C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */,
+				C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */,
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
+				C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
@@ -1451,8 +1574,11 @@
 				C4D8EC9E27C36C9400BF0767 /* Place.swift in Sources */,
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
+				C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
 				C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */,
+				C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */,
+				C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */,
 				C4D8ECAC27C3802500BF0767 /* ImageLoader.swift in Sources */,
 				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
@@ -1469,18 +1595,22 @@
 				C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */,
 				C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */,
 				C4D8ECA727C37D6500BF0767 /* RouteCell.swift in Sources */,
+				C4C9335627DCAFD70068D8D2 /* TeamSectionModel.swift in Sources */,
 				C4F9FD4527D1B67A00A6A2B0 /* InstructionViewController.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
+				C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
 				C400F44F27D5F29200B1EAD9 /* StyledPageMenuOptions.swift in Sources */,
 				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
 				C4D82A9427BFE4470058334F /* AuthConfirmResponse.swift in Sources */,
+				C4C9334D27DCAD720068D8D2 /* TeamsViewController.swift in Sources */,
 				C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */,
 				C4D9A87427C91330004B552A /* ProfileContentView.swift in Sources */,
 				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
 				C4D8EC9027C363B200BF0767 /* RoutesView.swift in Sources */,
+				C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */,
 				C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */,
 				C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */,
 				C4D8ECAF27C3867400BF0767 /* StepsCountView.swift in Sources */,
@@ -1488,6 +1618,7 @@
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
+				C4C9335F27DCB5480068D8D2 /* TeamSectionController.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
 				C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */,
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
@@ -1522,6 +1653,7 @@
 				C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */,
 				C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */,
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
+				C4C9336B27DCCC6C0068D8D2 /* CGRect+Init.swift in Sources */,
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
 				C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */,

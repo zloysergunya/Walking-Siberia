@@ -14,9 +14,13 @@ struct Team: Codable {
     let isJoined: Bool
 }
 
-struct Participant: Codable {
-    var userId: Int
-    var teamId: Int
-    var createdAt: String
-    var user: User
+extension Team: Equatable {
+    
+    static func == (lhs: Team, rhs: Team) -> Bool {
+        return lhs.id == rhs.id
+        && lhs.isJoined == rhs.isJoined
+        && lhs.users == rhs.users
+        && lhs.status == rhs.status
+    }
+    
 }

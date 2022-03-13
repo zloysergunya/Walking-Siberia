@@ -101,7 +101,8 @@ extension CompetitionsViewController: CompetitionsSectionControllerDelegate {
     
     func competitionsSectionController(didSelect competition: Competition) {
         let competitionInfoViewController = CompetitionInfoViewController(competition: competition)
-        let initialViewControllers: [UIViewController] = [competitionInfoViewController]
+        let teamsViewController = TeamsViewController(competition: competition)
+        let initialViewControllers: [UIViewController] = [competitionInfoViewController, teamsViewController]
         let pagerViewController = PagerViewController(initialViewControllers: initialViewControllers, options: StyledPageMenuOptions(for: initialViewControllers.count))
         pagerViewController.title = "О соревновании"
         navigationController?.pushViewController(pagerViewController, animated: true)
