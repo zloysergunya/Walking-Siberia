@@ -62,7 +62,7 @@ class TeamSectionController: ListSectionController {
         cell.stepsCountLabel.attributedText = "<bold>\("7777,7K")</bold>\nшаги".style(tags: bold).attributedString
         
         if userCategory == .manWithHIA {
-            cell.imageView.image = UIImage.createWithBgColorFromText(text: getInitials(from: sectionModel.team.name), color: .clear, circular: true, side: 48.0)
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: sectionModel.team.name.getInitials(), color: .clear, circular: true, side: 48.0)
             if let gradientLayer = GradientHelper.shared.layer(color: .linearRed) {
                 gradientLayer.frame = CGRect(side: 48.0)
                 cell.imageViewBackgroundView.layer.addSublayer(gradientLayer)
@@ -76,22 +76,6 @@ class TeamSectionController: ListSectionController {
         }
         
         return cell
-    }
-    
-    private func getInitials(from fullName: String) -> String {
-        var finalString = String()
-        var words = fullName.components(separatedBy: .whitespacesAndNewlines)
-        
-        if let firstCharacter = words.first?.first {
-            finalString.append(String(firstCharacter))
-            words.removeFirst()
-        }
-        
-        if let lastCharacter = words.last?.first {
-            finalString.append(String(lastCharacter))
-        }
-        
-        return finalString.uppercased()
     }
     
 }
