@@ -157,6 +157,9 @@
 		C4DA0D3F27DEF25000066965 /* TeamProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D3E27DEF25000066965 /* TeamProvider.swift */; };
 		C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */; };
 		C4DA0D4327DF083C00066965 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */; };
+		C4DA0D4727DF12CC00066965 /* TeamEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4527DF12CC00066965 /* TeamEditViewController.swift */; };
+		C4DA0D4827DF12CC00066965 /* TeamEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4627DF12CC00066965 /* TeamEditView.swift */; };
+		C4DA0D4C27DF13F500066965 /* TeamEditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4B27DF13F500066965 /* TeamEditContentView.swift */; };
 		C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */; };
 		C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */; };
 		C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */; };
@@ -165,6 +168,8 @@
 		C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */; };
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
+		C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */; };
+		C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */; };
 		C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */; };
 		C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */; };
 		C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */; };
@@ -327,6 +332,9 @@
 		C4DA0D3E27DEF25000066965 /* TeamProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProvider.swift; sourceTree = "<group>"; };
 		C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCreateRequest.swift; sourceTree = "<group>"; };
 		C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		C4DA0D4527DF12CC00066965 /* TeamEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditViewController.swift; sourceTree = "<group>"; };
+		C4DA0D4627DF12CC00066965 /* TeamEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditView.swift; sourceTree = "<group>"; };
+		C4DA0D4B27DF13F500066965 /* TeamEditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditContentView.swift; sourceTree = "<group>"; };
 		C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitionInfoViewController.swift; path = ../../../../../../../Documents/CompetitionInfoViewController.swift; sourceTree = "<group>"; };
 		C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionInfoView.swift; sourceTree = "<group>"; };
 		C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoContentView.swift; sourceTree = "<group>"; };
@@ -335,6 +343,8 @@
 		C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
+		C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditProvider.swift; sourceTree = "<group>"; };
+		C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUpdateRequest.swift; sourceTree = "<group>"; };
 		C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppContentView.swift; sourceTree = "<group>"; };
@@ -1056,6 +1066,7 @@
 				C4DA0D3927DEF1B100066965 /* TeamJoinRequest.swift */,
 				C4DA0D3B27DEF1BA00066965 /* TeamLeaveRequest.swift */,
 				C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */,
+				C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */,
 			);
 			path = TeamsAPI;
 			sourceTree = "<group>";
@@ -1311,9 +1322,37 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
+		C4DA0D4427DF12BC00066965 /* TeamEdit */ = {
+			isa = PBXGroup;
+			children = (
+				C4F668CB27DF317200B0DDAC /* Provider */,
+				C4DA0D4927DF13E300066965 /* View */,
+				C4DA0D4527DF12CC00066965 /* TeamEditViewController.swift */,
+			);
+			path = TeamEdit;
+			sourceTree = "<group>";
+		};
+		C4DA0D4927DF13E300066965 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4DA0D4A27DF13E800066965 /* Subview */,
+				C4DA0D4627DF12CC00066965 /* TeamEditView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4DA0D4A27DF13E800066965 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4DA0D4B27DF13F500066965 /* TeamEditContentView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
 		C4E077B127D7053800D1711B /* Competition */ = {
 			isa = PBXGroup;
 			children = (
+				C4DA0D4427DF12BC00066965 /* TeamEdit */,
 				C4979ABA27DE0A5B00CD6465 /* Team */,
 				C4C9334A27DCAD640068D8D2 /* Teams */,
 				C4E077B227D705CE00D1711B /* CompetitionInfo */,
@@ -1372,6 +1411,14 @@
 				C4D82AB127C0B8D50058334F /* StyledTextField.swift */,
 			);
 			path = Styled;
+			sourceTree = "<group>";
+		};
+		C4F668CB27DF317200B0DDAC /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		C4F9FD3927D12CD100A6A2B0 /* AboutApp */ = {
@@ -1610,6 +1657,7 @@
 				C400F44427D5ECDC00B1EAD9 /* CompetitionsView.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
 				C400F45D27D6110000B1EAD9 /* EmptyView.swift in Sources */,
+				C4DA0D4727DF12CC00066965 /* TeamEditViewController.swift in Sources */,
 				C4DA0D3C27DEF1BA00066965 /* TeamLeaveRequest.swift in Sources */,
 				C400F45B27D6101A00B1EAD9 /* CompetitionSectionModel.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
@@ -1702,6 +1750,7 @@
 				C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */,
 				C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */,
 				C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */,
+				C4DA0D4C27DF13F500066965 /* TeamEditContentView.swift in Sources */,
 				C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C4D8EC9627C3647900BF0767 /* MapsAPI.swift in Sources */,
@@ -1718,6 +1767,7 @@
 				C4D8ECB127C3A4FE00BF0767 /* BadgeButton.swift in Sources */,
 				C408EAAF27B0005F004B82CB /* R.generated.swift in Sources */,
 				C4D8ECAA27C37E0000BF0767 /* CGSize+InsetBy.swift in Sources */,
+				C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */,
 				C4A1515627B0FCCB00C95344 /* ConstraintKeyboardObserver.swift in Sources */,
 				C408EA8027AFFC8C004B82CB /* UIService.swift in Sources */,
 				C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */,
@@ -1731,7 +1781,9 @@
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
 				C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */,
+				C4DA0D4827DF12CC00066965 /* TeamEditView.swift in Sources */,
 				C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */,
+				C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
 				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
 				C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */,

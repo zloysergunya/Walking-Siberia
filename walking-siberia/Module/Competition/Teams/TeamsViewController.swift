@@ -186,7 +186,7 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     @objc private func openCreateTeam() {
-        
+        navigationController?.pushViewController(TeamEditViewController(competition: competition, type: .create), animated: true)
     }
     
     @objc private func takePart() {
@@ -223,14 +223,10 @@ extension TeamsViewController: ListAdapterDataSource {
 extension TeamsViewController: TeamSectionControllerDelegate {
     
     func teamSectionController(didSelect team: Team) {
-        guard !team.isClosed else {
-            return
-        }
-        
         if UserCategory(rawValue: team.type) == .manWithHIA {
             // TODO: open user profile
         } else {
-            navigationController?.pushViewController(TeamViewController(team: team), animated: true)
+            navigationController?.pushViewController(TeamViewController(team: team, competition: competition), animated: true)
         }
     }
     

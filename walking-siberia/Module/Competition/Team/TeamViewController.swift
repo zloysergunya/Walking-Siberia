@@ -3,15 +3,15 @@ import UIKit
 class TeamViewController: ViewController<TeamView> {
     
     private var team: Team
+    private let competition: Competition
     private let provider = TeamProvider()
     
     private var isOwner = false
 
-    init(team: Team) {
+    init(team: Team, competition: Competition) {
         self.team = team
+        self.competition = competition
         super.init(nibName: nil, bundle: nil)
-        
-        title = team.name
     }
     
     required init?(coder: NSCoder) {
@@ -22,11 +22,20 @@ class TeamViewController: ViewController<TeamView> {
         super.viewDidLoad()
         
         mainView.contentView.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
+        mainView.contentView.deleteTeamButton.addTarget(self, action: #selector(deleteTeamAction), for: .touchUpInside)
         
         configure()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateTeam()
+    }
+    
     private func configure() {
+        title = team.name
+        
         mainView.contentView.participantsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         team.users.forEach { participant in
             let participantView = ParticipantView()
@@ -50,11 +59,31 @@ class TeamViewController: ViewController<TeamView> {
         isOwner = team.ownerId == UserSettings.user?.userId
         if isOwner {
             mainView.contentView.actionButton.setTitle("Редактировать", for: .normal)
-        } else {
-            mainView.contentView.actionButton.setTitle(team.isJoined ? "Покинуть команду" : "Подать заявку в команду", for: .normal)
+            mainView.contentView.deleteTeamButton.isHidden = false
+        } else if team.isJoined {
+            mainView.contentView.actionButton.setTitle("Покинуть команду", for: .normal)
+        } else if !team.isClosed {
+            mainView.contentView.actionButton.setTitle("Подать заявку в команду", for: .normal)
         }
         
         loadMyTeam()
+    }
+    
+    private func updateTeam() {
+        provider.updateTeam(teamId: team.id) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let team):
+                self.team = team
+                self.configure()
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
+        }
     }
     
     private func loadMyTeam() {
@@ -66,7 +95,8 @@ class TeamViewController: ViewController<TeamView> {
             switch result {
             case .success(let team):
                 let competitionJoined = team.competitionId == self.team.competitionId
-                self.mainView.contentView.actionButton.isHidden = competitionJoined && !self.team.isJoined
+                let isHidden = competitionJoined && !self.team.isJoined
+                self.mainView.contentView.actionButton.isHidden = isHidden
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
@@ -75,7 +105,7 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     private func openTeamEdit() {
-        
+        navigationController?.pushViewController(TeamEditViewController(competition: competition, type: .edit(team: team)), animated: true)
     }
     
     private func joinTeam() {
@@ -121,6 +151,22 @@ class TeamViewController: ViewController<TeamView> {
         }
     }
     
+    private func deleteTeam() {
+        provider.deleteTeam(teamId: team.id) { [weak self] result in
+            switch result {
+            case .success:
+                self?.close()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func close() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func action() {
         if isOwner {
             openTeamEdit()
@@ -129,6 +175,12 @@ class TeamViewController: ViewController<TeamView> {
         } else {
             joinTeam()
         }
+    }
+    
+    @objc private func deleteTeamAction() {
+        dialog(title: "Удалить команду?", accessText: "Да", cancelText: "Нет", onAgree: { [weak self] _ in
+            self?.deleteTeam()
+        })
     }
     
 }
