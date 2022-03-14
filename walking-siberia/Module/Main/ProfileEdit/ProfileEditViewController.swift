@@ -115,7 +115,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
                 self?.configure()
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self?.showError(text: error.localizedDescription)
             }
         }
     }
@@ -126,15 +126,11 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         let filename = paths[0].appendingPathComponent("image.jpg")
         try? data?.write(to: filename)
         
-        provider.uploadAvatar(photo: filename) { result in
+        provider.uploadAvatar(photo: filename) { [weak self] result in
             switch result {
-            case .success:
-                break
-                
+            case .success: break
             case .failure(let error):
-                if let error = error as? ModelError {
-                    print(error.message())
-                }
+                self?.showError(text: error.localizedDescription)
             }
         }
     }

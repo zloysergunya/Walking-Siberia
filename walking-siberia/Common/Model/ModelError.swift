@@ -1,53 +1,25 @@
 import Foundation
 
-enum ApiErrorCode: String {
-    case unknown
-    case decode
-    case token
+struct DecodableError: Codable {
+    let message: String
 }
 
 struct ModelError: Error {
-    let err: ErrorResponse
+    var err: ErrorResponse?
 
     func message() -> String {
-        switch err {
-        case .error( _, let data?, _):
-            do {
-                let json = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                print("json error", json)
-                if let code = json["code"] as? String, code == "token" {
-                    return "Session lost"
-                } else {
-                    return json["desc"] as! String
-                }
-            } catch {
-                return "Server error"
+        if case .error( _, let data?, _) = err {
+            if let decodeError = CodableHelper.decode(SuccessResponse<DecodableError>.self, from: data).decodableObj,
+               let message = decodeError.data?.message {
+                return message
             }
-        default:
-            return "Server error"
+            
+            return "Неизвестная ошибка (не удалось декодировать ошибку)"
         }
+        
+        return "Не удалось декодировать ответ сервера"
     }
 
-    public var code: String {
-        get {
-            switch err {
-            case .error( _, let data?, _):
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                    if let code = json["code"] as? String, code == "token" {
-                        return ApiErrorCode.token.rawValue
-                    } else {
-                        return json["code"] as! String
-                    }
-                } catch {
-                    return ApiErrorCode.unknown.rawValue
-                }
-            default:
-                return ApiErrorCode.unknown.rawValue
-            }
-        }
-    } 
-    
     var localizedDescription: String {
         return message()
     }

@@ -64,6 +64,7 @@ class CompetitionsViewController: ViewController<CompetitionsView> {
                 self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
+                self.showError(text: error.localizedDescription)
                 self.loadingState = .failed
                 self.adapter.performUpdates(animated: true)
             }

@@ -9,9 +9,10 @@ struct Team: Codable {
     let type: Int
     let typeLabel: String
     let ownerId: Int
-    let users: [Participant]
+    var users: [Participant]
     let createAt: String
-    let isJoined: Bool
+    var isClosed: Bool
+    var isJoined: Bool
 }
 
 extension Team: Equatable {

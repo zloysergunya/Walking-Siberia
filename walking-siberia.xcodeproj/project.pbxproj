@@ -66,6 +66,10 @@
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AB827DE097500CD6465 /* String+Initials.swift */; };
+		C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */; };
+		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
+		C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC127DE0A9900CD6465 /* TeamContentView.swift */; };
+		C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */; };
 		C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */; };
 		C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513727B0ECD000C95344 /* OnboardingView.swift */; };
 		C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */; };
@@ -147,6 +151,12 @@
 		C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87527CA4511004B552A /* ProfileProvider.swift */; };
 		C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */; };
 		C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D9A87927CA4DA0004B552A /* Competition.swift */; };
+		C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D3727DEF0B100066965 /* TeamDeleteRequest.swift */; };
+		C4DA0D3A27DEF1B100066965 /* TeamJoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D3927DEF1B100066965 /* TeamJoinRequest.swift */; };
+		C4DA0D3C27DEF1BA00066965 /* TeamLeaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D3B27DEF1BA00066965 /* TeamLeaveRequest.swift */; };
+		C4DA0D3F27DEF25000066965 /* TeamProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D3E27DEF25000066965 /* TeamProvider.swift */; };
+		C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */; };
+		C4DA0D4327DF083C00066965 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */; };
 		C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */; };
 		C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */; };
 		C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */; };
@@ -226,6 +236,10 @@
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C4979AB827DE097500CD6465 /* String+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Initials.swift"; sourceTree = "<group>"; };
+		C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		C4979AC127DE0A9900CD6465 /* TeamContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamContentView.swift; sourceTree = "<group>"; };
+		C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantView.swift; sourceTree = "<group>"; };
 		C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C4A1513727B0ECD000C95344 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Bold.ttf"; sourceTree = "<group>"; };
@@ -307,6 +321,12 @@
 		C4D9A87527CA4511004B552A /* ProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProvider.swift; sourceTree = "<group>"; };
 		C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionAPI.swift; sourceTree = "<group>"; };
 		C4D9A87927CA4DA0004B552A /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
+		C4DA0D3727DEF0B100066965 /* TeamDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDeleteRequest.swift; sourceTree = "<group>"; };
+		C4DA0D3927DEF1B100066965 /* TeamJoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamJoinRequest.swift; sourceTree = "<group>"; };
+		C4DA0D3B27DEF1BA00066965 /* TeamLeaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLeaveRequest.swift; sourceTree = "<group>"; };
+		C4DA0D3E27DEF25000066965 /* TeamProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProvider.swift; sourceTree = "<group>"; };
+		C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCreateRequest.swift; sourceTree = "<group>"; };
+		C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitionInfoViewController.swift; path = ../../../../../../../Documents/CompetitionInfoViewController.swift; sourceTree = "<group>"; };
 		C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionInfoView.swift; sourceTree = "<group>"; };
 		C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoContentView.swift; sourceTree = "<group>"; };
@@ -552,6 +572,7 @@
 				C4D82A9B27BFED200058334F /* UIStackView+Init.swift */,
 				C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */,
 				C4C9336727DCC4820068D8D2 /* UIImage+BgColorFromText.swift */,
+				C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -771,6 +792,34 @@
 			isa = PBXGroup;
 			children = (
 				C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		C4979ABA27DE0A5B00CD6465 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				C4DA0D3D27DEF24700066965 /* Provider */,
+				C4979ABF27DE0A6E00CD6465 /* View */,
+				C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		C4979ABF27DE0A6E00CD6465 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4979AC027DE0A8A00CD6465 /* Subview */,
+				C4979ABC27DE0A6A00CD6465 /* TeamView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4979AC027DE0A8A00CD6465 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4979AC127DE0A9900CD6465 /* TeamContentView.swift */,
+				C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -1003,6 +1052,10 @@
 			children = (
 				C4C9335C27DCB2750068D8D2 /* TeamsRequest.swift */,
 				C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */,
+				C4DA0D3727DEF0B100066965 /* TeamDeleteRequest.swift */,
+				C4DA0D3927DEF1B100066965 /* TeamJoinRequest.swift */,
+				C4DA0D3B27DEF1BA00066965 /* TeamLeaveRequest.swift */,
+				C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */,
 			);
 			path = TeamsAPI;
 			sourceTree = "<group>";
@@ -1250,9 +1303,18 @@
 			path = Subview;
 			sourceTree = "<group>";
 		};
+		C4DA0D3D27DEF24700066965 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4DA0D3E27DEF25000066965 /* TeamProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		C4E077B127D7053800D1711B /* Competition */ = {
 			isa = PBXGroup;
 			children = (
+				C4979ABA27DE0A5B00CD6465 /* Team */,
 				C4C9334A27DCAD640068D8D2 /* Teams */,
 				C4E077B227D705CE00D1711B /* CompetitionInfo */,
 				C400F43E27D5EC8600B1EAD9 /* Competitions */,
@@ -1538,6 +1600,7 @@
 				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
 				C4D8EC8F27C363B200BF0767 /* RoutesViewController.swift in Sources */,
 				C4D9A86E27C90E3A004B552A /* ProfileViewController.swift in Sources */,
+				C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */,
 				C408EA9B27AFFC8C004B82CB /* Models.swift in Sources */,
 				C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
@@ -1547,6 +1610,7 @@
 				C400F44427D5ECDC00B1EAD9 /* CompetitionsView.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
 				C400F45D27D6110000B1EAD9 /* EmptyView.swift in Sources */,
+				C4DA0D3C27DEF1BA00066965 /* TeamLeaveRequest.swift in Sources */,
 				C400F45B27D6101A00B1EAD9 /* CompetitionSectionModel.swift in Sources */,
 				C408EA8327AFFC8C004B82CB /* JSONValue.swift in Sources */,
 				C4D9A87A27CA4DA0004B552A /* Competition.swift in Sources */,
@@ -1578,6 +1642,7 @@
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
 				C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */,
+				C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
 				C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */,
 				C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */,
@@ -1591,6 +1656,7 @@
 				C400F46027D6121B00B1EAD9 /* CompetitionsSectionController.swift in Sources */,
 				C4E077BF27D78DE000D1711B /* CompetitionPartnerView.swift in Sources */,
 				C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */,
+				C4DA0D3A27DEF1B100066965 /* TeamJoinRequest.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
@@ -1598,6 +1664,7 @@
 				C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */,
 				C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */,
 				C4D8ECA727C37D6500BF0767 /* RouteCell.swift in Sources */,
+				C4DA0D4327DF083C00066965 /* UIViewController+Alerts.swift in Sources */,
 				C4C9335627DCAFD70068D8D2 /* TeamSectionModel.swift in Sources */,
 				C4F9FD4527D1B67A00A6A2B0 /* InstructionViewController.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
@@ -1633,6 +1700,8 @@
 				C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */,
 				C4D8EC9C27C3690200BF0767 /* TabBarController.swift in Sources */,
 				C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */,
+				C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */,
+				C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */,
 				C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C4D8EC9627C3647900BF0767 /* MapsAPI.swift in Sources */,
@@ -1640,6 +1709,7 @@
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
 				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
 				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,
+				C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */,
 				C4A1516127B11D2100C95344 /* PhoneCodeAuthViewController.swift in Sources */,
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,
 				C408EA7027AFFC8C004B82CB /* SwipeNavigationController.swift in Sources */,
@@ -1661,10 +1731,12 @@
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
 				C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */,
+				C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
 				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
 				C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */,
 				C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */,
+				C4DA0D3F27DEF25000066965 /* TeamProvider.swift in Sources */,
 				C400F45627D5FE4300B1EAD9 /* Partner.swift in Sources */,
 				C4D82A9627BFE5A20058334F /* EmptyData.swift in Sources */,
 				C4D8ECA427C37CBC00BF0767 /* RouteSectionController.swift in Sources */,

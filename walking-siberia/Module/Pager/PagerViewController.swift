@@ -24,6 +24,12 @@ class PagerViewController: PageMenuController {
         dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        initialViewControllers.forEach({ $0.viewWillAppear(animated) })
+    }
+    
 }
 
 // MARK: - PageMenuControllerDataSource

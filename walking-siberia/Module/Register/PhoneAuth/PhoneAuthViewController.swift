@@ -40,7 +40,7 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
                 self.navigationController?.pushViewController(PhoneCodeAuthViewController(phone: phone), animated: true)
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self.showError(text: error.localizedDescription)
             }
         }
     }

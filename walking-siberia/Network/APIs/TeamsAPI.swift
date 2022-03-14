@@ -52,4 +52,97 @@ class TeamsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func teamCreatePost(teamCreateRequest: TeamCreateRequest, completion: @escaping ((_ data: SuccessResponse<Team>?,_ error: ErrorResponse?) -> Void)) {
+        teamCreatePostWithRequestBuilder(teamCreateRequest: teamCreateRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamCreatePostWithRequestBuilder(teamCreateRequest: TeamCreateRequest) -> RequestBuilder<SuccessResponse<Team>> {
+        let path = "/team/create"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamCreateRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Team>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    class func teamDeletePost(teamDeleteRequest: TeamDeleteRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        teamDeletePostWithRequestBuilder(teamDeleteRequest: teamDeleteRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamDeletePostWithRequestBuilder(teamDeleteRequest: TeamDeleteRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/team/delete"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamDeleteRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    class func teamJoinPost(teamJoinRequest: TeamJoinRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        teamJoinPostWithRequestBuilder(teamJoinRequest: teamJoinRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamJoinPostWithRequestBuilder(teamJoinRequest: TeamJoinRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/team/join"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamJoinRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    class func teamLeavePost(teamLeaveRequest: TeamLeaveRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        teamLeavePostWithRequestBuilder(teamLeaveRequest: teamLeaveRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamLeavePostWithRequestBuilder(teamLeaveRequest: TeamLeaveRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/team/leave"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamLeaveRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    class func myteamUidGet(competitionId: Int, completion: @escaping ((_ data: SuccessResponse<Team>?,_ error: ErrorResponse?) -> Void)) {
+        myteamUidGetWithRequestBuilder(competitionId: competitionId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func myteamUidGetWithRequestBuilder(competitionId: Int) -> RequestBuilder<SuccessResponse<Team>> {
+        var path = "/my-team/{uid}"
+        let routeIdPreEscape = "\(competitionId)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Team>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

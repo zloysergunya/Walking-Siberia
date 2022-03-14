@@ -57,8 +57,7 @@ class RoutesViewController: ViewController<RoutesView> {
                 self.loadingState = .loaded
                 
             case .failure(let error):
-                error.localizedDescription // todo
-                
+                self.showError(text: error.localizedDescription)
                 self.loadingState = .failed
                 self.adapter.performUpdates(animated: true)
             }

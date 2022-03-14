@@ -75,6 +75,8 @@ class TeamSectionController: ListSectionController {
             }
         }
         
+        cell.contentView.layer.borderWidth = sectionModel.team.isJoined ? 1.0 : 0.0
+        
         return cell
     }
     

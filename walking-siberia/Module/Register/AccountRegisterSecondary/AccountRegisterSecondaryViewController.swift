@@ -85,7 +85,7 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
                 uiService?.openModule()
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self.showError(text: error.localizedDescription)
             }
         }
     }
@@ -102,9 +102,7 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
                 break
                 
             case .failure(let error):
-                if let error = error as? ModelError {
-                    print(error.message())
-                }
+                self.showError(text: error.localizedDescription)
             }
         }
     }

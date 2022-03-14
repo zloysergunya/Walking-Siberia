@@ -31,7 +31,7 @@ class ProfileViewController: ViewController<ProfileView> {
                 self?.configure()
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self?.showError(text: error.localizedDescription)
             }
         }
     }
@@ -43,7 +43,7 @@ class ProfileViewController: ViewController<ProfileView> {
                 print(response)
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self?.showError(text: error.localizedDescription)
             }
         }
     }

@@ -3,7 +3,7 @@ import IGListKit
 
 class TeamsViewController: ViewController<TeamsView> {
     
-    private let competition: Competition
+    private var competition: Competition
     private let provider = TeamsProvider()
     
     private var loadingState: LoadingState = .none
@@ -30,7 +30,7 @@ class TeamsViewController: ViewController<TeamsView> {
         super.viewDidLoad()
         
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-        mainView.createTeamButton.addTarget(self, action: #selector(createTeam), for: .touchUpInside)
+        mainView.createTeamButton.addTarget(self, action: #selector(openCreateTeam), for: .touchUpInside)
         mainView.takePartButton.addTarget(self, action: #selector(takePart), for: .touchUpInside)
         mainView.childrenButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
         mainView.studentButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
@@ -48,6 +48,7 @@ class TeamsViewController: ViewController<TeamsView> {
         super.viewWillAppear(animated)
         
         loadTeams(flush: true)
+        updateCompetition()
     }
     
     private func configure() {
@@ -61,6 +62,24 @@ class TeamsViewController: ViewController<TeamsView> {
             
             if userCategory == .manWithHIA {
                 mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
+            }
+        }
+    }
+    
+    private func updateCompetition() {
+        provider.updateCompetition(competitionId: competition.id) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            
+            switch result {
+            case .success(let competition):
+                self.competition = competition
+                self.configure()
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
             }
         }
     }
@@ -92,8 +111,55 @@ class TeamsViewController: ViewController<TeamsView> {
                 self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
+                self.showError(text: error.localizedDescription)
                 self.loadingState = .failed
                 self.adapter.performUpdates(animated: true)
+            }
+        }
+    }
+    
+    private func createTeam() {
+        guard let user = UserSettings.user else {
+            return
+        }
+
+        let teamCreateRequest = TeamCreateRequest(competitionId: competition.id,
+                                                  name: "\(user.profile.firstName) \(user.profile.lastName)",
+                                                  status: 1,
+                                                  userIds: [])
+        provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let team):
+                self.objects.insert(TeamSectionModel(team: team), at: 0)
+                self.updateCompetition()
+                self.adapter.performUpdates(animated: true)
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func deleteTeam(teamId: Int) {
+        provider.deleteTeam(teamId: teamId) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success:
+                if let index = self.objects.firstIndex(where: { $0.team.id == teamId }) {
+                    self.objects.remove(at: index)
+                }
+                self.updateCompetition()
+                self.adapter.performUpdates(animated: true)
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
             }
         }
     }
@@ -114,17 +180,21 @@ class TeamsViewController: ViewController<TeamsView> {
                 }
             }
         })
-        print("filter", filter)
+
         self.filter = filter
         loadTeams(flush: true)
     }
     
-    @objc private func createTeam() {
+    @objc private func openCreateTeam() {
         
     }
     
     @objc private func takePart() {
-        
+        if competition.isJoined {
+            deleteTeam(teamId: 34) // TODO: сменить на новый запрос
+        } else {
+            createTeam()
+        }
     }
     
 }
@@ -153,7 +223,15 @@ extension TeamsViewController: ListAdapterDataSource {
 extension TeamsViewController: TeamSectionControllerDelegate {
     
     func teamSectionController(didSelect team: Team) {
+        guard !team.isClosed else {
+            return
+        }
         
+        if UserCategory(rawValue: team.type) == .manWithHIA {
+            // TODO: open user profile
+        } else {
+            navigationController?.pushViewController(TeamViewController(team: team), animated: true)
+        }
     }
     
     func teamSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {

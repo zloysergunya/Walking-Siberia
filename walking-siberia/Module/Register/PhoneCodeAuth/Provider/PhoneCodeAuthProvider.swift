@@ -2,14 +2,14 @@ import Foundation
 
 class PhoneCodeAuthProvider {
     
-    func confirmPhone(phone: String, code: String, completion: @escaping(Result<SuccessResponse<AuthConfirmResponse>, Error>) -> Void) {
+    func confirmPhone(phone: String, code: String, completion: @escaping(Result<SuccessResponse<AuthConfirmResponse>, ModelError>) -> Void) {
         AuthAPI.authConfirmPost(authConfirm: AuthConfirmRequest(phone: phone, code: code)) { response, error in
             if let response = response {
                 completion(.success(response))
             } else if let error = error {
                 completion(.failure(ModelError(err: error)))
             } else {
-                completion(.failure(NSError()))
+                completion(.failure(ModelError()))
             }
         }
     }
@@ -21,7 +21,7 @@ class PhoneCodeAuthProvider {
             } else if let error = error {
                 completion(.failure(ModelError(err: error)))
             } else {
-                completion(.failure(NSError()))
+                completion(.failure(ModelError()))
             }
         }
     }

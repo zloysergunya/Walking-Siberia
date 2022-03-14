@@ -119,7 +119,7 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
                 self.navigationController?.pushViewController(AccountRegisterSecondaryViewController(), animated: true)
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self.showError(text: error.localizedDescription)
             }
         }
     }

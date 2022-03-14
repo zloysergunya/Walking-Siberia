@@ -65,7 +65,7 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
                 self.updateStats()
                 
             case .failure(let error):
-                error.localizedDescription // todo
+                self.showError(text: error.localizedDescription)
             }
         }
     }
