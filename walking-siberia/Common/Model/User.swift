@@ -10,3 +10,16 @@ struct User: Codable {
     var profile: Profile
     let isFillProfile: Bool
 }
+
+extension User: Equatable {
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.userId == rhs.userId
+        && lhs.phone == rhs.phone
+        && lhs.email == rhs.email
+        && lhs.type == rhs.type
+        && lhs.deviceId == rhs.deviceId
+        && lhs.profile == rhs.profile
+    }
+    
+}

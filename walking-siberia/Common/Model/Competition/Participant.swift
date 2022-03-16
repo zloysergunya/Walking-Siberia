@@ -10,7 +10,9 @@ struct Participant: Codable {
 extension Participant: Equatable {
     
     static func == (lhs: Participant, rhs: Participant) -> Bool {
-        return lhs.teamId == rhs.teamId && lhs.userId == rhs.userId
+        return lhs.teamId == rhs.teamId
+        && lhs.userId == rhs.userId
+        && lhs.user == rhs.user
     }
     
 }

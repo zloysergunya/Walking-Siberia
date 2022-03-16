@@ -61,16 +61,21 @@ class TeamSectionController: ListSectionController {
         
         cell.stepsCountLabel.attributedText = "<bold>\("7777,7K")</bold>\nшаги".style(tags: bold).attributedString
         
+        let side = 48.0
         if userCategory == .manWithHIA {
             if let url = sectionModel.team.users.first?.user.profile.avatar {
                 ImageLoader.setImage(url: url, imgView: cell.imageView)
             } else {
                 cell.imageView.image = UIImage.createWithBgColorFromText(text: sectionModel.team.name.getInitials(), color: .clear, circular: true, side: 48.0)
-                cell.gradientLayer = GradientHelper.shared.layer(color: .linearRed)
+                let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
+                gradientLayer?.frame = CGRect(side: side)
+                cell.gradientLayer = gradientLayer
             }
         } else {
             cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(sectionModel.team.users.count)/\(5)", color: .clear, circular: true, side: 48.0)
-            cell.gradientLayer = GradientHelper.shared.layer(color: .linearBlue)
+            let gradientLayer = GradientHelper.shared.layer(color: .linearBlue)
+            gradientLayer?.frame = CGRect(side: side)
+            cell.gradientLayer = gradientLayer
         }
         
         cell.contentView.layer.borderWidth = sectionModel.team.isJoined ? 1.0 : 0.0

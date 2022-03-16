@@ -27,5 +27,6 @@ target 'walking-siberia' do
   # Utilities
   pod 'R.swift', '~> 5.4.0'
   pod 'SwiftyBeaver'
+  pod 'PhoneNumberKit'
 
 end

@@ -27,6 +27,7 @@ class RoutesViewController: ViewController<RoutesView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadRoutes()
+        syncContacts()
     }
     
     @objc private func pullToRefresh() {
@@ -60,6 +61,18 @@ class RoutesViewController: ViewController<RoutesView> {
                 self.showError(text: error.localizedDescription)
                 self.loadingState = .failed
                 self.adapter.performUpdates(animated: true)
+            }
+        }
+    }
+    
+    private func syncContacts() {
+        ContactsService.getContacts { [weak self] contacts in
+            self?.provider.syncContacts(contacts: contacts) { [weak self] result in
+                switch result {
+                case .success: break
+                case .failure(let error):
+                    self?.showError(text: error.localizedDescription)
+                }
             }
         }
     }

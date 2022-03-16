@@ -65,6 +65,17 @@
 		C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */; };
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
+		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
+		C478448327E1C23800D9E275 /* FindFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448127E1C23800D9E275 /* FindFriendsView.swift */; };
+		C478448927E1C4EF00D9E275 /* FindFriendsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448827E1C4EF00D9E275 /* FindFriendsProvider.swift */; };
+		C478448B27E1C8B200D9E275 /* FriendsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448A27E1C8B200D9E275 /* FriendsAPI.swift */; };
+		C478448E27E1C92000D9E275 /* FriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448D27E1C92000D9E275 /* FriendsRequest.swift */; };
+		C478449027E1CAC000D9E275 /* FindFriendsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448F27E1CAC000D9E275 /* FindFriendsSectionModel.swift */; };
+		C478449327E1CF2300D9E275 /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449227E1CF2300D9E275 /* ContactsService.swift */; };
+		C478449527E1D34600D9E275 /* FriendsSyncContactsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449427E1D34600D9E275 /* FriendsSyncContactsRequest.swift */; };
+		C478449727E1DF4D00D9E275 /* FindFriendsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449627E1DF4D00D9E275 /* FindFriendsSectionController.swift */; };
+		C478449A27E1DF6D00D9E275 /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449927E1DF6D00D9E275 /* FindFriendsCell.swift */; };
+		C478449D27E1E99F00D9E275 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449C27E1E99F00D9E275 /* AddButton.swift */; };
 		C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AB827DE097500CD6465 /* String+Initials.swift */; };
 		C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */; };
 		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
@@ -240,6 +251,17 @@
 		C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoProvider.swift; sourceTree = "<group>"; };
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
+		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
+		C478448127E1C23800D9E275 /* FindFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsView.swift; sourceTree = "<group>"; };
+		C478448827E1C4EF00D9E275 /* FindFriendsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsProvider.swift; sourceTree = "<group>"; };
+		C478448A27E1C8B200D9E275 /* FriendsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAPI.swift; sourceTree = "<group>"; };
+		C478448D27E1C92000D9E275 /* FriendsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequest.swift; sourceTree = "<group>"; };
+		C478448F27E1CAC000D9E275 /* FindFriendsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsSectionModel.swift; sourceTree = "<group>"; };
+		C478449227E1CF2300D9E275 /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
+		C478449427E1D34600D9E275 /* FriendsSyncContactsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSyncContactsRequest.swift; sourceTree = "<group>"; };
+		C478449627E1DF4D00D9E275 /* FindFriendsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsSectionController.swift; sourceTree = "<group>"; };
+		C478449927E1DF6D00D9E275 /* FindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
+		C478449C27E1E99F00D9E275 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		C4979AB827DE097500CD6465 /* String+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Initials.swift"; sourceTree = "<group>"; };
 		C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -661,6 +683,7 @@
 				C4D8EC9527C3647900BF0767 /* MapsAPI.swift */,
 				C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */,
 				C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */,
+				C478448A27E1C8B200D9E275 /* FriendsAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -668,6 +691,7 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C478448C27E1C91200D9E275 /* FriendsAPI */,
 				C4C9335B27DCB2650068D8D2 /* TeamsAPI */,
 				C408EA5827AFFC8C004B82CB /* AuthAPI */,
 				C4D82A8827BFDCED0058334F /* Common */,
@@ -713,6 +737,7 @@
 				C408EA6B27AFFC8C004B82CB /* LoggerService.swift */,
 				C408EA6C27AFFC8C004B82CB /* KeychainService.swift */,
 				C408EA6D27AFFC8C004B82CB /* AuthService.swift */,
+				C478449227E1CF2300D9E275 /* ContactsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -802,6 +827,77 @@
 			isa = PBXGroup;
 			children = (
 				C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		C478447F27E1C22000D9E275 /* FindFriends */ = {
+			isa = PBXGroup;
+			children = (
+				C478448727E1C4E400D9E275 /* Section */,
+				C478448627E1C4DF00D9E275 /* Model */,
+				C478448527E1C4DA00D9E275 /* Provider */,
+				C478448427E1C24D00D9E275 /* View */,
+				C478448027E1C23800D9E275 /* FindFriendsViewController.swift */,
+			);
+			path = FindFriends;
+			sourceTree = "<group>";
+		};
+		C478448427E1C24D00D9E275 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C478449B27E1E99700D9E275 /* Subview */,
+				C478449827E1DF5D00D9E275 /* Cell */,
+				C478448127E1C23800D9E275 /* FindFriendsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C478448527E1C4DA00D9E275 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C478448827E1C4EF00D9E275 /* FindFriendsProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C478448627E1C4DF00D9E275 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C478448F27E1CAC000D9E275 /* FindFriendsSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C478448727E1C4E400D9E275 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C478449627E1DF4D00D9E275 /* FindFriendsSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C478448C27E1C91200D9E275 /* FriendsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C478448D27E1C92000D9E275 /* FriendsRequest.swift */,
+				C478449427E1D34600D9E275 /* FriendsSyncContactsRequest.swift */,
+			);
+			path = FriendsAPI;
+			sourceTree = "<group>";
+		};
+		C478449827E1DF5D00D9E275 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C478449927E1DF6D00D9E275 /* FindFriendsCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C478449B27E1E99700D9E275 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C478449C27E1E99F00D9E275 /* AddButton.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -1352,6 +1448,7 @@
 		C4E077B127D7053800D1711B /* Competition */ = {
 			isa = PBXGroup;
 			children = (
+				C478447F27E1C22000D9E275 /* FindFriends */,
 				C4DA0D4427DF12BC00066965 /* TeamEdit */,
 				C4979ABA27DE0A5B00CD6465 /* Team */,
 				C4C9334A27DCAD640068D8D2 /* Teams */,
@@ -1640,6 +1737,7 @@
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
 				C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */,
+				C478449727E1DF4D00D9E275 /* FindFriendsSectionController.swift in Sources */,
 				C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */,
 				C4C9336627DCC1690068D8D2 /* GradientHelper.swift in Sources */,
 				C40919D127C72FC700E23AD8 /* RouteInfoViewController.swift in Sources */,
@@ -1653,6 +1751,7 @@
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
 				C4D9A84227C7D15F004B552A /* RoutePlaceSectionController.swift in Sources */,
 				C4C9336827DCC4820068D8D2 /* UIImage+BgColorFromText.swift in Sources */,
+				C478448B27E1C8B200D9E275 /* FriendsAPI.swift in Sources */,
 				C4D82A9227BFE1BB0058334F /* PhoneCodeAuthProvider.swift in Sources */,
 				C400F44427D5ECDC00B1EAD9 /* CompetitionsView.swift in Sources */,
 				C408EA9C27AFFC8C004B82CB /* Configuration.swift in Sources */,
@@ -1682,18 +1781,22 @@
 				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
 				C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */,
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
+				C478449A27E1DF6D00D9E275 /* FindFriendsCell.swift in Sources */,
 				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
 				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
+				C478449527E1D34600D9E275 /* FriendsSyncContactsRequest.swift in Sources */,
 				C4D8EC9E27C36C9400BF0767 /* Place.swift in Sources */,
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
+				C478448327E1C23800D9E275 /* FindFriendsView.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
 				C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */,
 				C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
 				C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */,
 				C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */,
+				C478449D27E1E99F00D9E275 /* AddButton.swift in Sources */,
 				C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */,
 				C4D8ECAC27C3802500BF0767 /* ImageLoader.swift in Sources */,
 				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
@@ -1730,7 +1833,9 @@
 				C4D8EC9027C363B200BF0767 /* RoutesView.swift in Sources */,
 				C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */,
 				C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */,
+				C478449027E1CAC000D9E275 /* FindFriendsSectionModel.swift in Sources */,
 				C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */,
+				C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */,
 				C4D8ECAF27C3867400BF0767 /* StepsCountView.swift in Sources */,
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
@@ -1759,12 +1864,14 @@
 				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
 				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,
 				C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */,
+				C478448927E1C4EF00D9E275 /* FindFriendsProvider.swift in Sources */,
 				C4A1516127B11D2100C95344 /* PhoneCodeAuthViewController.swift in Sources */,
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,
 				C408EA7027AFFC8C004B82CB /* SwipeNavigationController.swift in Sources */,
 				C408EA9D27AFFC8C004B82CB /* ServiceLocator.swift in Sources */,
 				C408EA7B27AFFC8C004B82CB /* LoadingState.swift in Sources */,
 				C4D8ECB127C3A4FE00BF0767 /* BadgeButton.swift in Sources */,
+				C478449327E1CF2300D9E275 /* ContactsService.swift in Sources */,
 				C408EAAF27B0005F004B82CB /* R.generated.swift in Sources */,
 				C4D8ECAA27C37E0000BF0767 /* CGSize+InsetBy.swift in Sources */,
 				C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */,
@@ -1773,6 +1880,7 @@
 				C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */,
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
 				C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */,
+				C478448E27E1C92000D9E275 /* FriendsRequest.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
 				C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */,
 				C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */,

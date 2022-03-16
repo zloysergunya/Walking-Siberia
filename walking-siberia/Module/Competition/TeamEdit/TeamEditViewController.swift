@@ -8,7 +8,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
 
     private let competition: Competition
-    private let type: EditType
+    private var type: EditType
     private let provider = TeamEditProvider()
     
     init(competition: Competition, type: EditType) {
@@ -34,7 +34,41 @@ class TeamEditViewController: ViewController<TeamEditView> {
         case .edit(let team):
             title = "Редактирование команды"
             mainView.contentView.nameField.text = team.name
+            updateParticipants()
+        }
+    }
+    
+    private func updateParticipants() {
+        guard case .edit(let team) = type else {
+            return
+        }
+        
+        mainView.contentView.participantsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        team.users.map({ $0.user }).enumerated().forEach { user in
+            let cell = FindFriendsCell()
+            let fullName = "\(user.element.profile.firstName) \(user.element.profile.lastName)"
+            cell.nameLabel.text = fullName
             
+            let userCategory: UserCategory? = .init(rawValue: user.element.type)
+            cell.categoryLabel.text = userCategory?.categoryName
+            
+            if let url = user.element.profile.avatar {
+                ImageLoader.setImage(url: url, imgView: cell.imageView)
+            } else {
+                cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
+                let gradientLayer = GradientHelper.shared.layer(userId: user.element.userId)
+                gradientLayer?.frame = CGRect(side: 48.0)
+                cell.gradientLayer = gradientLayer
+            }
+            
+            cell.actionButton.isSelected = true
+            cell.actionButton.isHidden = user.element.userId == UserSettings.user?.userId
+            cell.actionButton.tag = user.offset
+            cell.actionButton.addTarget(self, action: #selector(removeParticipant), for: .touchUpInside)
+            
+            cell.contentView.layer.borderWidth = team.ownerId == user.element.userId ? 1.0 : 0.0
+            
+            mainView.contentView.participantsStackView.addArrangedSubview(cell)
         }
     }
     
@@ -83,7 +117,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
         let teamUpdateRequest = TeamUpdateRequest(teamId: team.id,
                                                   name: name,
                                                   status: status,
-                                                  userIds: userIds) // TODO: добавить участников
+                                                  userIds: userIds)
         provider.updateTeam(teamUpdateRequest: teamUpdateRequest) { [weak self] result in
             switch result {
             case .success:
@@ -100,7 +134,25 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     @objc private func addParticipants() {
+        guard case .edit(let team) = type else {
+            return
+        }
         
+        let availableCount = 5 - team.users.count
+        guard availableCount > 0 else {
+            showError(text: "Достигнуто максимальное число участников")
+            
+            return
+        }
+        
+        var currentParticipants = team.users.map({ $0.user })
+        if let index = currentParticipants.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
+            currentParticipants.remove(at: index)
+        }
+        
+        let viewController = FindFriendsViewController(availableCount: availableCount, currentParticipants: currentParticipants)
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func saveTeam() {
@@ -108,6 +160,37 @@ class TeamEditViewController: ViewController<TeamEditView> {
         case .create: createTeam()
         case .edit: updateTeam()
         }
+    }
+    
+    @objc private func removeParticipant(_ sender: UIButton) {
+        guard case .edit(var team) = type else {
+            return
+        }
+        
+        team.users.remove(at: sender.tag)
+        type = .edit(team: team)
+        updateParticipants()
+    }
+    
+}
+
+// MARK: - FindFriendsViewControllerDelegate
+extension TeamEditViewController: FindFriendsViewControllerDelegate {
+    
+    func findFriendsViewController(didSelect users: [User]) {
+        guard case .edit(var team) = type else {
+            return
+        }
+        
+        
+        team.users = users.map({ Participant(userId: $0.userId, teamId: team.id, createdAt: team.createAt, user: $0) })
+        
+        if let user = UserSettings.user {
+            team.users.insert(Participant(userId: user.userId, teamId: team.id, createdAt: team.createAt, user: user), at: 0)
+        }
+        
+        type = .edit(team: team)
+        updateParticipants()
     }
     
 }
