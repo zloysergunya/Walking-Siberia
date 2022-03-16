@@ -2,14 +2,17 @@ import UIKit
 
 class TeamEditViewController: ViewController<TeamEditView> {
     
-    enum EditType {
+    enum EditType: Equatable {
         case create
         case edit(team: Team)
     }
 
     private let competition: Competition
-    private var type: EditType
+    private let type: EditType
     private let provider = TeamEditProvider()
+    private let maxParticipantsCount = 5
+    
+    private var currentParticipants: [User] = []
     
     init(competition: Competition, type: EditType) {
         self.competition = competition
@@ -34,17 +37,15 @@ class TeamEditViewController: ViewController<TeamEditView> {
         case .edit(let team):
             title = "Редактирование команды"
             mainView.contentView.nameField.text = team.name
+            currentParticipants = team.users.map({ $0.user })
+            mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
             updateParticipants()
         }
     }
     
     private func updateParticipants() {
-        guard case .edit(let team) = type else {
-            return
-        }
-        
         mainView.contentView.participantsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-        team.users.map({ $0.user }).enumerated().forEach { user in
+        currentParticipants.enumerated().forEach { user in
             let cell = FindFriendsCell()
             let fullName = "\(user.element.profile.firstName) \(user.element.profile.lastName)"
             cell.nameLabel.text = fullName
@@ -66,7 +67,9 @@ class TeamEditViewController: ViewController<TeamEditView> {
             cell.actionButton.tag = user.offset
             cell.actionButton.addTarget(self, action: #selector(removeParticipant), for: .touchUpInside)
             
-            cell.contentView.layer.borderWidth = team.ownerId == user.element.userId ? 1.0 : 0.0
+            if case .edit(let team) = type {
+                cell.contentView.layer.borderWidth = team.ownerId == user.element.userId ? 1.0 : 0.0
+            }
             
             mainView.contentView.participantsStackView.addArrangedSubview(cell)
         }
@@ -84,7 +87,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
         let teamCreateRequest = TeamCreateRequest(competitionId: competition.id,
                                                   name: name,
                                                   status: status,
-                                                  userIds: []) // TODO: добавить участников
+                                                  userIds: currentParticipants.map({ $0.userId }))
         provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
             switch result {
             case .success:
@@ -134,18 +137,13 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     @objc private func addParticipants() {
-        guard case .edit(let team) = type else {
-            return
-        }
-        
-        let availableCount = 5 - team.users.count
+        let availableCount = 5 - currentParticipants.count
         guard availableCount > 0 else {
             showError(text: "Достигнуто максимальное число участников")
             
             return
         }
         
-        var currentParticipants = team.users.map({ $0.user })
         if let index = currentParticipants.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
             currentParticipants.remove(at: index)
         }
@@ -165,12 +163,8 @@ class TeamEditViewController: ViewController<TeamEditView> {
     @objc private func removeParticipant(_ sender: UIButton) {
         UIImpactFeedbackGenerator().impactOccurred(intensity: 0.7)
         
-        guard case .edit(var team) = type else {
-            return
-        }
-        
-        team.users.remove(at: sender.tag)
-        type = .edit(team: team)
+        currentParticipants.remove(at: sender.tag)
+        mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
         updateParticipants()
     }
     
@@ -180,18 +174,13 @@ class TeamEditViewController: ViewController<TeamEditView> {
 extension TeamEditViewController: FindFriendsViewControllerDelegate {
     
     func findFriendsViewController(didSelect users: [User]) {
-        guard case .edit(var team) = type else {
-            return
+        currentParticipants = users
+        
+        if let user = UserSettings.user, type != .create {
+            currentParticipants.insert(user, at: 0)
         }
         
-        
-        team.users = users.map({ Participant(userId: $0.userId, teamId: team.id, createdAt: team.createAt, user: $0) })
-        
-        if let user = UserSettings.user {
-            team.users.insert(Participant(userId: user.userId, teamId: team.id, createdAt: team.createAt, user: user), at: 0)
-        }
-        
-        type = .edit(team: team)
+        mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
         updateParticipants()
     }
     

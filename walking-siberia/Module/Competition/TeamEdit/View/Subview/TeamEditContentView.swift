@@ -53,6 +53,11 @@ class TeamEditContentView: RootView {
         return button
     }()
     
+    private lazy var buttonStack = UIStackView(views: [
+        addParticipantsButton,
+        saveTeamButton
+    ], spacing: 8.0)
+    
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
@@ -61,8 +66,7 @@ class TeamEditContentView: RootView {
         addSubview(nameField)
         addSubview(closeTeamView)
         addSubview(closeTeamDescriptionLabel)
-        addSubview(addParticipantsButton)
-        addSubview(saveTeamButton)
+        addSubview(buttonStack)
         
         super.setup()
     }
@@ -95,16 +99,17 @@ class TeamEditContentView: RootView {
         }
         
         addParticipantsButton.snp.makeConstraints { make in
-            make.top.equalTo(participantsStackView.snp.bottom).offset(16.0)
-            make.left.right.equalToSuperview().inset(12.0)
             make.height.equalTo(38.0)
         }
         
         saveTeamButton.snp.makeConstraints { make in
-            make.top.equalTo(addParticipantsButton.snp.bottom).offset(8.0)
+            make.height.equalTo(38.0)
+        }
+        
+        buttonStack.snp.makeConstraints { make in
+            make.top.equalTo(participantsStackView.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview().inset(12.0)
             make.bottom.equalToSuperview().offset(-16.0)
-            make.height.equalTo(38.0)
         }
         
     }
