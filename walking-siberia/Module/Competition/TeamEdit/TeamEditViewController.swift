@@ -163,6 +163,8 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     @objc private func removeParticipant(_ sender: UIButton) {
+        UIImpactFeedbackGenerator().impactOccurred(intensity: 0.7)
+        
         guard case .edit(var team) = type else {
             return
         }
