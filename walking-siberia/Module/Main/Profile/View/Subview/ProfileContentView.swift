@@ -9,9 +9,25 @@ class ProfileContentView: RootView {
         
         return view
     }()
+    
+    var gradientLayer: CAGradientLayer? {
+        didSet {
+            if let gradientLayer = gradientLayer {
+                imageViewBackgroundView.layer.addSublayer(gradientLayer)
+            }
+        }
+    }
+    
+    let imageViewBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 44.0
+        view.layer.masksToBounds = true
+        
+        return view
+    }()
 
     let avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: R.image.person88())
+        let imageView = UIImageView()
         imageView.layer.cornerRadius = 44.0
         imageView.layer.masksToBounds = true
         
@@ -63,6 +79,7 @@ class ProfileContentView: RootView {
         addSubview(headerView)
         addSubview(nothingWasFoundLabel)
         
+        headerView.addSubview(imageViewBackgroundView)
         headerView.addSubview(avatarImageView)
         headerView.addSubview(nameLabel)
         headerView.addSubview(idLabel)
@@ -71,11 +88,21 @@ class ProfileContentView: RootView {
         super.setup()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer?.frame = imageViewBackgroundView.bounds
+    }
+    
     override func setupConstraints() {
         
         headerView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(256.0)
+        }
+        
+        imageViewBackgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(avatarImageView.snp.edges)
         }
         
         avatarImageView.snp.makeConstraints { make in
