@@ -46,8 +46,12 @@ class TeamViewController: ViewController<TeamView> {
             participantView.stepsCountLabel.text = "73 500 шагов"
             participantView.distanceLabel.text = "15 км"
             
-            participantView.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
-            participantView.gradientLayer = GradientHelper.shared.layer(userId: participant.userId)
+            if let url = participant.user.profile.avatar {
+                ImageLoader.setImage(url: url, imgView: participantView.imageView)
+            } else {
+                participantView.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
+                participantView.gradientLayer = GradientHelper.shared.layer(userId: participant.userId)
+            }
 
             if team.ownerId == participant.userId {
                 participantView.layer.borderWidth = 1.0

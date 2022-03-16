@@ -3,6 +3,14 @@ import SnapKit
 
 class TeamCell: UICollectionViewCell {
     
+    var gradientLayer: CAGradientLayer? {
+        didSet {
+            if let gradientLayer = gradientLayer {
+                imageViewBackgroundView.layer.addSublayer(gradientLayer)
+            }
+        }
+    }
+    
     let imageViewBackgroundView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 24.0
@@ -65,6 +73,12 @@ class TeamCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer?.frame = imageViewBackgroundView.bounds
     }
     
     private func setupConstraints() {
