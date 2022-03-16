@@ -18,16 +18,14 @@ class ProfileViewController: ViewController<ProfileView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadProfile()
-//        loadCompetitions()
+        loadCompetitions()
     }
     
     private func loadProfile() {
         provider.loadProfile { [weak self] result in
             switch result {
             case .success(let response):
-                if let user = response.data {
-                    UserSettings.user = user
-                }
+                UserSettings.user = response
                 self?.configure()
                 
             case .failure(let error):
@@ -40,7 +38,7 @@ class ProfileViewController: ViewController<ProfileView> {
         provider.loadCompetitions { [weak self] result in
             switch result {
             case .success(let response):
-                print(response)
+                self?.updateCompetitions(for: response)
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)

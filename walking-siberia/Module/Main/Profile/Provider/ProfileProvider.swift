@@ -2,9 +2,9 @@ import Foundation
 
 class ProfileProvider {
     
-    func loadProfile(completion: @escaping(Result<SuccessResponse<User>, ModelError>) -> Void) {
+    func loadProfile(completion: @escaping(Result<User, ModelError>) -> Void) {
         ProfileAPI.profileGet { response, error in
-            if let response = response {
+            if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
                 completion(.failure(ModelError(err: error)))
@@ -14,9 +14,9 @@ class ProfileProvider {
         }
     }
     
-    func loadCompetitions(completion: @escaping(Result<SuccessResponse<[Competition]>, ModelError>) -> Void) {
+    func loadCompetitions(completion: @escaping(Result<[Competition], ModelError>) -> Void) {
         CompetitionAPI.competitionGet { response, error in
-            if let response = response {
+            if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
                 completion(.failure(ModelError(err: error)))
