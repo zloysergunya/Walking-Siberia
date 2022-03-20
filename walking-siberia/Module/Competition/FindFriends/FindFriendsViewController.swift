@@ -32,8 +32,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Друзья"
-        
+        mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         mainView.searchBar.delegate = self
         
         adapter.collectionView = mainView.collectionView
@@ -42,6 +41,8 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         load(flush: true)
         checkContactsAccess()
@@ -117,7 +118,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         }
     }
     
-    private func close() {
+    @objc private func close() {
         navigationController?.popViewController(animated: true)
     }
     
@@ -158,7 +159,7 @@ extension FindFriendsViewController: UISearchBarDelegate {
 extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
     
     func findFriendsSectionController(didSelect user: User) {
-        
+        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
     }
     
     func findFriendsSectionController(didSelectAction button: UIButton, user: User) {

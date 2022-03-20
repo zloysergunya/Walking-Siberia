@@ -27,20 +27,27 @@ class TeamEditViewController: ViewController<TeamEditView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         mainView.contentView.addParticipantsButton.addTarget(self, action: #selector(addParticipants), for: .touchUpInside)
         mainView.contentView.saveTeamButton.addTarget(self, action: #selector(saveTeam), for: .touchUpInside)
         
         switch type {
         case .create:
-            title = "Создание команды"
+            mainView.navBar.title = "Создание команды"
             
         case .edit(let team):
-            title = "Редактирование команды"
+            mainView.navBar.title = "Редактирование команды"
             mainView.contentView.nameField.text = team.name
             currentParticipants = team.users.map({ $0.user })
             mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
             updateParticipants()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func updateParticipants() {
@@ -70,6 +77,10 @@ class TeamEditViewController: ViewController<TeamEditView> {
             if case .edit(let team) = type {
                 cell.contentView.layer.borderWidth = team.ownerId == user.element.userId ? 1.0 : 0.0
             }
+            
+            cell.tag = user.offset
+            cell.gestureRecognizers?.removeAll()
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openUserProfile)))
             
             mainView.contentView.participantsStackView.addArrangedSubview(cell)
         }
@@ -132,7 +143,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
         }
     }
     
-    private func close() {
+    @objc private func close() {
         navigationController?.popViewController(animated: true)
     }
     
@@ -166,6 +177,14 @@ class TeamEditViewController: ViewController<TeamEditView> {
         currentParticipants.remove(at: sender.tag)
         mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
         updateParticipants()
+    }
+    
+    @objc private func openUserProfile(_ gestureRecognizer: UIGestureRecognizer) {
+        guard let index = gestureRecognizer.view?.tag else {
+            return
+        }
+        
+        navigationController?.pushViewController(UserProfileViewController(user: currentParticipants[index]), animated: true)
     }
     
 }

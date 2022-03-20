@@ -3,6 +3,18 @@ import SnapKit
 
 class FindFriendsView: RootView {
     
+    let navBar: NavBarView = {
+        let view = NavBarView()
+        view.backgroundColor = R.color.greyBackground()
+        let configuration = NavBarConfiguration(title: "Друзья",
+                                                subtitle: nil,
+                                                leftButtonImage: R.image.chevronLeft24(),
+                                                rightButtonImage: nil)
+        view.configure(with: configuration)
+        
+        return view
+    }()
+    
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchTextField.font = R.font.geometriaMedium(size: 14.0)
@@ -29,6 +41,7 @@ class FindFriendsView: RootView {
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
+        addSubview(navBar)
         addSubview(searchBar)
         addSubview(collectionView)
         
@@ -37,8 +50,13 @@ class FindFriendsView: RootView {
     
     override func setupConstraints() {
         
+        navBar.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
+        }
+        
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(4.0)
+            make.top.equalTo(navBar.snp.bottom).offset(4.0)
             make.left.right.equalToSuperview().inset(12.0)
         }
         

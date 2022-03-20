@@ -68,6 +68,7 @@ class ParticipantView: RootView {
     
     override func setup() {
         backgroundColor = .white
+        isUserInteractionEnabled = true
         
         layer.cornerRadius = 12.0
         layer.borderWidth = 0.0

@@ -8,6 +8,7 @@ struct User: Codable {
     let typeLabel: String
     let deviceId: String?
     var profile: Profile
+    var isFriend: Bool?
     let isFillProfile: Bool
 }
 
@@ -20,6 +21,7 @@ extension User: Equatable {
         && lhs.type == rhs.type
         && lhs.deviceId == rhs.deviceId
         && lhs.profile == rhs.profile
+        && lhs.isFriend == rhs.isFriend
     }
     
 }

@@ -27,6 +27,8 @@ class PagerViewController: PageMenuController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
         initialViewControllers.forEach({ $0.viewWillAppear(animated) })
     }
     

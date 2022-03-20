@@ -1,11 +1,11 @@
 import UIKit
 import SnapKit
 
-class TeamView: RootView {
+class UserProfileView: RootView {
     
     let navBar: NavBarView = {
         let view = NavBarView()
-        view.backgroundColor = R.color.greyBackground()
+        view.backgroundColor = .clear
         let configuration = NavBarConfiguration(title: nil,
                                                 subtitle: nil,
                                                 leftButtonImage: R.image.chevronLeft24(),
@@ -23,7 +23,7 @@ class TeamView: RootView {
         return scrollView
     }()
     
-    let contentView = TeamContentView()
+    let contentView = UserProfileContentView()
         
     override func setup() {
         backgroundColor = R.color.greyBackground()
@@ -44,8 +44,7 @@ class TeamView: RootView {
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(navBar.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in

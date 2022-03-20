@@ -45,4 +45,61 @@ class FriendsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func friendsViewUidGet(userId: Int, completion: @escaping ((_ data: SuccessResponse<User>?,_ error: ErrorResponse?) -> Void)) {
+        friendsViewUidGetWithRequestBuilder(userId: userId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func friendsViewUidGetWithRequestBuilder(userId: Int) -> RequestBuilder<SuccessResponse<User>> {
+        var path = "/friends/view/{uid}"
+        let routeIdPreEscape = "\(userId)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<User>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
+    class func friendsAddPost(friendsAddRequest: FriendsAddRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        friendsAddPostWithRequestBuilder(friendsAddRequest: friendsAddRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func friendsAddPostWithRequestBuilder(friendsAddRequest: FriendsAddRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/friends/add"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: friendsAddRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    class func friendsDeletePost(friendsDeleteRequest: FriendsDeleteRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        friendsDeletePostWithRequestBuilder(friendsDeleteRequest: friendsDeleteRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func friendsDeletePostWithRequestBuilder(friendsDeleteRequest: FriendsDeleteRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/friends/delete"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: friendsDeleteRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
 }

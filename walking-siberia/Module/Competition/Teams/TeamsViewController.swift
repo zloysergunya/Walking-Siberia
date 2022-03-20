@@ -47,6 +47,8 @@ class TeamsViewController: ViewController<TeamsView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
         loadTeams(flush: true)
         updateCompetition()
     }
@@ -223,8 +225,8 @@ extension TeamsViewController: ListAdapterDataSource {
 extension TeamsViewController: TeamSectionControllerDelegate {
     
     func teamSectionController(didSelect team: Team) {
-        if UserCategory(rawValue: team.type) == .manWithHIA {
-            // TODO: open user profile
+        if UserCategory(rawValue: team.type) == .manWithHIA, let user = team.users.first?.user {
+            navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
         } else {
             navigationController?.pushViewController(TeamViewController(team: team, competition: competition), animated: true)
         }

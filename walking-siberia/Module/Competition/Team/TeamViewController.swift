@@ -21,41 +21,48 @@ class TeamViewController: ViewController<TeamView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         mainView.contentView.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
         mainView.contentView.deleteTeamButton.addTarget(self, action: #selector(deleteTeamAction), for: .touchUpInside)
         
         configure()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         updateTeam()
     }
     
     private func configure() {
-        title = team.name
+        mainView.navBar.title = team.name
         
         mainView.contentView.participantsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-        team.users.forEach { participant in
+        team.users.enumerated().forEach { user in
             let participantView = ParticipantView()
-            let fullName = "\(participant.user.profile.firstName) \(participant.user.profile.lastName)"
+            let fullName = "\(user.element.user.profile.firstName) \(user.element.user.profile.lastName)"
             participantView.nameLabel.text = fullName
-            let userCategory: UserCategory? = .init(rawValue: participant.user.type)
+            let userCategory: UserCategory? = .init(rawValue: user.element.user.type)
             participantView.categoryLabel.text = userCategory?.categoryName
             participantView.stepsCountLabel.text = "73 500 шагов"
             participantView.distanceLabel.text = "15 км"
             
-            if let url = participant.user.profile.avatar {
+            if let url = user.element.user.profile.avatar {
                 ImageLoader.setImage(url: url, imgView: participantView.imageView)
             } else {
                 participantView.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
-                participantView.gradientLayer = GradientHelper.shared.layer(userId: participant.userId)
+                participantView.gradientLayer = GradientHelper.shared.layer(userId: user.element.userId)
             }
 
-            if team.ownerId == participant.userId {
+            if team.ownerId == user.element.userId {
                 participantView.layer.borderWidth = 1.0
             }
+            
+            participantView.tag = user.offset
+            participantView.gestureRecognizers?.removeAll()
+            participantView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openUserProfile)))
             
             mainView.contentView.participantsStackView.addArrangedSubview(participantView)
         }
@@ -167,7 +174,7 @@ class TeamViewController: ViewController<TeamView> {
         }
     }
     
-    private func close() {
+    @objc private func close() {
         navigationController?.popViewController(animated: true)
     }
     
@@ -185,6 +192,14 @@ class TeamViewController: ViewController<TeamView> {
         dialog(title: "Удалить команду?", accessText: "Да", cancelText: "Нет", onAgree: { [weak self] _ in
             self?.deleteTeam()
         })
+    }
+    
+    @objc private func openUserProfile(_ gestureRecognizer: UIGestureRecognizer) {
+        guard let index = gestureRecognizer.view?.tag else {
+            return
+        }
+        
+        navigationController?.pushViewController(UserProfileViewController(user: team.users[index].user), animated: true)
     }
     
 }

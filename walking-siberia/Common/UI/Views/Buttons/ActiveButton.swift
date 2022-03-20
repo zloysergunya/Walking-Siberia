@@ -15,28 +15,19 @@ class ActiveButton: UIButton {
     
     var isLoading = false {
         didSet {
-            isUserInteractionEnabled = !isLoading
-            if isLoading {
-                imageView?.removeFromSuperview()
-                titleLabel?.removeFromSuperview()
-            } else {
-                if let imageView = imageView {
-                    addSubview(imageView)
-                }
-                if let titleLabel = titleLabel {
-                    addSubview(titleLabel)
-                }
-            }
-            
-            isLoading ? loaderView.startAnimating() : loaderView.stopAnimating()
-            loaderView.isHidden = !isLoading
+            updateLoadingState()
         }
     }
     
     var isActive: Bool = true {
         didSet {
-            backgroundColor = isActive ? R.color.activeElements() : R.color.greyText()
-            isUserInteractionEnabled = isActive
+            updateActiveState()
+        }
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            updateSelectedState()
         }
     }
     
@@ -47,6 +38,8 @@ class ActiveButton: UIButton {
         titleLabel?.font = R.font.geometriaBold(size: 12.0)
         backgroundColor = R.color.activeElements()
         layer.cornerRadius = 5.0
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.clear.cgColor
         
         addSubview(loaderView)
         
@@ -61,6 +54,35 @@ class ActiveButton: UIButton {
         loaderView.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+    }
+    
+    private func updateLoadingState() {
+        isUserInteractionEnabled = !isLoading
+        if isLoading {
+            imageView?.removeFromSuperview()
+            titleLabel?.removeFromSuperview()
+        } else {
+            if let imageView = imageView {
+                addSubview(imageView)
+            }
+            if let titleLabel = titleLabel {
+                addSubview(titleLabel)
+            }
+        }
+        
+        isLoading ? loaderView.startAnimating() : loaderView.stopAnimating()
+        loaderView.isHidden = !isLoading
+    }
+    
+    private func updateActiveState() {
+        backgroundColor = isActive ? R.color.activeElements() : R.color.greyText()
+        isUserInteractionEnabled = isActive
+    }
+    
+    private func updateSelectedState() {
+        backgroundColor = isSelected ? .white : R.color.activeElements()
+        setTitleColor(isSelected ? R.color.activeElements() : .white, for: .normal)
+        layer.borderColor = isSelected ? R.color.activeElements()?.cgColor : UIColor.clear.cgColor
     }
     
 }
