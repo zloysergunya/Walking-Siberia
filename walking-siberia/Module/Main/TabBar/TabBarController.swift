@@ -20,15 +20,15 @@ class TabBarController: UITabBarController {
         routesViewController.tabBarItem.title = "Маршруты"
         routesViewController.tabBarItem.image = R.image.tabRoutes()?.withTintColor(unselectedColor)
         routesViewController.tabBarItem.selectedImage = R.image.tabRoutes()?.withTintColor(selectedColor)
+                
+        let competitionsPagerViewController = PagerViewController(type: .competitions)
+        competitionsPagerViewController.tabBarItem.image = R.image.tabCompetition()?.withTintColor(unselectedColor)
+        competitionsPagerViewController.tabBarItem.selectedImage = R.image.tabCompetition()?.withTintColor(selectedColor)
         
-        let currentCompetitionViewController = CompetitionsViewController(type: .current)
-        let endedCompetitionViewController = CompetitionsViewController(type: .ended)
-        let initialViewControllers: [UIViewController] = [currentCompetitionViewController, endedCompetitionViewController]
-        let pagerViewController = PagerViewController(initialViewControllers: initialViewControllers,
-                                                      options: StyledPageMenuOptions(for: initialViewControllers.count))
-        pagerViewController.title = "Соревнования"
-        pagerViewController.tabBarItem.image = R.image.tabCompetition()?.withTintColor(unselectedColor)
-        pagerViewController.tabBarItem.selectedImage = R.image.tabCompetition()?.withTintColor(selectedColor)
+        let informationPagerViewController = PagerViewController(type: .information)
+        informationPagerViewController.tabBarItem.title = "Информация"
+        informationPagerViewController.tabBarItem.image = R.image.tabInformation()?.withTintColor(unselectedColor)
+        informationPagerViewController.tabBarItem.selectedImage = R.image.tabInformation()?.withTintColor(selectedColor)
         
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem.title = "Профиль"
@@ -36,7 +36,8 @@ class TabBarController: UITabBarController {
         profileViewController.tabBarItem.selectedImage = R.image.tabProfile()?.withTintColor(selectedColor)
         
         viewControllers = [SwipeNavigationController(rootViewController: routesViewController),
-                           SwipeNavigationController(rootViewController: pagerViewController),
+                           SwipeNavigationController(rootViewController: competitionsPagerViewController),
+                           SwipeNavigationController(rootViewController: informationPagerViewController),
                            SwipeNavigationController(rootViewController: profileViewController)]
         
         viewControllers?.forEach({ viewController in

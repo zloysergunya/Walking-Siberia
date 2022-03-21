@@ -81,6 +81,29 @@
 		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
 		C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC127DE0A9900CD6465 /* TeamContentView.swift */; };
 		C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */; };
+		C49AFBA927E6F76A009787AB /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBA827E6F76A009787AB /* HealthService.swift */; };
+		C49AFBAC27E6FE64009787AB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49AFBAB27E6FE64009787AB /* HealthKit.framework */; };
+		C49AFBAE27E6FF79009787AB /* WalkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBAD27E6FF79009787AB /* WalkAPI.swift */; };
+		C49AFBB127E6FFC6009787AB /* WalkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBB027E6FFC6009787AB /* WalkRequest.swift */; };
+		C49AFBB327E70954009787AB /* Date+DatesBeetwenTwoDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBB227E70954009787AB /* Date+DatesBeetwenTwoDates.swift */; };
+		C49AFBB827E826B8009787AB /* UserStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBB627E826B8009787AB /* UserStatisticViewController.swift */; };
+		C49AFBB927E826B8009787AB /* UserStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBB727E826B8009787AB /* UserStatisticView.swift */; };
+		C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */; };
+		C49AFBBF27E873E8009787AB /* UserStatisticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBBE27E873E8009787AB /* UserStatisticProvider.swift */; };
+		C49AFBC227E87653009787AB /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC127E87653009787AB /* Statistic.swift */; };
+		C49AFBC427E87660009787AB /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC327E87660009787AB /* Month.swift */; };
+		C49AFBC827E8808F009787AB /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC627E8808F009787AB /* ArticlesViewController.swift */; };
+		C49AFBC927E8808F009787AB /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC727E8808F009787AB /* ArticlesView.swift */; };
+		C49AFBCD27E8812B009787AB /* ArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBCC27E8812B009787AB /* ArticlesProvider.swift */; };
+		C49AFBCF27E88152009787AB /* ArticleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBCE27E88152009787AB /* ArticleAPI.swift */; };
+		C49AFBD227E881B1009787AB /* ArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBD127E881B1009787AB /* ArticleRequest.swift */; };
+		C49AFBD527E88418009787AB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBD427E88418009787AB /* Article.swift */; };
+		C49AFBD927E88593009787AB /* ArticleSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBD827E88593009787AB /* ArticleSectionModel.swift */; };
+		C49AFBDB27E886A5009787AB /* ArticlesSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBDA27E886A5009787AB /* ArticlesSectionController.swift */; };
+		C49AFBDE27E88747009787AB /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBDD27E88747009787AB /* ArticleCell.swift */; };
+		C49AFBE327E88ED3009787AB /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBE127E88ED3009787AB /* ArticleViewController.swift */; };
+		C49AFBE427E88ED3009787AB /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBE227E88ED3009787AB /* ArticleView.swift */; };
+		C49AFBEA27E893DA009787AB /* ArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBE827E893DA009787AB /* ArticleContentView.swift */; };
 		C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */; };
 		C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513727B0ECD000C95344 /* OnboardingView.swift */; };
 		C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */; };
@@ -274,6 +297,30 @@
 		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		C4979AC127DE0A9900CD6465 /* TeamContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamContentView.swift; sourceTree = "<group>"; };
 		C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantView.swift; sourceTree = "<group>"; };
+		C49AFBA827E6F76A009787AB /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
+		C49AFBAA27E6FE63009787AB /* walking-siberia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "walking-siberia.entitlements"; sourceTree = "<group>"; };
+		C49AFBAB27E6FE64009787AB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		C49AFBAD27E6FF79009787AB /* WalkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkAPI.swift; sourceTree = "<group>"; };
+		C49AFBB027E6FFC6009787AB /* WalkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkRequest.swift; sourceTree = "<group>"; };
+		C49AFBB227E70954009787AB /* Date+DatesBeetwenTwoDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DatesBeetwenTwoDates.swift"; sourceTree = "<group>"; };
+		C49AFBB627E826B8009787AB /* UserStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticViewController.swift; sourceTree = "<group>"; };
+		C49AFBB727E826B8009787AB /* UserStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticView.swift; sourceTree = "<group>"; };
+		C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+InitFromColor.swift"; sourceTree = "<group>"; };
+		C49AFBBE27E873E8009787AB /* UserStatisticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticProvider.swift; sourceTree = "<group>"; };
+		C49AFBC127E87653009787AB /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
+		C49AFBC327E87660009787AB /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		C49AFBC627E8808F009787AB /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		C49AFBC727E8808F009787AB /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
+		C49AFBCC27E8812B009787AB /* ArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesProvider.swift; sourceTree = "<group>"; };
+		C49AFBCE27E88152009787AB /* ArticleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleAPI.swift; sourceTree = "<group>"; };
+		C49AFBD127E881B1009787AB /* ArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRequest.swift; sourceTree = "<group>"; };
+		C49AFBD427E88418009787AB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		C49AFBD827E88593009787AB /* ArticleSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSectionModel.swift; sourceTree = "<group>"; };
+		C49AFBDA27E886A5009787AB /* ArticlesSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesSectionController.swift; sourceTree = "<group>"; };
+		C49AFBDD27E88747009787AB /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		C49AFBE127E88ED3009787AB /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		C49AFBE227E88ED3009787AB /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		C49AFBE827E893DA009787AB /* ArticleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentView.swift; sourceTree = "<group>"; };
 		C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C4A1513727B0ECD000C95344 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Bold.ttf"; sourceTree = "<group>"; };
@@ -396,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AE455C44FAC7072F8EB820D /* Pods_walking_siberia.framework in Frameworks */,
+				C49AFBAC27E6FE64009787AB /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +453,7 @@
 		8D4FCBE59EBFC4B0D62BFA29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBAB27E6FE64009787AB /* HealthKit.framework */,
 				8AFB00D0C77B84E919FA658D /* Pods_walking_siberia.framework */,
 			);
 			name = Frameworks;
@@ -521,6 +570,7 @@
 		C408EA0E27AFFA07004B82CB /* walking-siberia */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBAA27E6FE63009787AB /* walking-siberia.entitlements */,
 				C408EA6527AFFC8C004B82CB /* Application */,
 				C408EA2327AFFC8C004B82CB /* Common */,
 				C408EAA727AFFE27004B82CB /* Module */,
@@ -619,6 +669,7 @@
 				C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */,
 				C4C9336727DCC4820068D8D2 /* UIImage+BgColorFromText.swift */,
 				C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */,
+				C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -631,6 +682,7 @@
 				C408EA3727AFFC8C004B82CB /* UserDefaults+SaveStruct.swift */,
 				C408EA3827AFFC8C004B82CB /* Bundle+Current.swift */,
 				C4979AB827DE097500CD6465 /* String+Initials.swift */,
+				C49AFBB227E70954009787AB /* Date+DatesBeetwenTwoDates.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -646,6 +698,8 @@
 		C408EA3B27AFFC8C004B82CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBD327E88410009787AB /* Articles */,
+				C49AFBC027E87647009787AB /* Statistics */,
 				C400F45427D5FE3500B1EAD9 /* Competition */,
 				C408EA3C27AFFC8C004B82CB /* LoadingState.swift */,
 				C408EA3D27AFFC8C004B82CB /* ModelError.swift */,
@@ -698,6 +752,8 @@
 				C4D9A87727CA4C8A004B552A /* CompetitionAPI.swift */,
 				C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */,
 				C478448A27E1C8B200D9E275 /* FriendsAPI.swift */,
+				C49AFBAD27E6FF79009787AB /* WalkAPI.swift */,
+				C49AFBCE27E88152009787AB /* ArticleAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -705,6 +761,8 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBD027E88180009787AB /* ArticleAPI */,
+				C49AFBAF27E6FF7E009787AB /* WalkAPI */,
 				C478448C27E1C91200D9E275 /* FriendsAPI */,
 				C4C9335B27DCB2650068D8D2 /* TeamsAPI */,
 				C408EA5827AFFC8C004B82CB /* AuthAPI */,
@@ -779,6 +837,8 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBC527E87FA3009787AB /* Information */,
+				C49AFBB427E8266B009787AB /* Statistic */,
 				C4C385B827E62F5E005D48FD /* UserProfile */,
 				C4E077B127D7053800D1711B /* Competition */,
 				C400F44A27D5EDE900B1EAD9 /* Pager */,
@@ -943,6 +1003,169 @@
 			children = (
 				C4979AC127DE0A9900CD6465 /* TeamContentView.swift */,
 				C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		C49AFBA727E6F72C009787AB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBA827E6F76A009787AB /* HealthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C49AFBAF27E6FF7E009787AB /* WalkAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBB027E6FFC6009787AB /* WalkRequest.swift */,
+			);
+			path = WalkAPI;
+			sourceTree = "<group>";
+		};
+		C49AFBB427E8266B009787AB /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBB527E826A7009787AB /* UserStatistic */,
+			);
+			path = Statistic;
+			sourceTree = "<group>";
+		};
+		C49AFBB527E826A7009787AB /* UserStatistic */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBBD27E873DA009787AB /* Provider */,
+				C49AFBBC27E873D5009787AB /* View */,
+				C49AFBB627E826B8009787AB /* UserStatisticViewController.swift */,
+			);
+			path = UserStatistic;
+			sourceTree = "<group>";
+		};
+		C49AFBBC27E873D5009787AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBB727E826B8009787AB /* UserStatisticView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C49AFBBD27E873DA009787AB /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBBE27E873E8009787AB /* UserStatisticProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C49AFBC027E87647009787AB /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBC127E87653009787AB /* Statistic.swift */,
+				C49AFBC327E87660009787AB /* Month.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		C49AFBC527E87FA3009787AB /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBE027E88EC7009787AB /* Article */,
+				C49AFBDF27E88EB6009787AB /* Articles */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		C49AFBCA27E88093009787AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBDC27E88733009787AB /* Cell */,
+				C49AFBC727E8808F009787AB /* ArticlesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C49AFBCB27E8811F009787AB /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBCC27E8812B009787AB /* ArticlesProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C49AFBD027E88180009787AB /* ArticleAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBD127E881B1009787AB /* ArticleRequest.swift */,
+			);
+			path = ArticleAPI;
+			sourceTree = "<group>";
+		};
+		C49AFBD327E88410009787AB /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBD427E88418009787AB /* Article.swift */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		C49AFBD627E884C9009787AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBD827E88593009787AB /* ArticleSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C49AFBD727E884CE009787AB /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBDA27E886A5009787AB /* ArticlesSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C49AFBDC27E88733009787AB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBDD27E88747009787AB /* ArticleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C49AFBDF27E88EB6009787AB /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBD727E884CE009787AB /* Section */,
+				C49AFBD627E884C9009787AB /* Model */,
+				C49AFBCB27E8811F009787AB /* Provider */,
+				C49AFBCA27E88093009787AB /* View */,
+				C49AFBC627E8808F009787AB /* ArticlesViewController.swift */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		C49AFBE027E88EC7009787AB /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBE527E893BE009787AB /* View */,
+				C49AFBE127E88ED3009787AB /* ArticleViewController.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		C49AFBE527E893BE009787AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBE627E893C4009787AB /* Subview */,
+				C49AFBE227E88ED3009787AB /* ArticleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C49AFBE627E893C4009787AB /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBE827E893DA009787AB /* ArticleContentView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -1330,6 +1553,7 @@
 		C4D8EC8C27C3639E00BF0767 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBA727E6F72C009787AB /* Service */,
 				C4D8ECA227C37CA900BF0767 /* Section */,
 				C4D8EC9F27C37B5A00BF0767 /* Model */,
 				C4D8EC9227C363EE00BF0767 /* Provider */,
@@ -1784,6 +2008,7 @@
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
 				C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
+				C49AFBD227E881B1009787AB /* ArticleRequest.swift in Sources */,
 				C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */,
 				C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */,
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
@@ -1800,6 +2025,7 @@
 				C4D9A86E27C90E3A004B552A /* ProfileViewController.swift in Sources */,
 				C4C385C027E62F96005D48FD /* UserProfileContentView.swift in Sources */,
 				C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */,
+				C49AFBDB27E886A5009787AB /* ArticlesSectionController.swift in Sources */,
 				C408EA9B27AFFC8C004B82CB /* Models.swift in Sources */,
 				C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
@@ -1825,6 +2051,7 @@
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
 				C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */,
 				C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */,
+				C49AFBC827E8808F009787AB /* ArticlesViewController.swift in Sources */,
 				C4D9A86F27C90E3A004B552A /* ProfileView.swift in Sources */,
 				C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */,
 				C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */,
@@ -1832,6 +2059,7 @@
 				C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
+				C49AFBB127E6FFC6009787AB /* WalkRequest.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
 				C4C385BB27E62F73005D48FD /* UserProfileViewController.swift in Sources */,
 				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
@@ -1844,13 +2072,16 @@
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
 				C478449527E1D34600D9E275 /* FriendsSyncContactsRequest.swift in Sources */,
 				C4D8EC9E27C36C9400BF0767 /* Place.swift in Sources */,
+				C49AFBB827E826B8009787AB /* UserStatisticViewController.swift in Sources */,
 				C408EAB127B000D7004B82CB /* Constants.swift in Sources */,
 				C478448327E1C23800D9E275 /* FindFriendsView.swift in Sources */,
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
+				C49AFBA927E6F76A009787AB /* HealthService.swift in Sources */,
 				C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */,
 				C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
 				C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */,
+				C49AFBD527E88418009787AB /* Article.swift in Sources */,
 				C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */,
 				C478449D27E1E99F00D9E275 /* AddButton.swift in Sources */,
 				C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */,
@@ -1858,13 +2089,17 @@
 				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
 				C4C385C527E645E2005D48FD /* UserProfileProvider.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
+				C49AFBD927E88593009787AB /* ArticleSectionModel.swift in Sources */,
 				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
+				C49AFBDE27E88747009787AB /* ArticleCell.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
 				C400F46027D6121B00B1EAD9 /* CompetitionsSectionController.swift in Sources */,
 				C4E077BF27D78DE000D1711B /* CompetitionPartnerView.swift in Sources */,
 				C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */,
+				C49AFBE427E88ED3009787AB /* ArticleView.swift in Sources */,
 				C4DA0D3A27DEF1B100066965 /* TeamJoinRequest.swift in Sources */,
+				C49AFBE327E88ED3009787AB /* ArticleViewController.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
@@ -1885,6 +2120,7 @@
 				C4C9334D27DCAD720068D8D2 /* TeamsViewController.swift in Sources */,
 				C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */,
 				C4D9A87427C91330004B552A /* ProfileContentView.swift in Sources */,
+				C49AFBCD27E8812B009787AB /* ArticlesProvider.swift in Sources */,
 				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
 				C4D8EC9027C363B200BF0767 /* RoutesView.swift in Sources */,
@@ -1897,13 +2133,17 @@
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */,
+				C49AFBCF27E88152009787AB /* ArticleAPI.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
 				C4C9335F27DCB5480068D8D2 /* TeamSectionController.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
 				C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */,
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
+				C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */,
 				C4D8EC9427C363F900BF0767 /* RoutesProvider.swift in Sources */,
 				C4D8EC9927C364EA00BF0767 /* Route.swift in Sources */,
+				C49AFBC427E87660009787AB /* Month.swift in Sources */,
+				C49AFBAE27E6FF79009787AB /* WalkAPI.swift in Sources */,
 				C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */,
 				C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */,
 				C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */,
@@ -1913,12 +2153,14 @@
 				C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */,
 				C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */,
 				C4DA0D4C27DF13F500066965 /* TeamEditContentView.swift in Sources */,
+				C49AFBC227E87653009787AB /* Statistic.swift in Sources */,
 				C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
 				C4D8EC9627C3647900BF0767 /* MapsAPI.swift in Sources */,
 				C4C385C227E64332005D48FD /* SocialButton.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
+				C49AFBBF27E873E8009787AB /* UserStatisticProvider.swift in Sources */,
 				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
 				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,
 				C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */,
@@ -1940,6 +2182,7 @@
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
 				C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */,
 				C478448E27E1C92000D9E275 /* FriendsRequest.swift in Sources */,
+				C49AFBC927E8808F009787AB /* ArticlesView.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
 				C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */,
 				C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */,
@@ -1952,7 +2195,10 @@
 				C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */,
 				C4C385C927E64A66005D48FD /* FriendsDeleteRequest.swift in Sources */,
 				C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */,
+				C49AFBB327E70954009787AB /* Date+DatesBeetwenTwoDates.swift in Sources */,
+				C49AFBEA27E893DA009787AB /* ArticleContentView.swift in Sources */,
 				C408EA8227AFFC8C004B82CB /* AlamofireImplementations.swift in Sources */,
+				C49AFBB927E826B8009787AB /* UserStatisticView.swift in Sources */,
 				C4A1514E27B0FB9300C95344 /* PhoneAuthViewController.swift in Sources */,
 				C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */,
 				C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */,
@@ -2089,6 +2335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "walking-siberia/walking-siberia.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BU2XWB73A2;
@@ -2120,6 +2367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "walking-siberia/walking-siberia.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BU2XWB73A2;

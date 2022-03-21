@@ -4,6 +4,10 @@
 <dict>
 	<key>NSContactsUsageDescription</key>
 	<string>Это позволит найти друзей внутри приложения. Контакты хранятся на наших серверах, другие пользователи не получат к ним доступ</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Это необходимо для отправки количества ваших шагов для участник в соревнованиях</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Это необходимо для получения количества ваших шагов для участник в соревнованиях</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Geometria-Regular.ttf</string>
