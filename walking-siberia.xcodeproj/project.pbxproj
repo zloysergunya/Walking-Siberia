@@ -104,6 +104,14 @@
 		C49AFBE327E88ED3009787AB /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBE127E88ED3009787AB /* ArticleViewController.swift */; };
 		C49AFBE427E88ED3009787AB /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBE227E88ED3009787AB /* ArticleView.swift */; };
 		C49AFBEA27E893DA009787AB /* ArticleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBE827E893DA009787AB /* ArticleContentView.swift */; };
+		C49AFBEE27E89CC8009787AB /* TrainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBEC27E89CC8009787AB /* TrainersViewController.swift */; };
+		C49AFBEF27E89CC8009787AB /* TrainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBED27E89CC8009787AB /* TrainersView.swift */; };
+		C49AFBF527E89CF8009787AB /* TrainersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBF427E89CF8009787AB /* TrainersProvider.swift */; };
+		C49AFBF727E89DC3009787AB /* TrainersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBF627E89DC3009787AB /* TrainersAPI.swift */; };
+		C49AFBFA27E89FA2009787AB /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBF927E89FA2009787AB /* Trainer.swift */; };
+		C49AFBFC27E8A21D009787AB /* TrainerSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBFB27E8A21D009787AB /* TrainerSectionModel.swift */; };
+		C49AFBFE27E8A80D009787AB /* TrainersSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBFD27E8A80D009787AB /* TrainersSectionController.swift */; };
+		C49AFC0127E8A872009787AB /* TrainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFC0027E8A872009787AB /* TrainerCell.swift */; };
 		C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */; };
 		C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1513727B0ECD000C95344 /* OnboardingView.swift */; };
 		C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */; };
@@ -321,6 +329,14 @@
 		C49AFBE127E88ED3009787AB /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		C49AFBE227E88ED3009787AB /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		C49AFBE827E893DA009787AB /* ArticleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentView.swift; sourceTree = "<group>"; };
+		C49AFBEC27E89CC8009787AB /* TrainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersViewController.swift; sourceTree = "<group>"; };
+		C49AFBED27E89CC8009787AB /* TrainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersView.swift; sourceTree = "<group>"; };
+		C49AFBF427E89CF8009787AB /* TrainersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersProvider.swift; sourceTree = "<group>"; };
+		C49AFBF627E89DC3009787AB /* TrainersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersAPI.swift; sourceTree = "<group>"; };
+		C49AFBF927E89FA2009787AB /* Trainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
+		C49AFBFB27E8A21D009787AB /* TrainerSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerSectionModel.swift; sourceTree = "<group>"; };
+		C49AFBFD27E8A80D009787AB /* TrainersSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersSectionController.swift; sourceTree = "<group>"; };
+		C49AFC0027E8A872009787AB /* TrainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerCell.swift; sourceTree = "<group>"; };
 		C4A1513427B0ECB100C95344 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C4A1513727B0ECD000C95344 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C4A1513E27B0F3D000C95344 /* Geometria-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geometria-Bold.ttf"; sourceTree = "<group>"; };
@@ -698,6 +714,7 @@
 		C408EA3B27AFFC8C004B82CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBF827E89F9B009787AB /* Trainers */,
 				C49AFBD327E88410009787AB /* Articles */,
 				C49AFBC027E87647009787AB /* Statistics */,
 				C400F45427D5FE3500B1EAD9 /* Competition */,
@@ -754,6 +771,7 @@
 				C478448A27E1C8B200D9E275 /* FriendsAPI.swift */,
 				C49AFBAD27E6FF79009787AB /* WalkAPI.swift */,
 				C49AFBCE27E88152009787AB /* ArticleAPI.swift */,
+				C49AFBF627E89DC3009787AB /* TrainersAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -1069,6 +1087,7 @@
 		C49AFBC527E87FA3009787AB /* Information */ = {
 			isa = PBXGroup;
 			children = (
+				C49AFBEB27E89CBC009787AB /* Trainers */,
 				C49AFBE027E88EC7009787AB /* Article */,
 				C49AFBDF27E88EB6009787AB /* Articles */,
 			);
@@ -1168,6 +1187,67 @@
 				C49AFBE827E893DA009787AB /* ArticleContentView.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		C49AFBEB27E89CBC009787AB /* Trainers */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBF327E89CEB009787AB /* Section */,
+				C49AFBF227E89CE7009787AB /* Model */,
+				C49AFBF127E89CE2009787AB /* Provider */,
+				C49AFBF027E89CCD009787AB /* View */,
+				C49AFBEC27E89CC8009787AB /* TrainersViewController.swift */,
+			);
+			path = Trainers;
+			sourceTree = "<group>";
+		};
+		C49AFBF027E89CCD009787AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBFF27E8A866009787AB /* Cell */,
+				C49AFBED27E89CC8009787AB /* TrainersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C49AFBF127E89CE2009787AB /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBF427E89CF8009787AB /* TrainersProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C49AFBF227E89CE7009787AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBFB27E8A21D009787AB /* TrainerSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C49AFBF327E89CEB009787AB /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBFD27E8A80D009787AB /* TrainersSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C49AFBF827E89F9B009787AB /* Trainers */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBF927E89FA2009787AB /* Trainer.swift */,
+			);
+			path = Trainers;
+			sourceTree = "<group>";
+		};
+		C49AFBFF27E8A866009787AB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFC0027E8A872009787AB /* TrainerCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C4A1513327B0EC9500C95344 /* Onboarding */ = {
@@ -2023,6 +2103,7 @@
 				C4A1513827B0ECD000C95344 /* OnboardingView.swift in Sources */,
 				C4D8EC8F27C363B200BF0767 /* RoutesViewController.swift in Sources */,
 				C4D9A86E27C90E3A004B552A /* ProfileViewController.swift in Sources */,
+				C49AFC0127E8A872009787AB /* TrainerCell.swift in Sources */,
 				C4C385C027E62F96005D48FD /* UserProfileContentView.swift in Sources */,
 				C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */,
 				C49AFBDB27E886A5009787AB /* ArticlesSectionController.swift in Sources */,
@@ -2113,6 +2194,8 @@
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */,
+				C49AFBFE27E8A80D009787AB /* TrainersSectionController.swift in Sources */,
+				C49AFBFA27E89FA2009787AB /* Trainer.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
 				C400F44F27D5F29200B1EAD9 /* StyledPageMenuOptions.swift in Sources */,
 				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
@@ -2142,6 +2225,7 @@
 				C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */,
 				C4D8EC9427C363F900BF0767 /* RoutesProvider.swift in Sources */,
 				C4D8EC9927C364EA00BF0767 /* Route.swift in Sources */,
+				C49AFBF527E89CF8009787AB /* TrainersProvider.swift in Sources */,
 				C49AFBC427E87660009787AB /* Month.swift in Sources */,
 				C49AFBAE27E6FF79009787AB /* WalkAPI.swift in Sources */,
 				C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */,
@@ -2153,6 +2237,7 @@
 				C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */,
 				C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */,
 				C4DA0D4C27DF13F500066965 /* TeamEditContentView.swift in Sources */,
+				C49AFBF727E89DC3009787AB /* TrainersAPI.swift in Sources */,
 				C49AFBC227E87653009787AB /* Statistic.swift in Sources */,
 				C4D9A84027C7D0D7004B552A /* RoutePlaceSectionModel.swift in Sources */,
 				C408EA7A27AFFC8C004B82CB /* ListCollectionContext+Dequeue.swift in Sources */,
@@ -2190,8 +2275,11 @@
 				C4C9336B27DCCC6C0068D8D2 /* CGRect+Init.swift in Sources */,
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
+				C49AFBEE27E89CC8009787AB /* TrainersViewController.swift in Sources */,
+				C49AFBFC27E8A21D009787AB /* TrainerSectionModel.swift in Sources */,
 				C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */,
 				C4DA0D4827DF12CC00066965 /* TeamEditView.swift in Sources */,
+				C49AFBEF27E89CC8009787AB /* TrainersView.swift in Sources */,
 				C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */,
 				C4C385C927E64A66005D48FD /* FriendsDeleteRequest.swift in Sources */,
 				C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */,

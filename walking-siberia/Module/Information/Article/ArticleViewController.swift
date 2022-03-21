@@ -18,6 +18,8 @@ class ArticleViewController: ViewController<ArticleView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        
         configure()
     }
     
@@ -56,6 +58,10 @@ class ArticleViewController: ViewController<ArticleView> {
     
     private func openSafari(url: URL) {
         present(SFSafariViewController(url: url), animated: true)
+    }
+    
+    @objc private func close() {
+        navigationController?.popViewController(animated: true)
     }
     
 }

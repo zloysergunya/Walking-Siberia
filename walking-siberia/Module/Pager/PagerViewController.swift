@@ -27,6 +27,7 @@ class PagerViewController: PageMenuController {
             viewControllers.append(UserStatisticViewController(user: user))
             
         case .information:
+            viewControllers.append(TrainersViewController())
             viewControllers.append(ArticlesViewController())
         }
         
