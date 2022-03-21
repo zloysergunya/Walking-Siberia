@@ -49,6 +49,10 @@ class ArticlesViewController: ViewController<ArticlesView> {
             
             switch result {
             case .success(let articles):
+                if flush {
+                    self.objects.removeAll()
+                }
+                
                 self.objects = articles.map({ ArticleSectionModel(article: $0) })
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
