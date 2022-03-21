@@ -88,13 +88,14 @@ class StepsCountView: UIView {
         logoImageView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(6.0)
             make.top.bottom.equalToSuperview()
-            make.width.equalTo(70.0)
+            make.size.equalTo(70.0)
         }
         
         stepsLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16.0)
-            make.left.equalTo(logoImageView.snp.right).offset(16.0)
+            make.left.greaterThanOrEqualTo(logoImageView.snp.right).offset(16.0)
             make.right.equalTo(separator.snp.left).offset(-16.0)
+            make.width.equalTo(distanceLabel.snp.width)
         }
         
         separator.snp.makeConstraints { make in
@@ -107,11 +108,12 @@ class StepsCountView: UIView {
             make.top.equalToSuperview().offset(16.0)
             make.left.equalTo(separator.snp.right).offset(16.0)
             make.right.equalToSuperview().offset(-16.0)
+            make.width.equalTo(stepsLabel.snp.width)
         }
         
     }
     
-    func setup(with stepsCount: Int, distance: Int) {
+    func setup(with stepsCount: Int, distance: Double) {
         let bold = Style("bold")
             .foregroundColor(.white)
             .font(R.font.geometriaBold(size: 24.0) ?? .boldSystemFont(ofSize: 24.0))
@@ -122,7 +124,7 @@ class StepsCountView: UIView {
         let stepsText = "<bold>\(formatter.string(from: NSNumber(value: stepsCount)) ?? "\(stepsCount)")</bold>\nшаги"
         stepsLabel.attributedText = stepsText.style(tags: bold).attributedString
         
-        let distanceText = "<bold>\(distance) км</bold>\nдистанция"
+        let distanceText = "<bold>\(String(format: "%.2f", distance)) км</bold>\nдистанция"
         distanceLabel.attributedText = distanceText.style(tags: bold).attributedString
     }
     

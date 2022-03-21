@@ -5,6 +5,7 @@ import Atributika
 class RoutesViewController: ViewController<RoutesView> {
     
     private let provider = RoutesProvider()
+    private let healthService = HealthService()
     
     private var objects: [RouteSectionModel] = []
     private var loadingState: LoadingState = .none
@@ -13,12 +14,15 @@ class RoutesViewController: ViewController<RoutesView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.statsButton.addTarget(self, action: #selector(openStatistics), for: .touchUpInside)
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-        
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
         
-        mainView.stepsCountView.setup(with: 15500, distance: 15)
+        healthService.output = self
+        healthService.requestAccess()
+        
+        syncContacts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,11 +31,7 @@ class RoutesViewController: ViewController<RoutesView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadRoutes()
-        syncContacts()
-    }
-    
-    @objc private func pullToRefresh() {
-        loadRoutes()
+        syncUserActivity()
     }
     
     private func loadRoutes() {
@@ -77,6 +77,53 @@ class RoutesViewController: ViewController<RoutesView> {
         }
     }
     
+    private func syncUserActivity() {
+        let lastDate = UserSettings.lastSendActivityDate ?? Date()
+        let toDate = Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: Date())
+        
+        Date.dates(from: lastDate, to: toDate).forEach { date in
+            healthService.getSteps(fromDate: date, toDate: date) { [weak self] (stepsCount, distance) in
+                guard let self = self else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
+                    self.sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
+                }
+            }
+        }
+    }
+    
+    private func sendUserActivity(walkRequest: WalkRequest) {
+        provider.sendUserActivity(walkRequest: walkRequest) { [weak self] result in
+            switch result {
+            case .success:
+                UserSettings.lastSendActivityDate = Date()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    @objc private func pullToRefresh() {
+        loadRoutes()
+    }
+    
+    @objc private func openStatistics() {
+        guard let user = UserSettings.user else {
+            return
+        }
+        
+        let pagerViewController = PagerViewController(type: .statistics(user: user))
+        navigationController?.pushViewController(pagerViewController, animated: true)
+    }
+    
 }
 
 // MARK: - ListAdapterDataSource
@@ -106,6 +153,21 @@ extension RoutesViewController: RouteSectionControllerDelegate {
         let viewController = RouteInfoViewController(route: sectionModel.route)
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+}
+
+// MARK: - HealthServiceOutput
+extension RoutesViewController: HealthServiceOutput {
+    
+    func successHealthAccessRequest(granted: Bool) {
+        if granted {
+            syncUserActivity()
+        }
+    }
+    
+    func failureHealthAccessRequest(error: Error) {
+        showError(text: error.localizedDescription)
     }
     
 }

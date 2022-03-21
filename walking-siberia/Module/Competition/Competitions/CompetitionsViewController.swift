@@ -101,11 +101,7 @@ extension CompetitionsViewController: ListAdapterDataSource {
 extension CompetitionsViewController: CompetitionsSectionControllerDelegate {
     
     func competitionsSectionController(didSelect competition: Competition) {
-        let competitionInfoViewController = CompetitionInfoViewController(competition: competition)
-        let teamsViewController = TeamsViewController(competition: competition)
-        let initialViewControllers: [UIViewController] = [competitionInfoViewController, teamsViewController]
-        let pagerViewController = PagerViewController(initialViewControllers: initialViewControllers, options: StyledPageMenuOptions(for: initialViewControllers.count))
-        pagerViewController.title = "О соревновании"
+        let pagerViewController = PagerViewController(type: .competition(competition: competition))
         navigationController?.pushViewController(pagerViewController, animated: true)
     }
     

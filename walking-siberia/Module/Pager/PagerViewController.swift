@@ -3,11 +3,42 @@ import Swift_PageMenu
 
 class PagerViewController: PageMenuController {
     
+    enum PagerType {
+        case competitions
+        case competition(competition: Competition)
+        case statistics(user: User)
+        case information
+    }
+    
     private let initialViewControllers: [UIViewController]
-
-    init(initialViewControllers: [UIViewController], options: PageMenuOptions) {
-        self.initialViewControllers = initialViewControllers
-        super.init(options: options)
+    
+    init(type: PagerType) {
+        var viewControllers: [UIViewController] = []
+        switch type {
+        case .competitions:
+            viewControllers.append(CompetitionsViewController(type: .current))
+            viewControllers.append(CompetitionsViewController(type: .ended))
+            
+        case .competition(let competition):
+            viewControllers.append(CompetitionInfoViewController(competition: competition))
+            viewControllers.append(TeamsViewController(competition: competition))
+            
+        case .statistics(let user):
+            viewControllers.append(UserStatisticViewController(user: user))
+            
+        case .information:
+            viewControllers.append(ArticlesViewController())
+        }
+        
+        self.initialViewControllers = viewControllers
+        super.init(options: StyledPageMenuOptions(for: viewControllers.count))
+        
+        switch type {
+        case .competitions: title = "Соревнования"
+        case .competition: title = "О соревновании"
+        case .statistics: title = "Статистика"
+        case .information: title = "Скандинавская ходьба"
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -16,7 +47,6 @@ class PagerViewController: PageMenuController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = R.color.greyBackground()
         navigationController?.navigationBar.titleTextAttributes = [.font: R.font.geometriaMedium(size: 14.0) ?? .systemFont(ofSize: 14.0),
                                                                    .foregroundColor: R.color.mainContent() ?? .black]

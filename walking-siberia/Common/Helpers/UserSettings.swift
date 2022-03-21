@@ -10,6 +10,7 @@ import Foundation
         case petAnimations
         case userReady
         case isLaunchedBefore
+        case lastSendActivityDate
     }
     
     static var user: User? {
@@ -36,6 +37,15 @@ import Foundation
         }
         set {
             defaults.set(newValue, forKey: Keys.isLaunchedBefore.rawValue)
+        }
+    }
+    
+    static var lastSendActivityDate: Date? {
+        get {
+            return defaults.object(forKey: Keys.lastSendActivityDate.rawValue) as? Date
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.lastSendActivityDate.rawValue)
         }
     }
     
