@@ -1,4 +1,5 @@
 PODS:
+  - AAInfographics (6.0.0)
   - Alamofire (4.9.1)
   - Atributika (4.9.10)
   - IGListDiffKit (4.0.0)
@@ -23,6 +24,7 @@ PODS:
   - SwiftyBeaver (1.9.5)
 
 DEPENDENCIES:
+  - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - Alamofire (~> 4.9.0)
   - Atributika (~> 4.9.0)
   - IGListKit (~> 4.0)
@@ -55,7 +57,17 @@ SPEC REPOS:
     - Swift_PageMenu
     - SwiftyBeaver
 
+EXTERNAL SOURCES:
+  AAInfographics:
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+CHECKOUT OPTIONS:
+  AAInfographics:
+    :commit: 9b6c25bbbd982c97e5bd99b805b516b8f403b36c
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
 SPEC CHECKSUMS:
+  AAInfographics: e57c6cc15ddc17df3555db6f586fb0e1b911a0b7
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Atributika: cf87f95f1d31d9cdb9af611a2b4e00672e9ae195
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
@@ -72,6 +84,6 @@ SPEC CHECKSUMS:
   Swift_PageMenu: 6cc3e92540729606bd66c9b35a0886ed6c8ed899
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: 56ac0422850032f6b188f05aeb63a21c038a6436
+PODFILE CHECKSUM: 5bac1a8d50096bf760d6bfb038ddbbde287373a7
 
 COCOAPODS: 1.11.2

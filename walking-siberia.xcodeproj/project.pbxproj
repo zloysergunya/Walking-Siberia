@@ -64,6 +64,7 @@
 		C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D027C72FC700E23AD8 /* RouteInfoView.swift */; };
 		C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */; };
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
+		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
 		C478448327E1C23800D9E275 /* FindFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448127E1C23800D9E275 /* FindFriendsView.swift */; };
@@ -91,7 +92,7 @@
 		C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */; };
 		C49AFBBF27E873E8009787AB /* UserStatisticProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBBE27E873E8009787AB /* UserStatisticProvider.swift */; };
 		C49AFBC227E87653009787AB /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC127E87653009787AB /* Statistic.swift */; };
-		C49AFBC427E87660009787AB /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC327E87660009787AB /* Month.swift */; };
+		C49AFBC427E87660009787AB /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC327E87660009787AB /* Day.swift */; };
 		C49AFBC827E8808F009787AB /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC627E8808F009787AB /* ArticlesViewController.swift */; };
 		C49AFBC927E8808F009787AB /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBC727E8808F009787AB /* ArticlesView.swift */; };
 		C49AFBCD27E8812B009787AB /* ArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBCC27E8812B009787AB /* ArticlesProvider.swift */; };
@@ -288,6 +289,7 @@
 		C40919D027C72FC700E23AD8 /* RouteInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoView.swift; sourceTree = "<group>"; };
 		C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoProvider.swift; sourceTree = "<group>"; };
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
+		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		C478448127E1C23800D9E275 /* FindFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsView.swift; sourceTree = "<group>"; };
@@ -316,7 +318,7 @@
 		C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+InitFromColor.swift"; sourceTree = "<group>"; };
 		C49AFBBE27E873E8009787AB /* UserStatisticProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticProvider.swift; sourceTree = "<group>"; };
 		C49AFBC127E87653009787AB /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
-		C49AFBC327E87660009787AB /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		C49AFBC327E87660009787AB /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		C49AFBC627E8808F009787AB /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		C49AFBC727E8808F009787AB /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
 		C49AFBCC27E8812B009787AB /* ArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesProvider.swift; sourceTree = "<group>"; };
@@ -924,6 +926,14 @@
 			path = Subview;
 			sourceTree = "<group>";
 		};
+		C4447E1327EB3A5100666751 /* Styled */ = {
+			isa = PBXGroup;
+			children = (
+				C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */,
+			);
+			path = Styled;
+			sourceTree = "<group>";
+		};
 		C478447F27E1C22000D9E275 /* FindFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -1079,7 +1089,7 @@
 			isa = PBXGroup;
 			children = (
 				C49AFBC127E87653009787AB /* Statistic.swift */,
-				C49AFBC327E87660009787AB /* Month.swift */,
+				C49AFBC327E87660009787AB /* Day.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -1281,6 +1291,7 @@
 		C4A1514627B0F72B00C95344 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C4447E1327EB3A5100666751 /* Styled */,
 				C4AB540127CA65640004B5CE /* NavBar */,
 				C4A1515927B102FA00C95344 /* TextFields */,
 				C4A1514727B0F89500C95344 /* Buttons */,
@@ -2137,6 +2148,7 @@
 				C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */,
 				C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */,
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
+				C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */,
 				C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
@@ -2226,7 +2238,7 @@
 				C4D8EC9427C363F900BF0767 /* RoutesProvider.swift in Sources */,
 				C4D8EC9927C364EA00BF0767 /* Route.swift in Sources */,
 				C49AFBF527E89CF8009787AB /* TrainersProvider.swift in Sources */,
-				C49AFBC427E87660009787AB /* Month.swift in Sources */,
+				C49AFBC427E87660009787AB /* Day.swift in Sources */,
 				C49AFBAE27E6FF79009787AB /* WalkAPI.swift in Sources */,
 				C4D82AA427BFF7430058334F /* ProfileUpdateRequest.swift in Sources */,
 				C4A1515527B0FCCB00C95344 /* KeyboardObserver.swift in Sources */,

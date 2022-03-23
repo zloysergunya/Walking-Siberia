@@ -62,4 +62,22 @@ class ProfileAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func profileStatisticsGet(completion: @escaping ((_ data: SuccessResponse<Statistic>?,_ error: ErrorResponse?) -> Void)) {
+        profileStatisticsGetWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func profileStatisticsGetWithRequestBuilder() -> RequestBuilder<SuccessResponse<Statistic>> {
+        let path = "/profile/statistics"
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Statistic>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
 }

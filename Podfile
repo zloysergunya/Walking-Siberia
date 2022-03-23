@@ -23,6 +23,7 @@ target 'walking-siberia' do
   # pod 'SPPermissions/Notification'
   # pod 'SPPermissions/Health'
   pod 'Swift_PageMenu'
+  pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   
   # Utilities
   pod 'R.swift', '~> 5.4.0'

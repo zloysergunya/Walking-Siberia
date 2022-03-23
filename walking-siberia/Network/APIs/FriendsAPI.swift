@@ -102,4 +102,25 @@ class FriendsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func friendsWalkChartUidGet(userId: Int, completion: @escaping ((_ data: SuccessResponse<Statistic>?,_ error: ErrorResponse?) -> Void)) {
+        friendsWalkChartUidGetWithRequestBuilder(userId: userId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func friendsWalkChartUidGetWithRequestBuilder(userId: Int) -> RequestBuilder<SuccessResponse<Statistic>> {
+        var path = "/friends/walk-chart/{uid}"
+        let routeIdPreEscape = "\(userId)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Statistic>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

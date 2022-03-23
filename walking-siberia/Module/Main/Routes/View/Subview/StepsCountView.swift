@@ -34,6 +34,7 @@ class StepsCountView: UIView {
         label.textAlignment = .center
         label.font = R.font.geometriaRegular(size: 12.0)
         label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -51,6 +52,7 @@ class StepsCountView: UIView {
         label.textAlignment = .center
         label.font = R.font.geometriaRegular(size: 12.0)
         label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
