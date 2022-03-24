@@ -1,12 +1,17 @@
 import UIKit
 import SnapKit
+import Firebase
 
 class PhoneAuthViewController: ViewController<PhoneAuthView> {
     
     private let provider = PhoneAuthProvider()
+    
+    private lazy var phoneSignInService = PhoneSignInService(uiDelegate: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        phoneSignInService.output = self
         
         mainView.continueButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
         mainView.phoneTextField.delegate = self
@@ -21,28 +26,13 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
             return
         }
         
-        let formattedPhone =  String(phone.phonePattern(pattern: "###########", replacmentCharacter: "#").dropFirst())        
+        let formattedPhone =  String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))        
         sendCode(to: formattedPhone)
     }
     
     private func sendCode(to phone: String) {
         mainView.continueButton.isLoading = true
-        provider.sendCode(phone: phone) { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            
-            self.mainView.continueButton.isLoading = false
-            
-            switch result {
-            case .success(let response):
-                print(response)
-                self.navigationController?.pushViewController(PhoneCodeAuthViewController(phone: phone), animated: true)
-                
-            case .failure(let error):
-                self.showError(text: error.localizedDescription)
-            }
-        }
+        phoneSignInService.performRequest(phone: phone)
     }
     
 }
@@ -52,10 +42,9 @@ extension PhoneAuthViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let replacedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        textField.text = textField.text?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
         
         mainView.continueButton.isActive = !replacedText.isEmpty
-        
-        textField.text = textField.text?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
         
         return true
     }
@@ -66,4 +55,26 @@ extension PhoneAuthViewController: UITextFieldDelegate {
 extension PhoneAuthViewController: ConstraintKeyboardObserver {
     var keyboardConstraint: Constraint { mainView.continueButtonBottomConstraint }
     var inset: CGFloat { -26.0 }
+}
+
+// MARK: - PhoneSignInServiceOutput
+extension PhoneAuthViewController: PhoneSignInServiceOutput {
+    
+    func phoneSignIn(didFailWith error: Error) {
+        mainView.continueButton.isLoading = false
+        showError(text: error.localizedDescription)
+    }
+    
+    func phoneSignIn(didSucceedWith verificationId: String, phone: String) {
+        mainView.continueButton.isLoading = false
+        navigationController?.pushViewController(PhoneCodeAuthViewController(phone: phone), animated: true)
+    }
+    
+    func phoneSignIn(didSucceedWith token: String) {}
+    
+}
+
+// MARK: - AuthUIDelegate
+extension PhoneAuthViewController: AuthUIDelegate {
+    
 }

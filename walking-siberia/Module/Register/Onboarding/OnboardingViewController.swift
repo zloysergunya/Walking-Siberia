@@ -3,11 +3,21 @@ import Atributika
 import SafariServices
 
 class OnboardingViewController: ViewController<OnboardingView> {
+    
+    private let provider = OnboardingProvider()
+    
+    private lazy var appleSignInService = AppleSignInService(viewController: self)
+    private lazy var googleSignInService = GoogleSignInService(viewController: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView.signInButton.addTarget(self, action: #selector(openPhoneAuth), for: .touchUpInside)
+        appleSignInService.output = self
+        googleSignInService.output = self
+        
+        mainView.signInByPhoneButton.addTarget(self, action: #selector(openPhoneAuth), for: .touchUpInside)
+        mainView.signInByAppleButton.addTarget(self, action: #selector(signInByApple), for: .touchUpInside)
+        mainView.signInByGoogleButton.addTarget(self, action: #selector(signInByGoogle), for: .touchUpInside)
 
         configure()
     }
@@ -40,8 +50,61 @@ class OnboardingViewController: ViewController<OnboardingView> {
         present(SFSafariViewController(url: url), animated: true)
     }
     
+    private func authByFirebase(token: String) {
+        provider.authByFirebase(token: token) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let response):
+                let authService: AuthService? = ServiceLocator.getService()
+                UserSettings.user = response.user
+                UserSettings.userReady = response.user.isFillProfile
+                authService?.authorize(with: response.accessToken, currentUserId: response.user.userId)
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
     @objc private func openPhoneAuth() {
         navigationController?.pushViewController(PhoneAuthViewController(), animated: true)
     }
+    
+    @objc private func signInByApple() {
+        appleSignInService.performRequest()
+    }
+    
+    @objc private func signInByGoogle() {
+        googleSignInService.performRequest()
+    }
 
+}
+
+// MARK: - AppleSignInServiceOutput
+extension OnboardingViewController: AppleSignInServiceOutput {
+    
+    func appleSignIn(didFailWith error: Error) {
+        showError(text: error.localizedDescription)
+    }
+    
+    func appleSignIn(didSucceedWith token: String) {
+        authByFirebase(token: token)
+    }
+        
+}
+
+// MARK: - GoogleSignInServiceOutput
+extension OnboardingViewController: GoogleSignInServiceOutput {
+    
+    func googleSignIn(didFailWith error: Error) {
+        showError(text: error.localizedDescription)
+    }
+    
+    func googleSignIn(didSucceedWith token: String) {
+        authByFirebase(token: token)
+    }
+    
 }

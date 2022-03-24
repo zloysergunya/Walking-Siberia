@@ -39,4 +39,22 @@ class AuthAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func authFirebasePost(authFirebase: AuthFirebaseRequest, completion: @escaping ((_ data: SuccessResponse<AuthConfirmResponse>?,_ error: ErrorResponse?) -> Void)) {
+        authFirebasePostWithRequestBuilder(authFirebase: authFirebase).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func authFirebasePostWithRequestBuilder(authFirebase: AuthFirebaseRequest) -> RequestBuilder<SuccessResponse<AuthConfirmResponse>> {
+        let path = "/auth/firebase"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authFirebase)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<AuthConfirmResponse>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
 }

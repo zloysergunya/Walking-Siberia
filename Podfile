@@ -29,5 +29,9 @@ target 'walking-siberia' do
   pod 'R.swift', '~> 5.4.0'
   pod 'SwiftyBeaver'
   pod 'PhoneNumberKit'
+  
+  # Services
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
 end

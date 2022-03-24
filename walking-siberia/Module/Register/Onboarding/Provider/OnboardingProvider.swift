@@ -1,6 +1,6 @@
 import Foundation
 
-class PhoneAuthProvider {
+class OnboardingProvider {
     
     func authByFirebase(token: String, completion: @escaping(Result<AuthConfirmResponse, ModelError>) -> Void) {
         AuthAPI.authFirebasePost(authFirebase: AuthFirebaseRequest(token: token)) { response, error in

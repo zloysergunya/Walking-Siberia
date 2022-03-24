@@ -1,5 +1,7 @@
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
+import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = LaunchViewController()
@@ -37,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manager.toolbarDoneBarButtonItemText = "Скрыть"
         manager.placeholderColor = R.color.mainContent()
         manager.toolbarBarTintColor = R.color.greyBackground()
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
     }
 
 }

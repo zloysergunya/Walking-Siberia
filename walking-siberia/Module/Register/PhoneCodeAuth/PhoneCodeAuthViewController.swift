@@ -1,11 +1,13 @@
 import UIKit
 import SnapKit
+import Firebase
 
 class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
 
     private let phone: String
     private let provider = PhoneCodeAuthProvider()
     
+    private lazy var phoneSignInService = PhoneSignInService(uiDelegate: self)
     private var timer: Timer?
     
     init(phone: String) {
@@ -19,6 +21,8 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        phoneSignInService.output = self
         
         mainView.resendCodeButton.addTarget(self, action: #selector(resendCode), for: .touchUpInside)
         mainView.changePhoneButton.addTarget(self, action: #selector(changePhone), for: .touchUpInside)
@@ -52,40 +56,30 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
     }
     
     private func confirm(with code: String) {
-        provider.confirmPhone(phone: phone, code: code) { [weak self] result in                        
+        phoneSignInService.confirmRequest(code: code)
+    }
+    private func authByFirebase(token: String) {
+        provider.authByFirebase(token: token) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
             switch result {
             case .success(let response):
                 let authService: AuthService? = ServiceLocator.getService()
-                if let token = response.data?.accessToken, let user = response.data?.user {
-                    UserSettings.user = user
-                    UserSettings.userReady = user.isFillProfile
-                    authService?.authorize(with: token, currentUserId: user.userId)
-                }
+                UserSettings.user = response.user
+                UserSettings.userReady = response.user.isFillProfile
+                authService?.authorize(with: response.accessToken, currentUserId: response.user.userId)
                 
             case .failure(let error):
-                self?.showError(text: error.localizedDescription)
+                self.showError(text: error.localizedDescription)
             }
         }
     }
     
     @objc private func resendCode() {
         mainView.resendCodeButton.isLoading = true
-        provider.resendCode(phone: phone) { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            
-            self.mainView.resendCodeButton.isLoading = false
-            
-            switch result {
-            case .success(let response):
-                print(response)
-                self.startTimer()
-                
-            case .failure(let error):
-                self.showError(text: error.localizedDescription)
-            }
-        }
+        phoneSignInService.performRequest(phone: phone)
     }
     
     @objc private func changePhone() {
@@ -107,4 +101,24 @@ extension PhoneCodeAuthViewController: OTPTextFieldDelegate {
 extension PhoneCodeAuthViewController: ConstraintKeyboardObserver {
     var keyboardConstraint: Constraint { mainView.changePhoneButtonBottomConstraint }
     var inset: CGFloat { -26.0 }
+}
+
+// MARK: - PhoneSignInServiceOutput
+extension PhoneCodeAuthViewController: PhoneSignInServiceOutput {
+    
+    func phoneSignIn(didFailWith error: Error) {
+        showError(text: error.localizedDescription)
+    }
+    
+    func phoneSignIn(didSucceedWith verificationId: String, phone: String) {}
+    
+    func phoneSignIn(didSucceedWith token: String) {
+        authByFirebase(token: token)
+    }
+    
+}
+
+// MARK: - AuthUIDelegate
+extension PhoneCodeAuthViewController: AuthUIDelegate {
+    
 }
