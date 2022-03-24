@@ -23,6 +23,7 @@ class UserCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 24.0
         imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = true
         
         return imageView
     }()

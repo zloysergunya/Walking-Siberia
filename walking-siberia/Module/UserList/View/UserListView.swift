@@ -98,6 +98,11 @@ class UserListView: RootView {
         searchBar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16.0)
             make.left.right.equalToSuperview().inset(12.0)
+            make.height.equalTo(32.0)
+        }
+        
+        searchBar.searchTextField.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         filterContainerStackView.snp.makeConstraints { make in
