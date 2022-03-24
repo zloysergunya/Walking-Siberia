@@ -58,6 +58,11 @@ class FindFriendsView: RootView {
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(navBar.snp.bottom).offset(4.0)
             make.left.right.equalToSuperview().inset(12.0)
+            make.height.equalTo(32.0)
+        }
+        
+        searchBar.searchTextField.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
