@@ -278,6 +278,7 @@ class ProfileEditContentView: RootView {
         textField.leftView = UIImageView(image: R.image.instagramIcon20())
         textField.placeholder = "Instagram"
         textField.isUserInteractionEnabled = false
+        textField.isHidden = true
         
         return textField
     }()

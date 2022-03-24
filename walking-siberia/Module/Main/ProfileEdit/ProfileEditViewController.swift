@@ -152,7 +152,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         
         [mainView.contentView.nameTextField, mainView.contentView.surnameTextField, mainView.contentView.cityTextField,
          mainView.contentView.birthdayTextField, mainView.contentView.categoryTextField, mainView.contentView.heightTextField,
-         mainView.contentView.weightTextField, mainView.contentView.phoneTextField, mainView.contentView.emailTextField,
+         mainView.contentView.weightTextField, /*mainView.contentView.phoneTextField,*/ mainView.contentView.emailTextField,
          mainView.contentView.bioTextField, mainView.contentView.telegramField, mainView.contentView.instagramField,
          mainView.contentView.vkField, mainView.contentView.okField].forEach {
             $0.isUserInteractionEnabled = isProfileEditing

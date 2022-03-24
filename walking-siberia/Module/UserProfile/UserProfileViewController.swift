@@ -67,10 +67,10 @@ class UserProfileViewController: ViewController<UserProfileView> {
             mainView.contentView.telegramButton.url = url
             mainView.contentView.telegramButton.isHidden = false
         }
-        if let urlString = user.profile.instagram, let url = URL(string: urlString) {
-            mainView.contentView.instagramButton.url = url
-            mainView.contentView.instagramButton.isHidden = false
-        }
+//        if let urlString = user.profile.instagram, let url = URL(string: urlString) {
+//            mainView.contentView.instagramButton.url = url
+//            mainView.contentView.instagramButton.isHidden = false
+//        }
         if let urlString = user.profile.vkontakte, let url = URL(string: urlString) {
             mainView.contentView.vkButton.url = url
             mainView.contentView.vkButton.isHidden = false
