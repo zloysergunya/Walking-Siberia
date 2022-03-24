@@ -16,7 +16,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var loadingState: LoadingState = .none
     private var objects: [FindFriendsSectionModel] = []
-    private var query: String?
+    private var query: String = ""
     private var pendingRequestWorkItem: DispatchWorkItem?
     
     init(availableCount: Int, currentParticipants: [User]) {
@@ -44,7 +44,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        load(flush: true)
+        loadFriends(flush: true)
         checkContactsAccess()
     }
     
@@ -76,21 +76,14 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         UIApplication.shared.open(url)
     }
     
-    func load(flush: Bool) {
-        if let query = query {
-            // TODO: add searh
-        } else {
-            loadFriends(flush: flush)
-        }
-    }
-    
     private func loadFriends(flush: Bool) {
         guard let type = UserSettings.user?.type else {
             close()
             
             return
         }
-        provider.loadFriends(filter: "\(type)") { [weak self] result in
+        
+        provider.loadFriends(filter: "\(type)", search: query) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -148,8 +141,30 @@ extension FindFriendsViewController: ListAdapterDataSource {
 // MARK: - UISearchBarDelegate
 extension FindFriendsViewController: UISearchBarDelegate {
     
-    func FindFriendsViewController(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchBar.text = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard query != searchText else {
+            return
+        }
+        
+        pendingRequestWorkItem?.cancel()
+        
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            if searchText.isEmpty {
+                self.query = ""
+            } else {
+                self.query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            self.loadFriends(flush: true)
+        }
+        
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250), execute: requestWorkItem)
     }
     
 }

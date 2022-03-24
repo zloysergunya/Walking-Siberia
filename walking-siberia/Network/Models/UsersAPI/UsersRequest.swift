@@ -1,6 +1,6 @@
 import Foundation
 
-struct FriendsRequest: Codable {
+struct UsersRequest: Codable {
     let filter: String
     let search: String
     let limit: Int

@@ -39,6 +39,8 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         super.viewWillAppear(animated)
         
         loadWalkChart()
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     

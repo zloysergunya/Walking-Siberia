@@ -25,6 +25,8 @@ class PagerViewController: PageMenuController {
             
         case .statistics(let user):
             viewControllers.append(UserStatisticViewController(user: user))
+            viewControllers.append(UserListViewController(isGLobalList: false))
+            viewControllers.append(UserListViewController(isGLobalList: true))
             
         case .information:
             viewControllers.append(TrainersViewController())

@@ -7,6 +7,7 @@ class ProfileViewController: ViewController<ProfileView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.statsButton.addTarget(self, action: #selector(openUserStatistic), for: .touchUpInside)
         mainView.settingsButton.addTarget(self, action: #selector(openProfileEdit), for: .touchUpInside)
         
         configure()
@@ -91,6 +92,14 @@ class ProfileViewController: ViewController<ProfileView> {
     @objc private func openProfileEdit() {
         let viewController = ProfileEditViewController()
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func openUserStatistic() {
+        guard let user = UserSettings.user else {
+            return
+        }
+        
+        navigationController?.pushViewController(UserStatisticViewController(user: user), animated: true)
     }
     
 }

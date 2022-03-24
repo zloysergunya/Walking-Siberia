@@ -17,6 +17,7 @@ class FriendsAPI {
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "filter": friendsRequest.filter,
+            "search": friendsRequest.search,
             "limit": friendsRequest.limit,
             "page": friendsRequest.page
         ])

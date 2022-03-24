@@ -19,6 +19,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
         super.viewDidLoad()
         
         mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        mainView.contentView.statsButton.addTarget(self, action: #selector(openUserStatistic), for: .touchUpInside)
         mainView.contentView.addAsFriendButton.addTarget(self, action: #selector(toggleIsFriend), for: .touchUpInside)
         mainView.contentView.telegramButton.addTarget(self, action: #selector(openSocialLink), for: .touchUpInside)
         mainView.contentView.instagramButton.addTarget(self, action: #selector(openSocialLink), for: .touchUpInside)
@@ -152,6 +153,10 @@ class UserProfileViewController: ViewController<UserProfileView> {
                 }
             }
         }
+    }
+    
+    @objc private func openUserStatistic() {
+        navigationController?.pushViewController(UserStatisticViewController(user: user), animated: true)
     }
     
     @objc private func openSocialLink(_ sender: SocialButton) {
