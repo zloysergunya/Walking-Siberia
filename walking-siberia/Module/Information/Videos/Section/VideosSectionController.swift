@@ -1,16 +1,16 @@
 import IGListKit
 import UIKit
 
-protocol ArticlesSectionControllerDelegate: AnyObject {
-    func articlesSectionController(didSelect article: Article)
-    func articlesSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
+protocol VideosSectionControllerDelegate: AnyObject {
+    func videosSectionController(didSelect video: Video)
+    func videosSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
 }
 
-class ArticlesSectionController: ListSectionController {
+class VideosSectionController: ListSectionController {
     
-    weak var delegate: ArticlesSectionControllerDelegate?
+    weak var delegate: VideosSectionControllerDelegate?
     
-    private var sectionModel: ArticleSectionModel!
+    private var sectionModel: VideoSectionModel!
     
     override init() {
         super.init()
@@ -32,26 +32,28 @@ class ArticlesSectionController: ListSectionController {
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeue(of: ArticleCell.self, for: self, at: index)
+        let cell = collectionContext!.dequeue(of: VideoCell.self, for: self, at: index)
         
         return configure(cell: cell)
     }
     
     override func didUpdate(to object: Any) {
-        precondition(object is ArticleSectionModel)
-        sectionModel = object as? ArticleSectionModel
+        precondition(object is VideoSectionModel)
+        sectionModel = object as? VideoSectionModel
     }
     
     override func didSelectItem(at index: Int) {
         super.didSelectItem(at: index)
         
-        delegate?.articlesSectionController(didSelect: sectionModel.article)
+        delegate?.videosSectionController(didSelect: sectionModel.video)
     }
     
-    private func configure(cell: ArticleCell) -> UICollectionViewCell {
-        ImageLoader.setImage(url: sectionModel.article.image, imgView: cell.imageView)
-        cell.nameLabel.text = sectionModel.article.title
-        cell.viewsCountLabel.text = R.string.localizable.viewsCount(number: sectionModel.article.countViews, preferredLanguages: ["ru"])
+    private func configure(cell: VideoCell) -> UICollectionViewCell {
+        ImageLoader.setImage(url: sectionModel.video.preview, imgView: cell.imageView)
+        
+        cell.nameLabel.text = sectionModel.video.title
+        cell.viewsCountLabel.text = R.string.localizable.viewsCount(number: sectionModel.video.countViews, preferredLanguages: ["ru"])
+        cell.durationLabel.text = sectionModel.video.duration
         
         return cell
     }
@@ -59,13 +61,13 @@ class ArticlesSectionController: ListSectionController {
 }
 
 // MARK: - ListDisplayDelegate
-extension ArticlesSectionController: ListDisplayDelegate {
+extension VideosSectionController: ListDisplayDelegate {
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay sectionController: ListSectionController) {}
     func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying sectionController: ListSectionController) {}
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay sectionController: ListSectionController, cell: UICollectionViewCell, at index: Int) {
-        delegate?.articlesSectionController(willDisplay: cell, at: section)
+        delegate?.videosSectionController(willDisplay: cell, at: section)
     }
     
     func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying sectionController: ListSectionController, cell: UICollectionViewCell, at index: Int) {}

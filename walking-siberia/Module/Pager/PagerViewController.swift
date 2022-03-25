@@ -31,6 +31,7 @@ class PagerViewController: PageMenuController {
         case .information:
             viewControllers.append(TrainersViewController())
             viewControllers.append(ArticlesViewController())
+            viewControllers.append(VideosViewController())
         }
         
         self.initialViewControllers = viewControllers

@@ -64,6 +64,16 @@
 		C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D027C72FC700E23AD8 /* RouteInfoView.swift */; };
 		C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */; };
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
+		C422A24A27ED889F00312F14 /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A24827ED889F00312F14 /* VideosViewController.swift */; };
+		C422A24B27ED889F00312F14 /* VideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A24927ED889F00312F14 /* VideosView.swift */; };
+		C422A25127ED890600312F14 /* VideosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25027ED890600312F14 /* VideosProvider.swift */; };
+		C422A25427ED89F600312F14 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25327ED89F600312F14 /* Video.swift */; };
+		C422A25627ED8A2900312F14 /* VideoSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25527ED8A2900312F14 /* VideoSectionModel.swift */; };
+		C422A25827ED8A6D00312F14 /* VideosSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25727ED8A6D00312F14 /* VideosSectionController.swift */; };
+		C422A25B27ED8AC500312F14 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25A27ED8AC500312F14 /* VideoCell.swift */; };
+		C422A25D27ED902800312F14 /* VideosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25C27ED902800312F14 /* VideosAPI.swift */; };
+		C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25F27ED908A00312F14 /* VideosRequest.swift */; };
+		C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C422A26727ED960400312F14 /* Localizable.stringsdict */; };
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
@@ -303,6 +313,17 @@
 		C40919D027C72FC700E23AD8 /* RouteInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoView.swift; sourceTree = "<group>"; };
 		C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoProvider.swift; sourceTree = "<group>"; };
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
+		C422A24827ED889F00312F14 /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		C422A24927ED889F00312F14 /* VideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosView.swift; sourceTree = "<group>"; };
+		C422A25027ED890600312F14 /* VideosProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosProvider.swift; sourceTree = "<group>"; };
+		C422A25327ED89F600312F14 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		C422A25527ED8A2900312F14 /* VideoSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSectionModel.swift; sourceTree = "<group>"; };
+		C422A25727ED8A6D00312F14 /* VideosSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosSectionController.swift; sourceTree = "<group>"; };
+		C422A25A27ED8AC500312F14 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		C422A25C27ED902800312F14 /* VideosAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosAPI.swift; sourceTree = "<group>"; };
+		C422A25F27ED908A00312F14 /* VideosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosRequest.swift; sourceTree = "<group>"; };
+		C422A26827ED960400312F14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C422A26A27ED968300312F14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
@@ -744,6 +765,7 @@
 		C408EA3B27AFFC8C004B82CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C422A25227ED89E800312F14 /* Videos */,
 				C49AFBF827E89F9B009787AB /* Trainers */,
 				C49AFBD327E88410009787AB /* Articles */,
 				C49AFBC027E87647009787AB /* Statistics */,
@@ -793,6 +815,7 @@
 		C408EA4727AFFC8C004B82CB /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				C422A25C27ED902800312F14 /* VideosAPI.swift */,
 				C408EA4A27AFFC8C004B82CB /* AuthAPI.swift */,
 				C4D82AA027BFF6F10058334F /* ProfileAPI.swift */,
 				C4D8EC9527C3647900BF0767 /* MapsAPI.swift */,
@@ -810,6 +833,7 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C422A25E27ED907F00312F14 /* VideosAPI */,
 				C4BD9FA927ECCEA900E0CE5F /* UsersAPI */,
 				C49AFBD027E88180009787AB /* ArticleAPI */,
 				C49AFBAF27E6FF7E009787AB /* WalkAPI */,
@@ -868,6 +892,7 @@
 		C408EAA327AFFCB9004B82CB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C422A26127ED94D300312F14 /* Localizable */,
 				C4BD9F6B27EC246000E0CE5F /* GoogleService-Info.plist */,
 				C408EA1D27AFFA08004B82CB /* Info.plist */,
 				C408EAB027B000D7004B82CB /* Constants.swift */,
@@ -957,6 +982,83 @@
 				C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		C422A24727ED888900312F14 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				C422A24F27ED88F600312F14 /* Section */,
+				C422A24E27ED88F200312F14 /* Model */,
+				C422A24D27ED88EE00312F14 /* Provider */,
+				C422A24C27ED88E800312F14 /* View */,
+				C422A24827ED889F00312F14 /* VideosViewController.swift */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		C422A24C27ED88E800312F14 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25927ED8ABA00312F14 /* Cell */,
+				C422A24927ED889F00312F14 /* VideosView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C422A24D27ED88EE00312F14 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25027ED890600312F14 /* VideosProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C422A24E27ED88F200312F14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25527ED8A2900312F14 /* VideoSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C422A24F27ED88F600312F14 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25727ED8A6D00312F14 /* VideosSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C422A25227ED89E800312F14 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25327ED89F600312F14 /* Video.swift */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		C422A25927ED8ABA00312F14 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25A27ED8AC500312F14 /* VideoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C422A25E27ED907F00312F14 /* VideosAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C422A25F27ED908A00312F14 /* VideosRequest.swift */,
+			);
+			path = VideosAPI;
+			sourceTree = "<group>";
+		};
+		C422A26127ED94D300312F14 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				C422A26727ED960400312F14 /* Localizable.stringsdict */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 		C4447E1327EB3A5100666751 /* Styled */ = {
@@ -1096,6 +1198,7 @@
 		C49AFBC527E87FA3009787AB /* Information */ = {
 			isa = PBXGroup;
 			children = (
+				C422A24727ED888900312F14 /* Videos */,
 				C49AFBEB27E89CBC009787AB /* Trainers */,
 				C49AFBE027E88EC7009787AB /* Article */,
 				C49AFBDF27E88EB6009787AB /* Articles */,
@@ -2090,6 +2193,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = C408EA0327AFFA06004B82CB;
 			productRefGroup = C408EA0D27AFFA07004B82CB /* Products */;
@@ -2112,6 +2216,7 @@
 				C4A1514327B0F3D000C95344 /* Geometria-Light.ttf in Resources */,
 				C4A1514227B0F3D000C95344 /* Geometria-Bold.ttf in Resources */,
 				C4BD9F6C27EC246000E0CE5F /* GoogleService-Info.plist in Resources */,
+				C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2271,6 +2376,7 @@
 				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
 				C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */,
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
+				C422A25627ED8A2900312F14 /* VideoSectionModel.swift in Sources */,
 				C478449A27E1DF6D00D9E275 /* FindFriendsCell.swift in Sources */,
 				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
@@ -2288,6 +2394,7 @@
 				C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */,
 				C4BD9F7427EC2B2200E0CE5F /* OnboardingProvider.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
+				C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */,
 				C400F45827D5FE7A00B1EAD9 /* Team.swift in Sources */,
 				C49AFBD527E88418009787AB /* Article.swift in Sources */,
 				C4BD9F7827EC341400E0CE5F /* PhoneSignInService.swift in Sources */,
@@ -2300,6 +2407,7 @@
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
 				C49AFBD927E88593009787AB /* ArticleSectionModel.swift in Sources */,
 				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
+				C422A24A27ED889F00312F14 /* VideosViewController.swift in Sources */,
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
 				C49AFBDE27E88747009787AB /* ArticleCell.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,
@@ -2346,7 +2454,9 @@
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */,
+				C422A24B27ED889F00312F14 /* VideosView.swift in Sources */,
 				C49AFBCF27E88152009787AB /* ArticleAPI.swift in Sources */,
+				C422A25427ED89F600312F14 /* Video.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
 				C4C9335F27DCB5480068D8D2 /* TeamSectionController.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
@@ -2364,6 +2474,7 @@
 				C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */,
 				C4D8EC9C27C3690200BF0767 /* TabBarController.swift in Sources */,
 				C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */,
+				C422A25127ED890600312F14 /* VideosProvider.swift in Sources */,
 				C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */,
 				C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */,
 				C4DA0D4C27DF13F500066965 /* TeamEditContentView.swift in Sources */,
@@ -2376,6 +2487,7 @@
 				C4C385C227E64332005D48FD /* SocialButton.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
+				C422A25D27ED902800312F14 /* VideosAPI.swift in Sources */,
 				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
 				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,
 				C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */,
@@ -2397,6 +2509,8 @@
 				C408EA8027AFFC8C004B82CB /* UIService.swift in Sources */,
 				C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */,
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
+				C422A25827ED8A6D00312F14 /* VideosSectionController.swift in Sources */,
+				C422A25B27ED8AC500312F14 /* VideoCell.swift in Sources */,
 				C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */,
 				C478448E27E1C92000D9E275 /* FriendsRequest.swift in Sources */,
 				C49AFBC927E8808F009787AB /* ArticlesView.swift in Sources */,
@@ -2432,11 +2546,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		C422A26727ED960400312F14 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C422A26827ED960400312F14 /* en */,
+				C422A26A27ED968300312F14 /* ru */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		C408EA1E27AFFA08004B82CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -2498,6 +2625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
