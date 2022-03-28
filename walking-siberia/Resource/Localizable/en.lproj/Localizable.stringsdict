@@ -18,5 +18,21 @@
 			<string>%ld view</string>
 		</dict>
 	</dict>
+	<key>stepsCount</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@number@</string>
+		<key>number</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>%ld steps</string>
+			<key>one</key>
+			<string>%ld step</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

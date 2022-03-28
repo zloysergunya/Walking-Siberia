@@ -59,14 +59,6 @@ class TeamsView: RootView {
         bottomStackView
     ], spacing: 8.0)
     
-    let teamsCountLabel: UILabel = {
-        let label = UILabel()
-        label.font = R.font.geometriaMedium(size: 14.0)
-        label.textColor = R.color.mainContent()
-        
-        return label
-    }()
-    
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 100.0, right: 0.0)
@@ -94,7 +86,6 @@ class TeamsView: RootView {
         backgroundColor = R.color.greyBackground()
         
         addSubview(filterContainerStackView)
-        addSubview(teamsCountLabel)
         addSubview(collectionView)
         addSubview(createTeamButton)
         addSubview(takePartButton)
@@ -113,13 +104,8 @@ class TeamsView: RootView {
             make.left.right.equalToSuperview().inset(12.0)
         }
         
-        teamsCountLabel.snp.makeConstraints { make in
-            make.top.equalTo(filterContainerStackView.snp.bottom).offset(8.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(teamsCountLabel.snp.bottom).offset(8.0)
+            make.top.equalTo(filterContainerStackView.snp.bottom).offset(8.0)
             make.left.right.bottom.equalToSuperview()
         }
         

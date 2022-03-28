@@ -13,6 +13,7 @@ struct Team: Codable {
     let createAt: String
     var isClosed: Bool
     var isJoined: Bool
+    let statistics: ParticipantStatistics
 }
 
 extension Team: Equatable {

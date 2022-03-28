@@ -53,9 +53,7 @@ class TeamsViewController: ViewController<TeamsView> {
         updateCompetition()
     }
     
-    private func configure() {
-        mainView.teamsCountLabel.text = "Найдено команд: \(competition.countTeams)"
-        
+    private func configure() {        
         if let type = UserSettings.user?.type {
             let userCategory: UserCategory? = .init(rawValue: type)
             

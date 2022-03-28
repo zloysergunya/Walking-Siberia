@@ -75,6 +75,9 @@
 		C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25F27ED908A00312F14 /* VideosRequest.swift */; };
 		C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C422A26727ED960400312F14 /* Localizable.stringsdict */; };
 		C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841127F171280037D5B8 /* UIImage+Compress.swift */; };
+		C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841327F180700037D5B8 /* ParticipantStatistics.swift */; };
+		C434841627F180800037D5B8 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841527F180800037D5B8 /* Average.swift */; };
+		C434841827F181930037D5B8 /* Int+RoundedWithAbbreviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */; };
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
@@ -326,6 +329,9 @@
 		C422A26827ED960400312F14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C422A26A27ED968300312F14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C434841127F171280037D5B8 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
+		C434841327F180700037D5B8 /* ParticipantStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantStatistics.swift; sourceTree = "<group>"; };
+		C434841527F180800037D5B8 /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
+		C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RoundedWithAbbreviations.swift"; sourceTree = "<group>"; };
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
@@ -590,6 +596,8 @@
 				C400F45527D5FE4300B1EAD9 /* Partner.swift */,
 				C400F45727D5FE7A00B1EAD9 /* Team.swift */,
 				C4C9335727DCB0380068D8D2 /* Participant.swift */,
+				C434841327F180700037D5B8 /* ParticipantStatistics.swift */,
+				C434841527F180800037D5B8 /* Average.swift */,
 			);
 			path = Competition;
 			sourceTree = "<group>";
@@ -740,6 +748,7 @@
 				C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */,
 				C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */,
 				C434841127F171280037D5B8 /* UIImage+Compress.swift */,
+				C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2424,10 +2433,12 @@
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
+				C434841627F180800037D5B8 /* Average.swift in Sources */,
 				C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */,
 				C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */,
 				C4BD9F9227ECC9F300E0CE5F /* UserStatisticProvider.swift in Sources */,
 				C4D8ECA727C37D6500BF0767 /* RouteCell.swift in Sources */,
+				C434841827F181930037D5B8 /* Int+RoundedWithAbbreviations.swift in Sources */,
 				C4DA0D4327DF083C00066965 /* UIViewController+Alerts.swift in Sources */,
 				C4C9335627DCAFD70068D8D2 /* TeamSectionModel.swift in Sources */,
 				C4BD9F7127EC294500E0CE5F /* AppleSignInService.swift in Sources */,
@@ -2530,6 +2541,7 @@
 				C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */,
 				C4BD9FAB27ECCEBB00E0CE5F /* UsersRequest.swift in Sources */,
 				C4DA0D4827DF12CC00066965 /* TeamEditView.swift in Sources */,
+				C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */,
 				C49AFBEF27E89CC8009787AB /* TrainersView.swift in Sources */,
 				C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */,
 				C4C385C927E64A66005D48FD /* FriendsDeleteRequest.swift in Sources */,

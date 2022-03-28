@@ -20,5 +20,23 @@
 			<string>%ld просмотр</string>
 		</dict>
 	</dict>
+	<key>stepsCount</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@number@</string>
+		<key>number</key>
+		<dict>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>ld</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>many</key>
+			<string>%ld шагов</string>
+			<key>other</key>
+			<string>%ld шага</string>
+			<key>one</key>
+			<string>%ld шаг</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

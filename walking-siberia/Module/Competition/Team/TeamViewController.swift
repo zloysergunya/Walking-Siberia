@@ -46,8 +46,11 @@ class TeamViewController: ViewController<TeamView> {
             participantView.nameLabel.text = fullName
             let userCategory: UserCategory? = .init(rawValue: user.element.user.type)
             participantView.categoryLabel.text = userCategory?.categoryName
-            participantView.stepsCountLabel.text = "73 500 шагов"
-            participantView.distanceLabel.text = "15 км"
+            
+            var text = R.string.localizable.stepsCount(number: user.element.statistics.total.number, preferredLanguages: ["ru"])
+            text = text.replacingOccurrences(of: "\(user.element.statistics.total.number)", with: user.element.statistics.total.number.roundedWithAbbreviations)
+            participantView.stepsCountLabel.text = text
+            participantView.distanceLabel.text = "\(user.element.statistics.total.km) км"
             
             if let url = user.element.user.profile.avatar {
                 ImageLoader.setImage(url: url, imgView: participantView.imageView)
@@ -128,7 +131,11 @@ class TeamViewController: ViewController<TeamView> {
             switch result {
             case .success:
                 if let user = UserSettings.user {
-                    let participant = Participant(userId: user.userId, teamId: self.team.id, createdAt: self.team.createAt, user: user)
+                    let participant = Participant(userId: user.userId,
+                                                  teamId: self.team.id,
+                                                  createdAt: self.team.createAt,
+                                                  user: user,
+                                                  statistics: ParticipantStatistics(total: Average(number: 0, km: 0.0), average: nil))
                     self.team.users.append(participant)
                 }
                 
