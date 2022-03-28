@@ -180,9 +180,9 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     @objc private func openUserProfile(_ gestureRecognizer: UIGestureRecognizer) {
-        guard let index = gestureRecognizer.view?.tag else {
-            return
-        }
+        guard let index = gestureRecognizer.view?.tag,
+              currentParticipants[index].userId != UserSettings.user?.userId
+        else { return }
         
         navigationController?.pushViewController(UserProfileViewController(user: currentParticipants[index]), animated: true)
     }

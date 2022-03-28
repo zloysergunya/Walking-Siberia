@@ -195,9 +195,9 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     @objc private func openUserProfile(_ gestureRecognizer: UIGestureRecognizer) {
-        guard let index = gestureRecognizer.view?.tag else {
-            return
-        }
+        guard let index = gestureRecognizer.view?.tag,
+              team.users[index].userId != UserSettings.user?.userId
+        else { return }
         
         navigationController?.pushViewController(UserProfileViewController(user: team.users[index].user), animated: true)
     }
