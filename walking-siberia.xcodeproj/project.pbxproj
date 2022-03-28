@@ -1626,8 +1626,8 @@
 		C4BD9F9C27ECCAB000E0CE5F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C4BD9F9D27ECCAB000E0CE5F /* UserListView.swift */,
 				C4BD9F9E27ECCAB000E0CE5F /* Cell */,
+				C4BD9F9D27ECCAB000E0CE5F /* UserListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

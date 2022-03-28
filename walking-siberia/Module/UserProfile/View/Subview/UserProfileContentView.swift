@@ -71,7 +71,7 @@ class UserProfileContentView: RootView {
     
     let statsButton: UIButton = {
         let button = UIButton()
-        button.setImage(R.image.chart28(), for: .normal)
+        button.setImage(R.image.chart30(), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         
         return button
