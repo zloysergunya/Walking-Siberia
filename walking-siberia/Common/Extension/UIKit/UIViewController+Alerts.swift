@@ -1,4 +1,5 @@
 import UIKit
+import SwiftLoader
 
 extension UIViewController {
     
@@ -25,6 +26,14 @@ extension UIViewController {
         }
         
         present(alert, animated: true)
+    }
+    
+    func showLoader() {
+        SwiftLoader.show(animated: true)
+    }
+    
+    func hideLoader() {
+        SwiftLoader.hide()
     }
     
 }

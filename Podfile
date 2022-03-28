@@ -18,10 +18,8 @@ target 'walking-siberia' do
   pod 'PinLayout', '~> 1.8'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Atributika', '~> 4.9.0'
-  # pod 'SkyFloatingLabelTextField'
   pod 'MBRadioButton'
-  # pod 'SPPermissions/Notification'
-  # pod 'SPPermissions/Health'
+  pod 'SwiftLoader'
   pod 'Swift_PageMenu'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   

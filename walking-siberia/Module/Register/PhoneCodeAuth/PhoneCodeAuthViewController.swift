@@ -59,10 +59,13 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
         phoneSignInService.confirmRequest(code: code)
     }
     private func authByFirebase(token: String) {
+        showLoader()
         provider.authByFirebase(token: token) { [weak self] result in
             guard let self = self else {
                 return
             }
+            
+            self.hideLoader()
             
             switch result {
             case .success(let response):

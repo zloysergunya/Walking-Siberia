@@ -1,4 +1,5 @@
 import UIKit
+import SwiftLoader
 
 class UIService {
     
@@ -6,11 +7,25 @@ class UIService {
     
     init() {
         addObservers()
+        configureLoader()
     }
 
     deinit {
         notificationTokens.forEach {
             NotificationCenter.default.removeObserver($0)
+        }
+    }
+    
+    func openModule() {
+        let authService: AuthService? = ServiceLocator.getService()
+        authService?.updateApi()
+        
+        if authService?.authStatus == .unauthorized {
+            openAuth()
+        } else if !UserSettings.userReady {
+            openAccountSetup()
+        } else {
+            openMain()
         }
     }
     
@@ -39,19 +54,6 @@ class UIService {
         setWindowRoot(viewController: TabBarController())
     }
     
-    func openModule() {
-        let authService: AuthService? = ServiceLocator.getService()
-        authService?.updateApi()
-        
-        if authService?.authStatus == .unauthorized {
-            openAuth()
-        } else if !UserSettings.userReady {
-            openAccountSetup()
-        } else {
-            openMain()
-        }
-    }
-    
     private func addObservers() {
         let notificationNames: [Foundation.Notification.Name] = [
             AuthService.statusChangedNotifiaction
@@ -74,6 +76,16 @@ class UIService {
         default:
             break
         }
+    }
+    
+    private func configureLoader() {
+        var config = SwiftLoader.Config()
+        config.size = 100.0
+        config.spinnerLineWidth = 3.0
+        config.spinnerColor = R.color.activeElements() ?? .blue
+        config.foregroundColor = R.color.mainContent() ?? .black
+        config.foregroundAlpha = 0.5
+        SwiftLoader.setConfig(config)
     }
     
 }
