@@ -74,6 +74,7 @@
 		C422A25D27ED902800312F14 /* VideosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25C27ED902800312F14 /* VideosAPI.swift */; };
 		C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25F27ED908A00312F14 /* VideosRequest.swift */; };
 		C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C422A26727ED960400312F14 /* Localizable.stringsdict */; };
+		C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841127F171280037D5B8 /* UIImage+Compress.swift */; };
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
@@ -324,6 +325,7 @@
 		C422A25F27ED908A00312F14 /* VideosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosRequest.swift; sourceTree = "<group>"; };
 		C422A26827ED960400312F14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C422A26A27ED968300312F14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C434841127F171280037D5B8 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 				C4C9336727DCC4820068D8D2 /* UIImage+BgColorFromText.swift */,
 				C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */,
 				C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */,
+				C434841127F171280037D5B8 /* UIImage+Compress.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2448,6 +2451,7 @@
 				C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */,
 				C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */,
 				C478449027E1CAC000D9E275 /* FindFriendsSectionModel.swift in Sources */,
+				C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */,
 				C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */,
 				C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */,
 				C4D8ECAF27C3867400BF0767 /* StepsCountView.swift in Sources */,

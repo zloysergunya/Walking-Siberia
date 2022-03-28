@@ -13,6 +13,7 @@ class ProfileEditContentView: RootView {
     
     let avatarImageView: UIImageView = {
         let imageView = UIImageView(image: R.image.person88())
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 44.0
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
