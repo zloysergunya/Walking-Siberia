@@ -11,6 +11,8 @@ class ArticleView: RootView {
                                                 leftButtonImage: R.image.chevronLeft24(),
                                                 rightButtonImage: nil)
         view.configure(with: configuration)
+        view.leftButton.imageView?.backgroundColor = .white.withAlphaComponent(0.5)
+        view.leftButton.imageView?.layer.cornerRadius = 3.0
         
         return view
     }()
