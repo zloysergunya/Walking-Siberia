@@ -2,7 +2,6 @@ import IGListKit
 import UIKit
 
 protocol UserListSectionControllerDelegate: AnyObject {
-    func userListSectionController(didSelectImageActionFor user: User)
     func userListSectionController(didSelect user: User)
     func userListSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
 }
@@ -67,17 +66,10 @@ class UserListSectionController: ListSectionController {
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
         }
-        
-        cell.imageView.gestureRecognizers = nil
-        cell.imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewAction)))
-        
+                
         return cell
     }
-    
-    @objc private func imageViewAction() {
-        delegate?.userListSectionController(didSelectImageActionFor: sectionModel.user)
-    }
-    
+
 }
 
 // MARK: - ListDisplayDelegate

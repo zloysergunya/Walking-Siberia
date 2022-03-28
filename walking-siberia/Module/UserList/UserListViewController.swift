@@ -172,12 +172,8 @@ extension UserListViewController: ListAdapterDataSource {
 // MARK: - UserListSectionControllerDelegate
 extension UserListViewController: UserListSectionControllerDelegate {
     
-    func userListSectionController(didSelectImageActionFor user: User) {
-        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
-    }
-    
     func userListSectionController(didSelect user: User) {
-        navigationController?.pushViewController(UserStatisticViewController(user: user), animated: true)
+        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
     }
     
     func userListSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
