@@ -42,6 +42,10 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         objects = route.places.map({ RoutePlaceSectionModel(place: $0) })
         adapter.performUpdates(animated: true)
         
+        mainView.contentView.placesTitleLabel.isHidden = objects.isEmpty
+        mainView.contentView.placesCollectionView.isHidden = objects.isEmpty
+        mainView.contentView.placesCollectionHeightConstraint.update(offset: objects.isEmpty ? 0.0 : 140.0)
+        
         updateStats()
     }
     

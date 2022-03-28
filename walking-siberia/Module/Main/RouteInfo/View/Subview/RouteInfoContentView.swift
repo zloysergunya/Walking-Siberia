@@ -126,7 +126,7 @@ class RouteInfoContentView: RootView {
         return label
     }()
     
-    private let placesTitleLabel: UILabel = {
+    let placesTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Интересные места"
         label.font = R.font.geometriaBold(size: 16.0)
@@ -135,6 +135,7 @@ class RouteInfoContentView: RootView {
         return label
     }()
     
+    var placesCollectionHeightConstraint: Constraint!
     let placesCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
@@ -278,7 +279,7 @@ class RouteInfoContentView: RootView {
             make.top.equalTo(placesTitleLabel.snp.bottom).offset(4.0)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-16.0)
-            make.height.equalTo(140.0)
+            placesCollectionHeightConstraint = make.height.equalTo(140.0).constraint
         }
         
     }
