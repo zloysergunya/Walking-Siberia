@@ -191,6 +191,11 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     }
     
     @objc private func contactDeveloper() {
+        guard MFMailComposeViewController.canSendMail() else {
+            showError(text: "Прежде чем написать разработчикам, настройке почту")
+            return
+        }
+        
         let viewController = MFMailComposeViewController()
         viewController.mailComposeDelegate = self
         viewController.setToRecipients(["info@iteo.pro"])
