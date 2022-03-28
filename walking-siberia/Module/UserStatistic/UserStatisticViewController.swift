@@ -111,10 +111,10 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
             dateFormatter.dateFormat = "EEE"
             
         case .month:
-            dateFormatter.dateFormat = "dd"
+            dateFormatter.dateFormat = "dd.MM"
             
         case .year:
-            dateFormatter.dateFormat = "MMM"
+            dateFormatter.dateFormat = "LLLL"
         }
         
         return dates.map({ dateFormatter.string(from: $0) })
