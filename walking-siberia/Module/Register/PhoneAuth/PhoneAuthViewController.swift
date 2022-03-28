@@ -14,8 +14,14 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
         phoneSignInService.output = self
         
         mainView.continueButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
-        mainView.phoneTextField.delegate = self
+        mainView.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
         mainView.phoneTextField.becomeFirstResponder()
+    }
+    
+    private func sendCode(to phone: String) {
+        mainView.continueButton.isLoading = true
+        phoneSignInService.performRequest(phone: phone)
     }
     
     @objc private func nextStep() {
@@ -30,23 +36,10 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
         sendCode(to: formattedPhone)
     }
     
-    private func sendCode(to phone: String) {
-        mainView.continueButton.isLoading = true
-        phoneSignInService.performRequest(phone: phone)
-    }
-    
-}
-
-// MARK: - UITextFieldDelegate
-extension PhoneAuthViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let replacedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+    @objc private func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
         
-        mainView.continueButton.isActive = !replacedText.isEmpty
-        
-        return true
+        mainView.continueButton.isActive = textField.text?.isEmpty == false
     }
     
 }
