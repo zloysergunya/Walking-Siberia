@@ -64,6 +64,8 @@ class StepsCountView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        isUserInteractionEnabled = true
+        
         layer.masksToBounds = true
         layer.insertSublayer(gradientLayer, at: 0)
         

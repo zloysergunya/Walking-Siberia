@@ -99,7 +99,7 @@ class ProfileViewController: ViewController<ProfileView> {
             return
         }
         
-        navigationController?.pushViewController(UserStatisticViewController(user: user), animated: true)
+        navigationController?.pushViewController(PagerViewController(type: .statistics(user: user)), animated: true)
     }
     
 }

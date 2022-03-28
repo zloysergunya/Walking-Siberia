@@ -15,6 +15,8 @@ class RoutesViewController: ViewController<RoutesView> {
         super.viewDidLoad()
         
         mainView.statsButton.addTarget(self, action: #selector(openStatistics), for: .touchUpInside)
+        mainView.stepsCountView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openStatistics)))
+        
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
