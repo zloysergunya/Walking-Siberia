@@ -40,7 +40,7 @@ class CompetitionInfoContentView: RootView {
         return label
     }()
     
-    let partnersStackView = UIStackView(views: [], spacing: 8.0, distribution: .fillProportionally)
+    let partnersStackView = UIStackView(views: [], spacing: 8.0, distribution: .fill)
     
     override func setup() {
         backgroundColor = R.color.greyBackground()
