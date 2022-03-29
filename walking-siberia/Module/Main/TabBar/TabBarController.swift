@@ -45,6 +45,8 @@ class TabBarController: UITabBarController {
             viewController.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
         })
         
+        tabBar.tintColor = R.color.activeElements()
+        tabBar.unselectedItemTintColor = R.color.greyBlue()
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = false
     }
