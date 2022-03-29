@@ -40,9 +40,19 @@ class TrainersSectionController: ListSectionController {
     }
     
     private func configure(cell: TrainerCell) -> UICollectionViewCell {
-        ImageLoader.setImage(url: sectionModel.trainer.photo, imgView: cell.imageView)
+        let fullName = "\(sectionModel.trainer.firstName) \(sectionModel.trainer.lastName)"
+        cell.nameLabel.text = fullName
         
-        cell.nameLabel.text = "\(sectionModel.trainer.firstName) \(sectionModel.trainer.lastName)"
+        if let url = sectionModel.trainer.photo {
+            ImageLoader.setImage(url: url, imgView: cell.imageView)
+        } else {
+            let side = 60.0
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: side)
+            let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
+            gradientLayer?.frame = CGRect(side: side)
+            cell.gradientLayer = gradientLayer
+        }
+        
         cell.positionLabel.text = sectionModel.trainer.description
         cell.placeOfTrainingLabel.text = sectionModel.trainer.placeOfTraining
         cell.timeOfTrainingLabel.text = sectionModel.trainer.trainingTime

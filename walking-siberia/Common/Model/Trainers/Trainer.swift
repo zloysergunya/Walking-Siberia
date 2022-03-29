@@ -8,5 +8,5 @@ struct Trainer: Codable, Equatable {
     let description: String
     let placeOfTraining: String
     let trainingTime: String
-    let photo: String
+    let photo: String?
 }

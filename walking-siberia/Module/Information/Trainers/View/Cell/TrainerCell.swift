@@ -3,6 +3,22 @@ import SnapKit
 
 class TrainerCell: UICollectionViewCell {
     
+    var gradientLayer: CAGradientLayer? {
+        didSet {
+            if let gradientLayer = gradientLayer {
+                imageViewBackgroundView.layer.addSublayer(gradientLayer)
+            }
+        }
+    }
+    
+    let imageViewBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 30.0
+        view.layer.masksToBounds = true
+        
+        return view
+    }()
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -96,6 +112,7 @@ class TrainerCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 16.0
         contentView.layer.masksToBounds = true
         
+        contentView.addSubview(imageViewBackgroundView)
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(positionLabel)
@@ -116,7 +133,17 @@ class TrainerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer?.frame = imageViewBackgroundView.bounds
+    }
+    
     private func setupConstraints() {
+        
+        imageViewBackgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(imageView.snp.edges)
+        }
         
         imageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().inset(12.0)
