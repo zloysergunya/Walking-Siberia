@@ -15,7 +15,6 @@ class StyledSegmentedControl: UISegmentedControl {
         
         setBackgroundImage(UIImage(color: .white), for: .normal, barMetrics: .default)
         setBackgroundImage(UIImage(color: selectedColor), for: .selected, barMetrics: .default)
-        setBackgroundImage(UIImage(color: selectedColor.withAlphaComponent(0.2)), for: .highlighted, barMetrics: .default)
     }
     
     required init?(coder: NSCoder) {
