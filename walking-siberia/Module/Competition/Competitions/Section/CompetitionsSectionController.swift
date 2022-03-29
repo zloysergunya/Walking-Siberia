@@ -13,7 +13,7 @@ class CompetitionsSectionController: ListSectionController {
     override init() {
         super.init()
         
-        inset = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
+        inset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
     }
     
     override func numberOfItems() -> Int {
@@ -21,6 +21,7 @@ class CompetitionsSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
+        let inset = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
         return CGSize(width: collectionContext!.containerSize.width, height: 78.0).inset(by: inset)
     }
     
