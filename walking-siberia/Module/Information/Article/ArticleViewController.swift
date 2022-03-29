@@ -35,7 +35,7 @@ class ArticleViewController: ViewController<ArticleView> {
         mainView.contentView.nameLabel.text = article.title
         mainView.contentView.textLabel.text = article.content
         
-        if let source = article.link {
+        if let source = article.link, !source.isEmpty {
             let mediumFont = Style("medium").font(R.font.geometriaMedium(size: 14.0) ?? .systemFont(ofSize: 14.0, weight: .medium))
             let a = Style("a")
                 .underlineStyle(NSUnderlineStyle.single).underlineColor(mainView.contentView.sourceLabel.textColor)
