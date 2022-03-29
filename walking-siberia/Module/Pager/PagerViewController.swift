@@ -1,5 +1,6 @@
 import UIKit
 import Swift_PageMenu
+import SnapKit
 
 class PagerViewController: PageMenuController {
     
@@ -11,6 +12,13 @@ class PagerViewController: PageMenuController {
     }
     
     private let initialViewControllers: [UIViewController]
+    
+    private let separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = R.color.activeElements()?.withAlphaComponent(0.5)
+        
+        return view
+    }()
     
     init(type: PagerType) {
         var viewControllers: [UIViewController] = []
@@ -51,11 +59,16 @@ class PagerViewController: PageMenuController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = R.color.greyBackground()
         navigationController?.navigationBar.titleTextAttributes = [.font: R.font.geometriaMedium(size: 14.0) ?? .systemFont(ofSize: 14.0),
                                                                    .foregroundColor: R.color.mainContent() ?? .black]
         
+        tabMenuView.addSubview(separator)
+        
         dataSource = self
+        
+        setupConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +77,13 @@ class PagerViewController: PageMenuController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         
         initialViewControllers.forEach({ $0.viewWillAppear(animated) })
+    }
+    
+    private func setupConstraints() {
+        separator.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
     }
     
 }
