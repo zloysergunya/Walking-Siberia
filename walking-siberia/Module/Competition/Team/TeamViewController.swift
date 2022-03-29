@@ -108,7 +108,7 @@ class TeamViewController: ViewController<TeamView> {
             
             switch result {
             case .success(let team):
-                let competitionJoined = team.competitionId == self.team.competitionId
+                let competitionJoined = team?.competitionId == self.team.competitionId
                 let isHidden = competitionJoined && !self.team.isJoined || self.competition.isClosed
                 self.mainView.contentView.actionButton.isHidden = isHidden
                 
