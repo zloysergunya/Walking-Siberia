@@ -39,7 +39,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
             mainView.navBar.title = "Редактирование команды"
             mainView.contentView.nameField.text = team.name
             currentParticipants = team.users.map({ $0.user })
-            mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
+            mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount || competition.isClosed
             updateParticipants()
         }
     }

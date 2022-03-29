@@ -57,8 +57,8 @@ class TeamsViewController: ViewController<TeamsView> {
         if let type = UserSettings.user?.type {
             let userCategory: UserCategory? = .init(rawValue: type)
             
-            mainView.createTeamButton.isHidden = userCategory == .manWithHIA
-            mainView.takePartButton.isHidden = userCategory != .manWithHIA
+            mainView.createTeamButton.isHidden = userCategory == .manWithHIA || competition.isClosed
+            mainView.takePartButton.isHidden = userCategory != .manWithHIA || competition.isClosed
             
             if userCategory == .manWithHIA {
                 mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
