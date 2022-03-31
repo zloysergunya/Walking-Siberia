@@ -15,8 +15,8 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         super.viewDidLoad()
         
         mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
-        mainView.contentView.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickPhoto)))
-        mainView.contentView.changePhotoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pickPhoto)))
+        mainView.contentView.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openPickPhotoDialog)))
+        mainView.contentView.changePhotoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openPickPhotoDialog)))
         mainView.contentView.personalInfoEditButton.addTarget(self, action: #selector(toggleProfileEditing), for: .touchUpInside)
         mainView.contentView.instructionActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openInstruction)))
         mainView.contentView.aboutAppActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openAboutApp)))
@@ -182,16 +182,49 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         })
     }
     
+    private func deleteAvatar() {
+        provider.deleteAvatar() { [weak self] result in
+            switch result {
+            case .success:
+                UserSettings.user?.profile.avatar = nil
+                self?.configure()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
     @objc private func dateOfBirthDidChange() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         mainView.contentView.birthdayTextField.text = dateFormatter.string(from: mainView.contentView.datePicker.date)
     }
     
-    @objc private func pickPhoto() {
+    @objc private func openPickPhotoDialog() {
+        let alert = UIAlertController(title: "Выберите действие", message: "", preferredStyle: .actionSheet)
+        let pickPhotoAction = UIAlertAction(title: "Выбрать фото", style: .default) { [weak self] _ in
+            self?.pickPhoto(sourceType: .photoLibrary)
+        }
+        let makePhotoAction = UIAlertAction(title: "Сделать фото", style: .default) { [weak self] _ in
+            self?.pickPhoto(sourceType: .camera)
+        }
+        let deleteAvatarAction = UIAlertAction(title: "Удалить фото", style: .default) { [weak self] _ in
+            self?.deleteAvatar()
+        }
+        
+        alert.addAction(pickPhotoAction)
+        alert.addAction(makePhotoAction)
+        alert.addAction(deleteAvatarAction)
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    
+    @objc private func pickPhoto(sourceType: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = false
         
         present(imagePicker, animated: true)

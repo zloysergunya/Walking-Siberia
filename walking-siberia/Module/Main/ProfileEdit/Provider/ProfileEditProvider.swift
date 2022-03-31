@@ -26,4 +26,16 @@ class ProfileEditProvider {
         }
     }
     
+    func deleteAvatar(completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
+        ProfileAPI.profileAvatarDeleteGet { response, error in
+            if let response = response {
+                completion(.success(response))
+            } else if let error = error {
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(ModelError()))
+            }
+        }
+    }
+    
 }

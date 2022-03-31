@@ -12,7 +12,7 @@ struct Profile: Codable {
     let instagram: String?
     let vkontakte: String?
     let odnoklassniki: String?
-    let avatar: String?
+    var avatar: String?
 }
 
 extension Profile: Equatable {
