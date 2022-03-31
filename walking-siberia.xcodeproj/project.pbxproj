@@ -56,8 +56,6 @@
 		C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA6B27AFFC8C004B82CB /* LoggerService.swift */; };
 		C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA6C27AFFC8C004B82CB /* KeychainService.swift */; };
 		C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA6D27AFFC8C004B82CB /* AuthService.swift */; };
-		C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAA927AFFF72004B82CB /* LaunchViewController.swift */; };
-		C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAAC27AFFF88004B82CB /* LaunchView.swift */; };
 		C408EAAF27B0005F004B82CB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAAE27B0005F004B82CB /* R.generated.swift */; };
 		C408EAB127B000D7004B82CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EAB027B000D7004B82CB /* Constants.swift */; };
 		C40919D127C72FC700E23AD8 /* RouteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919CF27C72FC700E23AD8 /* RouteInfoViewController.swift */; };
@@ -75,6 +73,7 @@
 		C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25F27ED908A00312F14 /* VideosRequest.swift */; };
 		C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C422A26727ED960400312F14 /* Localizable.stringsdict */; };
 		C4326A0327F57F1900FB53CE /* NotificationsAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */; };
+		C4326A0527F5BBF200FB53CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4326A0427F5BBF200FB53CE /* LaunchScreen.storyboard */; };
 		C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841127F171280037D5B8 /* UIImage+Compress.swift */; };
 		C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841327F180700037D5B8 /* ParticipantStatistics.swift */; };
 		C434841627F180800037D5B8 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841527F180800037D5B8 /* Average.swift */; };
@@ -311,8 +310,6 @@
 		C408EA6B27AFFC8C004B82CB /* LoggerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerService.swift; sourceTree = "<group>"; };
 		C408EA6C27AFFC8C004B82CB /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		C408EA6D27AFFC8C004B82CB /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		C408EAA927AFFF72004B82CB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		C408EAAC27AFFF88004B82CB /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		C408EAAE27B0005F004B82CB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C408EAB027B000D7004B82CB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C40919CF27C72FC700E23AD8 /* RouteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +328,7 @@
 		C422A26827ED960400312F14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C422A26A27ED968300312F14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAccessService.swift; sourceTree = "<group>"; };
+		C4326A0427F5BBF200FB53CE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C434841127F171280037D5B8 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		C434841327F180700037D5B8 /* ParticipantStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantStatistics.swift; sourceTree = "<group>"; };
 		C434841527F180800037D5B8 /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
@@ -950,18 +948,9 @@
 		C408EAA827AFFE32004B82CB /* Launch */ = {
 			isa = PBXGroup;
 			children = (
-				C408EAAB27AFFF76004B82CB /* View */,
-				C408EAA927AFFF72004B82CB /* LaunchViewController.swift */,
+				C4326A0427F5BBF200FB53CE /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		C408EAAB27AFFF76004B82CB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C408EAAC27AFFF88004B82CB /* LaunchView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C40919CE27C72FB400E23AD8 /* RouteInfo */ = {
@@ -2229,6 +2218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A1514527B0F3D000C95344 /* Geometria-Medium.ttf in Resources */,
+				C4326A0527F5BBF200FB53CE /* LaunchScreen.storyboard in Resources */,
 				C408EA1927AFFA08004B82CB /* Assets.xcassets in Resources */,
 				C4A1514427B0F3D000C95344 /* Geometria-Regular.ttf in Resources */,
 				C4A1514327B0F3D000C95344 /* Geometria-Light.ttf in Resources */,
@@ -2334,7 +2324,6 @@
 				C4BD9FA327ECCAB000E0CE5F /* UserListSectionModel.swift in Sources */,
 				C49AFBD227E881B1009787AB /* ArticleRequest.swift in Sources */,
 				C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */,
-				C408EAAD27AFFF88004B82CB /* LaunchView.swift in Sources */,
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
@@ -2463,7 +2452,6 @@
 				C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */,
 				C4D9A87427C91330004B552A /* ProfileContentView.swift in Sources */,
 				C49AFBCD27E8812B009787AB /* ArticlesProvider.swift in Sources */,
-				C408EAAA27AFFF72004B82CB /* LaunchViewController.swift in Sources */,
 				C4A1515D27B111DE00C95344 /* String+PhonePattern.swift in Sources */,
 				C4D8EC9027C363B200BF0767 /* RoutesView.swift in Sources */,
 				C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */,
@@ -2714,11 +2702,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сибирь Шагающая";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Это необходимо для загрузки фото";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Это позволит найти друзей внутри приложения. Контакты хранятся на наших серверах, другие пользователи не получат к ним доступ";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Это необходимо для отправки количества ваших шагов для участник в соревнованиях";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Это необходимо для получения количества ваших шагов для участник в соревнованиях";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchViewController;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -2749,11 +2738,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сибирь Шагающая";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Это необходимо для загрузки фото";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Это позволит найти друзей внутри приложения. Контакты хранятся на наших серверах, другие пользователи не получат к ним доступ";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Это необходимо для отправки количества ваших шагов для участник в соревнованиях";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Это необходимо для получения количества ваших шагов для участник в соревнованиях";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchViewController;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

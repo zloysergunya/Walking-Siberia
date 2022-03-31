@@ -15,8 +15,6 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>Это необходимо для загрузки фото</string>
 	<key>Required Background Modes</key>
 	<array>
 		<string>App send content to the network</string>
