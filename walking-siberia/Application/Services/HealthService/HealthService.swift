@@ -94,14 +94,14 @@ extension HealthService: HealthServiceInput {
             }
             
             stepsCount = Int(sum.doubleValue(for: HKUnit.count()))
-            print("!!!stepsCount", stepsCount)
-            
-            let content = UNMutableNotificationContent()
-            content.title = "Изменилось количество шагов"
-            content.body = "Новое значение: \(stepsCount)"
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request)
+//            print("!!!stepsCount", stepsCount)
+//            
+//            let content = UNMutableNotificationContent()
+//            content.title = "Изменилось количество шагов"
+//            content.body = "Новое значение: \(stepsCount)"
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+//            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//            UNUserNotificationCenter.current().add(request)
             
             self.updateUserActivity(stepsCount: stepsCount, distance: distance)
             dispatchGroup.leave()
@@ -118,14 +118,14 @@ extension HealthService: HealthServiceInput {
             }
             
             distance = sum.doubleValue(for: HKUnit.meterUnit(with: .kilo))
-            print("!!!distance", distance)
-            
-            let content = UNMutableNotificationContent()
-            content.title = "Изменилась дистанция"
-            content.body = "Новое значение: \(distance)"
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request)
+//            print("!!!distance", distance)
+//
+//            let content = UNMutableNotificationContent()
+//            content.title = "Изменилась дистанция"
+//            content.body = "Новое значение: \(distance)"
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+//            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//            UNUserNotificationCenter.current().add(request)
             
             self.updateUserActivity(stepsCount: stepsCount, distance: distance)
             dispatchGroup.leave()
