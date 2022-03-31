@@ -91,6 +91,7 @@ class ProfileViewController: ViewController<ProfileView> {
     
     @objc private func openProfileEdit() {
         let viewController = ProfileEditViewController()
+        viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
     
