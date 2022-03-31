@@ -86,6 +86,8 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         
         let element = AASeriesElement()
         element.color = AAGradientColor.linearGradient(startColor: "#69CEF5", endColor: "#2DA6DE")
+        element.name(mainView.segmentControl.selectedSegmentIndex == 0 ? "Шаги" : "Километры")
+        
         element.data(data)
         
         let chartModel = AAChartModel()
