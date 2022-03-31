@@ -11,10 +11,26 @@ class ProfileEditContentView: RootView {
         return view
     }()
     
+    var gradientLayer: CAGradientLayer? {
+        didSet {
+            if let gradientLayer = gradientLayer {
+                imageViewBackgroundView.layer.addSublayer(gradientLayer)
+            }
+        }
+    }
+    
+    let imageViewBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 60.0
+        view.layer.masksToBounds = true
+        
+        return view
+    }()
+    
     let avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: R.image.person88())
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 44.0
+        imageView.layer.cornerRadius = 60.0
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
         
@@ -396,6 +412,7 @@ class ProfileEditContentView: RootView {
         addSubview(notifySettingsContainerView)
         addSubview(otherContainerView)
         
+        photoContainerView.addSubview(imageViewBackgroundView)
         photoContainerView.addSubview(avatarImageView)
         photoContainerView.addSubview(changePhotoLabel)
         
@@ -412,6 +429,12 @@ class ProfileEditContentView: RootView {
         super.setup()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer?.frame = imageViewBackgroundView.bounds
+    }
+    
     override func setupConstraints() {
         
         // MARK: - Photo container
@@ -419,10 +442,14 @@ class ProfileEditContentView: RootView {
             make.left.top.right.equalToSuperview()
         }
         
+        imageViewBackgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(avatarImageView.snp.edges)
+        }
+        
         avatarImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(18.0)
             make.centerX.equalToSuperview()
-            make.size.equalTo(88.0)
+            make.size.equalTo(120.0)
         }
         
         changePhotoLabel.snp.makeConstraints { make in

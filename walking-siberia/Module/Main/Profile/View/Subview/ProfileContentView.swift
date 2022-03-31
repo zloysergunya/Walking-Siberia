@@ -20,7 +20,7 @@ class ProfileContentView: RootView {
     
     let imageViewBackgroundView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 44.0
+        view.layer.cornerRadius = 60.0
         view.layer.masksToBounds = true
         
         return view
@@ -28,7 +28,7 @@ class ProfileContentView: RootView {
 
     let avatarImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 44.0
+        imageView.layer.cornerRadius = 60.0
         imageView.layer.masksToBounds = true
         
         return imageView
@@ -98,7 +98,6 @@ class ProfileContentView: RootView {
         
         headerView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
-            make.height.equalTo(256.0)
         }
         
         imageViewBackgroundView.snp.makeConstraints { make in
@@ -108,7 +107,7 @@ class ProfileContentView: RootView {
         avatarImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(64.0)
             make.centerX.equalToSuperview()
-            make.size.equalTo(88.0)
+            make.size.equalTo(120.0)
         }
         
         nameLabel.snp.makeConstraints { make in
