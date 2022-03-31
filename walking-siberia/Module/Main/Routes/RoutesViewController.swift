@@ -17,6 +17,7 @@ class RoutesViewController: ViewController<RoutesView> {
         
         mainView.statsButton.addTarget(self, action: #selector(openStatistics), for: .touchUpInside)
         mainView.stepsCountView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openStatistics)))
+        mainView.notifyButton.addTarget(self, action: #selector(openNotifications), for: .touchUpInside)
         
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         adapter.collectionView = mainView.collectionView
@@ -107,6 +108,12 @@ class RoutesViewController: ViewController<RoutesView> {
         
         let pagerViewController = PagerViewController(type: .statistics(user: user))
         navigationController?.pushViewController(pagerViewController, animated: true)
+    }
+    
+    @objc private func openNotifications() {
+        let viewController = NotificationsViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

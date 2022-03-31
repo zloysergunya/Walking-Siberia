@@ -74,6 +74,16 @@
 		C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C422A26727ED960400312F14 /* Localizable.stringsdict */; };
 		C4326A0327F57F1900FB53CE /* NotificationsAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */; };
 		C4326A0527F5BBF200FB53CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4326A0427F5BBF200FB53CE /* LaunchScreen.storyboard */; };
+		C4326A0927F5C3B400FB53CE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A0727F5C3B400FB53CE /* NotificationsViewController.swift */; };
+		C4326A0A27F5C3B400FB53CE /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A0827F5C3B400FB53CE /* NotificationsView.swift */; };
+		C4326A0E27F5C3DE00FB53CE /* NotificationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A0D27F5C3DE00FB53CE /* NotificationsProvider.swift */; };
+		C4326A1127F5C52100FB53CE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A1027F5C52100FB53CE /* Notification.swift */; };
+		C4326A1327F5C56600FB53CE /* NotificationExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A1227F5C56600FB53CE /* NotificationExtra.swift */; };
+		C4326A1727F5C59300FB53CE /* NotificationSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A1627F5C59300FB53CE /* NotificationSectionModel.swift */; };
+		C4326A1927F5C9B900FB53CE /* NotificationsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A1827F5C9B900FB53CE /* NotificationsSectionController.swift */; };
+		C4326A1C27F5CA8700FB53CE /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A1B27F5CA8700FB53CE /* NotificationCell.swift */; };
+		C4326A1E27F5D02900FB53CE /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A1D27F5D02900FB53CE /* NotificationAPI.swift */; };
+		C4326A2127F5D0E500FB53CE /* NotificationListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A2027F5D0E500FB53CE /* NotificationListRequest.swift */; };
 		C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841127F171280037D5B8 /* UIImage+Compress.swift */; };
 		C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841327F180700037D5B8 /* ParticipantStatistics.swift */; };
 		C434841627F180800037D5B8 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841527F180800037D5B8 /* Average.swift */; };
@@ -329,6 +339,16 @@
 		C422A26A27ED968300312F14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAccessService.swift; sourceTree = "<group>"; };
 		C4326A0427F5BBF200FB53CE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C4326A0727F5C3B400FB53CE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		C4326A0827F5C3B400FB53CE /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		C4326A0D27F5C3DE00FB53CE /* NotificationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsProvider.swift; sourceTree = "<group>"; };
+		C4326A1027F5C52100FB53CE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		C4326A1227F5C56600FB53CE /* NotificationExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtra.swift; sourceTree = "<group>"; };
+		C4326A1627F5C59300FB53CE /* NotificationSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSectionModel.swift; sourceTree = "<group>"; };
+		C4326A1827F5C9B900FB53CE /* NotificationsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSectionController.swift; sourceTree = "<group>"; };
+		C4326A1B27F5CA8700FB53CE /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		C4326A1D27F5D02900FB53CE /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
+		C4326A2027F5D0E500FB53CE /* NotificationListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListRequest.swift; sourceTree = "<group>"; };
 		C434841127F171280037D5B8 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		C434841327F180700037D5B8 /* ParticipantStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantStatistics.swift; sourceTree = "<group>"; };
 		C434841527F180800037D5B8 /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
@@ -779,6 +799,7 @@
 		C408EA3B27AFFC8C004B82CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C4326A0F27F5C51700FB53CE /* Notifications */,
 				C422A25227ED89E800312F14 /* Videos */,
 				C49AFBF827E89F9B009787AB /* Trainers */,
 				C49AFBD327E88410009787AB /* Articles */,
@@ -840,6 +861,7 @@
 				C49AFBCE27E88152009787AB /* ArticleAPI.swift */,
 				C49AFBF627E89DC3009787AB /* TrainersAPI.swift */,
 				C4BD9FA727ECCE7B00E0CE5F /* UsersAPI.swift */,
+				C4326A1D27F5D02900FB53CE /* NotificationAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -847,6 +869,7 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C4326A1F27F5D0D900FB53CE /* NotificationAPI */,
 				C422A25E27ED907F00312F14 /* VideosAPI */,
 				C4BD9FA927ECCEA900E0CE5F /* UsersAPI */,
 				C49AFBD027E88180009787AB /* ArticleAPI */,
@@ -930,6 +953,7 @@
 		C408EAA727AFFE27004B82CB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C4326A0627F5C3A300FB53CE /* Notifications */,
 				C4BD9F9527ECCAB000E0CE5F /* UserList */,
 				C4BD9F8C27ECC9F300E0CE5F /* UserStatistic */,
 				C49AFBC527E87FA3009787AB /* Information */,
@@ -1066,6 +1090,76 @@
 				C422A26727ED960400312F14 /* Localizable.stringsdict */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		C4326A0627F5C3A300FB53CE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A1527F5C58500FB53CE /* Section */,
+				C4326A1427F5C57F00FB53CE /* Model */,
+				C4326A0C27F5C3CF00FB53CE /* Provider */,
+				C4326A0B27F5C3C900FB53CE /* View */,
+				C4326A0727F5C3B400FB53CE /* NotificationsViewController.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		C4326A0B27F5C3C900FB53CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A1A27F5CA8000FB53CE /* Cell */,
+				C4326A0827F5C3B400FB53CE /* NotificationsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4326A0C27F5C3CF00FB53CE /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A0D27F5C3DE00FB53CE /* NotificationsProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4326A0F27F5C51700FB53CE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A1027F5C52100FB53CE /* Notification.swift */,
+				C4326A1227F5C56600FB53CE /* NotificationExtra.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		C4326A1427F5C57F00FB53CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A1627F5C59300FB53CE /* NotificationSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C4326A1527F5C58500FB53CE /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A1827F5C9B900FB53CE /* NotificationsSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C4326A1A27F5CA8000FB53CE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A1B27F5CA8700FB53CE /* NotificationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C4326A1F27F5D0D900FB53CE /* NotificationAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C4326A2027F5D0E500FB53CE /* NotificationListRequest.swift */,
+			);
+			path = NotificationAPI;
 			sourceTree = "<group>";
 		};
 		C4447E1327EB3A5100666751 /* Styled */ = {
@@ -2320,6 +2414,7 @@
 				C4BD9F9327ECC9F300E0CE5F /* UserStatisticViewController.swift in Sources */,
 				C4BD9F7027EC294500E0CE5F /* GoogleSignInService.swift in Sources */,
 				C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */,
+				C4326A1927F5C9B900FB53CE /* NotificationsSectionController.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
 				C4BD9FA327ECCAB000E0CE5F /* UserListSectionModel.swift in Sources */,
 				C49AFBD227E881B1009787AB /* ArticleRequest.swift in Sources */,
@@ -2328,6 +2423,9 @@
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
 				C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */,
+				C4326A0E27F5C3DE00FB53CE /* NotificationsProvider.swift in Sources */,
+				C4326A1727F5C59300FB53CE /* NotificationSectionModel.swift in Sources */,
+				C4326A1C27F5CA8700FB53CE /* NotificationCell.swift in Sources */,
 				C478449727E1DF4D00D9E275 /* FindFriendsSectionController.swift in Sources */,
 				C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */,
 				C4C9336627DCC1690068D8D2 /* GradientHelper.swift in Sources */,
@@ -2362,6 +2460,7 @@
 				C400F44327D5ECDC00B1EAD9 /* CompetitionsViewController.swift in Sources */,
 				C4C9335A27DCB1C60068D8D2 /* TeamsAPI.swift in Sources */,
 				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
+				C4326A0927F5C3B400FB53CE /* NotificationsViewController.swift in Sources */,
 				C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */,
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
 				C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */,
@@ -2385,6 +2484,8 @@
 				C408EA9F27AFFC8C004B82CB /* AppDelegate.swift in Sources */,
 				C422A25627ED8A2900312F14 /* VideoSectionModel.swift in Sources */,
 				C478449A27E1DF6D00D9E275 /* FindFriendsCell.swift in Sources */,
+				C4326A0A27F5C3B400FB53CE /* NotificationsView.swift in Sources */,
+				C4326A2127F5D0E500FB53CE /* NotificationListRequest.swift in Sources */,
 				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
 				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,
@@ -2408,6 +2509,7 @@
 				C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */,
 				C478449D27E1E99F00D9E275 /* AddButton.swift in Sources */,
 				C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */,
+				C4326A1127F5C52100FB53CE /* Notification.swift in Sources */,
 				C4D8ECAC27C3802500BF0767 /* ImageLoader.swift in Sources */,
 				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
 				C4326A0327F57F1900FB53CE /* NotificationsAccessService.swift in Sources */,
@@ -2430,6 +2532,7 @@
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
 				C434841627F180800037D5B8 /* Average.swift in Sources */,
+				C4326A1E27F5D02900FB53CE /* NotificationAPI.swift in Sources */,
 				C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */,
 				C4D9A87827CA4C8A004B552A /* CompetitionAPI.swift in Sources */,
 				C4BD9F9227ECC9F300E0CE5F /* UserStatisticProvider.swift in Sources */,
@@ -2439,6 +2542,7 @@
 				C4C9335627DCAFD70068D8D2 /* TeamSectionModel.swift in Sources */,
 				C4BD9F7127EC294500E0CE5F /* AppleSignInService.swift in Sources */,
 				C4F9FD4527D1B67A00A6A2B0 /* InstructionViewController.swift in Sources */,
+				C4326A1327F5C56600FB53CE /* NotificationExtra.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */,

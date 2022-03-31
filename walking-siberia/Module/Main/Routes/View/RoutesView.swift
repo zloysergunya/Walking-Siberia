@@ -13,7 +13,6 @@ class RoutesView: RootView {
     let notifyButton: BadgeButton = {
         let button = BadgeButton()
         button.setImage(R.image.bell28(), for: .normal)
-        button.badge = "197"
         button.badgeBackgroundColor = .init(hex: 0xE4302B)
         button.badgeTextColor = .white
         button.badgeFont = R.font.geometriaMedium(size: 10.0)

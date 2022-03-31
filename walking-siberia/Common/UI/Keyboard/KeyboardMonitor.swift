@@ -38,7 +38,7 @@ class KeyboardMonitor {
     }
 
     @objc
-    private func notificationKeyboard(notification: Notification) {
+    private func notificationKeyboard(notification: Foundation.Notification) {
         guard let userInfo: Dictionary = notification.userInfo,
             let endFrameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
             let durationValue = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,

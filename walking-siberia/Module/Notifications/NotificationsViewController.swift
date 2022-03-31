@@ -1,30 +1,20 @@
 import UIKit
 import IGListKit
-import AVFoundation
-import AVKit
 
-class VideosViewController: ViewController<VideosView> {
+class NotificationsViewController: ViewController<NotificationsView> {
     
-    private let provider = VideosProvider()
+    private let provider = NotificationsProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var loadingState: LoadingState = .none
-    private var objects: [VideoSectionModel] = []
-    
-    override init(nibName: String?, bundle: Bundle?) {
-        super.init(nibName: nibName, bundle: bundle)
-        
-        title = "Видео"
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var objects: [NotificationSectionModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
     }
@@ -32,17 +22,17 @@ class VideosViewController: ViewController<VideosView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadVideos(flush: true)
+        loadNotifications(flush: true)
     }
-
-    private func loadVideos(flush: Bool) {
+    
+    private func loadNotifications(flush: Bool) {
         guard loadingState != .loading else {
             return
         }
         
         loadingState = .loading
         
-        provider.loadVideos { [weak self] result in
+        provider.loadNotifications(filter: "") { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -55,7 +45,7 @@ class VideosViewController: ViewController<VideosView> {
                     self.objects.removeAll()
                 }
                 
-                self.objects = videos.map({ VideoSectionModel(video: $0) })
+                self.objects = videos.map({ NotificationSectionModel(notification: $0) })
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
                 
@@ -67,41 +57,45 @@ class VideosViewController: ViewController<VideosView> {
         }
     }
     
-    private func addViewTo(videoId: Int) {
-        provider.addViewTo(videoId: videoId) { [weak self] result in
+    private func hideNotification(id: Int) {
+        provider.hideNotification(id: id) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+                        
             switch result {
-            case .success: break
-            case .failure(let error): self?.showError(text: error.localizedDescription)
+            case .success:
+                if let index = self.objects.firstIndex(where: { $0.notification.id == id }) {
+                    self.objects.remove(at: index)
+                }
+                
+                self.adapter.performUpdates(animated: true)
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
             }
         }
     }
     
-    func playVideo(url: URL) {
-        let player = AVPlayer(url: url)
-        
-        let vc = AVPlayerViewController()
-        vc.player = player
-        
-        present(vc, animated: true) {
-            vc.player?.play()
-        }
+    @objc private func pullToRefresh() {
+        loadNotifications(flush: true)
     }
     
-    @objc private func pullToRefresh() {
-        loadVideos(flush: true)
+    @objc private func close() {
+        navigationController?.popViewController(animated: true)
     }
     
 }
 
 // MARK: - ListAdapterDataSource
-extension VideosViewController: ListAdapterDataSource {
+extension NotificationsViewController: ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return objects
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let sectionController = VideosSectionController()
+        let sectionController = NotificationsSectionController()
         sectionController.delegate = self
 
         return sectionController
@@ -113,22 +107,20 @@ extension VideosViewController: ListAdapterDataSource {
 
 }
 
-// MARK: - VideosSectionControllerDelegate
-extension VideosViewController: VideosSectionControllerDelegate {
+// MARK: - NotificationsSectionControllerDelegate
+extension NotificationsViewController: NotificationsSectionControllerDelegate {
     
-    func videosSectionController(didSelect video: Video) {
-        guard let url = URL(string: video.file) else {
-            showError(text: "Не удалось получить ссылку на видео")
-            return
-        }
+    func notificationsSectionController(didSelect notification: Notification) {
         
-        playVideo(url: url)
-        addViewTo(videoId: video.id)
     }
     
-    func videosSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
+    func notificationsSectionController(didSelectRemoveActionFor notification: Notification) {
+        hideNotification(id: notification.id)
+    }
+    
+    func notificationsSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
         if section + 1 >= objects.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
-            loadVideos(flush: false)
+            loadNotifications(flush: false)
         }
     }
     

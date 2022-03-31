@@ -25,7 +25,7 @@ extension AuthService {
 
 extension AuthService {
     
-    static let statusChangedNotifiaction = Notification.Name("AuthService.statusChanged")
+    static let statusChangedNotifiaction = Foundation.Notification.Name("AuthService.statusChanged")
 
     func authorize(with token: String, currentUserId: Int) {
         keychainService.token = token
