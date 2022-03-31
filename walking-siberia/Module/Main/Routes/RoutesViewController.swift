@@ -6,6 +6,7 @@ class RoutesViewController: ViewController<RoutesView> {
     
     private let provider = RoutesProvider()
     private let healthService = HealthService()
+    private let notificationsAccessService = NotificationsAccessService()
     
     private var objects: [RouteSectionModel] = []
     private var loadingState: LoadingState = .none
@@ -20,6 +21,9 @@ class RoutesViewController: ViewController<RoutesView> {
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
+        
+        notificationsAccessService.output = self
+        notificationsAccessService.requestAccess()
         
         healthService.output = self
         healthService.requestAccess()
@@ -83,32 +87,11 @@ class RoutesViewController: ViewController<RoutesView> {
         let lastDate = UserSettings.lastSendActivityDate ?? Date()
         let toDate = Date()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        let dateString = dateFormatter.string(from: Date())
-        
         Date.dates(from: lastDate, to: toDate).forEach { date in
             healthService.getSteps(fromDate: date, toDate: date) { [weak self] (stepsCount, distance) in
-                guard let self = self else {
-                    return
-                }
-                
                 DispatchQueue.main.async {
-                    self.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
-                    self.sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
+                    self?.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
                 }
-            }
-        }
-    }
-    
-    private func sendUserActivity(walkRequest: WalkRequest) {
-        provider.sendUserActivity(walkRequest: walkRequest) { [weak self] result in
-            switch result {
-            case .success:
-                UserSettings.lastSendActivityDate = Date()
-                
-            case .failure(let error):
-                self?.showError(text: error.localizedDescription)
             }
         }
     }
@@ -159,6 +142,19 @@ extension RoutesViewController: RouteSectionControllerDelegate {
     
 }
 
+// MARK: - NotificationsAccessServiceOutput
+extension RoutesViewController: NotificationsAccessServiceOutput {
+    
+    func successRequest(granted: Bool) {
+        
+    }
+    
+    func failureRequest(error: Error) {
+        showError(text: error.localizedDescription)
+    }
+    
+}
+
 // MARK: - HealthServiceOutput
 extension RoutesViewController: HealthServiceOutput {
     
@@ -169,6 +165,7 @@ extension RoutesViewController: HealthServiceOutput {
     }
     
     func failureHealthAccessRequest(error: Error) {
+        log.error(error.localizedDescription)
         showError(text: error.localizedDescription)
     }
     

@@ -74,12 +74,14 @@
 		C422A25D27ED902800312F14 /* VideosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25C27ED902800312F14 /* VideosAPI.swift */; };
 		C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25F27ED908A00312F14 /* VideosRequest.swift */; };
 		C422A26927ED960400312F14 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C422A26727ED960400312F14 /* Localizable.stringsdict */; };
+		C4326A0327F57F1900FB53CE /* NotificationsAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */; };
 		C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841127F171280037D5B8 /* UIImage+Compress.swift */; };
 		C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841327F180700037D5B8 /* ParticipantStatistics.swift */; };
 		C434841627F180800037D5B8 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841527F180800037D5B8 /* Average.swift */; };
 		C434841827F181930037D5B8 /* Int+RoundedWithAbbreviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */; };
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
+		C4578AF627F4330F00A88549 /* HealthServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */; };
 		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
 		C478448327E1C23800D9E275 /* FindFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448127E1C23800D9E275 /* FindFriendsView.swift */; };
 		C478448927E1C4EF00D9E275 /* FindFriendsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448827E1C4EF00D9E275 /* FindFriendsProvider.swift */; };
@@ -328,12 +330,14 @@
 		C422A25F27ED908A00312F14 /* VideosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosRequest.swift; sourceTree = "<group>"; };
 		C422A26827ED960400312F14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		C422A26A27ED968300312F14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAccessService.swift; sourceTree = "<group>"; };
 		C434841127F171280037D5B8 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		C434841327F180700037D5B8 /* ParticipantStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantStatistics.swift; sourceTree = "<group>"; };
 		C434841527F180800037D5B8 /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RoundedWithAbbreviations.swift"; sourceTree = "<group>"; };
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
+		C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthServiceProvider.swift; sourceTree = "<group>"; };
 		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		C478448127E1C23800D9E275 /* FindFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsView.swift; sourceTree = "<group>"; };
 		C478448827E1C4EF00D9E275 /* FindFriendsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsProvider.swift; sourceTree = "<group>"; };
@@ -892,11 +896,13 @@
 		C408EA6A27AFFC8C004B82CB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C4578AF427F432F400A88549 /* HealthService */,
 				C408EA4227AFFC8C004B82CB /* UIService.swift */,
 				C408EA6B27AFFC8C004B82CB /* LoggerService.swift */,
 				C408EA6C27AFFC8C004B82CB /* KeychainService.swift */,
 				C408EA6D27AFFC8C004B82CB /* AuthService.swift */,
 				C478449227E1CF2300D9E275 /* ContactsService.swift */,
+				C4326A0227F57F1900FB53CE /* NotificationsAccessService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1081,6 +1087,15 @@
 			path = Styled;
 			sourceTree = "<group>";
 		};
+		C4578AF427F432F400A88549 /* HealthService */ = {
+			isa = PBXGroup;
+			children = (
+				C49AFBA827E6F76A009787AB /* HealthService.swift */,
+				C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */,
+			);
+			path = HealthService;
+			sourceTree = "<group>";
+		};
 		C478447F27E1C22000D9E275 /* FindFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,14 +1195,6 @@
 				C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */,
 			);
 			path = Subview;
-			sourceTree = "<group>";
-		};
-		C49AFBA727E6F72C009787AB /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				C49AFBA827E6F76A009787AB /* HealthService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		C49AFBAF27E6FF7E009787AB /* WalkAPI */ = {
@@ -1865,7 +1872,6 @@
 		C4D8EC8C27C3639E00BF0767 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				C49AFBA727E6F72C009787AB /* Service */,
 				C4D8ECA227C37CA900BF0767 /* Section */,
 				C4D8EC9F27C37B5A00BF0767 /* Model */,
 				C4D8EC9227C363EE00BF0767 /* Provider */,
@@ -2415,6 +2421,7 @@
 				C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */,
 				C4D8ECAC27C3802500BF0767 /* ImageLoader.swift in Sources */,
 				C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */,
+				C4326A0327F57F1900FB53CE /* NotificationsAccessService.swift in Sources */,
 				C4C385C527E645E2005D48FD /* UserProfileProvider.swift in Sources */,
 				C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */,
 				C49AFBD927E88593009787AB /* ArticleSectionModel.swift in Sources */,
@@ -2542,6 +2549,7 @@
 				C4BD9FAB27ECCEBB00E0CE5F /* UsersRequest.swift in Sources */,
 				C4DA0D4827DF12CC00066965 /* TeamEditView.swift in Sources */,
 				C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */,
+				C4578AF627F4330F00A88549 /* HealthServiceProvider.swift in Sources */,
 				C49AFBEF27E89CC8009787AB /* TrainersView.swift in Sources */,
 				C4DA0D3827DEF0B100066965 /* TeamDeleteRequest.swift in Sources */,
 				C4C385C927E64A66005D48FD /* FriendsDeleteRequest.swift in Sources */,
