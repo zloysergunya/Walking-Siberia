@@ -58,10 +58,10 @@ class HealthService: NSObject {
         }
     }
     
-    private func updateUserActivity(stepsCount: Int, distance: Double) {
+    private func updateUserActivity(date: Date, stepsCount: Int, distance: Double) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        let dateString = dateFormatter.string(from: Date())
+        let dateString = dateFormatter.string(from: date)
         sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
     }
     
@@ -175,7 +175,7 @@ extension HealthService: HealthServiceInput {
         healthStore.execute(distanceQuery)
         
         dispatchGroup.notify(queue: .main) { [weak self] in
-            self?.updateUserActivity(stepsCount: stepsCount, distance: distance)
+            self?.updateUserActivity(date: date, stepsCount: stepsCount, distance: distance)
             completion?(stepsCount, distance)
         }
         
