@@ -21,6 +21,7 @@ class TeamCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 24.0
         imageView.layer.masksToBounds = true
         
