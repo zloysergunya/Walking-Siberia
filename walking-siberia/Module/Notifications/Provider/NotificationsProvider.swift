@@ -19,6 +19,18 @@ class NotificationsProvider {
         }
     }
     
+    func readNotification(id: Int, completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
+        NotificationAPI.notificationViewGet(id: id) { response, error in
+            if let response = response {
+                completion(.success(response))
+            } else if let error = error {
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(ModelError()))
+            }
+        }
+    }
+    
     func hideNotification(id: Int, completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
         NotificationAPI.notificationHideGet(id: id) { response, error in
             if let response = response {

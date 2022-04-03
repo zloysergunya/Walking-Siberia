@@ -57,6 +57,24 @@ class NotificationsViewController: ViewController<NotificationsView> {
         }
     }
     
+    private func readNotification(id: Int) {
+        provider.readNotification(id: id) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success:
+                if let index = self.objects.firstIndex(where: { $0.notification.id == id }) {
+                    self.objects[index].notification.isViewed = true
+                }
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
     private func hideNotification(id: Int) {
         provider.hideNotification(id: id) { [weak self] result in
             guard let self = self else {
@@ -119,6 +137,10 @@ extension NotificationsViewController: NotificationsSectionControllerDelegate {
     }
     
     func notificationsSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
+        if !objects[section].notification.isViewed {
+            readNotification(id: objects[section].notification.id)
+        }
+        
         if section + 1 >= objects.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
             loadNotifications(flush: false)
         }

@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map({ String(format: "%02.2hhx", $0) }).joined()
+        log.info("application: didRegisterForRemoteNotificationsWithDeviceToken \(token)")
+    }
+    
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {
         return GIDSignIn.sharedInstance.handle(url)
     }

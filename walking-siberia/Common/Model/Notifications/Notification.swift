@@ -8,7 +8,7 @@ struct Notification: Codable, Equatable {
     let message: String
     let date: String
     let extra: NotificationExtra
-    let isViewed: Bool
+    var isViewed: Bool
 }
 
 enum NotificationType: String {
