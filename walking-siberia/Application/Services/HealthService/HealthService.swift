@@ -27,9 +27,7 @@ class HealthService: NSObject {
     
     override init() {
         super.init()
-        
-        UNUserNotificationCenter.current().delegate = self
-        
+                
         if let stepsQuantityType = stepsCountObject, let distanceQuantityType = distanceObject {
             setupBackgroundDeliveryFor(types: [stepsQuantityType, distanceQuantityType])
         }
@@ -72,15 +70,6 @@ class HealthService: NSObject {
             case .failure(let error): self?.output?.failureHealthAccessRequest(error: error)
             }
         }
-    }
-    
-    private func showNotification(value: Double) {
-        let content = UNMutableNotificationContent()
-        content.title = "Изменились данные"
-        content.body = "Новое значение: \(value)"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
     }
     
 }
@@ -147,10 +136,6 @@ extension HealthService: HealthServiceInput {
             
             stepsCount = Int(sum.doubleValue(for: HKUnit.count()))
             
-            if Utils.isDebug {
-                self.showNotification(value: Double(stepsCount))
-            }
-            
             dispatchGroup.leave()
         }
         healthStore.execute(stepsQuery)
@@ -165,10 +150,6 @@ extension HealthService: HealthServiceInput {
             }
             
             distance = sum.doubleValue(for: HKUnit.meterUnit(with: .kilo))
-            
-            if Utils.isDebug {
-                self.showNotification(value: distance)
-            }
             
             dispatchGroup.leave()
         }
