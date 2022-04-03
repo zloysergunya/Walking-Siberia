@@ -145,7 +145,6 @@ extension RoutesViewController: RouteSectionControllerDelegate {
     
     func routeSectionController(_ sectionController: RouteSectionController, didSelect sectionModel: RouteSectionModel) {
         let viewController = RouteInfoViewController(route: sectionModel.route)
-        viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
     
