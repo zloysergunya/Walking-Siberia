@@ -79,7 +79,7 @@ class NotificationCell: UICollectionViewCell {
         unreadView.pin
             .top(18.0)
             .left(12.0)
-            .size(CGSize(width: 4.0, height: 4.0))
+            .size(CGSize(width: 8.0, height: 8.0))
         
         typeImageView.pin
             .top(12.0)

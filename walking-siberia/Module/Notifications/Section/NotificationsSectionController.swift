@@ -53,9 +53,12 @@ class NotificationsSectionController: ListSectionController {
     
     private func configure(cell: NotificationCell) -> UICollectionViewCell {
         cell.unreadView.isHidden = sectionModel.notification.isViewed
-        cell.typeLabel.text = sectionModel.notification.type
-        cell.titleLabel.text = sectionModel.notification.message
+        cell.titleLabel.text = sectionModel.notification.title
         cell.messageLabel.text = sectionModel.notification.message
+        
+        let notificationType: NotificationType? = .init(rawValue: sectionModel.notification.type)
+        cell.typeLabel.text = notificationType?.title
+        cell.typeImageView.image = notificationType?.image
         
         cell.removeButton.removeTarget(nil, action: #selector(removeAction), for: .touchUpInside)
         cell.removeButton.addTarget(self, action: #selector(removeAction), for: .touchUpInside)
