@@ -12,15 +12,16 @@ struct Notification: Codable, Equatable {
 }
 
 enum NotificationType: String {
-    case video, route, article, competition, friend
+    case video, route, article, competition, friend, reward
     
     var title: String {
         switch self {
-        case .video: return "Видео"
+        case .video: return "Информация"
         case .route: return "Маршруты"
-        case .article: return "Статьи"
+        case .article: return "Информация"
         case .competition: return "Соревнования"
         case .friend: return "Друзья"
+        case .reward: return "Награждения"
         }
     }
     
@@ -31,6 +32,7 @@ enum NotificationType: String {
         case .article: return nil
         case .competition: return R.image.competitionType20()
         case .friend: return nil
+        case .reward: return nil
         }
     }
     
