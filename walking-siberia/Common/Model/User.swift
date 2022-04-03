@@ -10,6 +10,7 @@ struct User: Codable {
     var profile: Profile
     var isFriend: Bool?
     let isFillProfile: Bool
+    let dailyStats: Average
 }
 
 extension User: Equatable {
