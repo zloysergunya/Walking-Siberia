@@ -28,6 +28,7 @@ class UserProfileContentView: RootView {
     
     let avatarImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 60.0
         imageView.layer.masksToBounds = true
         
