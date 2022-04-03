@@ -3,7 +3,7 @@ import HealthKit
 
 protocol HealthServiceInput {
     func requestAccess()
-    func getSteps(fromDate: Date, toDate: Date, completion: @escaping (Int, Double) -> Void)
+    func getUserActivity(date: Date, completion: ((Int, Double) -> Void)?)
 }
 
 protocol HealthServiceOutput: AnyObject {
@@ -29,6 +29,58 @@ class HealthService: NSObject {
         super.init()
         
         UNUserNotificationCenter.current().delegate = self
+        
+        if let stepsQuantityType = stepsCountObject, let distanceQuantityType = distanceObject {
+            setupBackgroundDeliveryFor(types: [stepsQuantityType, distanceQuantityType])
+        }
+    }
+    
+    private func setupBackgroundDeliveryFor(types: [HKObjectType]) {
+        for type in types {
+            guard let sampleType = type as? HKSampleType else {
+                log.error("\(type) is not an HKSampleType")
+                continue
+            }
+            
+            let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { [weak self] _, completionHandler,_ in
+                self?.getUserActivity(date: Date(), completion: nil)
+                completionHandler()
+            }
+            
+            healthStore.execute(query)
+            healthStore.enableBackgroundDelivery(for: type, frequency: .immediate) { [weak self] success, error in
+                if success {
+                    log.verbose("\(type) Delivery enabled")
+                } else if let error = error {
+                    self?.output?.failureHealthAccessRequest(error: error)
+                }
+            }
+        }
+    }
+    
+    private func updateUserActivity(stepsCount: Int, distance: Double) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let dateString = dateFormatter.string(from: Date())
+        sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
+    }
+    
+    private func sendUserActivity(walkRequest: WalkRequest) {
+        provider.sendUserActivity(walkRequest: walkRequest) { [weak self] result in
+            switch result {
+            case .success: UserSettings.lastSendActivityDate = Date()
+            case .failure(let error): self?.output?.failureHealthAccessRequest(error: error)
+            }
+        }
+    }
+    
+    private func showNotification(value: Double) {
+        let content = UNMutableNotificationContent()
+        content.title = "Изменились данные"
+        content.body = "Новое значение: \(value)"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
     }
     
 }
@@ -68,21 +120,21 @@ extension HealthService: HealthServiceInput {
         
     }
     
-    func getSteps(fromDate: Date, toDate: Date, completion: @escaping (Int, Double) -> Void) {
+    func getUserActivity(date: Date, completion: ((Int, Double) -> Void)?) {
         var stepsCount = 0
         var distance = 0.0
         
         guard let stepsQuantityType = stepsCountObject, let distanceQuantityType = distanceObject else {
-            completion(stepsCount, distance)
+            completion?(stepsCount, distance)
             return
         }
         
         let dispatchGroup = DispatchGroup()
         
-        let startOfDay = Calendar.current.startOfDay(for: fromDate)
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay,
-                                                    end: toDate,
-                                                    options: .strictStartDate)
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        let predicate = HKObserverQuery.predicateForSamples(withStart: startOfDay,
+                                                            end: date,
+                                                            options: .strictStartDate)
         
         dispatchGroup.enter()
         let stepsQuery = HKStatisticsQuery(quantityType: stepsQuantityType,
@@ -94,16 +146,11 @@ extension HealthService: HealthServiceInput {
             }
             
             stepsCount = Int(sum.doubleValue(for: HKUnit.count()))
-//            print("!!!stepsCount", stepsCount)
-//            
-//            let content = UNMutableNotificationContent()
-//            content.title = "Изменилось количество шагов"
-//            content.body = "Новое значение: \(stepsCount)"
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-//            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//            UNUserNotificationCenter.current().add(request)
             
-            self.updateUserActivity(stepsCount: stepsCount, distance: distance)
+            if Utils.isDebug {
+                self.showNotification(value: Double(stepsCount))
+            }
+            
             dispatchGroup.leave()
         }
         healthStore.execute(stepsQuery)
@@ -118,55 +165,20 @@ extension HealthService: HealthServiceInput {
             }
             
             distance = sum.doubleValue(for: HKUnit.meterUnit(with: .kilo))
-//            print("!!!distance", distance)
-//
-//            let content = UNMutableNotificationContent()
-//            content.title = "Изменилась дистанция"
-//            content.body = "Новое значение: \(distance)"
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-//            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//            UNUserNotificationCenter.current().add(request)
             
-            self.updateUserActivity(stepsCount: stepsCount, distance: distance)
+            if Utils.isDebug {
+                self.showNotification(value: distance)
+            }
+            
             dispatchGroup.leave()
         }
         healthStore.execute(distanceQuery)
         
-        dispatchGroup.notify(queue: .main) {
-            completion(stepsCount, distance)
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.updateUserActivity(stepsCount: stepsCount, distance: distance)
+            completion?(stepsCount, distance)
         }
         
-        healthStore.enableBackgroundDelivery(for: stepsQuantityType, frequency: .immediate) { [weak self] success, error in
-            if success {
-                log.verbose("Steps Background Delivery enabled")
-            } else if let error = error {
-                self?.output?.failureHealthAccessRequest(error: error)
-            }
-        }
-        
-        healthStore.enableBackgroundDelivery(for: distanceQuantityType, frequency: .immediate) { [weak self] success, error in
-            if success {
-                log.verbose("Distance Background Delivery enabled")
-            } else if let error = error {
-                self?.output?.failureHealthAccessRequest(error: error)
-            }
-        }
-    }
-    
-    private func updateUserActivity(stepsCount: Int, distance: Double) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        let dateString = dateFormatter.string(from: Date())
-        sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
-    }
-    
-    private func sendUserActivity(walkRequest: WalkRequest) {
-        provider.sendUserActivity(walkRequest: walkRequest) { [weak self] result in
-            switch result {
-            case .success: UserSettings.lastSendActivityDate = Date()
-            case .failure(let error): self?.output?.failureHealthAccessRequest(error: error)
-            }
-        }
     }
     
 }

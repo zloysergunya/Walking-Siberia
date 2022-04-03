@@ -5,15 +5,10 @@ import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
-    private let healthService = HealthService()
-    private var authService: AuthService? = ServiceLocator.getService()
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
@@ -28,18 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LoggerService.setup()
         ServiceLocator.shared.add(service: loggerService)
         
+        let healthService = HealthService()
+        ServiceLocator.shared.add(service: healthService)
+        
         let launchService = UIService()
         launchService.openModule()
         ServiceLocator.shared.add(service: launchService)
-                        
+        
+        FirebaseApp.configure()
         setupKeyboardManager()
-        syncUserActivity()
         
         return true
     }
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
+        return GIDSignIn.sharedInstance.handle(url)
     }
     
     private func setupKeyboardManager() {
@@ -48,14 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manager.toolbarDoneBarButtonItemText = "Скрыть"
         manager.placeholderColor = R.color.mainContent()
         manager.toolbarBarTintColor = R.color.greyBackground()
-    }
-    
-    private func syncUserActivity() {
-        guard authService?.authStatus == .authorized else {
-            return
-        }
-        
-        healthService.getSteps(fromDate: Date(), toDate: Date()) { _, _ in }
     }
    
 }

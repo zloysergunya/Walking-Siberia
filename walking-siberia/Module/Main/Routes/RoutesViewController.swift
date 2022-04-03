@@ -5,7 +5,7 @@ import Atributika
 class RoutesViewController: ViewController<RoutesView> {
     
     private let provider = RoutesProvider()
-    private let healthService = HealthService()
+    private let healthService: HealthService? = ServiceLocator.getService()
     private let notificationsAccessService = NotificationsAccessService()
     
     private var objects: [RouteSectionModel] = []
@@ -26,10 +26,11 @@ class RoutesViewController: ViewController<RoutesView> {
         notificationsAccessService.output = self
         notificationsAccessService.requestAccess()
         
-        healthService.output = self
-        healthService.requestAccess()
+        healthService?.output = self
+        healthService?.requestAccess()
         
         syncContacts()
+        syncUserActivity()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +39,6 @@ class RoutesViewController: ViewController<RoutesView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadRoutes()
-        syncUserActivity()
     }
     
     private func loadRoutes() {
@@ -85,13 +85,15 @@ class RoutesViewController: ViewController<RoutesView> {
     }
     
     private func syncUserActivity() {
-        let lastDate = UserSettings.lastSendActivityDate ?? Date()
+        let lastDate = UserSettings.lastSendActivityDate?.add(.day, value: -7) ?? Date()
         let toDate = Date()
         
         Date.dates(from: lastDate, to: toDate).forEach { date in
-            healthService.getSteps(fromDate: date, toDate: date) { [weak self] (stepsCount, distance) in
+            healthService?.getUserActivity(date: date) { [weak self] (stepsCount, distance) in
                 DispatchQueue.main.async {
-                    self?.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
+                    if Calendar.current.isDate(date, inSameDayAs: Date()) {
+                        self?.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
+                    }
                 }
             }
         }
@@ -174,6 +176,14 @@ extension RoutesViewController: HealthServiceOutput {
     func failureHealthAccessRequest(error: Error) {
         log.error(error.localizedDescription)
         showError(text: error.localizedDescription)
+    }
+    
+}
+
+extension Date {
+    
+    func add(_ unit: Calendar.Component, value: Int) -> Date? {
+        return Calendar.current.date(byAdding: unit, value: value, to: self)
     }
     
 }
