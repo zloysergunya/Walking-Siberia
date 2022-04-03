@@ -24,6 +24,7 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         
         mainView.backButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         mainView.contentView.likeButton.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
+        mainView.contentView.rateContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleLike)))
         mainView.contentView.openMapButton.addTarget(self, action: #selector(openMap), for: .touchUpInside)
         
         adapter.collectionView = mainView.contentView.placesCollectionView
@@ -54,6 +55,7 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         mainView.contentView.extentLabel.attributedText = "<big>\(route.km) км</big>\nПротяженность".style(tags: big).attributedString
         mainView.contentView.rateLabel.attributedText = "<big>\(route.countLikes)</big>\nОценили".style(tags: big).attributedString
         mainView.contentView.likeButton.isSelected = route.isLike
+        mainView.contentView.rateImageView.image = route.isLike ? R.image.likeFill32() : R.image.like32()
     }
     
     @objc private func toggleLike() {
@@ -67,6 +69,7 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
                 self.route.countLikes += self.route.isLike ? -1 : 1
                 self.route.isLike.toggle()
                 self.updateStats()
+                Utils.impact()
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)

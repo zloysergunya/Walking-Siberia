@@ -172,7 +172,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     @objc private func removeParticipant(_ sender: UIButton) {
-        UIImpactFeedbackGenerator().impactOccurred(intensity: 0.7)
+        Utils.impact()
         
         currentParticipants.remove(at: sender.tag)
         mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount

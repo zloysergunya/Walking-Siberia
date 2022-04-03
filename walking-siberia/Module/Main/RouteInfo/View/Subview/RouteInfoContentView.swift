@@ -49,7 +49,13 @@ class RouteInfoContentView: RootView {
     }()
     
     private let extentContainerView = UIView()
-    private let rateContainerView = UIView()
+    
+    let rateContainerView: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = true
+        
+        return view
+    }()
     
     private let middleSeparator: UIView = {
         let view = UIView()
@@ -58,7 +64,7 @@ class RouteInfoContentView: RootView {
         return view
     }()
     
-    private let rateImageView = UIImageView(image: R.image.like20())
+    let rateImageView = UIImageView(image: R.image.like20())
     
     let rateLabel: UILabel = {
         let label = UILabel()

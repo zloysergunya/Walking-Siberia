@@ -28,4 +28,8 @@ enum Utils {
         #endif
     }
     
+    static func impact() {
+        UIImpactFeedbackGenerator().impactOccurred(intensity: 0.7)
+    }
+    
 }

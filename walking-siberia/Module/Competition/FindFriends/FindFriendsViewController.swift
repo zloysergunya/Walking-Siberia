@@ -178,7 +178,7 @@ extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
     }
     
     func findFriendsSectionController(didSelectAction button: UIButton, user: User) {
-        UIImpactFeedbackGenerator().impactOccurred(intensity: 0.7)
+        Utils.impact()
         if let index = currentParticipants.firstIndex(where: { $0.userId == user.userId }) {
             currentParticipants.remove(at: index)
         } else {
