@@ -1,5 +1,6 @@
 import UIKit
 import UserNotifications
+import FirebaseMessaging
 
 protocol NotificationsAccessServiceInput: AnyObject {
     func requestAccess()
@@ -7,12 +8,33 @@ protocol NotificationsAccessServiceInput: AnyObject {
 
 protocol NotificationsAccessServiceOutput: AnyObject {
     func successRequest(granted: Bool)
+    func didReceiveRegistrationToken(token: String)
     func failureRequest(error: Error)
 }
 
 class NotificationsAccessService: NSObject {
-        
+    
     weak var output: NotificationsAccessServiceOutput?
+    
+    private let topics = ["route", "info", "competition"]
+    
+    override init() {
+        super.init()
+        
+        Messaging.messaging().delegate = self
+        
+        topics.forEach({ subscribe(toTopic: $0) })
+    }
+    
+    private func subscribe(toTopic topic: String) {
+        Messaging.messaging().subscribe(toTopic: topic) { error in
+            if let error = error {
+                log.error(error.localizedDescription)
+            } else {
+                log.verbose("Subscribed to \(topic) topic")
+            }
+        }
+    }
     
 }
 
@@ -38,6 +60,20 @@ extension NotificationsAccessService: NotificationsAccessServiceInput {
                 }
             }
         }
+    }
+    
+}
+
+// MARK: - MessagingDelegate
+extension NotificationsAccessService: MessagingDelegate {
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        log.info("Firebase registration token: \(fcmToken ?? "EMPTY")")
+        guard let token = fcmToken else {
+            return
+        }
+        
+        output?.didReceiveRegistrationToken(token: token)
     }
     
 }

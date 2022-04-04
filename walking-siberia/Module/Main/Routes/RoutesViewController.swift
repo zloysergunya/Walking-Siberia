@@ -99,6 +99,16 @@ class RoutesViewController: ViewController<RoutesView> {
         }
     }
     
+    private func sendPushToken(_ token: String) {
+        provider.sendPushToken(token: token) { [weak self] result in
+            switch result {
+            case .success: break
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
     @objc private func pullToRefresh() {
         loadRoutes()
     }
@@ -153,8 +163,10 @@ extension RoutesViewController: RouteSectionControllerDelegate {
 // MARK: - NotificationsAccessServiceOutput
 extension RoutesViewController: NotificationsAccessServiceOutput {
     
-    func successRequest(granted: Bool) {
-        
+    func successRequest(granted: Bool) {}
+    
+    func didReceiveRegistrationToken(token: String) {
+        sendPushToken(token)
     }
     
     func failureRequest(error: Error) {

@@ -98,4 +98,22 @@ class ProfileAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func profileDevicePost(profileDevice: ProfileDeviceRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        profileDevicePostWithRequestBuilder(profileDevice: profileDevice).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func profileDevicePostWithRequestBuilder(profileDevice: ProfileDeviceRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/profile/device"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: profileDevice)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
 }

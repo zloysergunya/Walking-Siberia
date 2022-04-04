@@ -19,6 +19,7 @@
 		C400F45D27D6110000B1EAD9 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45C27D6110000B1EAD9 /* EmptyView.swift */; };
 		C400F46027D6121B00B1EAD9 /* CompetitionsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F45F27D6121B00B1EAD9 /* CompetitionsSectionController.swift */; };
 		C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C400F46227D6129300B1EAD9 /* CompetitionCell.swift */; };
+		C40442EE27FB27EE002D8E2C /* ProfileDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40442ED27FB27EE002D8E2C /* ProfileDeviceRequest.swift */; };
 		C408EA1927AFFA08004B82CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C408EA1827AFFA08004B82CB /* Assets.xcassets */; };
 		C408EA6E27AFFC8C004B82CB /* PagingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA2627AFFC8C004B82CB /* PagingFlowLayout.swift */; };
 		C408EA6F27AFFC8C004B82CB /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C408EA2727AFFC8C004B82CB /* UIDevice+Model.swift */; };
@@ -281,6 +282,7 @@
 		C400F45C27D6110000B1EAD9 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C400F45F27D6121B00B1EAD9 /* CompetitionsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionsSectionController.swift; sourceTree = "<group>"; };
 		C400F46227D6129300B1EAD9 /* CompetitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCell.swift; sourceTree = "<group>"; };
+		C40442ED27FB27EE002D8E2C /* ProfileDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDeviceRequest.swift; sourceTree = "<group>"; };
 		C408EA0C27AFFA07004B82CB /* walking-siberia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "walking-siberia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C408EA1827AFFA08004B82CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C408EA1D27AFFA08004B82CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -770,7 +772,6 @@
 				C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */,
 				C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */,
 				C434841127F171280037D5B8 /* UIImage+Compress.swift */,
-				C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -778,6 +779,7 @@
 		C408EA3527AFFC8C004B82CB /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */,
 				C4A1515C27B111DE00C95344 /* String+PhonePattern.swift */,
 				C408EA3627AFFC8C004B82CB /* Bundle+Version.swift */,
 				C408EA3727AFFC8C004B82CB /* UserDefaults+SaveStruct.swift */,
@@ -1898,6 +1900,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D82AA327BFF7430058334F /* ProfileUpdateRequest.swift */,
+				C40442ED27FB27EE002D8E2C /* ProfileDeviceRequest.swift */,
 			);
 			path = ProfileAPI;
 			sourceTree = "<group>";
@@ -2486,6 +2489,7 @@
 				C478449A27E1DF6D00D9E275 /* FindFriendsCell.swift in Sources */,
 				C4326A0A27F5C3B400FB53CE /* NotificationsView.swift in Sources */,
 				C4326A2127F5D0E500FB53CE /* NotificationListRequest.swift in Sources */,
+				C40442EE27FB27EE002D8E2C /* ProfileDeviceRequest.swift in Sources */,
 				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
 				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,

@@ -9,6 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
@@ -30,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchService.openModule()
         ServiceLocator.shared.add(service: launchService)
         
-        FirebaseApp.configure()
         setupKeyboardManager()
         
         return true
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map({ String(format: "%02.2hhx", $0) }).joined()
         log.info("application: didRegisterForRemoteNotificationsWithDeviceToken \(token)")
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {

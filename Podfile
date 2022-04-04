@@ -30,6 +30,7 @@ target 'walking-siberia' do
   
   # Services
   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
   pod 'GoogleSignIn'
 
 end

@@ -27,12 +27,12 @@ enum NotificationType: String {
     
     var image: UIImage? {
         switch self {
-        case .video: return nil
+        case .video: return R.image.videoType20()
         case .route: return R.image.routeType20()
-        case .article: return nil
+        case .article: return R.image.articleType20()
         case .competition: return R.image.competitionType20()
-        case .friend: return nil
-        case .reward: return nil
+        case .friend: return R.image.friendType20()
+        case .reward: return R.image.infoType20()
         }
     }
     
