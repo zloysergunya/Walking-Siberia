@@ -22,6 +22,8 @@ class NotificationsViewController: ViewController<NotificationsView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         loadNotifications(flush: true)
     }
     
@@ -40,12 +42,12 @@ class NotificationsViewController: ViewController<NotificationsView> {
             self.mainView.collectionView.refreshControl?.endRefreshing()
             
             switch result {
-            case .success(let videos):
+            case .success(let notifications):
                 if flush {
                     self.objects.removeAll()
                 }
                 
-                self.objects = videos.map({ NotificationSectionModel(notification: $0) })
+                self.objects.append(contentsOf: notifications.map({ NotificationSectionModel(notification: $0) }))
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
                 

@@ -38,4 +38,16 @@ class ProfileEditProvider {
         }
     }
     
+    func toggleNotice(type: String, completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
+        ProfileAPI.profileNoticeTypeGet(type: type) { response, error in
+            if let response = response {
+                completion(.success(response))
+            } else if let error = error {
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(ModelError()))
+            }
+        }
+    }
+    
 }

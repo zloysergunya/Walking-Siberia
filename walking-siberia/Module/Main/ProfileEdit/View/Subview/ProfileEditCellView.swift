@@ -23,6 +23,7 @@ class ProfileEditCellView: UIView {
         let view = UISwitch()
         view.onTintColor = R.color.activeElements()
         view.tintColor = R.color.grey()
+        view.isUserInteractionEnabled = false
         
         return view
     }()

@@ -32,7 +32,7 @@ enum NotificationType: String {
         case .article: return R.image.articleType20()
         case .competition: return R.image.competitionType20()
         case .friend: return R.image.friendType20()
-        case .reward: return R.image.infoType20()
+        case .reward: return R.image.rewardType20()
         }
     }
     

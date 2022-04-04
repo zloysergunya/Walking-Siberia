@@ -1,6 +1,6 @@
 import Foundation
 
-struct Profile: Codable {
+struct Profile: Codable, Equatable {
     let firstName: String
     let lastName: String
     let city: String
@@ -13,23 +13,7 @@ struct Profile: Codable {
     let vkontakte: String?
     let odnoklassniki: String?
     var avatar: String?
-}
-
-extension Profile: Equatable {
-    
-    static func == (lhs: Profile, rhs: Profile) -> Bool {
-        return lhs.firstName == rhs.firstName
-        && lhs.lastName == rhs.lastName
-        && lhs.city == rhs.city
-        && lhs.birthDate == rhs.birthDate
-        && lhs.aboutMe == rhs.aboutMe
-        && lhs.height == rhs.height
-        && lhs.weight == rhs.weight
-        && lhs.telegram == rhs.telegram
-        && lhs.instagram == rhs.instagram
-        && lhs.vkontakte == rhs.vkontakte
-        && lhs.odnoklassniki == rhs.odnoklassniki
-        && lhs.avatar == rhs.avatar
-    }
-    
+    var isNoticeRoute: Bool
+    var isNoticeInfo: Bool
+    var isNoticeCompetition: Bool
 }

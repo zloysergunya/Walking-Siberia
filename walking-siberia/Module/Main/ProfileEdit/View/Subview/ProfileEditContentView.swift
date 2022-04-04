@@ -358,12 +358,12 @@ class ProfileEditContentView: RootView {
     
     let routesNotifyActionView = ProfileEditCellView(title: "Маршруты", iconType: .switcher)
     let competitionsNotifyActionView = ProfileEditCellView(title: "Соревнования", iconType: .switcher)
-    let scandinavianWalkingNotifyActionView = ProfileEditCellView(title: "Раздел информации", iconType: .switcher)
+    let infoNotifyActionView = ProfileEditCellView(title: "Раздел информации", iconType: .switcher)
     
     private lazy var notifySettingsStackView = UIStackView(views: [
         routesNotifyActionView,
         competitionsNotifyActionView,
-        scandinavianWalkingNotifyActionView
+        infoNotifyActionView
     ])
     
     private let otherContainerView: UIView = {

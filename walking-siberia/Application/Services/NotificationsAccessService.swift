@@ -12,26 +12,51 @@ protocol NotificationsAccessServiceOutput: AnyObject {
     func failureRequest(error: Error)
 }
 
+enum NotificationTopic: String {
+    case route, info, competition
+}
+
 class NotificationsAccessService: NSObject {
     
     weak var output: NotificationsAccessServiceOutput?
     
-    private let topics = ["route", "info", "competition"]
+    private var topics: [NotificationTopic] = []
     
     override init() {
         super.init()
         
         Messaging.messaging().delegate = self
         
-        topics.forEach({ subscribe(toTopic: $0) })
+        let profile = UserSettings.user?.profile
+        if profile?.isNoticeInfo == true {
+            topics.append(.info)
+        }
+        if profile?.isNoticeRoute == true {
+            topics.append(.route)
+        }
+        if profile?.isNoticeCompetition == true {
+            topics.append(.competition)
+        }
+        
+        topics.forEach({ Self.subscribe(toTopic: $0) })
     }
     
-    private func subscribe(toTopic topic: String) {
-        Messaging.messaging().subscribe(toTopic: topic) { error in
+    static func subscribe(toTopic topic: NotificationTopic) {
+        Messaging.messaging().subscribe(toTopic: topic.rawValue) { error in
             if let error = error {
                 log.error(error.localizedDescription)
             } else {
                 log.verbose("Subscribed to \(topic) topic")
+            }
+        }
+    }
+    
+    static func unsubscribe(fromTopic topic: NotificationTopic) {
+        Messaging.messaging().unsubscribe(fromTopic: topic.rawValue) { error in
+            if let error = error {
+                log.error(error.localizedDescription)
+            } else {
+                log.verbose("Unsubscribed to \(topic) topic")
             }
         }
     }

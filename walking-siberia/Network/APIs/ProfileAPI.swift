@@ -116,4 +116,25 @@ class ProfileAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func profileNoticeTypeGet(type: String, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        profileNoticeTypeGetWithRequestBuilder(type: type).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func profileNoticeTypeGetWithRequestBuilder(type: String) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        var path = "/profile/notice/{type}"
+        let routeIdPreEscape = type
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{type}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

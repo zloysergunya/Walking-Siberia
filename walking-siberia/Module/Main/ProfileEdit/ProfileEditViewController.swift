@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import MBRadioButton
 import MessageUI
+import Firebase
 
 class ProfileEditViewController: ViewController<ProfileEditView> {
     
@@ -21,6 +22,9 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.instructionActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openInstruction)))
         mainView.contentView.aboutAppActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openAboutApp)))
         mainView.contentView.writeToDevelopersActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(contactDeveloper)))
+        mainView.contentView.routesNotifyActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleRoutesNotifications)))
+        mainView.contentView.competitionsNotifyActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleCompetitionsNotifications)))
+        mainView.contentView.infoNotifyActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleInfoNotifications)))
         mainView.contentView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         
         mainView.contentView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
@@ -71,6 +75,10 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.instagramField.text = user.profile.instagram
         mainView.contentView.vkField.text = user.profile.vkontakte
         mainView.contentView.okField.text = user.profile.odnoklassniki
+        
+        mainView.contentView.routesNotifyActionView.switcherView.isOn = user.profile.isNoticeRoute
+        mainView.contentView.competitionsNotifyActionView.switcherView.isOn = user.profile.isNoticeCompetition
+        mainView.contentView.infoNotifyActionView.switcherView.isOn = user.profile.isNoticeInfo
         
         switch user.type {
         case 0:
@@ -253,6 +261,40 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         let body = "\n\nbundleIdentifier: \(Constants.bundleIdentifier)\ndeviceModelName: \(Constants.deviceModelName)\nreleaseVersion: \(Constants.releaseVersion)\nbuildNumber: \(Constants.buildNumber)\nappVersion: \(Constants.appVersion)"
         viewController.setMessageBody(body, isHTML: false)
         present(viewController, animated: true)
+    }
+    
+    private func toggleNotice(notice: NotificationTopic) {
+        provider.toggleNotice(type: notice.rawValue) { [weak self] result in
+            switch result {
+            case .success:
+                switch notice {
+                case .route: UserSettings.user?.profile.isNoticeRoute.toggle()
+                case .info: UserSettings.user?.profile.isNoticeInfo.toggle()
+                case .competition: UserSettings.user?.profile.isNoticeCompetition.toggle()
+                }
+                
+                Utils.impact()
+                self?.configure()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    @objc private func toggleRoutesNotifications() {
+        NotificationsAccessService.unsubscribe(fromTopic: .route)
+        toggleNotice(notice: .route)
+    }
+    
+    @objc private func toggleCompetitionsNotifications() {
+        NotificationsAccessService.unsubscribe(fromTopic: .competition)
+        toggleNotice(notice: .competition)
+    }
+    
+    @objc private func toggleInfoNotifications() {
+        NotificationsAccessService.unsubscribe(fromTopic: .info)
+        toggleNotice(notice: .info)
     }
     
     @objc private func logout() {
