@@ -7,7 +7,7 @@
 import Foundation
 
 open class APIConfig {
-    public static var basePath = "http://151.248.122.140:8005/v1"
+    public static var basePath = "https://api.walking-siberia.ru/v1"
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
