@@ -14,11 +14,13 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         [mainView.nameField,
          mainView.surnameField,
          mainView.cityField,
+         mainView.phoneField,
          mainView.dateOfBirthField,
          mainView.emailField].forEach {
             $0.addTarget(self, action: #selector(textFieldDidChangeText), for: .editingChanged)
         }
         
+        mainView.phoneField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         mainView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.dateOfBirthField.inputView = mainView.datePicker
         
@@ -79,6 +81,13 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             return
         }
         
+        guard let phone = mainView.phoneField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !phone.isEmpty else {
+            Animations.shake(view: mainView.cityField)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            
+            return
+        }
+        
         guard let dateOfBirth = mainView.dateOfBirthField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !dateOfBirth.isEmpty else {
             Animations.shake(view: mainView.dateOfBirthField)
             UINotificationFeedbackGenerator().notificationOccurred(.error)
@@ -97,7 +106,9 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             return
         }
         
-        let profileUpdate = ProfileUpdateRequest(lastName: surname,
+        let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
+        let profileUpdate = ProfileUpdateRequest(phone: formattedPhone,
+                                                 lastName: surname,
                                                  firstName: name,
                                                  city: city,
                                                  birthDay: dateOfBirth,
@@ -128,6 +139,10 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         let emailRegularExpression = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,3})$"
         
         return NSPredicate(format:"SELF MATCHES %@", emailRegularExpression).evaluate(with: email)
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
     }
     
 }

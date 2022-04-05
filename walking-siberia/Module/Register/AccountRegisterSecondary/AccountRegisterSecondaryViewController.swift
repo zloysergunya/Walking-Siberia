@@ -55,7 +55,8 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
         let height = Int(mainView.heightField.text ?? "")
         let weight = Int(mainView.weightField.text ?? "")
         
-        let profileUpdate = ProfileUpdateRequest(lastName: UserSettings.user?.profile.lastName,
+        let profileUpdate = ProfileUpdateRequest(phone: UserSettings.user?.phone,
+                                                 lastName: UserSettings.user?.profile.lastName,
                                                  firstName: UserSettings.user?.profile.firstName,
                                                  city: UserSettings.user?.profile.city,
                                                  birthDay: UserSettings.user?.profile.birthDate,

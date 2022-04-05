@@ -2,6 +2,7 @@ import Foundation
 
 struct ProfileUpdateRequest: Codable {
     
+    let phone: String?
     let lastName: String?
     let firstName: String?
     let city: String?
@@ -16,7 +17,8 @@ struct ProfileUpdateRequest: Codable {
     let height: Int?
     let weight: Int?
     
-    init(lastName: String? = nil, firstName: String? = nil, city: String? = nil, birthDay: String? = nil, email: String? = nil, type: Int? = nil, aboutMe: String? = nil, telegram: String? = nil, instagram: String? = nil, vkontakte: String? = nil, odnoklassniki: String? = nil, height: Int? = nil, weight: Int? = nil) {
+    init(phone: String? = nil, lastName: String? = nil, firstName: String? = nil, city: String? = nil, birthDay: String? = nil, email: String? = nil, type: Int? = nil, aboutMe: String? = nil, telegram: String? = nil, instagram: String? = nil, vkontakte: String? = nil, odnoklassniki: String? = nil, height: Int? = nil, weight: Int? = nil) {
+        self.phone = phone
         self.lastName = lastName
         self.firstName = firstName
         self.city = city

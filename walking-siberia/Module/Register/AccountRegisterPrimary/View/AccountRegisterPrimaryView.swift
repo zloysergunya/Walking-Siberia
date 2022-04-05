@@ -39,6 +39,15 @@ class AccountRegisterPrimaryView: RootView {
         return textField
     }()
     
+    let phoneField: StyledTextField = {
+        let textField = StyledTextField()
+        textField.textContentType = .telephoneNumber
+        textField.text = "+7"
+        textField.placeholder = "Номер телефона"
+        
+        return textField
+    }()
+    
     private let dateOfBirthTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Дата рождения:"
@@ -180,6 +189,7 @@ class AccountRegisterPrimaryView: RootView {
         addSubview(nameField)
         addSubview(surnameField)
         addSubview(cityField)
+        addSubview(phoneField)
         addSubview(dateOfBirthTitleLabel)
         addSubview(dateOfBirthField)
         addSubview(emailTitleLabel)
@@ -225,8 +235,14 @@ class AccountRegisterPrimaryView: RootView {
             make.height.equalTo(24.0)
         }
         
-        dateOfBirthTitleLabel.snp.makeConstraints { make in
+        phoneField.snp.makeConstraints { make in
             make.top.equalTo(cityField.snp.bottom).offset(24.0)
+            make.left.right.equalToSuperview().inset(12.0)
+            make.height.equalTo(24.0)
+        }
+        
+        dateOfBirthTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(phoneField.snp.bottom).offset(24.0)
             make.left.right.equalToSuperview().inset(12.0)
         }
         
