@@ -54,8 +54,15 @@ class TrainersSectionController: ListSectionController {
         }
         
         cell.positionLabel.text = sectionModel.trainer.description
+        
         cell.placeOfTrainingLabel.text = sectionModel.trainer.placeOfTraining
+        cell.placeOfTrainingLabel.isHidden = sectionModel.trainer.placeOfTraining.isEmpty
+        cell.placeOfTrainingTitleLabel.isHidden = sectionModel.trainer.placeOfTraining.isEmpty
+        
         cell.timeOfTrainingLabel.text = sectionModel.trainer.trainingTime
+        cell.timeOfTrainingLabel.isHidden = sectionModel.trainer.trainingTime.isEmpty
+        cell.timeOfTrainingTitleLabel.isHidden = sectionModel.trainer.trainingTime.isEmpty
+        
         cell.phoneLabel.text = sectionModel.trainer.phone
         
         cell.callButton.removeTarget(nil, action: #selector(callAction), for: .touchUpInside)

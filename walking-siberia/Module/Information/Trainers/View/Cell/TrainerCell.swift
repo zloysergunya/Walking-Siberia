@@ -45,7 +45,7 @@ class TrainerCell: UICollectionViewCell {
         return label
     }()
     
-    private let placeOfTrainingTitleLabel: UILabel = {
+    let placeOfTrainingTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Место тренировок:"
         label.font = R.font.geometriaBold(size: 12.0)
@@ -63,7 +63,7 @@ class TrainerCell: UICollectionViewCell {
         return label
     }()
     
-    private let timeOfTrainingTitleLabel: UILabel = {
+    let timeOfTrainingTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Время тренировок:"
         label.font = R.font.geometriaBold(size: 12.0)
@@ -98,6 +98,15 @@ class TrainerCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var labelsStackView = UIStackView(views: [
+        placeOfTrainingTitleLabel,
+        placeOfTrainingLabel,
+        timeOfTrainingTitleLabel,
+        timeOfTrainingLabel,
+        phoneTitleLabel,
+        phoneLabel
+    ], spacing: 4.0, alignment: .top, distribution: .fillProportionally)
+    
     let callButton: ActiveButton = {
         let button = ActiveButton()
         button.setTitle("Позвонить тренеру", for: .normal)
@@ -116,14 +125,9 @@ class TrainerCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(positionLabel)
-        contentView.addSubview(placeOfTrainingTitleLabel)
-        contentView.addSubview(placeOfTrainingLabel)
-        contentView.addSubview(timeOfTrainingTitleLabel)
-        contentView.addSubview(timeOfTrainingLabel)
-        contentView.addSubview(phoneTitleLabel)
-        contentView.addSubview(phoneLabel)
+        contentView.addSubview(labelsStackView)
         contentView.addSubview(callButton)
-        
+                
         addShadow()
         
         setupConstraints()
@@ -162,38 +166,12 @@ class TrainerCell: UICollectionViewCell {
             make.left.equalTo(imageView.snp.right).offset(8.0)
         }
         
-        placeOfTrainingTitleLabel.snp.makeConstraints { make in
+        labelsStackView.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(8.0)
             make.left.right.equalToSuperview().inset(12.0)
         }
         
-        placeOfTrainingLabel.snp.makeConstraints { make in
-            make.top.equalTo(placeOfTrainingTitleLabel.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
-        timeOfTrainingTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(placeOfTrainingLabel.snp.bottom).offset(8.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
-        timeOfTrainingLabel.snp.makeConstraints { make in
-            make.top.equalTo(timeOfTrainingTitleLabel.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
-        phoneTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(timeOfTrainingLabel.snp.bottom).offset(8.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
-        phoneLabel.snp.makeConstraints { make in
-            make.top.equalTo(phoneTitleLabel.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
         callButton.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(phoneLabel.snp.bottom).offset(8.0)
             make.left.right.bottom.equalToSuperview().inset(12.0)
             make.height.equalTo(38.0)
         }
