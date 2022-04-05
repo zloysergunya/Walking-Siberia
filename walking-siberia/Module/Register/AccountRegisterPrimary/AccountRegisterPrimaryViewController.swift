@@ -109,7 +109,7 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         }
         
         let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
-        let profileUpdate = ProfileUpdateRequest(phone: formattedPhone,
+        let profileUpdate = ProfileUpdateRequest(phone: UserSettings.authType != .phone ? formattedPhone : UserSettings.user?.phone,
                                                  lastName: surname,
                                                  firstName: name,
                                                  city: city,
