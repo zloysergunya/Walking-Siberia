@@ -60,7 +60,6 @@ class HealthService: NSObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let dateString = dateFormatter.string(from: date)
-//        print("!!!", dateString, stepsCount, distance)
         sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
     }
     
@@ -157,7 +156,6 @@ extension HealthService: HealthServiceInput {
         healthStore.execute(distanceQuery)
         
         dispatchGroup.notify(queue: .main) { [weak self] in
-            print("!!!", startOfDay, date, stepsCount, distance)
             self?.updateUserActivity(date: date, stepsCount: stepsCount, distance: distance)
             completion?(stepsCount, distance)
         }
