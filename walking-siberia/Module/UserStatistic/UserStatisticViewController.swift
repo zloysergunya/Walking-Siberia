@@ -53,8 +53,8 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
             switch result {
             case .success(let statistic):
                 self.statistic = statistic
-                self.mainView.stepsCountView.setup(with: statistic.total.number, distance: statistic.total.km)
                 self.updateChart()
+                self.updateTotalStat()
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
@@ -122,6 +122,25 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         return dates.map({ dateFormatter.string(from: $0) })
     }
     
+    private func updateTotalStat() {
+        guard let period = period, let statistic = statistic else {
+            return
+        }
+        
+        let days: [Day]
+        switch period {
+        case .today: days = statistic.day
+        case .week: days = statistic.week
+        case .month: days = statistic.month
+        case .year: days = statistic.year
+        }
+        
+        let steps = days.map({ $0.number }).reduce(0, +)
+        let distance = days.map({ $0.km }).reduce(0, +)
+        
+        mainView.stepsCountView.setup(with: steps, distance: distance)
+    }
+    
     @objc private func changePeriod(_ sender: ActiveButton) {
         periodButtons.forEach { button in
             button.isSelected = sender.tag != button.tag
@@ -132,6 +151,7 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         }
         
         updateChart()
+        updateTotalStat()
     }
     
     @objc private func segmentControlUpdated() {
