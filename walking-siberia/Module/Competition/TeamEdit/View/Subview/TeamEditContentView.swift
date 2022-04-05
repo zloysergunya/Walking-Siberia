@@ -23,6 +23,7 @@ class TeamEditContentView: RootView {
         let view = ProfileEditCellView(title: "Сделать команду закрытой", iconType: .switcher)
         view.switcherView.isOn = false
         view.separator.isHidden = true
+        view.switcherView.isUserInteractionEnabled = true
         
         return view
     }()
