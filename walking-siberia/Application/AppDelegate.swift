@@ -41,9 +41,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = deviceToken.map({ String(format: "%02.2hhx", $0) }).joined()
         log.info("application: didRegisterForRemoteNotificationsWithDeviceToken \(token)")
         Messaging.messaging().apnsToken = deviceToken
+        Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
     }
     
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification notification: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(notification) {
+            completionHandler(.noData)
+            return
+        }
+    }
+
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {
+        if Auth.auth().canHandle(url) {
+            return true
+        }
+        
         return GIDSignIn.sharedInstance.handle(url)
     }
     
@@ -54,5 +68,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manager.placeholderColor = R.color.mainContent()
         manager.toolbarBarTintColor = R.color.greyBackground()
     }
-   
+    
 }

@@ -43,10 +43,17 @@ class AccountRegisterPrimaryView: RootView {
         let textField = StyledTextField()
         textField.textContentType = .telephoneNumber
         textField.text = "+7"
-        textField.placeholder = "Номер телефона"
+        textField.placeholder = "+7 (ХХХ) ХХХ ХХ ХХ"
         
         return textField
     }()
+    
+    private lazy var primaryFieldsStackView = UIStackView(views: [
+        nameField,
+        surnameField,
+        cityField,
+        phoneField
+    ], spacing: 24.0)
     
     private let dateOfBirthTitleLabel: UILabel = {
         let label = UILabel()
@@ -186,10 +193,7 @@ class AccountRegisterPrimaryView: RootView {
         backgroundColor = R.color.greyBackground()
         
         addSubview(titleLabel)
-        addSubview(nameField)
-        addSubview(surnameField)
-        addSubview(cityField)
-        addSubview(phoneField)
+        addSubview(primaryFieldsStackView)
         addSubview(dateOfBirthTitleLabel)
         addSubview(dateOfBirthField)
         addSubview(emailTitleLabel)
@@ -217,32 +221,17 @@ class AccountRegisterPrimaryView: RootView {
             make.left.right.equalToSuperview().inset(12.0)
         }
         
-        nameField.snp.makeConstraints { make in
+        primaryFieldsStackView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(24.0)
             make.left.right.equalToSuperview().inset(12.0)
-            make.height.equalTo(24.0)
         }
         
-        surnameField.snp.makeConstraints { make in
-            make.top.equalTo(nameField.snp.bottom).offset(24.0)
-            make.left.right.equalToSuperview().inset(12.0)
-            make.height.equalTo(24.0)
-        }
-        
-        cityField.snp.makeConstraints { make in
-            make.top.equalTo(surnameField.snp.bottom).offset(24.0)
-            make.left.right.equalToSuperview().inset(12.0)
-            make.height.equalTo(24.0)
-        }
-        
-        phoneField.snp.makeConstraints { make in
-            make.top.equalTo(cityField.snp.bottom).offset(24.0)
-            make.left.right.equalToSuperview().inset(12.0)
+        nameField.snp.makeConstraints { make in
             make.height.equalTo(24.0)
         }
         
         dateOfBirthTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(phoneField.snp.bottom).offset(24.0)
+            make.top.equalTo(primaryFieldsStackView.snp.bottom).offset(24.0)
             make.left.right.equalToSuperview().inset(12.0)
         }
         

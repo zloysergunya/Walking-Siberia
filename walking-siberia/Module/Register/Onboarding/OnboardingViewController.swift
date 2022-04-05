@@ -73,14 +73,17 @@ class OnboardingViewController: ViewController<OnboardingView> {
     }
     
     @objc private func openPhoneAuth() {
+        UserSettings.authType = .phone
         navigationController?.pushViewController(PhoneAuthViewController(), animated: true)
     }
     
     @objc private func signInByApple() {
+        UserSettings.authType = .apple
         appleSignInService.performRequest()
     }
     
     @objc private func signInByGoogle() {
+        UserSettings.authType = .google
         googleSignInService.performRequest()
     }
 

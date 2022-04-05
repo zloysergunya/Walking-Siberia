@@ -41,7 +41,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
         if let url = user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: mainView.contentView.avatarImageView)
         } else {
-            let side = 88.0
+            let side = 120.0
             let fullName = "\(user.profile.firstName) \(user.profile.lastName)"
             let textAttributes: [NSAttributedString.Key: Any] = [.font: R.font.geometriaMedium(size: 42.0)!, .foregroundColor: UIColor.white]
             mainView.contentView.avatarImageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(),

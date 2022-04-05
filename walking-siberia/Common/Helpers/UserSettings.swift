@@ -1,5 +1,9 @@
 import Foundation
 
+enum AuthType: Codable {
+    case phone, apple, google
+}
+
 @objc class UserSettings: NSObject {
 
     static let defaults = UserDefaults.standard
@@ -46,6 +50,15 @@ import Foundation
         }
         set {
             defaults.set(newValue, forKey: Keys.lastSendActivityDate.rawValue)
+        }
+    }
+    
+    static var authType: AuthType? {
+        get {
+            return try? defaults.get(objectType: AuthType.self, forKey: #function)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: #function)
         }
     }
     

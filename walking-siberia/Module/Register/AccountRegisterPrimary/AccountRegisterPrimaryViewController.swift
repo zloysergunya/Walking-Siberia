@@ -21,6 +21,8 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         }
         
         mainView.phoneField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        mainView.phoneField.isHidden = UserSettings.authType == .phone
+        
         mainView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.dateOfBirthField.inputView = mainView.datePicker
         
