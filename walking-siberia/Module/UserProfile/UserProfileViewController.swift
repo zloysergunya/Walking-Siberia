@@ -5,6 +5,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
     private let provider = UserProfileProvider()
     
     private var user: User
+    private var competitions: [Competition] = []
     
     init(user: User) {
         self.user = user
@@ -35,6 +36,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadUser()
+        loadCompetitions()
     }
     
     private func configure() {
@@ -112,6 +114,39 @@ class UserProfileViewController: ViewController<UserProfileView> {
         }
     }
     
+    private func loadCompetitions() {
+        provider.loadCompetitions(userId: user.userId) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let competitions):
+                self.competitions = competitions
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
+            
+            self.updateCompetitions()
+        }
+    }
+    
+    private func updateCompetitions() {
+        mainView.contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
+        mainView.contentView.competitionsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        
+        competitions.enumerated().forEach { competition in
+            let view = CompetitionView()
+            view.tag = competition.offset
+            view.nameLabel.text = competition.element.name
+            view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
+            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
+            
+            mainView.contentView.competitionsStackView.addArrangedSubview(view)
+        }
+    }
+    
     private func addAsFriend(completion: @escaping(Bool) -> Void) {
         mainView.contentView.addAsFriendButton.isLoading = true
         provider.addFriend(id: user.userId) { [weak self] result in
@@ -165,6 +200,15 @@ class UserProfileViewController: ViewController<UserProfileView> {
         }
         
         UIApplication.shared.open(url)
+    }
+    
+    @objc private func openCompetition(_ gestureRecognizer: UIGestureRecognizer) {
+        guard let index = gestureRecognizer.view?.tag else {
+            return
+        }
+        
+        let viewController = PagerViewController(type: .competition(competition: competitions[index]))
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func close() {

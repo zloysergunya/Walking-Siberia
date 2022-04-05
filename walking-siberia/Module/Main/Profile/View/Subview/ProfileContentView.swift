@@ -63,13 +63,31 @@ class ProfileContentView: RootView {
         return label
     }()
     
-    let nothingWasFoundLabel: UILabel = {
+    private let competitionsContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
+    private let competitionsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Соревнования:"
+        label.font = R.font.geometriaBold(size: 20.0)
+        label.textColor = R.color.mainContent()
+        
+        return label
+    }()
+    
+    var competitionsStackView = UIStackView(views: [], spacing: 8.0, distribution: .fill)
+    
+    let noCompetitionsLabel: UILabel = {
         let label = UILabel()
         label.text = "Пока вы не приняли участие\nв соревнованиях"
         label.font = R.font.geometriaMedium(size: 14.0)
-        label.textColor = R.color.greyText()
-        label.textAlignment = .center
-        label.numberOfLines = 2
+        label.textColor = R.color.mainContent()
+        label.numberOfLines = 0
+        label.isHidden = true
         
         return label
     }()
@@ -78,13 +96,17 @@ class ProfileContentView: RootView {
         backgroundColor = R.color.greyBackground()
         
         addSubview(headerView)
-        addSubview(nothingWasFoundLabel)
+        addSubview(competitionsContainerView)
         
         headerView.addSubview(imageViewBackgroundView)
         headerView.addSubview(avatarImageView)
         headerView.addSubview(nameLabel)
         headerView.addSubview(idLabel)
         headerView.addSubview(bioLabel)
+        
+        competitionsContainerView.addSubview(competitionsTitleLabel)
+        competitionsContainerView.addSubview(competitionsStackView)
+        competitionsContainerView.addSubview(noCompetitionsLabel)
         
         super.setup()
     }
@@ -127,10 +149,26 @@ class ProfileContentView: RootView {
             make.bottom.equalToSuperview().offset(-16.0)
         }
         
-        nothingWasFoundLabel.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom).offset(64.0)
+        competitionsContainerView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom).offset(8.0)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        competitionsTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20.0)
             make.left.right.equalToSuperview().inset(12.0)
-            make.bottom.lessThanOrEqualToSuperview().offset(-16.0)
+        }
+        
+        noCompetitionsLabel.snp.makeConstraints { make in
+            make.top.equalTo(competitionsTitleLabel.snp.bottom).offset(16.0)
+            make.left.right.equalToSuperview().inset(12.0)
+            make.bottom.lessThanOrEqualToSuperview().offset(-20.0)
+        }
+        
+        competitionsStackView.snp.makeConstraints { make in
+            make.top.equalTo(competitionsTitleLabel.snp.bottom).offset(16.0)
+            make.left.right.equalToSuperview().inset(12.0)
+            make.bottom.equalToSuperview().offset(-20.0)
         }
         
     }

@@ -111,12 +111,15 @@ class UserProfileContentView: RootView {
         return label
     }()
     
+    var competitionsStackView = UIStackView(views: [], spacing: 8.0, distribution: .fill)
+    
     let noCompetitionsLabel: UILabel = {
         let label = UILabel()
         label.text = "Этот пользователь еще не принимал участия в соревнованиях"
         label.font = R.font.geometriaMedium(size: 14.0)
         label.textColor = R.color.mainContent()
         label.numberOfLines = 0
+        label.isHidden = true
         
         return label
     }()
@@ -136,6 +139,7 @@ class UserProfileContentView: RootView {
         containerView.addSubview(socialLinksStackView)
         
         competitionsContainerView.addSubview(competitionsTitleLabel)
+        competitionsContainerView.addSubview(competitionsStackView)
         competitionsContainerView.addSubview(noCompetitionsLabel)
         
         super.setup()
@@ -209,6 +213,12 @@ class UserProfileContentView: RootView {
         }
         
         noCompetitionsLabel.snp.makeConstraints { make in
+            make.top.equalTo(competitionsTitleLabel.snp.bottom).offset(16.0)
+            make.left.right.equalToSuperview().inset(12.0)
+            make.bottom.lessThanOrEqualToSuperview().offset(-20.0)
+        }
+        
+        competitionsStackView.snp.makeConstraints { make in
             make.top.equalTo(competitionsTitleLabel.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview().inset(12.0)
             make.bottom.equalToSuperview().offset(-20.0)

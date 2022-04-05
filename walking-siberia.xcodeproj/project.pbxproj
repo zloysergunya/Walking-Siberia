@@ -159,6 +159,7 @@
 		C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */; };
 		C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */; };
 		C4A633E727FCB599003D1180 /* Date+EndOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */; };
+		C4A633E927FCC3DF003D1180 /* CompetitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A633E827FCC3DF003D1180 /* CompetitionView.swift */; };
 		C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540227CA656F0004B5CE /* NavBarView.swift */; };
 		C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */; };
 		C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540627CA664A0004B5CE /* ProfileEditView.swift */; };
@@ -427,6 +428,7 @@
 		C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryViewController.swift; sourceTree = "<group>"; };
 		C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryView.swift; sourceTree = "<group>"; };
 		C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+EndOfDay.swift"; sourceTree = "<group>"; };
+		C4A633E827FCC3DF003D1180 /* CompetitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionView.swift; sourceTree = "<group>"; };
 		C4AB540227CA656F0004B5CE /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
 		C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C4AB540627CA664A0004B5CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
@@ -1778,6 +1780,7 @@
 			isa = PBXGroup;
 			children = (
 				C4C385BF27E62F96005D48FD /* UserProfileContentView.swift */,
+				C4A633E827FCC3DF003D1180 /* CompetitionView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -2633,6 +2636,7 @@
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
 				C422A25827ED8A6D00312F14 /* VideosSectionController.swift in Sources */,
 				C422A25B27ED8AC500312F14 /* VideoCell.swift in Sources */,
+				C4A633E927FCC3DF003D1180 /* CompetitionView.swift in Sources */,
 				C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */,
 				C478448E27E1C92000D9E275 /* FriendsRequest.swift in Sources */,
 				C49AFBC927E8808F009787AB /* ArticlesView.swift in Sources */,

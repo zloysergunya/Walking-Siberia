@@ -4,6 +4,8 @@ class ProfileViewController: ViewController<ProfileView> {
     
     private let provider = ProfileProvider()
     
+    private var competitions: [Competition] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,12 +40,14 @@ class ProfileViewController: ViewController<ProfileView> {
     private func loadCompetitions() {
         provider.loadCompetitions { [weak self] result in
             switch result {
-            case .success(let response):
-                self?.updateCompetitions(for: response)
+            case .success(let competitions):
+                self?.competitions = competitions
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
             }
+            
+            self?.updateCompetitions()
         }
     }
     
@@ -74,8 +78,19 @@ class ProfileViewController: ViewController<ProfileView> {
         mainView.contentView.bioLabel.text = user.profile.aboutMe
     }
     
-    private func updateCompetitions(for competitions: [Competition]) {
+    private func updateCompetitions() {
+        mainView.contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
+        mainView.contentView.competitionsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         
+        competitions.enumerated().forEach { competition in
+            let view = CompetitionView()
+            view.tag = competition.offset
+            view.nameLabel.text = competition.element.name
+            view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
+            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
+            
+            mainView.contentView.competitionsStackView.addArrangedSubview(view)
+        }
     }
     
     private func calculateAge(birthday: String) -> Int? {
@@ -101,6 +116,15 @@ class ProfileViewController: ViewController<ProfileView> {
         }
         
         navigationController?.pushViewController(PagerViewController(type: .statistics(user: user)), animated: true)
+    }
+    
+    @objc private func openCompetition(_ gestureRecognizer: UIGestureRecognizer) {
+        guard let index = gestureRecognizer.view?.tag else {
+            return
+        }
+        
+        let viewController = PagerViewController(type: .competition(competition: competitions[index]))
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
