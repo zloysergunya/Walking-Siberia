@@ -60,6 +60,7 @@ class HealthService: NSObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let dateString = dateFormatter.string(from: date)
+//        print("!!!", dateString, stepsCount, distance)
         sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
     }
     
@@ -122,14 +123,14 @@ extension HealthService: HealthServiceInput {
         
         let startOfDay = Calendar.current.startOfDay(for: date)
         let predicate = HKObserverQuery.predicateForSamples(withStart: startOfDay,
-                                                            end: date,
+                                                            end: date.endOfDate ?? date,
                                                             options: .strictStartDate)
         
         dispatchGroup.enter()
         let stepsQuery = HKStatisticsQuery(quantityType: stepsQuantityType,
                                            quantitySamplePredicate: predicate,
-                                           options: .cumulativeSum) { [weak self] _, result, _ in
-            guard let self = self, let result = result, let sum = result.sumQuantity() else {
+                                           options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
                 dispatchGroup.leave()
                 return
             }
@@ -143,8 +144,8 @@ extension HealthService: HealthServiceInput {
         dispatchGroup.enter()
         let distanceQuery = HKStatisticsQuery(quantityType: distanceQuantityType,
                                               quantitySamplePredicate: predicate,
-                                              options: .cumulativeSum) { [weak self] _, result, _ in
-            guard let self = self, let result = result, let sum = result.sumQuantity() else {
+                                              options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
                 dispatchGroup.leave()
                 return
             }
@@ -156,6 +157,7 @@ extension HealthService: HealthServiceInput {
         healthStore.execute(distanceQuery)
         
         dispatchGroup.notify(queue: .main) { [weak self] in
+            print("!!!", startOfDay, date, stepsCount, distance)
             self?.updateUserActivity(date: date, stepsCount: stepsCount, distance: distance)
             completion?(stepsCount, distance)
         }

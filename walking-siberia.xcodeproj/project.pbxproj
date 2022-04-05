@@ -158,6 +158,7 @@
 		C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */; };
 		C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */; };
 		C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */; };
+		C4A633E727FCB599003D1180 /* Date+EndOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */; };
 		C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540227CA656F0004B5CE /* NavBarView.swift */; };
 		C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */; };
 		C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540627CA664A0004B5CE /* ProfileEditView.swift */; };
@@ -425,6 +426,7 @@
 		C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldImplementation.swift; sourceTree = "<group>"; };
 		C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryViewController.swift; sourceTree = "<group>"; };
 		C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryView.swift; sourceTree = "<group>"; };
+		C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+EndOfDay.swift"; sourceTree = "<group>"; };
 		C4AB540227CA656F0004B5CE /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
 		C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C4AB540627CA664A0004B5CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
@@ -786,6 +788,7 @@
 				C408EA3827AFFC8C004B82CB /* Bundle+Current.swift */,
 				C4979AB827DE097500CD6465 /* String+Initials.swift */,
 				C49AFBB227E70954009787AB /* Date+DatesBeetwenTwoDates.swift */,
+				C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -2553,6 +2556,7 @@
 				C49AFBFE27E8A80D009787AB /* TrainersSectionController.swift in Sources */,
 				C49AFBFA27E89FA2009787AB /* Trainer.swift in Sources */,
 				C408EA7327AFFC8C004B82CB /* UIView+Underlined.swift in Sources */,
+				C4A633E727FCB599003D1180 /* Date+EndOfDay.swift in Sources */,
 				C400F44F27D5F29200B1EAD9 /* StyledPageMenuOptions.swift in Sources */,
 				C4A1515827B0FCCB00C95344 /* KeyboardMonitor.swift in Sources */,
 				C4D82A9427BFE4470058334F /* AuthConfirmResponse.swift in Sources */,
