@@ -122,8 +122,8 @@ class TeamEditViewController: ViewController<TeamEditView> {
             return
         }
         
-        var userIds = team.users.map({ $0.userId })
-        if let index = team.users.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
+        var userIds = currentParticipants.map({ $0.userId })
+        if let index = currentParticipants.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
             userIds.remove(at: index)
         }
         
