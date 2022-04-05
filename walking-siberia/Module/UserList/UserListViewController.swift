@@ -122,9 +122,7 @@ class UserListViewController: ViewController<UserListView> {
 extension UserListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBar.text = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard query != searchText else {
+        guard query != searchText.trimmingCharacters(in: .whitespacesAndNewlines) else {
             return
         }
         
