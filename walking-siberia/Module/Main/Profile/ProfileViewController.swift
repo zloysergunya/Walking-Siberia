@@ -38,7 +38,11 @@ class ProfileViewController: ViewController<ProfileView> {
     }
     
     private func loadCompetitions() {
-        provider.loadCompetitions { [weak self] result in
+        guard let userId = UserSettings.user?.userId else {
+             return
+        }
+        
+        provider.loadCompetitions(userId: userId) { [weak self] result in
             switch result {
             case .success(let competitions):
                 self?.competitions = competitions
