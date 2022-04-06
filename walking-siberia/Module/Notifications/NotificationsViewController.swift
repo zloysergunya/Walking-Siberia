@@ -34,6 +34,10 @@ class NotificationsViewController: ViewController<NotificationsView> {
         
         loadingState = .loading
         
+        if flush {
+            provider.page = 1
+        }
+        
         provider.loadNotifications(filter: "") { [weak self] result in
             guard let self = self else {
                 return

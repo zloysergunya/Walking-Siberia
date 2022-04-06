@@ -42,6 +42,10 @@ class VideosViewController: ViewController<VideosView> {
         
         loadingState = .loading
         
+        if flush {
+            provider.page = 1
+        }
+        
         provider.loadVideos { [weak self] result in
             guard let self = self else {
                 return

@@ -40,6 +40,10 @@ class ArticlesViewController: ViewController<ArticlesView> {
         
         loadingState = .loading
         
+        if flush {
+            provider.page = 1
+        }
+        
         provider.loadArticles { [weak self] result in
             guard let self = self else {
                 return
