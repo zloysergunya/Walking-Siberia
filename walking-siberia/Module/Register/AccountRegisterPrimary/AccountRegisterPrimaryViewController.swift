@@ -84,7 +84,7 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         }
         
         guard let phone = mainView.phoneField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !phone.isEmpty else {
-            Animations.shake(view: mainView.cityField)
+            Animations.shake(view: mainView.phoneField)
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             
             return
