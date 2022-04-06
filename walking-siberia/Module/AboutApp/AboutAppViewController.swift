@@ -31,6 +31,11 @@ class AboutAppViewController: ViewController<AboutAppView> {
     }
     
     @objc private func sendEmail() {
+        guard MFMailComposeViewController.canSendMail() else {
+            showError(text: "Прежде чем написать разработчикам, настройке почту")
+            return
+        }
+        
         let viewController = MFMailComposeViewController()
         viewController.mailComposeDelegate = self
         viewController.setToRecipients([email])
