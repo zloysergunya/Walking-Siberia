@@ -114,7 +114,7 @@ class RoutesViewController: ViewController<RoutesView> {
         provider.updateCountNewNotifications { [weak self] result in
             switch result {
             case .success(let count):
-                self?.mainView.notifyButton.badge = "\(count)"
+                self?.mainView.notifyButton.badge = count > 0 ? "\(count)" : nil
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
