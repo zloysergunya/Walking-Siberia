@@ -48,7 +48,7 @@ class TrainersSectionController: ListSectionController {
         if let url = sectionModel.trainer.photo {
             ImageLoader.setImage(url: url, imgView: cell.imageView)
         } else {
-            let side = 60.0
+            let side = TrainerCell.Layout.avatarSide
             cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: side)
             let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
             gradientLayer?.frame = CGRect(side: side)

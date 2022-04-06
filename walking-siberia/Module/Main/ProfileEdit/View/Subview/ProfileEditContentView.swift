@@ -429,12 +429,6 @@ class ProfileEditContentView: RootView {
         super.setup()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        gradientLayer?.frame = imageViewBackgroundView.bounds
-    }
-    
     override func setupConstraints() {
         
         // MARK: - Photo container

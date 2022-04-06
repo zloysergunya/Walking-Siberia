@@ -111,12 +111,6 @@ class ProfileContentView: RootView {
         super.setup()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        gradientLayer?.frame = imageViewBackgroundView.bounds
-    }
-    
     override func setupConstraints() {
         
         headerView.snp.makeConstraints { make in

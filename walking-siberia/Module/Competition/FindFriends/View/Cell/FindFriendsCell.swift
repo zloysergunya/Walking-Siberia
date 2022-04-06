@@ -72,12 +72,6 @@ class FindFriendsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        gradientLayer?.frame = imageViewBackgroundView.bounds
-    }
-    
     private func setupConstraints() {
         
         imageViewBackgroundView.snp.makeConstraints { make in
