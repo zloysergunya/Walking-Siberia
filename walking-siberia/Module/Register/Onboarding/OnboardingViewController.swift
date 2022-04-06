@@ -28,7 +28,7 @@ class OnboardingViewController: ViewController<OnboardingView> {
             .underlineStyle(NSUnderlineStyle.single).underlineColor(mainView.policyLabel.textColor)
             .foregroundColor(mainView.policyLabel.textColor.withAlphaComponent(0.5), .highlighted)
         
-        let policyText = "Создавая аккаунт, вы принимаете\n<a href='https://google.com'>условия использования</a>"
+        let policyText = "Создавая аккаунт, вы принимаете\n<a href='\(Constants.agreementUrl)'>условия использования</a>"
         mainView.policyLabel.attributedText = policyText.style(tags: a)
         mainView.policyLabel.onClick = { [weak self] label, detection in
             self?.handleOnClick(label: label, detection: detection)

@@ -7,6 +7,7 @@ enum Constants {
     
     static let appStoreId = ""
     static let bundleIdentifier = Bundle.current.bundleIdentifier ?? "ru.abs.walking-siberia"
+    static let agreementUrl = "https://drive.google.com/file/d/1gsrvjUfZQoksMOw5dvLKifQpGwo6QsDp/view?usp=sharing"
 
     static var releaseVersion: String { Bundle.current.releaseVersionNumber ?? "0.0.0" }
     static var buildNumber: String { Bundle.current.buildVersionNumber ?? "0" }
