@@ -49,7 +49,12 @@ class TrainersSectionController: ListSectionController {
             ImageLoader.setImage(url: url, imgView: cell.imageView)
         } else {
             let side = TrainerCell.Layout.avatarSide
-            cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: side)
+            let textAttributes: [NSAttributedString.Key: Any] = [.font: R.font.geometriaBold(size: 24.0)!, .foregroundColor: UIColor.white]
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(),
+                                                                     color: .clear,
+                                                                     circular: true,
+                                                                     textAttributes: textAttributes,
+                                                                     side: side)
             let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
