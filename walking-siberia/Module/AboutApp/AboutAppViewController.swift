@@ -5,7 +5,7 @@ import MessageUI
 class AboutAppViewController: ViewController<AboutAppView> {
     
     private let phone = "+71234567890"
-    private let email = "e-a-shestak@mail.ru"
+    private let email = "ash_krsk@mail.ru"
     private let address = "Красноярск, ул. Ады Лебедевой, 64-37"
 
     override func viewDidLoad() {
