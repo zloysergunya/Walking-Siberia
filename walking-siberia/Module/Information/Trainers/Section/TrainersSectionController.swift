@@ -9,6 +9,8 @@ class TrainersSectionController: ListSectionController {
     
     weak var delegate: TrainersSectionControllerDelegate?
     
+    private let cellTemplate = TrainerCell()
+    
     private var sectionModel: TrainerSectionModel!
     
     override init() {
@@ -25,7 +27,7 @@ class TrainersSectionController: ListSectionController {
     override func sizeForItem(at index: Int) -> CGSize {
         let inset = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
         
-        return CGSize(width: collectionContext!.containerSize.width, height: 288.0).inset(by: inset)
+        return configure(cell: cellTemplate).sizeThatFits(collectionContext!.containerSize).inset(by: inset)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {

@@ -1,7 +1,11 @@
 import UIKit
-import SnapKit
+import PinLayout
 
 class TrainerCell: UICollectionViewCell {
+    
+    enum Layout {
+        static let avatarSide: CGFloat = 80.0
+    }
     
     var gradientLayer: CAGradientLayer? {
         didSet {
@@ -13,7 +17,7 @@ class TrainerCell: UICollectionViewCell {
     
     let imageViewBackgroundView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 30.0
+        view.layer.cornerRadius = Layout.avatarSide / 2
         view.layer.masksToBounds = true
         
         return view
@@ -22,7 +26,7 @@ class TrainerCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 30.0
+        imageView.layer.cornerRadius = Layout.avatarSide / 2
         imageView.layer.masksToBounds = true
         
         return imageView
@@ -98,15 +102,6 @@ class TrainerCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var labelsStackView = UIStackView(views: [
-        placeOfTrainingTitleLabel,
-        placeOfTrainingLabel,
-        timeOfTrainingTitleLabel,
-        timeOfTrainingLabel,
-        phoneTitleLabel,
-        phoneLabel
-    ], spacing: 4.0, alignment: .top, distribution: .fillProportionally)
-    
     let callButton: ActiveButton = {
         let button = ActiveButton()
         button.setTitle("Позвонить тренеру", for: .normal)
@@ -125,12 +120,15 @@ class TrainerCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(positionLabel)
-        contentView.addSubview(labelsStackView)
+        contentView.addSubview(placeOfTrainingTitleLabel)
+        contentView.addSubview(placeOfTrainingLabel)
+        contentView.addSubview(timeOfTrainingTitleLabel)
+        contentView.addSubview(timeOfTrainingLabel)
+        contentView.addSubview(phoneTitleLabel)
+        contentView.addSubview(phoneLabel)
         contentView.addSubview(callButton)
                 
         addShadow()
-        
-        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -140,42 +138,92 @@ class TrainerCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        gradientLayer?.frame = imageViewBackgroundView.bounds
+        layout()
     }
     
-    private func setupConstraints() {
+    private func layout() {
+        imageView.pin
+            .top(16.0)
+            .left(16.0)
+            .size(Layout.avatarSide)
         
-        imageViewBackgroundView.snp.makeConstraints { make in
-            make.edges.equalTo(imageView.snp.edges)
+        imageViewBackgroundView.frame = imageView.frame
+        gradientLayer?.frame = imageViewBackgroundView.bounds
+        
+        nameLabel.pin
+            .after(of: imageView).marginLeft(8.0)
+            .top(26.0)
+            .right(16.0)
+            .sizeToFit(.widthFlexible)
+        
+        positionLabel.pin
+            .after(of: imageView).marginLeft(8.0)
+            .below(of: nameLabel).marginTop(4.0)
+            .right(16.0)
+            .sizeToFit(.widthFlexible)
+        
+        var topEdge: VerticalEdge = imageView.edge.bottom
+        
+        if !placeOfTrainingTitleLabel.isHidden {
+            placeOfTrainingTitleLabel.pin
+                .top(to: topEdge).marginTop(12.0)
+                .left(16.0)
+                .right(16.0)
+                .sizeToFit(.widthFlexible)
+            
+            placeOfTrainingLabel.pin
+                .below(of: placeOfTrainingTitleLabel).marginTop(4.0)
+                .left(16.0)
+                .right(16.0)
+                .sizeToFit(.widthFlexible)
+            
+            topEdge = placeOfTrainingLabel.edge.bottom
         }
         
-        imageView.snp.makeConstraints { make in
-            make.left.top.equalToSuperview().inset(12.0)
-            make.size.equalTo(60.0)
+        if !timeOfTrainingTitleLabel.isHidden {
+            timeOfTrainingTitleLabel.pin
+                .top(to: topEdge).marginTop(12.0)
+                .left(16.0)
+                .right(16.0)
+                .sizeToFit(.widthFlexible)
+            
+            timeOfTrainingLabel.pin
+                .below(of: timeOfTrainingTitleLabel).marginTop(4.0)
+                .left(16.0)
+                .right(16.0)
+                .sizeToFit(.widthFlexible)
+            
+            topEdge = timeOfTrainingLabel.edge.bottom
         }
         
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16.0)
-            make.right.equalToSuperview().offset(-12.0)
-            make.left.equalTo(imageView.snp.right).offset(8.0)
-        }
+        phoneTitleLabel.pin
+            .top(to: topEdge).marginTop(12.0)
+            .left(16.0)
+            .right(16.0)
+            .sizeToFit(.widthFlexible)
         
-        positionLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
-            make.right.equalToSuperview().offset(-12.0)
-            make.left.equalTo(imageView.snp.right).offset(8.0)
-        }
+        phoneLabel.pin
+            .below(of: phoneTitleLabel).marginTop(8.0)
+            .left(16.0)
+            .right(16.0)
+            .sizeToFit(.widthFlexible)
         
-        labelsStackView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(8.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
+        topEdge = phoneLabel.edge.bottom
         
-        callButton.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview().inset(12.0)
-            make.height.equalTo(38.0)
-        }
+        callButton.pin
+            .top(to: topEdge).marginTop(12.0)
+            .left(16.0)
+            .right(16.0)
+            .height(38.0)
         
+        contentView.pin.height(callButton.frame.maxY + 16.0)
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        contentView.pin.width(size.width)
+        layout()
+        
+        return contentView.frame.size
     }
     
 }
