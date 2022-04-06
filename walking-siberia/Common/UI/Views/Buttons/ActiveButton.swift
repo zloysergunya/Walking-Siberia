@@ -8,7 +8,7 @@ class ActiveButton: UIButton {
         view.hidesWhenStopped = false
         view.startAnimating()
         view.isHidden = true
-        view.color = .gray
+        view.color = .white
         
         return view
     }()
@@ -81,6 +81,7 @@ class ActiveButton: UIButton {
     
     private func updateSelectedState() {
         backgroundColor = isSelected ? .white : R.color.activeElements()
+        loaderView.color = isSelected ? R.color.activeElements() : .white
         setTitleColor(isSelected ? R.color.activeElements() : .white, for: .normal)
         layer.borderColor = isSelected ? R.color.activeElements()?.cgColor : UIColor.clear.cgColor
     }
