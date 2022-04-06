@@ -25,6 +25,8 @@ class HealthService: NSObject {
     private let stepsCountObject = HKObjectType.quantityType(forIdentifier: .stepCount)
     private let distanceObject = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
     
+    private var authService: AuthService? = ServiceLocator.getService()
+    
     override init() {
         super.init()
                 
@@ -64,6 +66,10 @@ class HealthService: NSObject {
     }
     
     private func sendUserActivity(walkRequest: WalkRequest) {
+        guard authService?.authStatus == .authorized else {
+            return
+        }
+        
         provider.sendUserActivity(walkRequest: walkRequest) { [weak self] result in
             switch result {
             case .success: UserSettings.lastSendActivityDate = Date()
