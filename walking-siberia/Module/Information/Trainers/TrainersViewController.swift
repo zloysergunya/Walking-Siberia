@@ -49,7 +49,11 @@ class TrainersViewController: ViewController<TrainersView> {
             
             switch result {
             case .success(let trainers):
-                self.objects = trainers.map({ TrainerSectionModel(trainer: $0) })
+                if flush {
+                    self.objects.removeAll()
+                }
+                
+                self.objects.append(contentsOf: trainers.map({ TrainerSectionModel(trainer: $0) }))
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
                 

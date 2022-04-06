@@ -94,11 +94,11 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
                     self.objects.removeAll()
                 }
                 
-                self.objects = users.map { user in
+                self.objects.append(contentsOf: users.map { user in
                     let isJoined = self.currentParticipants.contains(where: { $0.userId == user.userId })
                     
                     return FindFriendsSectionModel(user: user, isJoined: isJoined)
-                }
+                })
                 
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)

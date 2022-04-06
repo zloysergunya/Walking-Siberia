@@ -55,7 +55,7 @@ class VideosViewController: ViewController<VideosView> {
                     self.objects.removeAll()
                 }
                 
-                self.objects = videos.map({ VideoSectionModel(video: $0) })
+                self.objects.append(contentsOf: videos.map({ VideoSectionModel(video: $0) }))
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
                 

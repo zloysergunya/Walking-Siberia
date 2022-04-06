@@ -53,7 +53,7 @@ class ArticlesViewController: ViewController<ArticlesView> {
                     self.objects.removeAll()
                 }
                 
-                self.objects = articles.map({ ArticleSectionModel(article: $0) })
+                self.objects.append(contentsOf: articles.map({ ArticleSectionModel(article: $0) }))
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
                 
