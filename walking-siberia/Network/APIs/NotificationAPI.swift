@@ -69,4 +69,22 @@ class NotificationAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func notificationCountNewGet(completion: @escaping ((_ data: SuccessResponse<Int>?,_ error: ErrorResponse?) -> Void)) {
+        notificationCountNewGetWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func notificationCountNewGetWithRequestBuilder() -> RequestBuilder<SuccessResponse<Int>> {
+        let path = "/notification/count-new"
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Int>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

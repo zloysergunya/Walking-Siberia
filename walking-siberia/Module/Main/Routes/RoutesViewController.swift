@@ -39,6 +39,7 @@ class RoutesViewController: ViewController<RoutesView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadRoutes()
+        updateCountNewNotifications()
     }
     
     private func loadRoutes() {
@@ -103,6 +104,18 @@ class RoutesViewController: ViewController<RoutesView> {
         provider.sendPushToken(token: token) { [weak self] result in
             switch result {
             case .success: break
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func updateCountNewNotifications() {
+        provider.updateCountNewNotifications { [weak self] result in
+            switch result {
+            case .success(let count):
+                self?.mainView.notifyButton.badge = "\(count)"
+                
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
             }
