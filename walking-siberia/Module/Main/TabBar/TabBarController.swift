@@ -1,4 +1,6 @@
 import UIKit
+import SwiftyBeaver
+import Kingfisher
 
 class TabBarController: UITabBarController {
 
@@ -49,6 +51,45 @@ class TabBarController: UITabBarController {
         tabBar.unselectedItemTintColor = R.color.greyBlue()
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = false
+        
+        // Add dev menu to last tab
+        if let view = tabBar.items?.last?.value(forKey: "view") as? UIView {
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openDeveloperMenu))
+            gestureRecognizer.cancelsTouchesInView = false
+            gestureRecognizer.delaysTouchesEnded = false
+            gestureRecognizer.numberOfTapsRequired = 5
+            view.addGestureRecognizer(gestureRecognizer)
+        }
+    }
+    
+    @objc private func openDeveloperMenu() {
+        let alert = UIAlertController(title: "Version: \(Constants.appVersion)", message: "userId: \(UserSettings.user?.userId ?? -1)", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Copy userId", style: .default, handler: { _ in
+            UIPasteboard.general.string = String(UserSettings.user?.userId ?? -1)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Copy token", style: .default, handler: { _ in
+            let keychainService: KeychainService? = ServiceLocator.getService()
+            UIPasteboard.general.string = keychainService?.token
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Send logs", style: .default, handler: { [weak self] _ in
+            guard let logFileURL = FileDestination().logFileURL else {
+                return
+            }
+            
+            let viewController = UIActivityViewController(activityItems: [logFileURL], applicationActivities: nil)
+            self?.present(viewController, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Clear cache", style: .default, handler: { _ in
+            ImageCache.default.clearCache()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
     }
     
 }
