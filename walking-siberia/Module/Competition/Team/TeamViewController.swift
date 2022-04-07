@@ -48,7 +48,9 @@ class TeamViewController: ViewController<TeamView> {
             participantView.categoryLabel.text = userCategory?.categoryName
             
             var text = R.string.localizable.stepsCount(number: user.element.statistics.total.number, preferredLanguages: ["ru"])
-            text = text.replacingOccurrences(of: "\(user.element.statistics.total.number)", with: user.element.statistics.total.number.roundedWithAbbreviations)
+            if user.element.statistics.total.number > 30000 {
+                text = text.replacingOccurrences(of: "\(user.element.statistics.total.number)", with: user.element.statistics.total.number.roundedWithAbbreviations)
+            }
             participantView.stepsCountLabel.text = text
             participantView.distanceLabel.text = "\(user.element.statistics.total.km) км"
             

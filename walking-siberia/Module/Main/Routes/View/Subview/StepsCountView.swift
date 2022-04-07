@@ -122,7 +122,12 @@ class StepsCountView: UIView {
             .foregroundColor(.white)
             .font(R.font.geometriaBold(size: 24.0) ?? .boldSystemFont(ofSize: 24.0))
         
-        let stepsText = "<bold>\(stepsCount.roundedWithAbbreviations)</bold>\nшаги"
+        let stepsText: String
+        if stepsCount > 30000 {
+            stepsText = "<bold>\(stepsCount.roundedWithAbbreviations)</bold>\nшаги"
+        } else {
+            stepsText = "<bold>\(stepsCount)</bold>\nшаги"
+        }
         stepsLabel.attributedText = stepsText.style(tags: bold).attributedString
         
         let distanceText = "<bold>\(String(format: "%.2f", distance)) км</bold>\nдистанция"

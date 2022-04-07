@@ -59,7 +59,12 @@ class TeamSectionController: ListSectionController {
             .font(R.font.geometriaBold(size: 20.0) ?? .systemFont(ofSize: 20.0))
             .foregroundColor(R.color.graphicBlue() ?? .blue)
         
-        let text = "<bold>\(sectionModel.team.statistics.total.number.roundedWithAbbreviations)</bold>\nшаги"
+        let text: String
+        if sectionModel.team.statistics.total.number > 30000 {
+            text = "<bold>\(sectionModel.team.statistics.total.number.roundedWithAbbreviations)</bold>\nшаги"
+        } else {
+            text = "<bold>\(sectionModel.team.statistics.total.number)</bold>\nшаги"
+        }
         cell.stepsCountLabel.attributedText = text.style(tags: bold).attributedString
         
         let side = 48.0
