@@ -32,7 +32,7 @@ class AboutAppViewController: ViewController<AboutAppView> {
     
     @objc private func sendEmail() {
         guard MFMailComposeViewController.canSendMail() else {
-            showError(text: "Прежде чем связаться с представителем, необходимо настроить почту")
+            showError(text: "Прежде чем связаться с представителем, необходимо настроить почту в настройках телефона")
             return
         }
         

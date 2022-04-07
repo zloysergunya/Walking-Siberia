@@ -248,7 +248,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     
     @objc private func contactDeveloper() {
         guard MFMailComposeViewController.canSendMail() else {
-            showError(text: "Прежде чем написать разработчикам, настройке почту")
+            showError(text: "Прежде чем написать разработчикам, настройте почту в настройках телефона")
             return
         }
         
