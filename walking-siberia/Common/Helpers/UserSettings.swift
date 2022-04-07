@@ -62,6 +62,42 @@ enum AuthType: Codable {
         }
     }
     
+    static var routes: [Route]? {
+        get {
+            return try? defaults.get(objectType: [Route].self, forKey: #function)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: #function)
+        }
+    }
+    
+    static var competitions: [Competition]? {
+        get {
+            return try? defaults.get(objectType: [Competition].self, forKey: #function)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: #function)
+        }
+    }
+    
+    static var trainers: [Trainer]? {
+        get {
+            return try? defaults.get(objectType: [Trainer].self, forKey: #function)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: #function)
+        }
+    }
+    
+    static var statistic: Statistic? {
+        get {
+            return try? defaults.get(objectType: Statistic.self, forKey: #function)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: #function)
+        }
+    }
+    
     @objc static func clear() {
         let domain = Bundle.main.bundleIdentifier!
         defaults.removePersistentDomain(forName: domain)

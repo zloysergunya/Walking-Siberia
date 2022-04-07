@@ -11,8 +11,18 @@ class CompetitionsViewController: ViewController<CompetitionsView> {
     private let provider = CompetitionsProvider()
     
     private var loadingState: LoadingState = .none
-    private var objects: [CompetitionSectionModel] = []
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    
+    private lazy var objects: [CompetitionSectionModel] = {
+        guard let competitions = UserSettings.competitions else {
+            return []
+        }
+        
+        switch type {
+        case .current: return competitions.filter({ !$0.isClosed }).map({ CompetitionSectionModel(competition: $0) })
+        case .ended: return competitions.filter({ $0.isClosed }).map({ CompetitionSectionModel(competition: $0) })
+        }
+    }()
 
     init(type: CompetitionsType) {
         self.type = type
@@ -54,6 +64,8 @@ class CompetitionsViewController: ViewController<CompetitionsView> {
             
             switch result {
             case .success(var competitions):
+                UserSettings.competitions = competitions
+                
                 switch self.type {
                 case .current: competitions = competitions.filter({ !$0.isClosed })
                 case .ended: competitions = competitions.filter({ $0.isClosed })

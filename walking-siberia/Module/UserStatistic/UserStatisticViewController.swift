@@ -10,7 +10,7 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
     private let user: User
     private let provider = UserStatisticProvider()
     
-    private var statistic: Statistic?
+    private var statistic: Statistic? = UserSettings.statistic
     private var period: StatisticPeriod? = .today
     private var periodButtons: [ActiveButton] {
         return [mainView.todayButton, mainView.weekButton, mainView.monthButton, mainView.yearButton]
@@ -33,6 +33,7 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         mainView.segmentControl.addTarget(self, action: #selector(segmentControlUpdated), for: .valueChanged)
         periodButtons.forEach({ $0.addTarget(self, action: #selector(changePeriod), for: .touchUpInside) })
         
+        updateChart()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +43,6 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
     
     private func loadWalkChart() {
         provider.loadWalkChart(userId: user.userId) { [weak self] result in
@@ -52,6 +52,7 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
             
             switch result {
             case .success(let statistic):
+                UserSettings.statistic = statistic
                 self.statistic = statistic
                 self.updateChart()
                 self.updateTotalStat()

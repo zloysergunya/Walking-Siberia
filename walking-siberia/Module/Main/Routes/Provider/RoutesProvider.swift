@@ -2,9 +2,9 @@ import Foundation
 
 class RoutesProvider {
     
-    func routes(completion: @escaping(Result<SuccessResponse<[Route]>, ModelError>) -> Void) {
+    func routes(completion: @escaping(Result<[Route], ModelError>) -> Void) {
         MapsAPI.mapsGet { response, error in
-            if let response = response {
+            if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
                 completion(.failure(ModelError(err: error)))

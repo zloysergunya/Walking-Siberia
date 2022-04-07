@@ -8,7 +8,7 @@ class RoutesViewController: ViewController<RoutesView> {
     private let healthService: HealthService? = ServiceLocator.getService()
     private let notificationsAccessService = NotificationsAccessService()
     
-    private var objects: [RouteSectionModel] = []
+    private var objects: [RouteSectionModel] = UserSettings.routes?.map({ RouteSectionModel(route: $0) }) ?? []
     private var loadingState: LoadingState = .none
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
 
@@ -28,6 +28,8 @@ class RoutesViewController: ViewController<RoutesView> {
         
         healthService?.output = self
         healthService?.requestAccess()
+        
+        mainView.stepsCountView.setup(with: 0, distance: 0.0)
         
         syncContacts()
         syncUserActivity()
@@ -57,10 +59,9 @@ class RoutesViewController: ViewController<RoutesView> {
             self.mainView.collectionView.refreshControl?.endRefreshing()
                         
             switch result {
-            case .success(let response):
-                if let routes = response.data?.map({ RouteSectionModel(route: $0) }) {
-                    self.objects = routes
-                }
+            case .success(let routes):
+                UserSettings.routes = routes
+                self.objects = routes.map({ RouteSectionModel(route: $0) })
                 
                 self.adapter.reloadData(completion: nil)
                 self.loadingState = .loaded

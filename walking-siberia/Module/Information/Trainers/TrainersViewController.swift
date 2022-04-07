@@ -7,7 +7,7 @@ class TrainersViewController: ViewController<TrainersView> {
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var loadingState: LoadingState = .none
-    private var objects: [TrainerSectionModel] = []
+    private var objects: [TrainerSectionModel] = UserSettings.trainers?.map({ TrainerSectionModel(trainer: $0) }) ?? []
     
     override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
@@ -51,8 +51,10 @@ class TrainersViewController: ViewController<TrainersView> {
             case .success(let trainers):
                 if flush {
                     self.objects.removeAll()
+                    UserSettings.trainers = []
                 }
                 
+                UserSettings.trainers?.append(contentsOf: trainers)
                 self.objects.append(contentsOf: trainers.map({ TrainerSectionModel(trainer: $0) }))
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
