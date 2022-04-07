@@ -7,6 +7,7 @@ class RoutesProvider {
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
+                log.error(ModelError(err: error).message())
                 completion(.failure(ModelError(err: error)))
             } else {
                 completion(.failure(ModelError()))
@@ -20,6 +21,7 @@ class RoutesProvider {
             if let response = response {
                 completion(.success(response))
             } else if let error = error {
+                log.error(ModelError(err: error).message())
                 completion(.failure(ModelError(err: error)))
             } else {
                 completion(.failure(ModelError()))
@@ -32,6 +34,7 @@ class RoutesProvider {
             if let response = response {
                 completion(.success(response))
             } else if let error = error {
+                log.error(ModelError(err: error).message())
                 completion(.failure(ModelError(err: error)))
             } else {
                 completion(.failure(ModelError()))
@@ -44,6 +47,7 @@ class RoutesProvider {
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
+                log.error(ModelError(err: error).message())
                 completion(.failure(ModelError(err: error)))
             } else {
                 completion(.failure(ModelError()))

@@ -121,9 +121,9 @@ extension AppleSignInService: ASAuthorizationControllerDelegate {
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         if let error = error as? ASAuthorizationError {
-            print(error)
+            log.error(error.localizedDescription)
         } else {
-            print("unknown error \( error)")
+            log.error("Unknown error \( error)")
         }
         
         output?.appleSignIn(didFailWith: error)

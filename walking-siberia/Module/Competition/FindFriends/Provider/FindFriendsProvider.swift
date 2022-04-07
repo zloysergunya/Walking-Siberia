@@ -12,6 +12,7 @@ class FindFriendsProvider {
                 self.page = response.isEmpty ? -1 : self.page + 1
                 completion(.success(response))
             } else if let error = error {
+                log.error(ModelError(err: error).message())
                 completion(.failure(ModelError(err: error)))
             } else {
                 completion(.failure(ModelError()))

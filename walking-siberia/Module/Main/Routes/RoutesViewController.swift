@@ -199,7 +199,6 @@ extension RoutesViewController: HealthServiceOutput {
     }
     
     func failureHealthAccessRequest(error: Error) {
-        log.error(error.localizedDescription)
         showError(text: error.localizedDescription)
     }
     

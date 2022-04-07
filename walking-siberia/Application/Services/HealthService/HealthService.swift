@@ -52,6 +52,7 @@ class HealthService: NSObject {
                 if success {
                     log.verbose("\(type) Delivery enabled")
                 } else if let error = error {
+                    log.error("EnableBackgroundDelivery for type \(type) error: \(error.localizedDescription)")
                     self?.output?.failureHealthAccessRequest(error: error)
                 }
             }
@@ -85,12 +86,14 @@ extension HealthService: HealthServiceInput {
     
     func requestAccess() {
         guard HKHealthStore.isHealthDataAvailable() else {
+            log.error(log.error("NotAvailableOnDevice error: \(HealthkitSetupError.dataTypeNotAvailable)"))
             output?.failureHealthAccessRequest(error: HealthkitSetupError.notAvailableOnDevice)
             
             return
         }
         
         guard let stepCount = stepsCountObject, let distance = distanceObject else {
+            log.error("DataTypeNotAvailable error: \(HealthkitSetupError.dataTypeNotAvailable)")
             output?.failureHealthAccessRequest(error: HealthkitSetupError.dataTypeNotAvailable)
             
             return
@@ -105,6 +108,7 @@ extension HealthService: HealthServiceInput {
             
             DispatchQueue.main.async {
                 if let error = error {
+                    log.error("RequestAuthorization error: \(error.localizedDescription)")
                     self.output?.failureHealthAccessRequest(error: error)
                 } else {
                     self.output?.successHealthAccessRequest(granted: granted)

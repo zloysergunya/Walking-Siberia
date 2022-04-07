@@ -27,7 +27,7 @@ class ContactsService {
             do {
                 allContainers = try contactStore.containers(matching: nil)
             } catch {
-                print("Error fetching containers")
+                log.error("Error fetching containers")
             }
 
             var results: [CNContact] = []
@@ -39,7 +39,7 @@ class ContactsService {
                     let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
                     results.append(contentsOf: containerResults)
                 } catch {
-                    print("Error fetching results for container")
+                    log.error("Error fetching results for container")
                 }
             }
 
@@ -70,7 +70,7 @@ class ContactsService {
         do {
             allContainers = try contactStore.containers(matching: nil)
         } catch {
-            print("Error fetching containers")
+            log.error("Error fetching containers")
         }
 
         var results: [CNContact] = []
@@ -82,7 +82,7 @@ class ContactsService {
                 let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
                 results.append(contentsOf: containerResults)
             } catch {
-                print("Error fetching results for container")
+                log.error("Error fetching results for container")
             }
         }
         
