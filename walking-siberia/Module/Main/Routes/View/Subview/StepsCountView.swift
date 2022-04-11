@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import Atributika
 
 class StepsCountView: UIView {
     
@@ -30,11 +29,20 @@ class StepsCountView: UIView {
     
     private let stepsLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = R.font.geometriaBold(size: 24.0)
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }()
+    
+    private let stepsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "шаги"
         label.textColor = R.color.mainContent()
         label.textAlignment = .center
         label.font = R.font.geometriaRegular(size: 12.0)
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -48,11 +56,20 @@ class StepsCountView: UIView {
     
     private let distanceLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = R.font.geometriaBold(size: 24.0)
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }()
+    
+    private let distanceTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "дистанция"
         label.textColor = R.color.mainContent()
         label.textAlignment = .center
         label.font = R.font.geometriaRegular(size: 12.0)
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -71,8 +88,10 @@ class StepsCountView: UIView {
         
         addSubview(logoImageView)
         addSubview(stepsLabel)
+        addSubview(stepsTitleLabel)
         addSubview(separator)
         addSubview(distanceLabel)
+        addSubview(distanceTitleLabel)
         
         setupConstraints()
     }
@@ -88,7 +107,6 @@ class StepsCountView: UIView {
     }
     
     private func setupConstraints() {
-        
         logoImageView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(6.0)
             make.top.bottom.equalToSuperview()
@@ -100,6 +118,11 @@ class StepsCountView: UIView {
             make.left.greaterThanOrEqualTo(logoImageView.snp.right).offset(16.0)
             make.right.equalTo(separator.snp.left).offset(-16.0)
             make.width.equalTo(distanceLabel.snp.width)
+        }
+        
+        stepsTitleLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(stepsLabel.snp.centerX)
+            make.bottom.equalToSuperview().inset(16.0)
         }
         
         separator.snp.makeConstraints { make in
@@ -115,23 +138,24 @@ class StepsCountView: UIView {
             make.width.equalTo(stepsLabel.snp.width)
         }
         
+        distanceTitleLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(distanceLabel.snp.centerX)
+            make.bottom.equalToSuperview().inset(16.0)
+        }
+        
     }
     
     func setup(with stepsCount: Int, distance: Double) {
-        let bold = Style("bold")
-            .foregroundColor(.white)
-            .font(R.font.geometriaBold(size: 24.0) ?? .boldSystemFont(ofSize: 24.0))
-        
         let stepsText: String
         if stepsCount > 30000 {
-            stepsText = "<bold>\(stepsCount.roundedWithAbbreviations)</bold>\nшаги"
+            stepsText = "\(stepsCount.roundedWithAbbreviations)"
         } else {
-            stepsText = "<bold>\(stepsCount)</bold>\nшаги"
+            stepsText = "\(stepsCount)"
         }
-        stepsLabel.attributedText = stepsText.style(tags: bold).attributedString
+        stepsLabel.text = stepsText
         
-        let distanceText = "<bold>\(String(format: "%.2f", distance)) км</bold>\nдистанция"
-        distanceLabel.attributedText = distanceText.style(tags: bold).attributedString
+        let distanceText = "\(String(format: "%.2f", distance)) км"
+        distanceLabel.text = distanceText
     }
     
 }
