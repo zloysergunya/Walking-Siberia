@@ -59,7 +59,6 @@ class UserCell: UICollectionViewCell {
         label.font = R.font.geometriaRegular(size: 12.0)
         label.textColor = R.color.mainContent()
         label.textAlignment = .right
-
         
         return label
     }()
@@ -83,6 +82,13 @@ class UserCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.image = nil
+        gradientLayer = nil
     }
     
     private func setupConstraints() {
