@@ -63,6 +63,8 @@ class PagerViewController: PageMenuController {
         view.backgroundColor = R.color.greyBackground()
         navigationController?.navigationBar.titleTextAttributes = [.font: R.font.geometriaMedium(size: 14.0) ?? .systemFont(ofSize: 14.0),
                                                                    .foregroundColor: R.color.mainContent() ?? .black]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         tabMenuView.addSubview(separator)
         
