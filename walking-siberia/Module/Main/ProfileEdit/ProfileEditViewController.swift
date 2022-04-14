@@ -313,8 +313,10 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     }
     
     @objc private func logout() {
-        let authService: AuthService? = ServiceLocator.getService()
-        authService?.deauthorize()
+        dialog(title: "Выйти из приложения?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { _ in
+            let authService: AuthService? = ServiceLocator.getService()
+            authService?.deauthorize()
+        })
     }
     
     @objc private func close() {

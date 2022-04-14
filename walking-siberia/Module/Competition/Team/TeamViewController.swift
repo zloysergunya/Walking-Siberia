@@ -191,7 +191,9 @@ class TeamViewController: ViewController<TeamView> {
         if isOwner {
             openTeamEdit()
         } else if team.isJoined {
-            leaveTeam()
+            dialog(title: "Покинуть команду?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { [weak self] _ in
+                self?.leaveTeam()
+            })
         } else {
             joinTeam()
         }
