@@ -2,6 +2,15 @@ import Foundation
 
 enum AuthType: Codable {
     case phone, apple, google
+    
+    var description: String {
+        switch self {
+        case .phone: return "Номер телефона"
+        case .apple: return "Apple"
+        case .google: return "Google"
+        }
+    }
+    
 }
 
 @objc class UserSettings: NSObject {

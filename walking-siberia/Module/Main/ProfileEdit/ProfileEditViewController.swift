@@ -26,6 +26,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.competitionsNotifyActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleCompetitionsNotifications)))
         mainView.contentView.infoNotifyActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleInfoNotifications)))
         mainView.contentView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        mainView.contentView.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         mainView.contentView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.contentView.birthdayTextField.inputView = mainView.contentView.datePicker
@@ -68,7 +69,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.birthdayTextField.text = user.profile.birthDate
         mainView.contentView.heightTextField.text = "\(user.profile.height ?? 0)"
         mainView.contentView.weightTextField.text = "\(user.profile.weight ?? 0)"
-        mainView.contentView.phoneTextField.text = user.phone
+        mainView.contentView.phoneTextField.text = user.phone?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
         mainView.contentView.emailTextField.text = user.email
         mainView.contentView.bioTextField.text = user.profile.aboutMe
         mainView.contentView.telegramField.text = user.profile.telegram
@@ -117,7 +118,16 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
             return
         }
         
-        let profileUpdate = ProfileUpdateRequest(lastName: mainView.contentView.surnameTextField.text,
+        guard let phone = mainView.contentView.phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !phone.isEmpty else {
+            Animations.shake(view: mainView.contentView.phoneTextField)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            
+            return
+        }
+        
+        let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
+        let profileUpdate = ProfileUpdateRequest(phone: formattedPhone,
+                                                 lastName: mainView.contentView.surnameTextField.text,
                                                  firstName: mainView.contentView.nameTextField.text,
                                                  city: mainView.contentView.cityTextField.text,
                                                  birthDay: mainView.contentView.birthdayTextField.text,
@@ -139,6 +149,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
+                self?.toggleProfileEditing()
             }
         }
     }
@@ -195,6 +206,25 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
             switch result {
             case .success:
                 UserSettings.user?.profile.avatar = nil
+                self?.configure()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func toggleNotice(notice: NotificationTopic) {
+        provider.toggleNotice(type: notice.rawValue) { [weak self] result in
+            switch result {
+            case .success:
+                switch notice {
+                case .route: UserSettings.user?.profile.isNoticeRoute.toggle()
+                case .info: UserSettings.user?.profile.isNoticeInfo.toggle()
+                case .competition: UserSettings.user?.profile.isNoticeCompetition.toggle()
+                }
+                
+                Utils.impact()
                 self?.configure()
                 
             case .failure(let error):
@@ -263,23 +293,8 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         present(viewController, animated: true)
     }
     
-    private func toggleNotice(notice: NotificationTopic) {
-        provider.toggleNotice(type: notice.rawValue) { [weak self] result in
-            switch result {
-            case .success:
-                switch notice {
-                case .route: UserSettings.user?.profile.isNoticeRoute.toggle()
-                case .info: UserSettings.user?.profile.isNoticeInfo.toggle()
-                case .competition: UserSettings.user?.profile.isNoticeCompetition.toggle()
-                }
-                
-                Utils.impact()
-                self?.configure()
-                
-            case .failure(let error):
-                self?.showError(text: error.localizedDescription)
-            }
-        }
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
     }
     
     @objc private func toggleRoutesNotifications() {

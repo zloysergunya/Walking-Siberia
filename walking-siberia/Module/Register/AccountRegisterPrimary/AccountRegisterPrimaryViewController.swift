@@ -20,6 +20,11 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             $0.addTarget(self, action: #selector(textFieldDidChangeText), for: .editingChanged)
         }
         
+        mainView.emailField.text = UserSettings.user?.email
+        if let authType = UserSettings.authType, authType != .phone {
+            mainView.emailField.placeholder = "E-mail, привязанный к учётной записи \(authType.description)"
+        }
+        
         mainView.phoneField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         mainView.phoneField.isHidden = UserSettings.authType == .phone
         
