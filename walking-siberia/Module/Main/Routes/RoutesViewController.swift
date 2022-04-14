@@ -42,6 +42,7 @@ class RoutesViewController: ViewController<RoutesView> {
         
         loadRoutes()
         updateCountNewNotifications()
+        updateCurrentUserActivity()
     }
     
     private func loadRoutes() {
@@ -91,12 +92,14 @@ class RoutesViewController: ViewController<RoutesView> {
         let toDate = Date()
         
         Date.dates(from: lastDate, to: toDate).forEach { date in
-            healthService?.getUserActivity(date: date) { [weak self] (stepsCount, distance) in
-                DispatchQueue.main.async {
-                    if Calendar.current.isDate(date, inSameDayAs: Date()) {
-                        self?.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
-                    }
-                }
+            healthService?.getUserActivity(date: date, completion: nil)
+        }
+    }
+    
+    private func updateCurrentUserActivity() {
+        healthService?.getUserActivity(date: Date()) { [weak self] (stepsCount, distance) in
+            DispatchQueue.main.async {
+                self?.mainView.stepsCountView.setup(with: stepsCount, distance: distance)
             }
         }
     }
