@@ -61,9 +61,9 @@ class TeamSectionController: ListSectionController {
         
         let text: String
         if sectionModel.team.statistics.total.number > 30000 {
-            text = "<bold>\(sectionModel.team.statistics.total.number.roundedWithAbbreviations)</bold>\nшаги"
+            text = "<bold>\(sectionModel.team.statistics.average?.number.roundedWithAbbreviations ?? "0.0")</bold>\nшаги"
         } else {
-            text = "<bold>\(sectionModel.team.statistics.total.number)</bold>\nшаги"
+            text = "<bold>\(sectionModel.team.statistics.average?.number ?? 0)</bold>\nшаги"
         }
         cell.stepsCountLabel.attributedText = text.style(tags: bold).attributedString
         
