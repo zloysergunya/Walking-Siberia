@@ -99,19 +99,23 @@ class PhoneCodeAuthView: RootView {
         oneTimeCodeField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(12.0)
             make.centerX.equalToSuperview()
+            make.centerY.lessThanOrEqualToSuperview()
             make.width.equalTo(side * Double(fieldsCount) + spacing * Double(fieldsCount))
             make.height.equalTo(side)
         }
         
         resendCodeLabel.snp.makeConstraints { make in
-            make.edges.equalTo(resendCodeButton.snp.edges)
-        }
-        
-        resendCodeButton.snp.makeConstraints { make in
             make.top.equalTo(oneTimeCodeField.snp.bottom).offset(12.0)
             make.left.right.equalToSuperview().inset(12.0)
             make.bottom.lessThanOrEqualTo(changePhoneButton.snp.top).offset(-12.0)
-            make.height.greaterThanOrEqualTo(44.0)
+            make.height.equalTo(44.0)
+        }
+        
+        resendCodeButton.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(oneTimeCodeField.snp.bottom).offset(12.0)
+            make.left.right.equalToSuperview().inset(12.0)
+            make.bottom.equalTo(changePhoneButton.snp.top).offset(-12.0)
+            make.height.equalTo(44.0)
         }
         
         changePhoneButton.snp.makeConstraints { make in
