@@ -11,6 +11,8 @@ class PhoneAuthViewController: ViewController<PhoneAuthView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         phoneSignInService.output = self
         
         mainView.continueButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)

@@ -22,6 +22,8 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         phoneSignInService.output = self
         
         mainView.resendCodeButton.addTarget(self, action: #selector(resendCode), for: .touchUpInside)

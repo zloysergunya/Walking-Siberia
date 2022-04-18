@@ -7,6 +7,8 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         mainView.addPhotoButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
         mainView.continueButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
         

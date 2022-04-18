@@ -11,6 +11,8 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         [mainView.nameField,
          mainView.surnameField,
          mainView.cityField,
