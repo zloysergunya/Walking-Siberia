@@ -42,6 +42,7 @@ class AccountRegisterPrimaryView: RootView {
     let phoneField: StyledTextField = {
         let textField = StyledTextField()
         textField.textContentType = .telephoneNumber
+        textField.keyboardType = .phonePad
         textField.text = "+7"
         textField.placeholder = "+7 (ХХХ) ХХХ ХХ ХХ"
         
