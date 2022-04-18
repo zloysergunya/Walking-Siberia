@@ -190,6 +190,7 @@
 		C4C385C527E645E2005D48FD /* UserProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C385C427E645E2005D48FD /* UserProfileProvider.swift */; };
 		C4C385C727E64A08005D48FD /* FriendsAddRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C385C627E64A08005D48FD /* FriendsAddRequest.swift */; };
 		C4C385C927E64A66005D48FD /* FriendsDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C385C827E64A66005D48FD /* FriendsDeleteRequest.swift */; };
+		C4C62727280D33B2000C34D6 /* CompetitionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C62726280D33B2000C34D6 /* CompetitionInfoViewController.swift */; };
 		C4C9334D27DCAD720068D8D2 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9334B27DCAD720068D8D2 /* TeamsViewController.swift */; };
 		C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9334C27DCAD720068D8D2 /* TeamsView.swift */; };
 		C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335127DCADB00068D8D2 /* TeamsProvider.swift */; };
@@ -252,7 +253,6 @@
 		C4DA0D4727DF12CC00066965 /* TeamEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4527DF12CC00066965 /* TeamEditViewController.swift */; };
 		C4DA0D4827DF12CC00066965 /* TeamEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4627DF12CC00066965 /* TeamEditView.swift */; };
 		C4DA0D4C27DF13F500066965 /* TeamEditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DA0D4B27DF13F500066965 /* TeamEditContentView.swift */; };
-		C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */; };
 		C4E077BA27D7068F00D1711B /* CompetitionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */; };
 		C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */; };
 		C4E077BF27D78DE000D1711B /* CompetitionPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */; };
@@ -459,6 +459,7 @@
 		C4C385C427E645E2005D48FD /* UserProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileProvider.swift; sourceTree = "<group>"; };
 		C4C385C627E64A08005D48FD /* FriendsAddRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAddRequest.swift; sourceTree = "<group>"; };
 		C4C385C827E64A66005D48FD /* FriendsDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDeleteRequest.swift; sourceTree = "<group>"; };
+		C4C62726280D33B2000C34D6 /* CompetitionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoViewController.swift; sourceTree = "<group>"; };
 		C4C9334B27DCAD720068D8D2 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		C4C9334C27DCAD720068D8D2 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
 		C4C9335127DCADB00068D8D2 /* TeamsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsProvider.swift; sourceTree = "<group>"; };
@@ -521,7 +522,6 @@
 		C4DA0D4527DF12CC00066965 /* TeamEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditViewController.swift; sourceTree = "<group>"; };
 		C4DA0D4627DF12CC00066965 /* TeamEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditView.swift; sourceTree = "<group>"; };
 		C4DA0D4B27DF13F500066965 /* TeamEditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditContentView.swift; sourceTree = "<group>"; };
-		C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitionInfoViewController.swift; path = ../../../../../../../Documents/CompetitionInfoViewController.swift; sourceTree = "<group>"; };
 		C4E077B927D7068F00D1711B /* CompetitionInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionInfoView.swift; sourceTree = "<group>"; };
 		C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoContentView.swift; sourceTree = "<group>"; };
 		C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionPartnerView.swift; sourceTree = "<group>"; };
@@ -2148,8 +2148,8 @@
 		C4E077B227D705CE00D1711B /* CompetitionInfo */ = {
 			isa = PBXGroup;
 			children = (
+				C4C62726280D33B2000C34D6 /* CompetitionInfoViewController.swift */,
 				C4E077B727D7063A00D1711B /* View */,
-				C4E077B327D705E900D1711B /* CompetitionInfoViewController.swift */,
 			);
 			path = CompetitionInfo;
 			sourceTree = "<group>";
@@ -2510,6 +2510,7 @@
 				C49AFBA927E6F76A009787AB /* HealthService.swift in Sources */,
 				C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */,
 				C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */,
+				C4C62727280D33B2000C34D6 /* CompetitionInfoViewController.swift in Sources */,
 				C4BD9F7427EC2B2200E0CE5F /* OnboardingProvider.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
 				C422A26027ED908A00312F14 /* VideosRequest.swift in Sources */,
@@ -2642,7 +2643,6 @@
 				C49AFBC927E8808F009787AB /* ArticlesView.swift in Sources */,
 				C408EA7827AFFC8C004B82CB /* UserDefaults+SaveStruct.swift in Sources */,
 				C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */,
-				C4E077B527D705E900D1711B /* CompetitionInfoViewController.swift in Sources */,
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
 				C4C9336B27DCCC6C0068D8D2 /* CGRect+Init.swift in Sources */,
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
