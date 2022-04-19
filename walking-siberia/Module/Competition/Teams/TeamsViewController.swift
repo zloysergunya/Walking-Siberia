@@ -57,8 +57,15 @@ class TeamsViewController: ViewController<TeamsView> {
         if let type = UserSettings.user?.type {
             let userCategory: UserCategory? = .init(rawValue: type)
             
-            mainView.createTeamButton.isHidden = userCategory == .manWithHIA || competition.isClosed
-            mainView.takePartButton.isHidden = userCategory != .manWithHIA || competition.isClosed
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            var isCompetitionStarted = false
+            if let fromDate = dateFormatter.date(from: competition.fromDate) {
+                isCompetitionStarted = fromDate < Date()
+            }
+
+            mainView.createTeamButton.isHidden = userCategory == .manWithHIA || competition.isClosed || isCompetitionStarted
+            mainView.takePartButton.isHidden = userCategory != .manWithHIA || competition.isClosed || isCompetitionStarted
             
             if userCategory == .manWithHIA {
                 mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
