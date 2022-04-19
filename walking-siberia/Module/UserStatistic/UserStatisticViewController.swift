@@ -32,8 +32,6 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         
         mainView.segmentControl.addTarget(self, action: #selector(segmentControlUpdated), for: .valueChanged)
         periodButtons.forEach({ $0.addTarget(self, action: #selector(changePeriod), for: .touchUpInside) })
-        
-        updateChart()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +50,10 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
             
             switch result {
             case .success(let statistic):
-                UserSettings.statistic = statistic
+                if self.user.userId == UserSettings.user?.userId {
+                    UserSettings.statistic = statistic
+                }
+                
                 self.statistic = statistic
                 self.updateChart()
                 self.updateTotalStat()
