@@ -108,6 +108,7 @@
 		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
 		C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC127DE0A9900CD6465 /* TeamContentView.swift */; };
 		C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */; };
+		C498982B2810748A00368D2D /* CompetitionInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498982A2810748A00368D2D /* CompetitionInfoProvider.swift */; };
 		C49AFBA927E6F76A009787AB /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBA827E6F76A009787AB /* HealthService.swift */; };
 		C49AFBAC27E6FE64009787AB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49AFBAB27E6FE64009787AB /* HealthKit.framework */; };
 		C49AFBAE27E6FF79009787AB /* WalkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AFBAD27E6FF79009787AB /* WalkAPI.swift */; };
@@ -376,6 +377,7 @@
 		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		C4979AC127DE0A9900CD6465 /* TeamContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamContentView.swift; sourceTree = "<group>"; };
 		C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantView.swift; sourceTree = "<group>"; };
+		C498982A2810748A00368D2D /* CompetitionInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoProvider.swift; sourceTree = "<group>"; };
 		C49AFBA827E6F76A009787AB /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		C49AFBAA27E6FE63009787AB /* walking-siberia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "walking-siberia.entitlements"; sourceTree = "<group>"; };
 		C49AFBAB27E6FE64009787AB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -1287,6 +1289,14 @@
 			path = Subview;
 			sourceTree = "<group>";
 		};
+		C49898292810747D00368D2D /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C498982A2810748A00368D2D /* CompetitionInfoProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		C49AFBAF27E6FF7E009787AB /* WalkAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -2148,6 +2158,7 @@
 		C4E077B227D705CE00D1711B /* CompetitionInfo */ = {
 			isa = PBXGroup;
 			children = (
+				C49898292810747D00368D2D /* Provider */,
 				C4C62726280D33B2000C34D6 /* CompetitionInfoViewController.swift */,
 				C4E077B727D7063A00D1711B /* View */,
 			);
@@ -2616,6 +2627,7 @@
 				C422A25D27ED902800312F14 /* VideosAPI.swift in Sources */,
 				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
 				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,
+				C498982B2810748A00368D2D /* CompetitionInfoProvider.swift in Sources */,
 				C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */,
 				C4BD9FA127ECCAB000E0CE5F /* UserListSectionController.swift in Sources */,
 				C478448927E1C4EF00D9E275 /* FindFriendsProvider.swift in Sources */,

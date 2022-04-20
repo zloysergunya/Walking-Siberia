@@ -2,7 +2,9 @@ import UIKit
 
 class CompetitionInfoViewController: ViewController<CompetitionInfoView> {
     
-    private let competition: Competition
+    private let provider = CompetitionInfoProvider()
+    
+    private var competition: Competition
     
     init(competition: Competition) {
         self.competition = competition
@@ -21,6 +23,7 @@ class CompetitionInfoViewController: ViewController<CompetitionInfoView> {
         mainView.contentView.competitionTakePartView.participateButton.addTarget(self, action: #selector(slideToTeams), for: .touchUpInside)
         
         configure()
+        updateCompetition()
     }
     
     private func configure() {
@@ -43,6 +46,23 @@ class CompetitionInfoViewController: ViewController<CompetitionInfoView> {
             let view = CompetitionPartnerView()
             view.nameLabel.text = partner.name
             mainView.contentView.partnersStackView.addArrangedSubview(view)
+        }
+    }
+    
+    private func updateCompetition() {
+        provider.updateCompetition(competitionId: competition.id) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let competition):
+                self.competition = competition
+                self.configure()
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
         }
     }
     
