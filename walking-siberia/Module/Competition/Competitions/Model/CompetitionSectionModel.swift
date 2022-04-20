@@ -23,7 +23,7 @@ extension CompetitionSectionModel: ListDiffable {
             return false
         }
         
-        return object.competition.id == competition.id && object.competition.status == competition.status
+        return object.competition == competition
     }
     
 }

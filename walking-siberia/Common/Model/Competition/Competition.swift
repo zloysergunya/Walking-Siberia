@@ -14,3 +14,7 @@ struct Competition: Codable {
     let isClosed: Bool
     let isJoined: Bool
 }
+
+extension Competition: Equatable {
+    
+}
