@@ -25,7 +25,7 @@ class CompetitionInfoViewController: ViewController<CompetitionInfoView> {
     
     private func configure() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
         let fromDate = dateFormatter.date(from: competition.fromDate) ?? Date()
         let toDate = dateFormatter.date(from: competition.toDate) ?? Date()
         
