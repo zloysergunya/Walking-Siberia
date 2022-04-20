@@ -198,7 +198,9 @@ class TeamsViewController: ViewController<TeamsView> {
     
     @objc private func takePart() {
         if competition.isJoined {
-            deleteTeam(teamId: 34) // TODO: сменить на новый запрос
+            if let teamId = objects.first(where: { $0.team.ownerId == UserSettings.user?.userId })?.team.id {
+                deleteTeam(teamId: teamId)
+            }
         } else {
             createTeam()
         }
