@@ -199,7 +199,9 @@ class TeamsViewController: ViewController<TeamsView> {
     @objc private func takePart() {
         if competition.isJoined {
             if let teamId = objects.first(where: { $0.team.ownerId == UserSettings.user?.userId })?.team.id {
-                deleteTeam(teamId: teamId)
+                dialog(title: "Вы хотите покинуть соревнование?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { [weak self] _ in
+                    self?.deleteTeam(teamId: teamId)
+                })
             }
         } else {
             createTeam()
