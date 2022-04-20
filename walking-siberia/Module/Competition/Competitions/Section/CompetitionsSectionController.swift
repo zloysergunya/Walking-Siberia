@@ -34,7 +34,16 @@ class CompetitionsSectionController: ListSectionController {
     private func configure(cell: CompetitionCell) -> UICollectionViewCell {
         cell.nameLabel.text = sectionModel.competition.name
         cell.teamsLabel.text = "Команды: \(sectionModel.competition.countTeams)"
-        cell.datesLabel.text = "\(sectionModel.competition.fromDate)-\(sectionModel.competition.toDate)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        let fromDate = dateFormatter.date(from: sectionModel.competition.fromDate) ?? Date()
+        let toDate = dateFormatter.date(from: sectionModel.competition.toDate) ?? Date()
+        
+        dateFormatter.dateFormat = "dd.MM.yyy HH:mm"
+        let fromDateString = dateFormatter.string(from: fromDate)
+        let toDateString = dateFormatter.string(from: toDate)
+        cell.datesLabel.text = "\(fromDateString)-\(toDateString)"
         
         return cell
     }
