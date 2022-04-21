@@ -57,6 +57,7 @@ class UserListSectionController: ListSectionController {
         cell.stepsCountLabel.text = R.string.localizable.stepsCount(number: sectionModel.user.dailyStats.number)
         cell.distanceLabel.text = "\(sectionModel.user.dailyStats.km) км"
         
+        cell.imageView.image = nil
         if let url = sectionModel.user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: cell.imageView)
         } else {
