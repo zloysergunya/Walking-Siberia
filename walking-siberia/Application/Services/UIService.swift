@@ -20,10 +20,8 @@ class UIService {
         let authService: AuthService? = ServiceLocator.getService()
         authService?.updateApi()
         
-        if authService?.authStatus == .unauthorized {
+        if authService?.authStatus == .unauthorized || !UserSettings.userReady {
             openAuth()
-        } else if !UserSettings.userReady {
-            openAccountSetup()
         } else {
             openMain()
         }

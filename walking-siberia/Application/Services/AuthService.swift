@@ -27,10 +27,14 @@ extension AuthService {
     
     static let statusChangedNotifiaction = Foundation.Notification.Name("AuthService.statusChanged")
 
-    func authorize(with token: String, currentUserId: Int) {
+    func authorize(with token: String, currentUserId: Int, withNotification: Bool) {
         keychainService.token = token
         keychainService.currentUserId = "\(currentUserId)"
-        NotificationCenter.default.post(name: AuthService.statusChangedNotifiaction, object: self)
+        updateApi()
+        
+        if withNotification {
+            NotificationCenter.default.post(name: AuthService.statusChangedNotifiaction, object: self)
+        }
     }
     
     func updateApi() {

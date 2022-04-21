@@ -74,7 +74,11 @@ class PhoneCodeAuthViewController: ViewController<PhoneCodeAuthView> {
                 let authService: AuthService? = ServiceLocator.getService()
                 UserSettings.user = response.user
                 UserSettings.userReady = response.user.isFillProfile
-                authService?.authorize(with: response.accessToken, currentUserId: response.user.userId)
+                authService?.authorize(with: response.accessToken, currentUserId: response.user.userId, withNotification: response.user.isFillProfile)
+                
+                if !response.user.isFillProfile {
+                    self.navigationController?.pushViewController(AccountRegisterPrimaryViewController(), animated: true)
+                }
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
