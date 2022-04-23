@@ -53,7 +53,7 @@ class HealthService: NSObject {
                     log.verbose("\(type) Delivery enabled")
                 } else if let error = error {
                     log.error("EnableBackgroundDelivery for type \(type) error: \(error.localizedDescription)")
-                    self?.output?.failureHealthAccessRequest(error: error)
+                    self?.output?.failureHealthAccessRequest(error: ModelError(text: "EnableBackgroundDelivery for type \(type) error: \(error.localizedDescription)"))
                 }
             }
         }
