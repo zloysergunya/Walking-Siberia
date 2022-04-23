@@ -8,6 +8,14 @@ struct ModelError: Error {
     var err: ErrorResponse?
     var text: String?
     
+    init() {
+        
+    }
+    
+    init(err: ErrorResponse?) {
+        self.err = err
+    }
+    
     init(text: String) {
         self.text = text
     }

@@ -94,7 +94,7 @@ extension HealthService: HealthServiceInput {
         
         guard let stepCount = stepsCountObject, let distance = distanceObject else {
             log.error("DataTypeNotAvailable error: \(HealthkitSetupError.dataTypeNotAvailable)")
-            output?.failureHealthAccessRequest(error: ModelError(text: "Разрешите доступ к данным в приложении Здоровья"))
+            output?.failureHealthAccessRequest(error: ModelError(text: "Разрешите доступ к данным в приложении Здоровья\nЗдоровье -> Доступ -> Приложения -> Сибирь Шагающая -> Разрешить все"))
             
             return
         }
@@ -109,7 +109,7 @@ extension HealthService: HealthServiceInput {
             DispatchQueue.main.async {
                 if let error = error {
                     log.error("RequestAuthorization error: \(error.localizedDescription)")
-                    self.output?.failureHealthAccessRequest(error: ModelError(text: "Ошибка авторизации. Проверьте разрешения в приложении Здоровья"))
+                    self.output?.failureHealthAccessRequest(error: ModelError(text: "Ошибка авторизации. Проверьте разрешения в приложении Здоровья\nЗдоровье -> Доступ -> Приложения -> Сибирь Шагающая -> Разрешить все"))
                 } else {
                     self.output?.successHealthAccessRequest(granted: granted)
                 }
