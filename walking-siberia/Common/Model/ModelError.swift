@@ -6,8 +6,17 @@ struct DecodableError: Codable {
 
 struct ModelError: Error {
     var err: ErrorResponse?
+    var text: String?
+    
+    init(text: String) {
+        self.text = text
+    }
 
     func message() -> String {
+        if let text = text {
+            return text
+        }
+        
         if case .error(let status, let data?, _) = err {
             if let decodeError = CodableHelper.decode(SuccessResponse<DecodableError>.self, from: data).decodableObj,
                let message = decodeError.data?.message {

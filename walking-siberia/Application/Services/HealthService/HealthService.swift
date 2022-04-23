@@ -87,14 +87,14 @@ extension HealthService: HealthServiceInput {
     func requestAccess() {
         guard HKHealthStore.isHealthDataAvailable() else {
             log.error(log.error("NotAvailableOnDevice error: \(HealthkitSetupError.dataTypeNotAvailable)"))
-            output?.failureHealthAccessRequest(error: HealthkitSetupError.notAvailableOnDevice)
+            output?.failureHealthAccessRequest(error: ModelError(text: "Данные Apple Health недоступны на вашем устройстве"))
             
             return
         }
         
         guard let stepCount = stepsCountObject, let distance = distanceObject else {
             log.error("DataTypeNotAvailable error: \(HealthkitSetupError.dataTypeNotAvailable)")
-            output?.failureHealthAccessRequest(error: HealthkitSetupError.dataTypeNotAvailable)
+            output?.failureHealthAccessRequest(error: ModelError(text: "Разрешите доступ к данным в приложении Здоровья"))
             
             return
         }
@@ -109,7 +109,7 @@ extension HealthService: HealthServiceInput {
             DispatchQueue.main.async {
                 if let error = error {
                     log.error("RequestAuthorization error: \(error.localizedDescription)")
-                    self.output?.failureHealthAccessRequest(error: error)
+                    self.output?.failureHealthAccessRequest(error: ModelError(text: "Ошибка авторизации. Проверьте разрешения в приложении Здоровья"))
                 } else {
                     self.output?.successHealthAccessRequest(granted: granted)
                 }
