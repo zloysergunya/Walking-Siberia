@@ -79,7 +79,7 @@ class AccountRegisterSecondaryView: RootView {
     
     private lazy var firstSocialLinksStackView = UIStackView(views: [
         telegramField,
-        instagramField
+//        instagramField
     ], axis: .horizontal, spacing: 12.0)
     
     let vkField: StyledTextField = {
