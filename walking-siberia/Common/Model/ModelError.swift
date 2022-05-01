@@ -25,11 +25,13 @@ struct ModelError: Error {
             return text
         }
         
-        if case .error(let status, let data?, _) = err {
+        if case .error(let status, let data?, let error) = err {
             if let decodeError = CodableHelper.decode(SuccessResponse<DecodableError>.self, from: data).decodableObj,
                let message = decodeError.data?.message {
                 return message
             }
+            
+            log.error("Ошибка \(status): \(error.localizedDescription)")
             
             let message = "Ошибка \(status): "
             switch status {
