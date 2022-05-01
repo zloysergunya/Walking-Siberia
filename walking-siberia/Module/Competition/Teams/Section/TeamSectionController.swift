@@ -77,6 +77,11 @@ class TeamSectionController: ListSectionController {
                 gradientLayer?.frame = CGRect(side: side)
                 cell.gradientLayer = gradientLayer
             }
+        } else if sectionModel.team.isClosed {
+            cell.imageView.image = R.image.lock48()
+            let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
+            gradientLayer?.frame = CGRect(side: side)
+            cell.gradientLayer = gradientLayer
         } else {
             cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(sectionModel.team.users.count)/\(5)", color: .clear, circular: true, side: 48.0)
             let gradientLayer = GradientHelper.shared.layer(color: .linearBlue)
