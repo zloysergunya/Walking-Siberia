@@ -32,7 +32,10 @@ class RoutesViewController: ViewController<RoutesView> {
         mainView.stepsCountView.setup(with: 0, distance: 0.0)
         
         syncContacts()
-        syncUserActivity()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.syncUserActivity()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
