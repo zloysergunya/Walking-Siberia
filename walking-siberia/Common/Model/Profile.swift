@@ -6,8 +6,8 @@ struct Profile: Codable, Equatable {
     let city: String
     let birthDate: String?
     let aboutMe: String?
-    let height: Int?
-    let weight: Int?
+    let height: Double?
+    let weight: Double?
     let telegram: String?
     let instagram: String?
     let vkontakte: String?

@@ -218,7 +218,7 @@ class ProfileEditContentView: RootView {
         textField.title = "Рост, см"
         textField.placeholder = textField.title
         textField.isUserInteractionEnabled = false
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.setTitleVisible(true)
         
         return textField
@@ -229,7 +229,7 @@ class ProfileEditContentView: RootView {
         textField.title = "Вес, кг"
         textField.placeholder = textField.title
         textField.isUserInteractionEnabled = false
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.setTitleVisible(true)
         
         return textField

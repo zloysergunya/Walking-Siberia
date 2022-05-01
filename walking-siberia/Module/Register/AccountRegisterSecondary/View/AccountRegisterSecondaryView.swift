@@ -119,7 +119,7 @@ class AccountRegisterSecondaryView: RootView {
     
     let heightField: StyledTextField = {
         let textField = StyledTextField()
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.placeholder = "Рост, см"
         
         return textField
@@ -127,7 +127,7 @@ class AccountRegisterSecondaryView: RootView {
     
     let weightField: StyledTextField = {
         let textField = StyledTextField()
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.placeholder = "Вес, кг"
         
         return textField
