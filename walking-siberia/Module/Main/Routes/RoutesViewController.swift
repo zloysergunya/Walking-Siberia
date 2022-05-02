@@ -91,7 +91,6 @@ class RoutesViewController: ViewController<RoutesView> {
         let toDate = Date()
         
         Date.dates(from: lastDate, to: toDate).forEach { date in
-            print("!!!date", date)
             healthService?.getUserActivity(date: date, completion: nil)
         }
     }
