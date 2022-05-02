@@ -32,10 +32,6 @@ class RoutesViewController: ViewController<RoutesView> {
         mainView.stepsCountView.setup(with: 0, distance: 0.0)
         
         syncContacts()
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.syncUserActivity()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +91,7 @@ class RoutesViewController: ViewController<RoutesView> {
         let toDate = Date()
         
         Date.dates(from: lastDate, to: toDate).forEach { date in
+            print("!!!date", date)
             healthService?.getUserActivity(date: date, completion: nil)
         }
     }
