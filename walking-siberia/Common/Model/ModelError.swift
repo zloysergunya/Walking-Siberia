@@ -35,7 +35,13 @@ struct ModelError: Error {
             
             let message = "Ошибка \(status): "
             switch status {
-            case 401, 403: return message + "Доступ запрещён"
+            case 401:
+                let authService: AuthService? = ServiceLocator.getService()
+                authService?.deauthorize()
+                
+                return message + "Ошибка авторизации. Пожалуйста, войдите в свой аккаунт заново"
+                
+            case 403: return message + "Доступ запрещён"
             case 404: return message + "Данные не найдены"
             case 400...499: return message + "Ошибка в запросе на сервер"
             case 500...599: return message + "Ошибка сервера"
