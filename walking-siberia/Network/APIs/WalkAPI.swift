@@ -4,7 +4,7 @@ import Alamofire
 class WalkAPI {
     
     class func walkPut(walkRequest: WalkRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
-        walkPutWithRequestBuilder(walkRequest: walkRequest).execute { (response, error) -> Void in
+        walkPutWithRequestBuilder(walkRequest: walkRequest).execute(inBackground: true) { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
