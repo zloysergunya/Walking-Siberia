@@ -60,6 +60,7 @@ open class CodableHelper {
         do {
             returnedDecodable = try decoder.decode(type, from: data)
         } catch {
+            log.error((error as? DecodingError).debugDescription)
             returnedError = error
         }
 
@@ -85,6 +86,7 @@ open class CodableHelper {
         do {
             returnedData = try encoder.encode(value)
         } catch {
+            log.error((error as? EncodingError).debugDescription)
             returnedError = error
         }
 

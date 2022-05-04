@@ -38,6 +38,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
         case .edit(let team):
             mainView.navBar.title = "Редактирование команды"
             mainView.contentView.nameField.text = team.name
+            mainView.contentView.closeTeamView.switcherView.isOn = team.isClosed
             currentParticipants = team.users.map({ $0.user })
             mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount || competition.isClosed
             updateParticipants()

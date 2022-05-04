@@ -6,17 +6,42 @@ struct DecodableError: Codable {
 
 struct ModelError: Error {
     var err: ErrorResponse?
+    var text: String?
+    
+    init() {
+        
+    }
+    
+    init(err: ErrorResponse?) {
+        self.err = err
+    }
+    
+    init(text: String) {
+        self.text = text
+    }
 
     func message() -> String {
-        if case .error(let status, let data?, _) = err {
+        if let text = text {
+            return text
+        }
+        
+        if case .error(let status, let data?, let error) = err {
             if let decodeError = CodableHelper.decode(SuccessResponse<DecodableError>.self, from: data).decodableObj,
                let message = decodeError.data?.message {
                 return message
             }
             
+            log.error("Ошибка \(status): \(error.localizedDescription)")
+            
             let message = "Ошибка \(status): "
             switch status {
-            case 401, 403: return message + "Доступ запрещён"
+            case 401:
+                let authService: AuthService? = ServiceLocator.getService()
+                authService?.deauthorize()
+                
+                return message + "Ошибка авторизации. Пожалуйста, войдите в свой аккаунт заново"
+                
+            case 403: return message + "Доступ запрещён"
             case 404: return message + "Данные не найдены"
             case 400...499: return message + "Ошибка в запросе на сервер"
             case 500...599: return message + "Ошибка сервера"

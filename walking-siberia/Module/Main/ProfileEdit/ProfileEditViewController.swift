@@ -284,7 +284,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         
         let viewController = MFMailComposeViewController()
         viewController.mailComposeDelegate = self
-        viewController.setToRecipients(["info@iteo.pro"])
+        viewController.setToRecipients(["ash_krsk@mail.ru"])
         let from = (UserSettings.user?.profile.firstName ?? "пользователя") + " " + (UserSettings.user?.profile.lastName ?? "")
         viewController.setSubject("Обращение от \(from)")
         

@@ -32,7 +32,6 @@ class RoutesViewController: ViewController<RoutesView> {
         mainView.stepsCountView.setup(with: 0, distance: 0.0)
         
         syncContacts()
-        syncUserActivity()
     }
     
     override func viewWillAppear(_ animated: Bool) {
