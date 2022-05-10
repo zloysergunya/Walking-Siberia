@@ -67,7 +67,11 @@ class RoutesViewController: ViewController<RoutesView> {
                 self.loadingState = .loaded
                 
             case .failure(let error):
-                self.showError(text: error.localizedDescription)
+                if case .error(let status, _, let err) = error.err,
+                   error._code != NSURLErrorTimedOut,
+                   ![500, 503].contains(status) {
+                    self.showError(text: error.localizedDescription)
+                }
                 self.loadingState = .failed
                 self.adapter.performUpdates(animated: true)
             }
@@ -80,7 +84,11 @@ class RoutesViewController: ViewController<RoutesView> {
                 switch result {
                 case .success: break
                 case .failure(let error):
-                    self?.showError(text: error.localizedDescription)
+                    if case .error(let status, _, let err) = error.err,
+                       error._code != NSURLErrorTimedOut,
+                       ![500, 503].contains(status) {
+                        self?.showError(text: error.localizedDescription)
+                    }
                 }
             }
         }
@@ -108,7 +116,11 @@ class RoutesViewController: ViewController<RoutesView> {
             switch result {
             case .success: break
             case .failure(let error):
-                self?.showError(text: error.localizedDescription)
+                if case .error(let status, _, let err) = error.err,
+                   error._code != NSURLErrorTimedOut,
+                   ![500, 503].contains(status) {
+                    self?.showError(text: error.localizedDescription)
+                }
             }
         }
     }
@@ -120,7 +132,11 @@ class RoutesViewController: ViewController<RoutesView> {
                 self?.mainView.notifyButton.badge = count > 0 ? "\(count)" : nil
                 
             case .failure(let error):
-                self?.showError(text: error.localizedDescription)
+                if case .error(let status, _, let err) = error.err,
+                   error._code != NSURLErrorTimedOut,
+                   ![500, 503].contains(status) {
+                    self?.showError(text: error.localizedDescription)
+                }
             }
         }
     }

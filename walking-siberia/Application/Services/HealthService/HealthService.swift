@@ -77,7 +77,7 @@ class HealthService: NSObject {
                 UserSettings.lastSendActivityDate = Date()
                 
             case .failure(let error):
-                if case .error(let status, _, let error) = error.err,
+                if case .error(let status, _, let err) = error.err,
                    error._code != NSURLErrorTimedOut,
                    ![500, 503].contains(status) {
                     self?.output?.failureHealthAccessRequest(error: error)
