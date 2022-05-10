@@ -32,8 +32,8 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
      May be overridden by a subclass if you want to control the session
      configuration.
      */
-    open func createSessionManager(inBackground: Bool) -> Alamofire.SessionManager {
-        let configuration: URLSessionConfiguration = inBackground ? .background(withIdentifier: Constants.bundleIdentifier) : .default
+    open func createSessionManager() -> Alamofire.SessionManager {
+        let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = buildHeaders()
         return Alamofire.SessionManager(configuration: configuration)
     }
@@ -57,10 +57,10 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         return manager.request(URLString, method: method, parameters: parameters, encoding: encoding, headers: headers)
     }
 
-    override open func execute(inBackground: Bool = false, _ completion: @escaping (_ response: Response<T>?, _ error: ErrorResponse?) -> Void) {
+    override open func execute(_ completion: @escaping (_ response: Response<T>?, _ error: ErrorResponse?) -> Void) {
         let managerId:String = UUID().uuidString
         // Create a new manager for each request to customize its request header
-        let manager = createSessionManager(inBackground: inBackground)
+        let manager = createSessionManager()
         syncQueue.async(flags: .barrier) {
             managerStore[managerId] = manager
         }
