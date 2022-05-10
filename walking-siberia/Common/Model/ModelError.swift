@@ -27,7 +27,7 @@ struct ModelError: Error {
         
         if case .error(let status, let data?, let error) = err {
             if let decodeError = CodableHelper.decode(SuccessResponse<DecodableError>.self, from: data).decodableObj,
-               let message = decodeError.data?.message {
+               let message = decodeError.data?.message, !message.isEmpty {
                 return message
             }
             
