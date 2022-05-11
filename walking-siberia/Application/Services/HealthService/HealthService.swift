@@ -73,8 +73,15 @@ class HealthService: NSObject {
         
         provider.sendUserActivity(walkRequest: walkRequest) { [weak self] result in
             switch result {
-            case .success: UserSettings.lastSendActivityDate = Date()
-            case .failure(let error): self?.output?.failureHealthAccessRequest(error: error)
+            case .success:
+                UserSettings.lastSendActivityDate = Date()
+                
+            case .failure(let error):
+                if case .error(let status, _, let err) = error.err,
+                   error._code != NSURLErrorTimedOut,
+                   ![500, 503].contains(status) {
+                    self?.output?.failureHealthAccessRequest(error: error)
+                }
             }
         }
     }

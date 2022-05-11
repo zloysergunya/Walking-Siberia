@@ -27,7 +27,7 @@ struct ModelError: Error {
         
         if case .error(let status, let data?, let error) = err {
             if let decodeError = CodableHelper.decode(SuccessResponse<DecodableError>.self, from: data).decodableObj,
-               let message = decodeError.data?.message {
+               let message = decodeError.data?.message, !message.isEmpty {
                 return message
             }
             
@@ -44,7 +44,7 @@ struct ModelError: Error {
             case 403: return message + "Доступ запрещён"
             case 404: return message + "Данные не найдены"
             case 400...499: return message + "Ошибка в запросе на сервер"
-            case 500...599: return message + "Ошибка сервера"
+            case 500...599: return message + "Сервер временно недоступен. Попробуйте позднее"
             case 1000: return message + "Проверьте доступ к интернету"
             default: return message + "Неизвестная ошибка (не удалось декодировать ошибку)"
             }
