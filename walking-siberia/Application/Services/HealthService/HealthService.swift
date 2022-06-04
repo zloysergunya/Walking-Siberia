@@ -75,6 +75,7 @@ class HealthService: NSObject {
             switch result {
             case .success:
                 UserSettings.lastSendActivityDate = Date()
+                log.info("\(walkRequest.date) \(walkRequest.number) \(walkRequest.km)")
                 
             case .failure(let error):
                 if case .error(let status, _, let err) = error.err,
