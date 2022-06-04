@@ -75,7 +75,7 @@ class OnboardingView: RootView {
     let signInByGoogleButton = SignInButton(signInType: .google)
     
     private lazy var signInButtonsStackView = UIStackView(views: [
-        signInByPhoneButton,
+//        signInByPhoneButton,
         signInByAppleButton,
         signInByGoogleButton
     ], spacing: 8.0)
