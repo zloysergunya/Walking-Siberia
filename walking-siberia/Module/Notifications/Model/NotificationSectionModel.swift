@@ -2,10 +2,10 @@ import IGListDiffKit
 
 class NotificationSectionModel {
     
-    var notification: Notification
+    var notifications: [Notification]
     
-    init(notification: Notification) {
-        self.notification = notification
+    init(notifications: [Notification]) {
+        self.notifications = notifications
     }
     
 }
@@ -14,7 +14,7 @@ class NotificationSectionModel {
 extension NotificationSectionModel: ListDiffable {
     
     func diffIdentifier() -> NSObjectProtocol {
-        return String(notification.id) as NSObjectProtocol
+        return 0 as NSObjectProtocol
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
@@ -22,7 +22,7 @@ extension NotificationSectionModel: ListDiffable {
             return false
         }
         
-        return object.notification == notification
+        return object.notifications == notifications
     }
     
 }

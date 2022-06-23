@@ -40,7 +40,6 @@ class CompetitionView: RootView {
     }
     
     override func setupConstraints() {
-        
         nameLabel.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
             make.right.equalTo(arrowImageView.snp.left).offset(-16.0)
@@ -62,7 +61,6 @@ class CompetitionView: RootView {
             make.left.bottom.right.equalToSuperview()
             make.height.equalTo(1.0)
         }
-        
     }
     
 }

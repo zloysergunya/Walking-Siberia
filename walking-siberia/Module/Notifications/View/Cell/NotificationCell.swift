@@ -117,7 +117,7 @@ class NotificationCell: UICollectionViewCell {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        contentView.pin.width(size.width)
+        contentView.pin.width(size.width - 12.0 * 2)
         layout()
         
         return contentView.frame.size

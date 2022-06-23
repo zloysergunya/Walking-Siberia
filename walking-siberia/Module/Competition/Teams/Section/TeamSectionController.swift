@@ -60,8 +60,8 @@ class TeamSectionController: ListSectionController {
             .foregroundColor(R.color.graphicBlue() ?? .blue)
         
         let text: String
-        if sectionModel.team.statistics.total.number > 30000 {
-            text = "<bold>\(sectionModel.team.statistics.average?.number.roundedWithAbbreviations ?? "0.0")</bold>\nшаги"
+        if let number = sectionModel.team.statistics.average?.number, number > 30000 {
+            text = "<bold>\(number.roundedWithAbbreviations)</bold>\nшаги"
         } else {
             text = "<bold>\(sectionModel.team.statistics.average?.number ?? 0)</bold>\nшаги"
         }

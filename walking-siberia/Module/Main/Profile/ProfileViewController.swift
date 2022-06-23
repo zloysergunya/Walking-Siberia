@@ -84,7 +84,8 @@ class ProfileViewController: ViewController<ProfileView> {
     
     private func updateCompetitions() {
         mainView.contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
-        mainView.contentView.competitionsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        mainView.contentView.currentCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        mainView.contentView.closedCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
         
         competitions.enumerated().forEach { competition in
             let view = CompetitionView()
@@ -93,7 +94,14 @@ class ProfileViewController: ViewController<ProfileView> {
             view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
             view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
             
-            mainView.contentView.competitionsStackView.addArrangedSubview(view)
+            if competition.element.isClosed {
+                mainView.contentView.closedCompetitionsView.rootStack.addArrangedSubview(view)
+            } else {
+                mainView.contentView.currentCompetitionsView.rootStack.addArrangedSubview(view)
+            }
+            
+            mainView.contentView.currentCompetitionsView.isHidden = competitions.filter({ !$0.isClosed }).count == 0
+            mainView.contentView.closedCompetitionsView.isHidden = competitions.filter({ $0.isClosed }).count == 0
         }
     }
     

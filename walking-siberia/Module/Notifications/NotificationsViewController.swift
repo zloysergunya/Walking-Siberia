@@ -7,7 +7,7 @@ class NotificationsViewController: ViewController<NotificationsView> {
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var loadingState: LoadingState = .none
-    private var objects: [NotificationSectionModel] = []
+    private var notifications: [Notification] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +48,10 @@ class NotificationsViewController: ViewController<NotificationsView> {
             switch result {
             case .success(let notifications):
                 if flush {
-                    self.objects.removeAll()
+                    self.notifications.removeAll()
                 }
                 
-                self.objects.append(contentsOf: notifications.map({ NotificationSectionModel(notification: $0) }))
+                self.notifications.append(contentsOf: notifications)
                 self.loadingState = .loaded
                 self.adapter.performUpdates(animated: true)
                 
@@ -71,8 +71,8 @@ class NotificationsViewController: ViewController<NotificationsView> {
             
             switch result {
             case .success:
-                if let index = self.objects.firstIndex(where: { $0.notification.id == id }) {
-                    self.objects[index].notification.isViewed = true
+                if let index = self.notifications.firstIndex(where: { $0.id == id }) {
+                    self.notifications[index].isViewed = true
                 }
                 
             case .failure(let error):
@@ -89,8 +89,8 @@ class NotificationsViewController: ViewController<NotificationsView> {
                         
             switch result {
             case .success:
-                if let index = self.objects.firstIndex(where: { $0.notification.id == id }) {
-                    self.objects.remove(at: index)
+                if let index = self.notifications.firstIndex(where: { $0.id == id }) {
+                    self.notifications.remove(at: index)
                 }
                 
                 self.adapter.performUpdates(animated: true)
@@ -115,7 +115,7 @@ class NotificationsViewController: ViewController<NotificationsView> {
 extension NotificationsViewController: ListAdapterDataSource {
 
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return objects
+        return [NotificationSectionModel(notifications: notifications)]
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -143,11 +143,11 @@ extension NotificationsViewController: NotificationsSectionControllerDelegate {
     }
     
     func notificationsSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
-        if !objects[section].notification.isViewed {
-            readNotification(id: objects[section].notification.id)
+        if !notifications[section].isViewed {
+            readNotification(id: notifications[section].id)
         }
         
-        if section + 1 >= objects.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
+        if section + 1 >= notifications.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
             loadNotifications(flush: false)
         }
     }
