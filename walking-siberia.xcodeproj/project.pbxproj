@@ -261,6 +261,7 @@
 		C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */; };
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
+		C4E481B828647506001396D5 /* UserCompetitionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E481B728647506001396D5 /* UserCompetitionsView.swift */; };
 		C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */; };
 		C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */; };
 		C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */; };
@@ -531,6 +532,7 @@
 		C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
+		C4E481B728647506001396D5 /* UserCompetitionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCompetitionsView.swift; sourceTree = "<group>"; };
 		C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditProvider.swift; sourceTree = "<group>"; };
 		C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUpdateRequest.swift; sourceTree = "<group>"; };
 		C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
@@ -2103,6 +2105,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D9A87327C91330004B552A /* ProfileContentView.swift */,
+				C4E481B728647506001396D5 /* UserCompetitionsView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -2647,6 +2650,7 @@
 				C408EA8027AFFC8C004B82CB /* UIService.swift in Sources */,
 				C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */,
 				C4D82A9A27BFE7710058334F /* Profile.swift in Sources */,
+				C4E481B828647506001396D5 /* UserCompetitionsView.swift in Sources */,
 				C422A25827ED8A6D00312F14 /* VideosSectionController.swift in Sources */,
 				C422A25B27ED8AC500312F14 /* VideoCell.swift in Sources */,
 				C4A633E927FCC3DF003D1180 /* CompetitionView.swift in Sources */,

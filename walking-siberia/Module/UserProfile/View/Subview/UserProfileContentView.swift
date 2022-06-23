@@ -95,23 +95,26 @@ class UserProfileContentView: RootView {
         okButton
     ], axis: .horizontal, spacing: 8.0)
     
-    private let competitionsContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+    let currentCompetitionsView: UserCompetitionsView = {
+        let view = UserCompetitionsView()
+        view.titleLabel.text = "Текущие соревнования:"
+        view.isHidden = true
         
         return view
     }()
     
-    private let competitionsTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Соревнования:"
-        label.font = R.font.geometriaBold(size: 20.0)
-        label.textColor = R.color.mainContent()
+    let closedCompetitionsView: UserCompetitionsView = {
+        let view = UserCompetitionsView()
+        view.titleLabel.text = "Завершившиеся соревнования:"
+        view.isHidden = true
         
-        return label
+        return view
     }()
     
-    var competitionsStackView = UIStackView(views: [], spacing: 8.0, distribution: .fill)
+    private lazy var userCompetitionsStack = UIStackView(views: [
+        currentCompetitionsView,
+        closedCompetitionsView
+    ], spacing: 16.0, distribution: .fill)
     
     let noCompetitionsLabel: UILabel = {
         let label = UILabel()
@@ -128,7 +131,8 @@ class UserProfileContentView: RootView {
         backgroundColor = R.color.greyBackground()
         
         addSubview(containerView)
-        addSubview(competitionsContainerView)
+        addSubview(noCompetitionsLabel)
+        addSubview(userCompetitionsStack)
         
         containerView.addSubview(imageViewBackgroundView)
         containerView.addSubview(avatarImageView)
@@ -137,16 +141,11 @@ class UserProfileContentView: RootView {
         containerView.addSubview(bioLabel)
         containerView.addSubview(buttonsStackView)
         containerView.addSubview(socialLinksStackView)
-        
-        competitionsContainerView.addSubview(competitionsTitleLabel)
-        competitionsContainerView.addSubview(competitionsStackView)
-        competitionsContainerView.addSubview(noCompetitionsLabel)
-        
+
         super.setup()
     }
     
     override func setupConstraints() {
-        
         containerView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
         }
@@ -202,28 +201,17 @@ class UserProfileContentView: RootView {
             make.height.equalTo(36.0)
         }
         
-        competitionsContainerView.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.bottom).offset(8.0)
-            make.left.right.bottom.equalToSuperview()
-        }
-        
-        competitionsTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
         noCompetitionsLabel.snp.makeConstraints { make in
-            make.top.equalTo(competitionsTitleLabel.snp.bottom).offset(16.0)
+            make.top.equalTo(containerView.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview().inset(12.0)
             make.bottom.lessThanOrEqualToSuperview().offset(-20.0)
         }
         
-        competitionsStackView.snp.makeConstraints { make in
-            make.top.equalTo(competitionsTitleLabel.snp.bottom).offset(16.0)
-            make.left.right.equalToSuperview().inset(12.0)
+        userCompetitionsStack.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.bottom).offset(12.0)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-20.0)
         }
-        
     }
     
 }
