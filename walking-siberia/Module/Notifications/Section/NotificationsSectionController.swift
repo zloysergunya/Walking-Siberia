@@ -18,26 +18,28 @@ class NotificationsSectionController: ListSectionController {
     override init() {
         super.init()
         
-        inset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 12.0, right: 0.0)
         minimumLineSpacing = 12.0
+        minimumInteritemSpacing = 12.0
         
         displayDelegate = self
     }
     
     override func numberOfItems() -> Int {
-        return 1
+        return sectionModel.notifications.count
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        let inset = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
-        
-        return configure(cell: cellTemplate).sizeThatFits(collectionContext!.containerSize).inset(by: inset)
+        return configure(cell: cellTemplate, notification: sectionModel.notifications[index])
+            .sizeThatFits(collectionContext!.containerSize)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeue(of: NotificationCell.self, for: self, at: index)
+        cell.removeButton.tag = index
+        cell.removeButton.removeTarget(nil, action: #selector(removeAction), for: .touchUpInside)
+        cell.removeButton.addTarget(self, action: #selector(removeAction), for: .touchUpInside)
         
-        return configure(cell: cell)
+        return configure(cell: cell, notification: sectionModel.notifications[index])
     }
     
     override func didUpdate(to object: Any) {
@@ -48,26 +50,23 @@ class NotificationsSectionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         super.didSelectItem(at: index)
         
-        delegate?.notificationsSectionController(didSelect: sectionModel.notification)
+        delegate?.notificationsSectionController(didSelect: sectionModel.notifications[index])
     }
     
-    private func configure(cell: NotificationCell) -> UICollectionViewCell {
-        cell.unreadView.isHidden = sectionModel.notification.isViewed
-        cell.titleLabel.text = sectionModel.notification.title
-        cell.messageLabel.text = sectionModel.notification.message
+    private func configure(cell: NotificationCell, notification: Notification) -> UICollectionViewCell {
+        cell.unreadView.isHidden = notification.isViewed
+        cell.titleLabel.text = notification.title
+        cell.messageLabel.text = notification.message
         
-        let notificationType: NotificationType? = .init(rawValue: sectionModel.notification.type)
+        let notificationType: NotificationType? = .init(rawValue: notification.type)
         cell.typeLabel.text = notificationType?.title
         cell.typeImageView.image = notificationType?.image
-        
-        cell.removeButton.removeTarget(nil, action: #selector(removeAction), for: .touchUpInside)
-        cell.removeButton.addTarget(self, action: #selector(removeAction), for: .touchUpInside)
         
         return cell
     }
     
     @objc private func removeAction(_ button: UIButton) {
-        delegate?.notificationsSectionController(didSelectRemoveActionFor: sectionModel.notification)
+        delegate?.notificationsSectionController(didSelectRemoveActionFor: sectionModel.notifications[button.tag])
     }
     
 }
