@@ -58,10 +58,10 @@ class TeamsViewController: ViewController<TeamsView> {
             let userCategory: UserCategory? = .init(rawValue: type)
             
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
+            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
             var isCompetitionStarted = false
             if let fromDate = dateFormatter.date(from: competition.fromDate) {
-                isCompetitionStarted = fromDate < Date()
+                isCompetitionStarted = Calendar.current.startOfDay(for: fromDate) < Date()
             }
 
             mainView.createTeamButton.isHidden = userCategory == .manWithHIA || competition.isClosed || isCompetitionStarted
