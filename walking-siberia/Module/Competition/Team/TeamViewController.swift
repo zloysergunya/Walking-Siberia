@@ -72,15 +72,17 @@ class TeamViewController: ViewController<TeamView> {
             mainView.contentView.participantsStackView.addArrangedSubview(participantView)
         }
         
-        mainView.contentView.actionButton.isHidden = false
         isOwner = team.ownerId == UserSettings.user?.userId
         if isOwner {
             mainView.contentView.actionButton.setTitle("Редактировать", for: .normal)
+            mainView.contentView.actionButton.isHidden = false
             mainView.contentView.deleteTeamButton.isHidden = false
         } else if team.isJoined {
             mainView.contentView.actionButton.setTitle("Покинуть команду", for: .normal)
+            mainView.contentView.actionButton.isHidden = false
         } else if !team.isClosed {
             mainView.contentView.actionButton.setTitle("Подать заявку в команду", for: .normal)
+            mainView.contentView.actionButton.isHidden = false
         } else {
             mainView.contentView.actionButton.isHidden = true
         }
