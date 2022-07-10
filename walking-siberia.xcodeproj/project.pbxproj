@@ -89,6 +89,7 @@
 		C434841427F180700037D5B8 /* ParticipantStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841327F180700037D5B8 /* ParticipantStatistics.swift */; };
 		C434841627F180800037D5B8 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841527F180800037D5B8 /* Average.swift */; };
 		C434841827F181930037D5B8 /* Int+RoundedWithAbbreviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */; };
+		C442E247287ACE87002D692F /* UIImage+FixedOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C442E246287ACE87002D692F /* UIImage+FixedOrientation.swift */; };
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C4578AF627F4330F00A88549 /* HealthServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */; };
@@ -359,6 +360,7 @@
 		C434841327F180700037D5B8 /* ParticipantStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantStatistics.swift; sourceTree = "<group>"; };
 		C434841527F180800037D5B8 /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		C434841727F181930037D5B8 /* Int+RoundedWithAbbreviations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RoundedWithAbbreviations.swift"; sourceTree = "<group>"; };
+		C442E246287ACE87002D692F /* UIImage+FixedOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+FixedOrientation.swift"; sourceTree = "<group>"; };
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthServiceProvider.swift; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 				C4DA0D4227DF083C00066965 /* UIViewController+Alerts.swift */,
 				C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */,
 				C434841127F171280037D5B8 /* UIImage+Compress.swift */,
+				C442E246287ACE87002D692F /* UIImage+FixedOrientation.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2635,6 +2638,7 @@
 				C4BD9FA127ECCAB000E0CE5F /* UserListSectionController.swift in Sources */,
 				C478448927E1C4EF00D9E275 /* FindFriendsProvider.swift in Sources */,
 				C4C385BC27E62F73005D48FD /* UserProfileView.swift in Sources */,
+				C442E247287ACE87002D692F /* UIImage+FixedOrientation.swift in Sources */,
 				C4A1516127B11D2100C95344 /* PhoneCodeAuthViewController.swift in Sources */,
 				C4BD9FA827ECCE7B00E0CE5F /* UsersAPI.swift in Sources */,
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,

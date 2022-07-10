@@ -94,7 +94,7 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
     }
     
     private func uploadUserPhoto(image: UIImage) {
-        let data = image.jpegData(compressionQuality: 0.5)
+        let data = image.fixedOrientation().compressTo(sizeInMb: 1)
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let filename = paths[0].appendingPathComponent("image.jpg")
         try? data?.write(to: filename)
