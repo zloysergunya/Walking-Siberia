@@ -80,7 +80,7 @@ class TeamViewController: ViewController<TeamView> {
         } else if team.isJoined {
             mainView.contentView.actionButton.setTitle("Покинуть команду", for: .normal)
             mainView.contentView.actionButton.isHidden = false
-        } else if !team.isClosed {
+        } else if !team.isClosed && team.users.count < 5 {
             mainView.contentView.actionButton.setTitle("Подать заявку в команду", for: .normal)
             mainView.contentView.actionButton.isHidden = false
         } else {
