@@ -44,9 +44,8 @@ struct ModelError: Error {
             case 403: return message + "Доступ запрещён"
             case 404: return message + "Данные не найдены"
             case 400...499: return message + "Ошибка в запросе на сервер"
-            case 500...599: return message + "Сервер временно недоступен. Попробуйте позднее"
             case 1000: return message + "Проверьте доступ к интернету"
-            default: return message + "Неизвестная ошибка (не удалось декодировать ошибку)"
+            default: return message + "Пожалуйста, перезагрузите страницу"
             }
         }
         
