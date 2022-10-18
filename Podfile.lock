@@ -78,7 +78,7 @@ PODS:
   - IQKeyboardManagerSwift (6.5.9)
   - KeychainAccess (4.2.2)
   - Kingfisher (7.1.2)
-  - MBRadioButton (1.4)
+  - MBCheckboxButton (1.4)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -111,7 +111,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - KeychainAccess
   - Kingfisher
-  - MBRadioButton
+  - MBCheckboxButton
   - PhoneNumberKit
   - PinLayout (~> 1.8)
   - R.swift (~> 5.4.0)
@@ -141,7 +141,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
-    - MBRadioButton
+    - MBCheckboxButton
     - nanopb
     - PhoneNumberKit
     - PinLayout
@@ -183,7 +183,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
-  MBRadioButton: dcf111c9bb633d4cf6e83200d804af6e025033c8
+  MBCheckboxButton: 6ad0b46b111c59ea9dec558e0df1973cee2eb3aa
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
   PinLayout: 8b3199b283d1b34e6b35a71d0202049b67551c96
@@ -195,6 +195,6 @@ SPEC CHECKSUMS:
   SwiftLoader: f12f3a6fb42576862a3a5eb80c7e59fc881b6982
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: c05e3b13d7c8c3f9bd69690af71e14891ca9f01e
+PODFILE CHECKSUM: 57222d7d585a20afb6d12992972dfee0928f20c3
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

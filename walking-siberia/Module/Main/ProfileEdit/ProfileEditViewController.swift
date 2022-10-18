@@ -1,6 +1,6 @@
 import UIKit
 import SnapKit
-import MBRadioButton
+import MBCheckboxButton
 import MessageUI
 import Firebase
 
@@ -8,7 +8,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     
     private let provider = ProfileEditProvider()
     
-    private var radioButtonContainer = RadioButtonContainer()
+    private var radioButtonContainer = CheckboxButtonContainer()
     private var selectedCategory: Int?
     private var isProfileEditing = false
 
@@ -30,13 +30,6 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         
         mainView.contentView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.contentView.birthdayTextField.inputView = mainView.contentView.datePicker
-        
-        radioButtonContainer.delegate = self
-        radioButtonContainer.addButtons([mainView.contentView.schoolchildRadioButton,
-                                         mainView.contentView.studentRadioButton,
-                                         mainView.contentView.adultRadioButton,
-                                         mainView.contentView.pensionerRadioButton,
-                                         mainView.contentView.manWithHIARadioButton])
         
         configure()
     }
@@ -81,36 +74,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.competitionsNotifyActionView.switcherView.isOn = user.profile.isNoticeCompetition
         mainView.contentView.infoNotifyActionView.switcherView.isOn = user.profile.isNoticeInfo
         
-        switch user.type {
-        case 0:
-            mainView.contentView.categoryTextField.text = "Админ"
-            
-        case 5:
-            mainView.contentView.categoryTextField.text = "Пользователь"
-            
-        case 10:
-            mainView.contentView.categoryTextField.text = "Дети"
-            radioButtonContainer.selectedButton = radioButtonContainer.allButtons[0]
-            
-        case 20:
-            mainView.contentView.categoryTextField.text = "Молодежь"
-            radioButtonContainer.selectedButton = radioButtonContainer.allButtons[1]
-            
-        case 30:
-            mainView.contentView.categoryTextField.text = "Взрослые"
-            radioButtonContainer.selectedButton = radioButtonContainer.allButtons[2]
-            
-        case 40:
-            mainView.contentView.categoryTextField.text = "Старшее поколение"
-            radioButtonContainer.selectedButton = radioButtonContainer.allButtons[3]
-            
-        case 50:
-            mainView.contentView.categoryTextField.text = "Человек с ОВЗ"
-            radioButtonContainer.selectedButton = radioButtonContainer.allButtons[4]
-            
-        default:
-            mainView.contentView.categoryTextField.text = "Другое"
-        }
+        mainView.contentView.manWithHIAView.checkBox.isSelected = user.type == 50
     }
     
     private func save() {
@@ -124,7 +88,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
             
             return
         }
-        
+        #warning("TODO: ДОДЕЛАТЬ type")
         let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
         let profileUpdate = ProfileUpdateRequest(phone: formattedPhone,
                                                  lastName: mainView.contentView.surnameTextField.text,
@@ -185,20 +149,12 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         }
         
         [mainView.contentView.nameTextField, mainView.contentView.surnameTextField, mainView.contentView.cityTextField,
-         mainView.contentView.birthdayTextField, mainView.contentView.categoryTextField, mainView.contentView.heightTextField,
+         mainView.contentView.birthdayTextField, mainView.contentView.heightTextField,
          mainView.contentView.weightTextField, mainView.contentView.phoneTextField, mainView.contentView.emailTextField,
          mainView.contentView.bioTextField, mainView.contentView.telegramField, mainView.contentView.instagramField,
          mainView.contentView.vkField, mainView.contentView.okField].forEach {
             $0.isUserInteractionEnabled = isProfileEditing
         }
-        
-        mainView.contentView.categoryTextField.isHidden = isProfileEditing
-        mainView.contentView.radioButtonsStackView.isHidden = !isProfileEditing
-        mainView.contentView.layoutIfNeeded()
-        mainView.contentView.radioButtonsStackView.arrangedSubviews.map({ $0 as? RadioButton }).forEach({
-            $0?.radioCircle = RadioButtonCircleStyle(outerCircle: 16.0, innerCircle: 8.0, outerCircleBorder: 1.0, contentPadding: 4.0)
-            $0?.radioButtonColor = RadioButtonColor(active: R.color.activeElements() ?? .blue, inactive: R.color.activeElements() ?? .blue)
-        })
     }
     
     private func deleteAvatar() {
@@ -322,19 +278,6 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     @objc private func close() {
         navigationController?.popViewController(animated: true)
     }
-    
-}
-
-// MARK: - RadioButtonDelegate
-extension ProfileEditViewController: RadioButtonDelegate {
-    
-    func radioButtonDidSelect(_ button: RadioButton) {
-        selectedCategory = mainView.contentView.radioButtonsStackView.arrangedSubviews
-            .map({ $0 as? RadioButton })
-            .firstIndex(where: { $0?.title(for: .normal) == button.title(for: .normal) })
-    }
-    
-    func radioButtonDidDeselect(_ button: RadioButton) {}
     
 }
 
