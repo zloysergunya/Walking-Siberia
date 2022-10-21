@@ -29,7 +29,8 @@ class PagerViewController: PageMenuController {
             
         case .competition(let competition):
             viewControllers.append(CompetitionInfoViewController(competition: competition))
-            viewControllers.append(TeamsViewController(competition: competition))
+            viewControllers.append(TeamsViewController(competition: competition, competitionType: .team))
+            viewControllers.append(TeamsViewController(competition: competition, competitionType: .single))
             
         case .statistics(let user):
             viewControllers.append(UserStatisticViewController(user: user))

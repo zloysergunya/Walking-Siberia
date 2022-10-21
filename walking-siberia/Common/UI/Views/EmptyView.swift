@@ -14,25 +14,49 @@ class EmptyView: UIView {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let loadingView = LoadingView()
+    
+    convenience init(loadingState: LoadingState) {
+        self.init(frame: .zero)
         
         addSubview(titleLabel)
+        addSubview(loadingView)
+        
+        switch loadingState {
+        case .none:
+            break
+            
+        case .loading:
+            loadingView.play()
+            titleLabel.isHidden = true
+            
+        case .loaded:
+            loadingView.stop()
+            titleLabel.isHidden = false
+            
+        case .failed(let error):
+            if let error = error as? ModelError {
+                titleLabel.text = error.localizedDescription
+            } else {
+                titleLabel.text = error.localizedDescription
+            }
+            
+            loadingView.stop()
+            titleLabel.isHidden = false
+        }
         
         setupConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private func setupConstraints() {
-        
         titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(16.0)
             make.centerY.equalToSuperview()
         }
         
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
 }

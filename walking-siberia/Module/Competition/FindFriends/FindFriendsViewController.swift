@@ -14,10 +14,14 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
     private let provider = FindFriendsProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    private var loadingState: LoadingState = .none
     private var objects: [FindFriendsSectionModel] = []
     private var query: String = ""
     private var pendingRequestWorkItem: DispatchWorkItem?
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
     
     init(availableCount: Int, currentParticipants: [User]) {
         self.availableCount = availableCount
@@ -101,12 +105,10 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
                 })
                 
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -133,7 +135,7 @@ extension FindFriendsViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
 
 }

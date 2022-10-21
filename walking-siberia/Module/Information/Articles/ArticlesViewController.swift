@@ -6,8 +6,12 @@ class ArticlesViewController: ViewController<ArticlesView> {
     private let provider = ArticlesProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    private var loadingState: LoadingState = .none
     private var objects: [ArticleSectionModel] = []
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
     
     override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
@@ -59,12 +63,10 @@ class ArticlesViewController: ViewController<ArticlesView> {
                 
                 self.objects.append(contentsOf: articles.map({ ArticleSectionModel(article: $0) }))
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -99,7 +101,7 @@ extension ArticlesViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
 
 }

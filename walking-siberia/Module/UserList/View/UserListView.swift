@@ -3,17 +3,7 @@ import SnapKit
 
 class UserListView: RootView {
     
-    let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.searchTextField.font = R.font.geometriaMedium(size: 14.0)
-        searchBar.searchTextField.placeholder = "Поиск"
-        searchBar.searchBarStyle = .minimal
-        searchBar.searchTextField.textColor = .black
-        searchBar.tintColor = .black
-        searchBar.barTintColor = R.color.greyLight()
-        
-        return searchBar
-    }()
+    let searchBar = SearchBar()
 
     let childrenButton: ChipsButton = {
         let button = ChipsButton()

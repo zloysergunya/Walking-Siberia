@@ -10,8 +10,12 @@ class CompetitionsViewController: ViewController<CompetitionsView> {
     private let type: CompetitionsType
     private let provider = CompetitionsProvider()
     
-    private var loadingState: LoadingState = .none
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
     
     private lazy var objects: [CompetitionSectionModel] = {
         guard let competitions = UserSettings.competitions else {
@@ -73,12 +77,10 @@ class CompetitionsViewController: ViewController<CompetitionsView> {
                 
                 self.objects = competitions.map({ CompetitionSectionModel(competition: $0) })
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -104,7 +106,7 @@ extension CompetitionsViewController: ListAdapterDataSource {
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
     
 }

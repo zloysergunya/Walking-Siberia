@@ -6,9 +6,13 @@ class NotificationsViewController: ViewController<NotificationsView> {
     private let provider = NotificationsProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    private var loadingState: LoadingState = .none
     private var notifications: [Notification] = []
-
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,12 +57,10 @@ class NotificationsViewController: ViewController<NotificationsView> {
                 
                 self.notifications.append(contentsOf: notifications)
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -126,7 +128,7 @@ extension NotificationsViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
 
 }
