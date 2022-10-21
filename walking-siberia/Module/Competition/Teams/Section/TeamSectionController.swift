@@ -52,9 +52,6 @@ class TeamSectionController: ListSectionController {
     private func configure(cell: TeamCell) -> UICollectionViewCell {
         cell.nameLabel.text = sectionModel.team.name
         
-        let userCategory: UserCategory? = .init(rawValue: sectionModel.team.type)
-        cell.categoryLabel.text = userCategory?.categoryName
-        
         let bold = Style("bold")
             .font(R.font.geometriaBold(size: 20.0) ?? .systemFont(ofSize: 20.0))
             .foregroundColor(R.color.graphicBlue() ?? .blue)
@@ -67,6 +64,7 @@ class TeamSectionController: ListSectionController {
         }
         cell.stepsCountLabel.attributedText = text.style(tags: bold).attributedString
         
+        let userCategory: UserCategory? = .init(rawValue: sectionModel.team.type)
         let side = 48.0
         if userCategory == .manWithHIA {
             if let url = sectionModel.team.users.first?.user.profile.avatar {

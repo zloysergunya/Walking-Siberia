@@ -3,23 +3,33 @@ import IGListKit
 
 class TeamsViewController: ViewController<TeamsView> {
     
+    enum CompetitionType {
+        case team, single
+    }
+    
     private var competition: Competition
+    private let competitionType: CompetitionType
     private let provider = TeamsProvider()
     
-    private var loadingState: LoadingState = .none
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
+    
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var objects: [TeamSectionModel] = []
     private var filter = ""
-    private var filterButtons: [UIButton] {
-        return [mainView.childrenButton, mainView.studentButton, mainView.adultButton,
-                mainView.pensionerButton, mainView.manWithHIAButton]
-    }
         
-    init(competition: Competition) {
+    init(competition: Competition, competitionType: CompetitionType) {
         self.competition = competition
+        self.competitionType = competitionType
         super.init(nibName: nil, bundle: nil)
         
-        title = "Команды-участники"
+        switch competitionType {
+        case .team: title = "Команды"
+        case .single: title = "Одиночные"
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -32,11 +42,6 @@ class TeamsViewController: ViewController<TeamsView> {
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         mainView.createTeamButton.addTarget(self, action: #selector(openCreateTeam), for: .touchUpInside)
         mainView.takePartButton.addTarget(self, action: #selector(takePart), for: .touchUpInside)
-        mainView.childrenButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
-        mainView.studentButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
-        mainView.adultButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
-        mainView.pensionerButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
-        mainView.manWithHIAButton.addTarget(self, action: #selector(updateFilter), for: .touchUpInside)
         
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
@@ -75,10 +80,7 @@ class TeamsViewController: ViewController<TeamsView> {
     
     private func updateCompetition() {
         provider.updateCompetition(competitionId: competition.id) { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            
+            guard let self = self else { return }
             
             switch result {
             case .success(let competition):
@@ -101,26 +103,27 @@ class TeamsViewController: ViewController<TeamsView> {
         }
 
         provider.loadTeams(uid: competition.id, filter: filter) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
             
             switch result {
-            case .success(let teams):
+            case .success(var teams):
                 if flush {
                     self.objects.removeAll()
                 }
                 
+                switch self.competitionType {
+                case .team: teams = teams.filter({ $0.type != 50 })
+                case .single: teams = teams.filter({ $0.type == 50 })
+                }
+                
                 self.objects.append(contentsOf: teams.map({ TeamSectionModel(team: $0) }))
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -175,23 +178,6 @@ class TeamsViewController: ViewController<TeamsView> {
         loadTeams(flush: true)
     }
     
-    @objc private func updateFilter(_ sender: UIButton) {
-        var filter = ""
-        filterButtons.forEach({ button in
-            if button.tag == sender.tag && button.isSelected {
-                button.isSelected = false
-            } else {
-                button.isSelected = button.tag == sender.tag
-                if button.isSelected {
-                    filter = "\(sender.tag)"
-                }
-            }
-        })
-
-        self.filter = filter
-        loadTeams(flush: true)
-    }
-    
     @objc private func openCreateTeam() {
         navigationController?.pushViewController(TeamEditViewController(competition: competition, type: .create), animated: true)
     }
@@ -225,7 +211,7 @@ extension TeamsViewController: ListAdapterDataSource {
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
     
 }
