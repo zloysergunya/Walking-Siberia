@@ -1,10 +1,13 @@
 import UIKit
+import IGListKit
 
 class TeamViewController: ViewController<TeamView> {
     
     private var team: Team
     private let competition: Competition
     private let provider = TeamProvider()
+    
+    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     
     private var isOwner = false
 
@@ -22,8 +25,12 @@ class TeamViewController: ViewController<TeamView> {
         super.viewDidLoad()
         
         mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
-        mainView.contentView.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
-        mainView.contentView.deleteTeamButton.addTarget(self, action: #selector(deleteTeamAction), for: .touchUpInside)
+        mainView.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
+        mainView.deleteTeamButton.addTarget(self, action: #selector(deleteTeamAction), for: .touchUpInside)
+        mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        
+        adapter.collectionView = mainView.collectionView
+        adapter.dataSource = self
         
         configure()
     }
@@ -39,52 +46,19 @@ class TeamViewController: ViewController<TeamView> {
     private func configure() {
         mainView.navBar.title = team.name
         
-        mainView.contentView.participantsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-        team.users.enumerated().forEach { user in
-            let participantView = ParticipantView()
-            let fullName = "\(user.element.user.profile.firstName) \(user.element.user.profile.lastName)"
-            participantView.nameLabel.text = fullName
-            let userCategory: UserCategory? = .init(rawValue: user.element.user.type)
-            participantView.categoryLabel.text = userCategory?.categoryName
-            
-            var text = R.string.localizable.stepsCount(number: user.element.statistics.total.number, preferredLanguages: ["ru"])
-            if user.element.statistics.total.number > 30000 {
-                text = text.replacingOccurrences(of: "\(user.element.statistics.total.number)", with: user.element.statistics.total.number.roundedWithAbbreviations)
-            }
-            participantView.stepsCountLabel.text = text
-            participantView.distanceLabel.text = "\(user.element.statistics.total.km) км"
-            
-            if let url = user.element.user.profile.avatar {
-                ImageLoader.setImage(url: url, imgView: participantView.imageView)
-            } else {
-                participantView.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
-                participantView.gradientLayer = GradientHelper.shared.layer(userId: user.element.userId)
-            }
-
-            if team.ownerId == user.element.userId {
-                participantView.layer.borderWidth = 1.0
-            }
-            
-            participantView.tag = user.offset
-            participantView.gestureRecognizers?.removeAll()
-            participantView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openUserProfile)))
-            
-            mainView.contentView.participantsStackView.addArrangedSubview(participantView)
-        }
-        
         isOwner = team.ownerId == UserSettings.user?.userId
         if isOwner {
-            mainView.contentView.actionButton.setTitle("Редактировать", for: .normal)
-            mainView.contentView.actionButton.isHidden = false
-            mainView.contentView.deleteTeamButton.isHidden = false
+            mainView.actionButton.setTitle("Редактировать", for: .normal)
+            mainView.actionButton.isHidden = false
+            mainView.deleteTeamButton.isHidden = false
         } else if team.isJoined {
-            mainView.contentView.actionButton.setTitle("Покинуть команду", for: .normal)
-            mainView.contentView.actionButton.isHidden = false
+            mainView.actionButton.setTitle("Покинуть команду", for: .normal)
+            mainView.actionButton.isHidden = false
         } else if !team.isClosed && team.users.count < 5 {
-            mainView.contentView.actionButton.setTitle("Подать заявку в команду", for: .normal)
-            mainView.contentView.actionButton.isHidden = false
+            mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
+            mainView.actionButton.isHidden = false
         } else {
-            mainView.contentView.actionButton.isHidden = true
+            mainView.actionButton.isHidden = true
         }
         
         loadMyTeam()
@@ -92,9 +66,9 @@ class TeamViewController: ViewController<TeamView> {
     
     private func updateTeam() {
         provider.updateTeam(teamId: team.id) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
+            
+            self.mainView.collectionView.refreshControl?.endRefreshing()
             
             switch result {
             case .success(let team):
@@ -109,16 +83,14 @@ class TeamViewController: ViewController<TeamView> {
     
     private func loadMyTeam() {
         provider.loadMyTeam(competitionId: team.competitionId) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .success(let team):
                 if let team = team {
                     let competitionJoined = team.competitionId == self.team.competitionId
                     let isHidden = competitionJoined && !self.team.isJoined || self.competition.isClosed
-                    self.mainView.contentView.actionButton.isHidden = isHidden
+                    self.mainView.actionButton.isHidden = isHidden
                 }
                 
             case .failure(let error):
@@ -133,9 +105,7 @@ class TeamViewController: ViewController<TeamView> {
     
     private func joinTeam() {
         provider.joinTeam(teamId: team.id) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .success:
@@ -159,9 +129,7 @@ class TeamViewController: ViewController<TeamView> {
     
     private func leaveTeam() {
         provider.leaveTeam(teamId: team.id) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .success:
@@ -198,7 +166,11 @@ class TeamViewController: ViewController<TeamView> {
         if isOwner {
             openTeamEdit()
         } else if team.isJoined {
-            dialog(title: "Покинуть команду?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { [weak self] _ in
+            dialog(title: "Покинуть команду?",
+                   message: "",
+                   accessText: "Да",
+                   cancelText: "Нет",
+                   onAgree:  { [weak self] _ in
                 self?.leaveTeam()
             })
         } else {
@@ -207,7 +179,10 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     @objc private func deleteTeamAction() {
-        dialog(title: "Удалить команду?", accessText: "Да", cancelText: "Нет", onAgree: { [weak self] _ in
+        dialog(title: "Удалить команду?",
+               accessText: "Да",
+               cancelText: "Нет",
+               onAgree: { [weak self] _ in
             self?.deleteTeam()
         })
     }
@@ -217,7 +192,46 @@ class TeamViewController: ViewController<TeamView> {
               team.users[index].userId != UserSettings.user?.userId
         else { return }
         
-        navigationController?.pushViewController(UserProfileViewController(user: team.users[index].user), animated: true)
+        
+    }
+    
+    @objc private func pullToRefresh() {
+        updateTeam()
+    }
+    
+}
+
+// MARK: - ListAdapterDataSource
+extension TeamViewController: ListAdapterDataSource {
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return team.users.map({ TeamParticipantSectionModel(user: $0, team: team) })
+    }
+
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        let sectionController = TeamSectionController()
+        sectionController.delegate = self
+
+        return sectionController
+    }
+
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return EmptyView(loadingState: .loaded)
+    }
+    
+}
+
+// MARK: - TeamSectionControllerDelegate
+extension TeamViewController: TeamSectionControllerDelegate {
+    
+    func teamSectionController(didSelect user: Participant) {
+        guard user.userId != UserSettings.user?.userId else { return }
+        
+        let viewController = UserProfileViewController(user: user.user)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func teamSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
+        #warning("TODO: pagination")
     }
     
 }

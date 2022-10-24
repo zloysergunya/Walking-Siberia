@@ -204,7 +204,7 @@ extension TeamsViewController: ListAdapterDataSource {
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let sectionController = TeamSectionController()
+        let sectionController = TeamsSectionController()
         sectionController.delegate = self
         
         return sectionController
@@ -216,10 +216,10 @@ extension TeamsViewController: ListAdapterDataSource {
     
 }
 
-// MARK: - TeamSectionControllerDelegate
-extension TeamsViewController: TeamSectionControllerDelegate {
+// MARK: - TeamsSectionControllerDelegate
+extension TeamsViewController: TeamsSectionControllerDelegate {
     
-    func teamSectionController(didSelect team: Team) {
+    func teamsSectionController(didSelect team: Team) {
         if UserCategory(rawValue: team.type) == .manWithHIA, let user = team.users.first?.user {
             navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
         } else {
@@ -227,7 +227,7 @@ extension TeamsViewController: TeamSectionControllerDelegate {
         }
     }
     
-    func teamSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
+    func teamsSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
         if section + 1 >= objects.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
             loadTeams(flush: false)
         }

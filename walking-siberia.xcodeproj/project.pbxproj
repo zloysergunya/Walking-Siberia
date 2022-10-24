@@ -95,6 +95,9 @@
 		C450F4C929024D8400BF1EDF /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4C829024D8400BF1EDF /* SearchBar.swift */; };
 		C450F4CC290254B500BF1EDF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4CB290254B500BF1EDF /* LoadingView.swift */; };
 		C450F4CE290254CE00BF1EDF /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4CD290254CE00BF1EDF /* ProgressView.swift */; };
+		C450F4D12902694500BF1EDF /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4D02902694500BF1EDF /* ParticipantCell.swift */; };
+		C450F4D429026A9700BF1EDF /* TeamParticipantSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4D329026A9700BF1EDF /* TeamParticipantSectionModel.swift */; };
+		C450F4D729026B8500BF1EDF /* TeamSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4D629026B8500BF1EDF /* TeamSectionController.swift */; };
 		C4578AF627F4330F00A88549 /* HealthServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */; };
 		C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448027E1C23800D9E275 /* FindFriendsViewController.swift */; };
 		C478448327E1C23800D9E275 /* FindFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478448127E1C23800D9E275 /* FindFriendsView.swift */; };
@@ -110,7 +113,6 @@
 		C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AB827DE097500CD6465 /* String+Initials.swift */; };
 		C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */; };
 		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
-		C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC127DE0A9900CD6465 /* TeamContentView.swift */; };
 		C4979AC427DE0CAA00CD6465 /* ParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */; };
 		C498982B2810748A00368D2D /* CompetitionInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498982A2810748A00368D2D /* CompetitionInfoProvider.swift */; };
 		C49A530A28FEF4A100EEA9FC /* ManWithHIAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49A530928FEF4A100EEA9FC /* ManWithHIAView.swift */; };
@@ -204,7 +206,7 @@
 		C4C9335827DCB0380068D8D2 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335727DCB0380068D8D2 /* Participant.swift */; };
 		C4C9335A27DCB1C60068D8D2 /* TeamsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */; };
 		C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335C27DCB2750068D8D2 /* TeamsRequest.swift */; };
-		C4C9335F27DCB5480068D8D2 /* TeamSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335E27DCB5480068D8D2 /* TeamSectionController.swift */; };
+		C4C9335F27DCB5480068D8D2 /* TeamsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9335E27DCB5480068D8D2 /* TeamsSectionController.swift */; };
 		C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336127DCB6400068D8D2 /* TeamCell.swift */; };
 		C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336327DCBE360068D8D2 /* UserCategory.swift */; };
 		C4C9336627DCC1690068D8D2 /* GradientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C9336527DCC1690068D8D2 /* GradientHelper.swift */; };
@@ -370,6 +372,9 @@
 		C450F4C829024D8400BF1EDF /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C450F4CB290254B500BF1EDF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C450F4CD290254CE00BF1EDF /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		C450F4D02902694500BF1EDF /* ParticipantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
+		C450F4D329026A9700BF1EDF /* TeamParticipantSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamParticipantSectionModel.swift; sourceTree = "<group>"; };
+		C450F4D629026B8500BF1EDF /* TeamSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSectionController.swift; sourceTree = "<group>"; };
 		C4578AF527F4330F00A88549 /* HealthServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthServiceProvider.swift; sourceTree = "<group>"; };
 		C478448027E1C23800D9E275 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		C478448127E1C23800D9E275 /* FindFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsView.swift; sourceTree = "<group>"; };
@@ -385,7 +390,6 @@
 		C4979AB827DE097500CD6465 /* String+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Initials.swift"; sourceTree = "<group>"; };
 		C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
-		C4979AC127DE0A9900CD6465 /* TeamContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamContentView.swift; sourceTree = "<group>"; };
 		C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantView.swift; sourceTree = "<group>"; };
 		C498982A2810748A00368D2D /* CompetitionInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoProvider.swift; sourceTree = "<group>"; };
 		C49A530928FEF4A100EEA9FC /* ManWithHIAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManWithHIAView.swift; sourceTree = "<group>"; };
@@ -480,7 +484,7 @@
 		C4C9335727DCB0380068D8D2 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		C4C9335927DCB1C60068D8D2 /* TeamsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsAPI.swift; sourceTree = "<group>"; };
 		C4C9335C27DCB2750068D8D2 /* TeamsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsRequest.swift; sourceTree = "<group>"; };
-		C4C9335E27DCB5480068D8D2 /* TeamSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSectionController.swift; sourceTree = "<group>"; };
+		C4C9335E27DCB5480068D8D2 /* TeamsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsSectionController.swift; sourceTree = "<group>"; };
 		C4C9336127DCB6400068D8D2 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		C4C9336327DCBE360068D8D2 /* UserCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCategory.swift; sourceTree = "<group>"; };
 		C4C9336527DCC1690068D8D2 /* GradientHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHelper.swift; sourceTree = "<group>"; };
@@ -1209,6 +1213,30 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		C450F4CF2902693C00BF1EDF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C450F4D02902694500BF1EDF /* ParticipantCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C450F4D229026A7C00BF1EDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C450F4D329026A9700BF1EDF /* TeamParticipantSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C450F4D529026B7C00BF1EDF /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C450F4D629026B8500BF1EDF /* TeamSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		C4578AF427F432F400A88549 /* HealthService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1294,6 +1322,8 @@
 		C4979ABA27DE0A5B00CD6465 /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				C450F4D529026B7C00BF1EDF /* Section */,
+				C450F4D229026A7C00BF1EDF /* Model */,
 				C4DA0D3D27DEF24700066965 /* Provider */,
 				C4979ABF27DE0A6E00CD6465 /* View */,
 				C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */,
@@ -1313,7 +1343,7 @@
 		C4979AC027DE0A8A00CD6465 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
-				C4979AC127DE0A9900CD6465 /* TeamContentView.swift */,
+				C450F4CF2902693C00BF1EDF /* Cell */,
 				C4979AC327DE0CAA00CD6465 /* ParticipantView.swift */,
 			);
 			path = Subview;
@@ -1877,7 +1907,7 @@
 		C4C9335427DCAF640068D8D2 /* Section */ = {
 			isa = PBXGroup;
 			children = (
-				C4C9335E27DCB5480068D8D2 /* TeamSectionController.swift */,
+				C4C9335E27DCB5480068D8D2 /* TeamsSectionController.swift */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -2555,7 +2585,6 @@
 				C4D82A8A27BFDCFC0058334F /* SuccessResponse.swift in Sources */,
 				C49AFBA927E6F76A009787AB /* HealthService.swift in Sources */,
 				C4C9335227DCADB00068D8D2 /* TeamsProvider.swift in Sources */,
-				C4979AC227DE0A9900CD6465 /* TeamContentView.swift in Sources */,
 				C4C62727280D33B2000C34D6 /* CompetitionInfoViewController.swift in Sources */,
 				C4BD9F7427EC2B2200E0CE5F /* OnboardingProvider.swift in Sources */,
 				C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */,
@@ -2589,6 +2618,7 @@
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
 				C4D82A9C27BFED200058334F /* UIStackView+Init.swift in Sources */,
 				C408EAA227AFFC8C004B82CB /* AuthService.swift in Sources */,
+				C450F4D12902694500BF1EDF /* ParticipantCell.swift in Sources */,
 				C434841627F180800037D5B8 /* Average.swift in Sources */,
 				C4326A1E27F5D02900FB53CE /* NotificationAPI.swift in Sources */,
 				C4F9FD4A27D1B6CC00A6A2B0 /* InstructionContentView.swift in Sources */,
@@ -2597,6 +2627,7 @@
 				C4D8ECA727C37D6500BF0767 /* RouteCell.swift in Sources */,
 				C434841827F181930037D5B8 /* Int+RoundedWithAbbreviations.swift in Sources */,
 				C4DA0D4327DF083C00066965 /* UIViewController+Alerts.swift in Sources */,
+				C450F4D729026B8500BF1EDF /* TeamSectionController.swift in Sources */,
 				C4C9335627DCAFD70068D8D2 /* TeamSectionModel.swift in Sources */,
 				C4BD9F7127EC294500E0CE5F /* AppleSignInService.swift in Sources */,
 				C4F9FD4527D1B67A00A6A2B0 /* InstructionViewController.swift in Sources */,
@@ -2631,7 +2662,7 @@
 				C49AFBCF27E88152009787AB /* ArticleAPI.swift in Sources */,
 				C422A25427ED89F600312F14 /* Video.swift in Sources */,
 				C4A1514927B0F8A800C95344 /* ActiveButton.swift in Sources */,
-				C4C9335F27DCB5480068D8D2 /* TeamSectionController.swift in Sources */,
+				C4C9335F27DCB5480068D8D2 /* TeamsSectionController.swift in Sources */,
 				C408EA8827AFFC8C004B82CB /* JSONEncodableEncoding.swift in Sources */,
 				C4A1516D27B1356F00C95344 /* OTPTextField.swift in Sources */,
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
@@ -2674,6 +2705,7 @@
 				C4BD9FA827ECCE7B00E0CE5F /* UsersAPI.swift in Sources */,
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,
 				C408EA7027AFFC8C004B82CB /* SwipeNavigationController.swift in Sources */,
+				C450F4D429026A9700BF1EDF /* TeamParticipantSectionModel.swift in Sources */,
 				C408EA9D27AFFC8C004B82CB /* ServiceLocator.swift in Sources */,
 				C408EA7B27AFFC8C004B82CB /* LoadingState.swift in Sources */,
 				C4D8ECB127C3A4FE00BF0767 /* BadgeButton.swift in Sources */,

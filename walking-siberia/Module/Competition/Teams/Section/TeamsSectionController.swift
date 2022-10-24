@@ -2,14 +2,14 @@ import IGListKit
 import Atributika
 import UIKit
 
-protocol TeamSectionControllerDelegate: AnyObject {
-    func teamSectionController(didSelect team: Team)
-    func teamSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
+protocol TeamsSectionControllerDelegate: AnyObject {
+    func teamsSectionController(didSelect team: Team)
+    func teamsSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
 }
 
-class TeamSectionController: ListSectionController {
+class TeamsSectionController: ListSectionController {
     
-    weak var delegate: TeamSectionControllerDelegate?
+    weak var delegate: TeamsSectionControllerDelegate?
     
     private var sectionModel: TeamSectionModel!
     
@@ -46,7 +46,7 @@ class TeamSectionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         super.didSelectItem(at: index)
         
-        delegate?.teamSectionController(didSelect: sectionModel.team)
+        delegate?.teamsSectionController(didSelect: sectionModel.team)
     }
     
     private func configure(cell: TeamCell) -> UICollectionViewCell {
@@ -95,13 +95,13 @@ class TeamSectionController: ListSectionController {
 }
 
 // MARK: - ListDisplayDelegate
-extension TeamSectionController: ListDisplayDelegate {
+extension TeamsSectionController: ListDisplayDelegate {
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay sectionController: ListSectionController) {}
     func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying sectionController: ListSectionController) {}
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay sectionController: ListSectionController, cell: UICollectionViewCell, at index: Int) {
-        delegate?.teamSectionController(willDisplay: cell, at: section)
+        delegate?.teamsSectionController(willDisplay: cell, at: section)
     }
     
     func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying sectionController: ListSectionController, cell: UICollectionViewCell, at index: Int) {}
