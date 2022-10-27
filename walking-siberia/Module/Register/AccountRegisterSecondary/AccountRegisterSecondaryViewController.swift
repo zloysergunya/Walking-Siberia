@@ -63,7 +63,7 @@ class AccountRegisterSecondaryViewController: ViewController<AccountRegisterSeco
                                                  city: UserSettings.user?.profile.city,
                                                  birthDay: UserSettings.user?.profile.birthDate,
                                                  email: UserSettings.user?.email,
-                                                 type: UserSettings.user?.type,
+                                                 isDisabled: UserSettings.user?.isDisabled,
                                                  aboutMe: aboutMe,
                                                  telegram: telegram,
                                                  instagram: instagram,

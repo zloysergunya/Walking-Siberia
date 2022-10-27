@@ -57,9 +57,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
         }
         
         let age = calculateAge(birthday: user.profile.birthDate ?? "")
-        let userCategory: UserCategory? = .init(rawValue: user.type)
         mainView.contentView.nameLabel.text = "\(user.profile.firstName) \(user.profile.lastName), \(age ?? 0)"
-        mainView.contentView.categoryLabel.text = "\(userCategory?.categoryName ?? "Нет данных о категории"), id: \(user.userId)"
         mainView.contentView.bioLabel.text = user.profile.aboutMe
         
         mainView.contentView.addAsFriendButton.isSelected = user.isFriend == true

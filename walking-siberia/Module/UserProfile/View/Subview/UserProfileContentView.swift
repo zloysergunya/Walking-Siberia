@@ -44,15 +44,6 @@ class UserProfileContentView: RootView {
         return label
     }()
     
-    let categoryLabel: UILabel = {
-        let label = UILabel()
-        label.font = R.font.geometriaRegular(size: 12.0)
-        label.textColor = R.color.mainContent()
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
     let bioLabel: UILabel = {
         let label = UILabel()
         label.font = R.font.geometriaRegular(size: 12.0)
@@ -137,7 +128,6 @@ class UserProfileContentView: RootView {
         containerView.addSubview(imageViewBackgroundView)
         containerView.addSubview(avatarImageView)
         containerView.addSubview(nameLabel)
-        containerView.addSubview(categoryLabel)
         containerView.addSubview(bioLabel)
         containerView.addSubview(buttonsStackView)
         containerView.addSubview(socialLinksStackView)
@@ -165,13 +155,8 @@ class UserProfileContentView: RootView {
             make.left.right.equalToSuperview().inset(12.0)
         }
         
-        categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
         bioLabel.snp.makeConstraints { make in
-            make.top.equalTo(categoryLabel.snp.bottom).offset(8.0)
+            make.top.equalTo(nameLabel.snp.bottom).offset(8.0)
             make.left.right.equalToSuperview().inset(12.0)
         }
         

@@ -36,14 +36,6 @@ class ParticipantView: RootView {
         return label
     }()
     
-    let categoryLabel: UILabel = {
-        let label = UILabel()
-        label.font = R.font.geometriaRegular(size: 12.0)
-        label.textColor = R.color.mainContent()
-        
-        return label
-    }()
-    
     let stepsCountLabel: UILabel = {
         let label = UILabel()
         label.font = R.font.geometriaRegular(size: 12.0)
@@ -77,7 +69,6 @@ class ParticipantView: RootView {
         addSubview(imageViewBackgroundView)
         addSubview(imageView)
         addSubview(nameLabel)
-        addSubview(categoryLabel)
         addSubview(stepsCountLabel)
         addSubview(distanceLabel)
         
@@ -104,12 +95,7 @@ class ParticipantView: RootView {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18.0)
-            make.left.equalTo(imageView.snp.right).offset(12.0)
-        }
-        
-        categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
+            make.centerY.equalToSuperview()
             make.left.equalTo(imageView.snp.right).offset(12.0)
         }
         

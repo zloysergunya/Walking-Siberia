@@ -9,7 +9,6 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     private let provider = ProfileEditProvider()
     
     private var radioButtonContainer = CheckboxButtonContainer()
-    private var selectedCategory: Int?
     private var isProfileEditing = false
 
     override func viewDidLoad() {
@@ -74,21 +73,18 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.competitionsNotifyActionView.switcherView.isOn = user.profile.isNoticeCompetition
         mainView.contentView.infoNotifyActionView.switcherView.isOn = user.profile.isNoticeInfo
         
-        mainView.contentView.manWithHIAView.checkBox.isSelected = user.type == 50
+        mainView.contentView.manWithHIAView.checkBox.isSelected = user.isDisabled ?? false
     }
     
     private func save() {
-        guard let type = selectedCategory else {
-            return
-        }
-        
         guard let phone = mainView.contentView.phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !phone.isEmpty else {
             Animations.shake(view: mainView.contentView.phoneTextField)
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             
             return
         }
-        #warning("TODO: ДОДЕЛАТЬ type")
+
+        let isDisabled = mainView.contentView.manWithHIAView.checkBox.isSelected
         let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
         let profileUpdate = ProfileUpdateRequest(phone: formattedPhone,
                                                  lastName: mainView.contentView.surnameTextField.text,
@@ -96,7 +92,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
                                                  city: mainView.contentView.cityTextField.text,
                                                  birthDay: mainView.contentView.birthdayTextField.text,
                                                  email: mainView.contentView.emailTextField.text,
-                                                 type: type * 10,
+                                                 isDisabled: isDisabled,
                                                  aboutMe: mainView.contentView.bioTextField.text,
                                                  telegram: mainView.contentView.telegramField.text,
                                                  instagram: mainView.contentView.instagramField.text,

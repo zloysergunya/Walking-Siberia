@@ -36,14 +36,6 @@ class FindFriendsCell: UICollectionViewCell {
         return label
     }()
     
-    let categoryLabel: UILabel = {
-        let label = UILabel()
-        label.font = R.font.geometriaRegular(size: 12.0)
-        label.textColor = R.color.mainContent()
-        
-        return label
-    }()
-    
     let actionButton = AddButton()
 
     override var intrinsicContentSize: CGSize {
@@ -61,7 +53,6 @@ class FindFriendsCell: UICollectionViewCell {
         contentView.addSubview(imageViewBackgroundView)
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(categoryLabel)
         contentView.addSubview(actionButton)
         
         addShadow()
@@ -84,12 +75,7 @@ class FindFriendsCell: UICollectionViewCell {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18.0)
-            make.left.equalTo(imageView.snp.right).offset(12.0)
-        }
-        
-        categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
+            make.centerY.equalToSuperview()
             make.left.equalTo(imageView.snp.right).offset(12.0)
         }
         

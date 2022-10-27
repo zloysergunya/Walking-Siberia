@@ -52,10 +52,7 @@ class FindFriendsSectionController: ListSectionController {
     private func configure(cell: FindFriendsCell) -> UICollectionViewCell {
         let fullName = "\(sectionModel.user.profile.firstName) \(sectionModel.user.profile.lastName)"
         cell.nameLabel.text = fullName
-        
-        let userCategory: UserCategory? = .init(rawValue: sectionModel.user.type)
-        cell.categoryLabel.text = userCategory?.categoryName
-        
+                
         if let url = sectionModel.user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: cell.imageView)
         } else {

@@ -98,14 +98,14 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         }
         
         let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
+        let isDisabled = mainView.manWithHIAView.checkBox.isSelected
         let profileUpdate = ProfileUpdateRequest(phone: UserSettings.authType != .phone ? formattedPhone : UserSettings.user?.phone,
                                                  lastName: surname,
                                                  firstName: name,
                                                  city: city,
                                                  birthDay: dateOfBirth,
                                                  email: email,
-                                                 type: (0 + 1) * 10)
-        #warning("TODO: ДОДЕЛАТЬ type")
+                                                 isDisabled: isDisabled)
         
         mainView.continueButton.isLoading = true
         provider.profileUpdate(profileUpdate: profileUpdate) { [weak self] result in

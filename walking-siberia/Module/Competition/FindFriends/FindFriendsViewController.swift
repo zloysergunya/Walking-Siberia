@@ -81,13 +81,14 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
     }
     
     private func loadFriends(flush: Bool) {
-        guard let type = UserSettings.user?.type else {
+        guard let isDisabled = UserSettings.user?.isDisabled else {
             close()
             
             return
         }
         
-        provider.loadFriends(filter: "\(type)", search: query) { [weak self] result in
+        #warning("TODO: change to isDisabled")
+        provider.loadFriends(filter: "\(10)", search: query) { [weak self] result in
             guard let self = self else {
                 return
             }

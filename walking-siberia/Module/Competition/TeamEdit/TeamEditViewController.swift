@@ -58,9 +58,6 @@ class TeamEditViewController: ViewController<TeamEditView> {
             let fullName = "\(user.element.profile.firstName) \(user.element.profile.lastName)"
             cell.nameLabel.text = fullName
             
-            let userCategory: UserCategory? = .init(rawValue: user.element.type)
-            cell.categoryLabel.text = userCategory?.categoryName
-            
             if let url = user.element.profile.avatar {
                 ImageLoader.setImage(url: url, imgView: cell.imageView)
             } else {
