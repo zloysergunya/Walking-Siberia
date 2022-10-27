@@ -172,6 +172,7 @@
 		C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */; };
 		C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540627CA664A0004B5CE /* ProfileEditView.swift */; };
 		C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */; };
+		C4B81B4C290A9DE50086C08E /* TeamDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B81B4B290A9DE50086C08E /* TeamDescriptionCell.swift */; };
 		C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB890527DDACA70063C4EB /* ChipsButton.swift */; };
 		C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */; };
 		C4BD9F6C27EC246000E0CE5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4BD9F6B27EC246000E0CE5F /* GoogleService-Info.plist */; };
@@ -450,6 +451,7 @@
 		C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C4AB540627CA664A0004B5CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditContentView.swift; sourceTree = "<group>"; };
+		C4B81B4B290A9DE50086C08E /* TeamDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDescriptionCell.swift; sourceTree = "<group>"; };
 		C4BB890527DDACA70063C4EB /* ChipsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsButton.swift; sourceTree = "<group>"; };
 		C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsUidRequest.swift; sourceTree = "<group>"; };
 		C4BD9F6B27EC246000E0CE5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1930,6 +1932,7 @@
 			isa = PBXGroup;
 			children = (
 				C4C9336127DCB6400068D8D2 /* TeamCell.swift */,
+				C4B81B4B290A9DE50086C08E /* TeamDescriptionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2604,6 +2607,7 @@
 				C49AFBD927E88593009787AB /* ArticleSectionModel.swift in Sources */,
 				C4D82A9F27BFEFC10058334F /* AccountRegisterPrimaryProvider.swift in Sources */,
 				C422A24A27ED889F00312F14 /* VideosViewController.swift in Sources */,
+				C4B81B4C290A9DE50086C08E /* TeamDescriptionCell.swift in Sources */,
 				C4D8ECA127C37B6E00BF0767 /* RouteSectionModel.swift in Sources */,
 				C49AFBDE27E88747009787AB /* ArticleCell.swift in Sources */,
 				C4A1516A27B1232800C95344 /* UIView+Shadow.swift in Sources */,

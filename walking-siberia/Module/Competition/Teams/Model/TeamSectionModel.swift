@@ -3,10 +3,12 @@ import IGListDiffKit
 
 class TeamSectionModel {
     
-    let team: Team
+    let team: Team?
+    let isDisabled: Bool
     
-    init(team: Team) {
+    init(team: Team?, isDisabled: Bool) {
         self.team = team
+        self.isDisabled = isDisabled
     }
     
 }
@@ -15,7 +17,7 @@ class TeamSectionModel {
 extension TeamSectionModel: ListDiffable {
     
     func diffIdentifier() -> NSObjectProtocol {
-        return String(team.id) as NSObjectProtocol
+        return String(team?.id ?? 0) as NSObjectProtocol
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
@@ -23,7 +25,7 @@ extension TeamSectionModel: ListDiffable {
             return false
         }
         
-        return object.team == team
+        return object.team == team && object.isDisabled == isDisabled
     }
     
 }

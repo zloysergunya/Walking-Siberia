@@ -29,12 +29,20 @@ class TeamsSectionController: ListSectionController {
     override func sizeForItem(at index: Int) -> CGSize {
         let inset = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
         
+        if sectionModel.team == nil {
+            return configure(cell: TeamDescriptionCell()).sizeThatFits(collectionContext!.containerSize).inset(by: inset)
+        }
+        
         return CGSize(width: collectionContext!.containerSize.width, height: 72.0).inset(by: inset)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeue(of: TeamCell.self, for: self, at: index)
+        if let team = sectionModel.team {
+            let cell = collectionContext!.dequeue(of: TeamCell.self, for: self, at: index)
+            return configure(cell: cell, team: team)
+        }
         
+        let cell = collectionContext!.dequeue(of: TeamDescriptionCell.self, for: self, at: index)
         return configure(cell: cell)
     }
     
@@ -46,48 +54,58 @@ class TeamsSectionController: ListSectionController {
     override func didSelectItem(at index: Int) {
         super.didSelectItem(at: index)
         
-        delegate?.teamsSectionController(didSelect: sectionModel.team)
+        if let team = sectionModel.team {
+            delegate?.teamsSectionController(didSelect: team)
+        }
     }
     
-    private func configure(cell: TeamCell) -> UICollectionViewCell {
-        cell.nameLabel.text = sectionModel.team.name
+    private func configure(cell: TeamDescriptionCell) -> UICollectionViewCell {
+        cell.label.text = sectionModel.isDisabled
+        ? "Человек с ОВЗ принимает участие в соревнованиях индивидуально."
+        : "Команда должна иметь в составе не менее пяти человек, максимальный предел не ограничен."
+        
+        return cell
+    }
+    
+    private func configure(cell: TeamCell, team: Team) -> UICollectionViewCell {
+        cell.nameLabel.text = team.name
         
         let bold = Style("bold")
             .font(R.font.geometriaBold(size: 20.0) ?? .systemFont(ofSize: 20.0))
             .foregroundColor(R.color.graphicBlue() ?? .blue)
         
         let text: String
-        if let number = sectionModel.team.statistics.average?.number, number > 30000 {
+        if let number = team.statistics.average?.number, number > 30000 {
             text = "<bold>\(number.roundedWithAbbreviations)</bold>\nшаги"
         } else {
-            text = "<bold>\(sectionModel.team.statistics.average?.number ?? 0)</bold>\nшаги"
+            text = "<bold>\(team.statistics.average?.number ?? 0)</bold>\nшаги"
         }
         cell.stepsCountLabel.attributedText = text.style(tags: bold).attributedString
         
-        let userCategory: UserCategory? = .init(rawValue: sectionModel.team.type)
+        let userCategory: UserCategory? = .init(rawValue: team.type)
         let side = 48.0
         if userCategory == .manWithHIA {
-            if let url = sectionModel.team.users.first?.user.profile.avatar {
+            if let url = team.users.first?.user.profile.avatar {
                 ImageLoader.setImage(url: url, imgView: cell.imageView)
             } else {
-                cell.imageView.image = UIImage.createWithBgColorFromText(text: sectionModel.team.name.getInitials(), color: .clear, circular: true, side: 48.0)
+                cell.imageView.image = UIImage.createWithBgColorFromText(text: team.name.getInitials(), color: .clear, circular: true, side: 48.0)
                 let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
                 gradientLayer?.frame = CGRect(side: side)
                 cell.gradientLayer = gradientLayer
             }
-        } else if sectionModel.team.isClosed {
+        } else if team.isClosed {
             cell.imageView.image = R.image.lock48()
             let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
         } else {
-            cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(sectionModel.team.users.count)/\(5)", color: .clear, circular: true, side: 48.0)
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(team.users.count)/\(5)", color: .clear, circular: true, side: 48.0)
             let gradientLayer = GradientHelper.shared.layer(color: .linearBlue)
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
         }
         
-        cell.contentView.layer.borderWidth = sectionModel.team.isJoined ? 1.0 : 0.0
+        cell.contentView.layer.borderWidth = team.isJoined ? 1.0 : 0.0
         
         return cell
     }

@@ -28,7 +28,7 @@ class TeamsViewController: ViewController<TeamsView> {
         
         switch competitionType {
         case .team: title = "Команды"
-        case .single: title = "Одиночные"
+        case .single: title = "Индивидуально"
         }
     }
     
@@ -58,23 +58,20 @@ class TeamsViewController: ViewController<TeamsView> {
         updateCompetition()
     }
     
-    private func configure() {        
-        if let type = UserSettings.user?.type {
-            let userCategory: UserCategory? = .init(rawValue: type)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            var isCompetitionStarted = false
-            if let fromDate = dateFormatter.date(from: competition.fromDate) {
-                isCompetitionStarted = Calendar.current.startOfDay(for: fromDate) < Date()
-            }
+    private func configure() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        var isCompetitionStarted = false
+        if let fromDate = dateFormatter.date(from: competition.fromDate) {
+            isCompetitionStarted = Calendar.current.startOfDay(for: fromDate) < Date()
+        }
 
-            mainView.createTeamButton.isHidden = userCategory == .manWithHIA || competition.isClosed || isCompetitionStarted
-            mainView.takePartButton.isHidden = userCategory != .manWithHIA || competition.isClosed || isCompetitionStarted
-            
-            if userCategory == .manWithHIA {
-                mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
-            }
+        let isDisabled = UserSettings.user?.isDisabled ?? false
+        mainView.createTeamButton.isHidden = isDisabled || competition.isClosed || isCompetitionStarted
+        mainView.takePartButton.isHidden = isDisabled || competition.isClosed || isCompetitionStarted
+        
+        if isDisabled {
+            mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
         }
     }
     
@@ -118,7 +115,7 @@ class TeamsViewController: ViewController<TeamsView> {
                 case .single: teams = teams.filter({ $0.type == 50 })
                 }
                 
-                self.objects.append(contentsOf: teams.map({ TeamSectionModel(team: $0) }))
+                self.objects.append(contentsOf: teams.map({ TeamSectionModel(team: $0, isDisabled: self.competitionType == .single) }))
                 self.loadingState = .loaded
                 
             case .failure(let error):
@@ -144,7 +141,7 @@ class TeamsViewController: ViewController<TeamsView> {
             
             switch result {
             case .success(let team):
-                self.objects.insert(TeamSectionModel(team: team), at: 0)
+                self.objects.insert(TeamSectionModel(team: team, isDisabled: self.competitionType == .single), at: 0)
                 self.updateCompetition()
                 self.adapter.performUpdates(animated: true)
                 
@@ -162,7 +159,7 @@ class TeamsViewController: ViewController<TeamsView> {
             
             switch result {
             case .success:
-                if let index = self.objects.firstIndex(where: { $0.team.id == teamId }) {
+                if let index = self.objects.firstIndex(where: { $0.team?.id == teamId }) {
                     self.objects.remove(at: index)
                 }
                 self.updateCompetition()
@@ -184,7 +181,7 @@ class TeamsViewController: ViewController<TeamsView> {
     
     @objc private func takePart() {
         if competition.isJoined {
-            if let teamId = objects.first(where: { $0.team.ownerId == UserSettings.user?.userId })?.team.id {
+            if let teamId = objects.first(where: { $0.team?.ownerId == UserSettings.user?.userId })?.team?.id {
                 dialog(title: "Вы хотите покинуть соревнование?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { [weak self] _ in
                     self?.deleteTeam(teamId: teamId)
                 })
@@ -200,6 +197,13 @@ class TeamsViewController: ViewController<TeamsView> {
 extension TeamsViewController: ListAdapterDataSource {
    
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        if objects.contains(where: { $0.team == nil }) {
+            return objects
+        }
+        if loadingState == .loaded {
+            objects.insert(.init(team: nil, isDisabled: competitionType == .single), at: 0)
+        }
+        
         return objects
     }
     

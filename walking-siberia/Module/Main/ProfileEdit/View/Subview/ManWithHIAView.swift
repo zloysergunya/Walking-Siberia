@@ -16,7 +16,7 @@ class ManWithHIAView: RootView {
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Человек с ОВЗ отличается определенными ограничениями в повседневной жизнедеятельности. Речь идет о физических, психических или сенсорных дефектах."
+        label.text = "Человек, имеющий любую группу инвалидности."
         label.textColor = .init(hex: 0xAAABAD)
         label.font = R.font.geometriaRegular(size: 12.0)
         label.numberOfLines = 0

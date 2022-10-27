@@ -7,6 +7,7 @@ struct Team: Codable {
     let status: Int
     let statusLabel: String
     let type: Int
+    let isDisabled: Bool?
     let typeLabel: String
     let ownerId: Int
     var users: [Participant]
@@ -23,6 +24,9 @@ extension Team: Equatable {
         && lhs.isJoined == rhs.isJoined
         && lhs.users == rhs.users
         && lhs.status == rhs.status
+        && lhs.isDisabled == rhs.isDisabled
+        && lhs.isClosed == rhs.isClosed
+        && lhs.isJoined == rhs.isJoined
     }
     
 }

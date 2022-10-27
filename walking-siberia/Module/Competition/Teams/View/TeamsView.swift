@@ -45,7 +45,7 @@ class TeamsView: RootView {
     override func setupConstraints() {
         searchBar.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16.0)
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview().inset(4.0)
         }
         
         collectionView.snp.makeConstraints { make in
