@@ -134,7 +134,12 @@ class ProfileEditContentView: RootView {
         return datePicker
     }()
     
-    let manWithHIAView = ManWithHIAView()
+    let manWithHIAView: ManWithHIAView = {
+        let view = ManWithHIAView()
+        view.checkBox.isUserInteractionEnabled = false
+        
+        return view
+    }()
     
     let heightTextField: FloatingTextField = {
         let textField = FloatingTextField()

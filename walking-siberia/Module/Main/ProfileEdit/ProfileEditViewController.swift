@@ -73,7 +73,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.competitionsNotifyActionView.switcherView.isOn = user.profile.isNoticeCompetition
         mainView.contentView.infoNotifyActionView.switcherView.isOn = user.profile.isNoticeInfo
         
-        mainView.contentView.manWithHIAView.checkBox.isSelected = user.isDisabled ?? false
+        mainView.contentView.manWithHIAView.checkBox.isOn = user.isDisabled ?? false
     }
     
     private func save() {
@@ -84,7 +84,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
             return
         }
 
-        let isDisabled = mainView.contentView.manWithHIAView.checkBox.isSelected
+        let isDisabled = mainView.contentView.manWithHIAView.checkBox.isOn
         let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
         let profileUpdate = ProfileUpdateRequest(phone: formattedPhone,
                                                  lastName: mainView.contentView.surnameTextField.text,
@@ -148,7 +148,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
          mainView.contentView.birthdayTextField, mainView.contentView.heightTextField,
          mainView.contentView.weightTextField, mainView.contentView.phoneTextField, mainView.contentView.emailTextField,
          mainView.contentView.bioTextField, mainView.contentView.telegramField, mainView.contentView.instagramField,
-         mainView.contentView.vkField, mainView.contentView.okField].forEach {
+         mainView.contentView.vkField, mainView.contentView.okField, mainView.contentView.manWithHIAView.checkBox].forEach {
             $0.isUserInteractionEnabled = isProfileEditing
         }
     }
