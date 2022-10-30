@@ -62,7 +62,6 @@ class ProfileEditCellView: UIView {
     }
     
     private func setupConstraints() {
-        
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(12.0)
@@ -85,7 +84,6 @@ class ProfileEditCellView: UIView {
             make.bottom.equalToSuperview()
             make.height.equalTo(1.0)
         }
-        
     }
     
 }

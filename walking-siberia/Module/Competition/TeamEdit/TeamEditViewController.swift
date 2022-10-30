@@ -1,4 +1,5 @@
 import UIKit
+import IGListKit
 
 protocol TeamEditViewControllerDelegate: AnyObject {
     func teamEditViewController(didUpdate team: Team)
@@ -16,9 +17,16 @@ class TeamEditViewController: ViewController<TeamEditView> {
     private let competition: Competition
     private let type: EditType
     private let provider = TeamEditProvider()
-    private let maxParticipantsCount = 5
     
-    private var currentParticipants: [User] = []
+    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    private var users: [Participant] = []
+    private var teamName = ""
+    private var isTeamClosed: Bool = false
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
     
     init(competition: Competition, type: EditType) {
         self.competition = competition
@@ -34,19 +42,23 @@ class TeamEditViewController: ViewController<TeamEditView> {
         super.viewDidLoad()
         
         mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
-        mainView.contentView.addParticipantsButton.addTarget(self, action: #selector(addParticipants), for: .touchUpInside)
-        mainView.contentView.saveTeamButton.addTarget(self, action: #selector(saveTeam), for: .touchUpInside)
+        mainView.addParticipantsButton.addTarget(self, action: #selector(addParticipants), for: .touchUpInside)
+        mainView.saveTeamButton.addTarget(self, action: #selector(saveTeam), for: .touchUpInside)
+        mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        
+        adapter.collectionView = mainView.collectionView
+        adapter.dataSource = self
         
         switch type {
         case .create:
             mainView.navBar.title = "Создание команды"
             
         case .edit(let team):
+            teamName = team.name
+            isTeamClosed = team.isClosed
             mainView.navBar.title = "Редактирование команды"
-            mainView.contentView.nameField.text = team.name
-            mainView.contentView.closeTeamView.switcherView.isOn = team.isClosed
-            mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount || competition.isClosed
-            updateParticipants()
+            mainView.addParticipantsButton.isHidden = competition.isClosed
+            loadUsers(flush: true)
         }
     }
     
@@ -56,58 +68,56 @@ class TeamEditViewController: ViewController<TeamEditView> {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func updateParticipants() {
-        mainView.contentView.participantsStackView.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-        currentParticipants.enumerated().forEach { user in
-            let cell = FindFriendsCell()
-            let fullName = "\(user.element.profile.firstName) \(user.element.profile.lastName)"
-            cell.nameLabel.text = fullName
-            
-            if let url = user.element.profile.avatar {
-                ImageLoader.setImage(url: url, imgView: cell.imageView)
-            } else {
-                cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
-                let gradientLayer = GradientHelper.shared.layer(userId: user.element.userId)
-                gradientLayer?.frame = CGRect(side: 48.0)
-                cell.gradientLayer = gradientLayer
+    private func loadUsers(flush: Bool) {
+        guard loadingState != .loading, case .edit(let team) = type else { return }
+        
+        loadingState = .loading
+        
+        if flush {
+            provider.page = 1
+        }
+        
+        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled ?? false) { [weak self] result in
+            guard let self = self else {
+                return
             }
             
-            cell.actionButton.isSelected = true
-            cell.actionButton.isHidden = user.element.userId == UserSettings.user?.userId
-            cell.actionButton.tag = user.offset
-            cell.actionButton.addTarget(self, action: #selector(removeParticipant), for: .touchUpInside)
+            self.mainView.collectionView.refreshControl?.endRefreshing()
             
-            if case .edit(let team) = type {
-                cell.contentView.layer.borderWidth = team.ownerId == user.element.userId ? 1.0 : 0.0
+            switch result {
+            case .success(let users):
+                if flush {
+                    self.users.removeAll()
+                }
+                
+                self.users.append(contentsOf: users)
+                self.loadingState = .loaded
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+                self.loadingState = .failed(error: error)
             }
-            
-            cell.tag = user.offset
-            cell.gestureRecognizers?.removeAll()
-            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openUserProfile)))
-            
-            mainView.contentView.participantsStackView.addArrangedSubview(cell)
         }
     }
     
     private func createTeam() {
-        guard let name = mainView.contentView.nameField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty else {
-            Animations.shake(view: mainView.contentView.nameField)
+        guard !teamName.isEmpty else {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
-            
+
             return
         }
-        
-        let status = mainView.contentView.closeTeamView.switcherView.isOn ? 1 : 0
+
+        let status = isTeamClosed ? 1 : 0
         let teamCreateRequest = TeamCreateRequest(competitionId: competition.id,
-                                                  name: name,
+                                                  name: teamName,
                                                   status: status,
-                                                  userIds: currentParticipants.map({ $0.userId }))
+                                                  userIds: users.map({ $0.userId }))
         provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
             switch result {
             case .success(let team):
                 self?.delegate?.teamEditViewController(didUpdate: team)
                 self?.close()
-                
+
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
             }
@@ -115,25 +125,22 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     private func updateTeam() {
-        guard case .edit(let team) = type else {
-            return
-        }
-        
-        guard let name = mainView.contentView.nameField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !name.isEmpty else {
-            Animations.shake(view: mainView.contentView.nameField)
+        guard case .edit(let team) = type else { return }
+
+        guard !teamName.isEmpty else {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
-            
+
             return
         }
-        
-        var userIds = currentParticipants.map({ $0.userId })
-        if let index = currentParticipants.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
+
+        var userIds = users.map({ $0.userId })
+        if let index = users.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
             userIds.remove(at: index)
         }
-        
-        let status = mainView.contentView.closeTeamView.switcherView.isOn ? 1 : 0
+
+        let status = isTeamClosed ? 1 : 0
         let teamUpdateRequest = TeamUpdateRequest(teamId: team.id,
-                                                  name: name,
+                                                  name: teamName,
                                                   status: status,
                                                   userIds: userIds)
         provider.updateTeam(teamUpdateRequest: teamUpdateRequest) { [weak self] result in
@@ -141,7 +148,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
             case .success(let team):
                 self?.delegate?.teamEditViewController(didUpdate: team)
                 self?.close()
-                
+
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
             }
@@ -153,20 +160,20 @@ class TeamEditViewController: ViewController<TeamEditView> {
     }
     
     @objc private func addParticipants() {
-        let availableCount = 5 - currentParticipants.count
-        guard availableCount > 0 else {
-            showError(text: "Достигнуто максимальное число участников")
-            
-            return
-        }
-        
-        if let index = currentParticipants.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
-            currentParticipants.remove(at: index)
-        }
-        
-        let viewController = FindFriendsViewController(availableCount: availableCount, currentParticipants: currentParticipants)
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+//        let availableCount = 5 - currentParticipants.count
+//        guard availableCount > 0 else {
+//            showError(text: "Достигнуто максимальное число участников")
+//
+//            return
+//        }
+//
+//        if let index = currentParticipants.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
+//            currentParticipants.remove(at: index)
+//        }
+//
+//        let viewController = FindFriendsViewController(availableCount: availableCount, currentParticipants: currentParticipants)
+//        viewController.delegate = self
+//        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func saveTeam() {
@@ -176,36 +183,73 @@ class TeamEditViewController: ViewController<TeamEditView> {
         }
     }
     
-    @objc private func removeParticipant(_ sender: UIButton) {
-        Utils.impact()
-        
-        currentParticipants.remove(at: sender.tag)
-        mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
-        updateParticipants()
-    }
-    
-    @objc private func openUserProfile(_ gestureRecognizer: UIGestureRecognizer) {
-        guard let index = gestureRecognizer.view?.tag,
-              currentParticipants[index].userId != UserSettings.user?.userId
-        else { return }
-        
-        navigationController?.pushViewController(UserProfileViewController(userId: currentParticipants[index].userId), animated: true)
+    @objc private func pullToRefresh() {
+        loadUsers(flush: true)
     }
     
 }
 
+// MARK: - ListAdapterDataSource
+extension TeamEditViewController: ListAdapterDataSource {
+    
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        switch type {
+        case .create:
+            return [TeamEditSectionModel(users: users, team: nil)]
+            
+        case .edit(let team):
+            return [TeamEditSectionModel(users: users, team: team)]
+        }
+    }
+    
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        let sectionController = TeamEditSectionController()
+        sectionController.delegate = self
+        
+        return sectionController
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return EmptyView(loadingState: loadingState)
+    }
+    
+    
+}
+
+// MARK: - TeamEditSectionControllerDelegate
+extension TeamEditViewController: TeamEditSectionControllerDelegate {
+
+    func teamEditSectionController(didSelect user: Participant) {
+        guard user.userId != UserSettings.user?.userId else { return }
+        navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
+    }
+    
+    func teamEditSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
+        if section + 1 >= users.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
+            loadUsers(flush: false)
+        }
+    }
+    
+    func teamEditSectionController(didChange teamName: String) {
+        self.teamName = teamName
+    }
+    
+    func teamEditSectionController(didChange isTeamClosed: Bool) {
+        self.isTeamClosed = isTeamClosed
+    }
+    
+}
 // MARK: - FindFriendsViewControllerDelegate
 extension TeamEditViewController: FindFriendsViewControllerDelegate {
     
     func findFriendsViewController(didSelect users: [User]) {
-        currentParticipants = users
-        
-        if let user = UserSettings.user, type != .create {
-            currentParticipants.insert(user, at: 0)
-        }
-        
-        mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount
-        updateParticipants()
+//        currentParticipants = users
+//
+//        if let user = UserSettings.user, type != .create {
+//            currentParticipants.insert(user, at: 0)
+//        }
+//
+//        updateParticipants()
     }
     
 }
