@@ -8,8 +8,13 @@ class TeamViewController: ViewController<TeamView> {
     private let provider = TeamProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    
+    private var users: [Participant] = []
     private var isOwner = false
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
 
     init(team: Team, competition: Competition) {
         self.team = team
@@ -33,6 +38,7 @@ class TeamViewController: ViewController<TeamView> {
         adapter.dataSource = self
         
         configure()
+        loadUsers(flush: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +60,7 @@ class TeamViewController: ViewController<TeamView> {
         } else if team.isJoined {
             mainView.actionButton.setTitle("Покинуть команду", for: .normal)
             mainView.actionButton.isHidden = false
-        } else if !team.isClosed && team.users.count < 5 {
+        } else if !team.isClosed && !competition.isClosed && users.count < 5 {
             mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
             mainView.actionButton.isHidden = false
         } else {
@@ -64,19 +70,47 @@ class TeamViewController: ViewController<TeamView> {
         loadMyTeam()
     }
     
-    private func updateTeam() {
-        provider.updateTeam(teamId: team.id) { [weak self] result in
-            guard let self = self else { return }
+    private func loadUsers(flush: Bool) {
+        guard loadingState != .loading else { return }
+        
+        loadingState = .loading
+        
+        if flush {
+            provider.page = 1
+        }
+        
+        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled ?? false) { [weak self] result in
+            guard let self = self else {
+                return
+            }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
             
             switch result {
-            case .success(let team):
-                self.team = team
-                self.configure()
+            case .success(let users):
+                if flush {
+                    self.users.removeAll()
+                }
+                
+                self.users.append(contentsOf: users)
+                self.loadingState = .loaded
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
+                self.loadingState = .failed(error: error)
+            }
+        }
+    }
+    
+    private func updateTeam() {
+        provider.updateTeam(teamId: team.id) { [weak self] result in
+            switch result {
+            case .success(let team):
+                self?.team = team
+                self?.configure()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
             }
         }
     }
@@ -115,7 +149,7 @@ class TeamViewController: ViewController<TeamView> {
                                                   createdAt: self.team.createAt,
                                                   user: user,
                                                   statistics: ParticipantStatistics(total: Average(number: 0, km: 0.0), average: nil))
-                    self.team.users.append(participant)
+                    self.users.append(participant)
                 }
                 
                 self.team.isJoined = true
@@ -133,8 +167,8 @@ class TeamViewController: ViewController<TeamView> {
             
             switch result {
             case .success:
-                if let index = self.team.users.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
-                    self.team.users.remove(at: index)
+                if let index = self.users.firstIndex(where: { $0.userId == UserSettings.user?.userId }) {
+                    self.users.remove(at: index)
                 }
                 
                 self.team.isJoined = false
@@ -189,14 +223,14 @@ class TeamViewController: ViewController<TeamView> {
     
     @objc private func openUserProfile(_ gestureRecognizer: UIGestureRecognizer) {
         guard let index = gestureRecognizer.view?.tag,
-              team.users[index].userId != UserSettings.user?.userId
+              users[index].userId != UserSettings.user?.userId
         else { return }
         
         
     }
     
     @objc private func pullToRefresh() {
-        updateTeam()
+        loadUsers(flush: true)
     }
     
 }
@@ -204,7 +238,7 @@ class TeamViewController: ViewController<TeamView> {
 // MARK: - ListAdapterDataSource
 extension TeamViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return team.users.map({ TeamParticipantSectionModel(user: $0, team: team) })
+        return users.map({ TeamParticipantSectionModel(user: $0, team: team) })
     }
 
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -215,7 +249,7 @@ extension TeamViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView(loadingState: .loaded)
+        return EmptyView(loadingState: loadingState)
     }
     
 }
@@ -226,12 +260,14 @@ extension TeamViewController: TeamSectionControllerDelegate {
     func teamSectionController(didSelect user: Participant) {
         guard user.userId != UserSettings.user?.userId else { return }
         
-        let viewController = UserProfileViewController(user: user.user)
+        let viewController = UserProfileViewController(userId: user.user.userId)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
     func teamSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {
-        #warning("TODO: pagination")
+        if section + 1 >= users.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
+            loadUsers(flush: false)
+        }
     }
     
 }

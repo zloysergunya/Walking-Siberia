@@ -63,6 +63,7 @@
 		C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D027C72FC700E23AD8 /* RouteInfoView.swift */; };
 		C40919D627C72FDD00E23AD8 /* RouteInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */; };
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
+		C41EECE4290E49A400A05802 /* TeamUidUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EECE3290E49A400A05802 /* TeamUidUsers.swift */; };
 		C422A24A27ED889F00312F14 /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A24827ED889F00312F14 /* VideosViewController.swift */; };
 		C422A24B27ED889F00312F14 /* VideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A24927ED889F00312F14 /* VideosView.swift */; };
 		C422A25127ED890600312F14 /* VideosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422A25027ED890600312F14 /* VideosProvider.swift */; };
@@ -340,6 +341,7 @@
 		C40919D027C72FC700E23AD8 /* RouteInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoView.swift; sourceTree = "<group>"; };
 		C40919D527C72FDD00E23AD8 /* RouteInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoProvider.swift; sourceTree = "<group>"; };
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
+		C41EECE3290E49A400A05802 /* TeamUidUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUidUsers.swift; sourceTree = "<group>"; };
 		C422A24827ED889F00312F14 /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		C422A24927ED889F00312F14 /* VideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosView.swift; sourceTree = "<group>"; };
 		C422A25027ED890600312F14 /* VideosProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosProvider.swift; sourceTree = "<group>"; };
@@ -1924,6 +1926,7 @@
 				C4DA0D3B27DEF1BA00066965 /* TeamLeaveRequest.swift */,
 				C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */,
 				C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */,
+				C41EECE3290E49A400A05802 /* TeamUidUsers.swift */,
 			);
 			path = TeamsAPI;
 			sourceTree = "<group>";
@@ -2638,6 +2641,7 @@
 				C4326A1327F5C56600FB53CE /* NotificationExtra.swift in Sources */,
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
+				C41EECE4290E49A400A05802 /* TeamUidUsers.swift in Sources */,
 				C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */,
 				C49AFBFE27E8A80D009787AB /* TrainersSectionController.swift in Sources */,
 				C49AFBFA27E89FA2009787AB /* Trainer.swift in Sources */,
