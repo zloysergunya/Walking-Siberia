@@ -3,7 +3,7 @@ import IGListDiffKit
 
 class TeamSectionModel {
     
-    let team: Team?
+    var team: Team?
     let isDisabled: Bool
     
     init(team: Team?, isDisabled: Bool) {

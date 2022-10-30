@@ -1,7 +1,14 @@
 import UIKit
 import IGListKit
 
+protocol TeamViewControllerDelegate: AnyObject {
+    func teamViewController(didUpdate team: Team)
+    func teamViewController(didDelete teamId: Int)
+}
+
 class TeamViewController: ViewController<TeamView> {
+    
+    weak var delegate: TeamViewControllerDelegate?
     
     private var team: Team
     private let competition: Competition
@@ -107,6 +114,7 @@ class TeamViewController: ViewController<TeamView> {
             switch result {
             case .success(let team):
                 self?.team = team
+                self?.delegate?.teamViewController(didUpdate: team)
                 self?.configure()
                 
             case .failure(let error):
@@ -134,7 +142,9 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     private func openTeamEdit() {
-        navigationController?.pushViewController(TeamEditViewController(competition: competition, type: .edit(team: team)), animated: true)
+        let viewController = TeamEditViewController(competition: competition, type: .edit(team: team))
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func joinTeam() {
@@ -182,12 +192,15 @@ class TeamViewController: ViewController<TeamView> {
     
     private func deleteTeam() {
         provider.deleteTeam(teamId: team.id) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success:
-                self?.close()
+                self.delegate?.teamViewController(didDelete: self.team.id)
+                self.close()
                 
             case .failure(let error):
-                self?.showError(text: error.localizedDescription)
+                self.showError(text: error.localizedDescription)
             }
         }
     }
@@ -268,6 +281,17 @@ extension TeamViewController: TeamSectionControllerDelegate {
         if section + 1 >= users.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
             loadUsers(flush: false)
         }
+    }
+    
+}
+
+// MARK: - TeamEditViewControllerDelegate
+extension TeamViewController: TeamEditViewControllerDelegate {
+    
+    func teamEditViewController(didUpdate team: Team) {
+        self.team = team
+        configure()
+        loadUsers(flush: true)
     }
     
 }

@@ -1,11 +1,17 @@
 import UIKit
 
+protocol TeamEditViewControllerDelegate: AnyObject {
+    func teamEditViewController(didUpdate team: Team)
+}
+
 class TeamEditViewController: ViewController<TeamEditView> {
     
     enum EditType: Equatable {
         case create
         case edit(team: Team)
     }
+    
+    weak var delegate: TeamEditViewControllerDelegate?
 
     private let competition: Competition
     private let type: EditType
@@ -98,7 +104,8 @@ class TeamEditViewController: ViewController<TeamEditView> {
                                                   userIds: currentParticipants.map({ $0.userId }))
         provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
             switch result {
-            case .success:
+            case .success(let team):
+                self?.delegate?.teamEditViewController(didUpdate: team)
                 self?.close()
                 
             case .failure(let error):
@@ -131,7 +138,8 @@ class TeamEditViewController: ViewController<TeamEditView> {
                                                   userIds: userIds)
         provider.updateTeam(teamUpdateRequest: teamUpdateRequest) { [weak self] result in
             switch result {
-            case .success:
+            case .success(let team):
+                self?.delegate?.teamEditViewController(didUpdate: team)
                 self?.close()
                 
             case .failure(let error):

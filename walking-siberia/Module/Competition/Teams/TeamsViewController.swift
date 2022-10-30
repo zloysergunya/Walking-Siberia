@@ -64,10 +64,11 @@ class TeamsViewController: ViewController<TeamsView> {
         if let fromDate = dateFormatter.date(from: competition.fromDate) {
             isCompetitionStarted = Calendar.current.startOfDay(for: fromDate) < Date()
         }
+        isCompetitionStarted = false
 
         let isDisabled = UserSettings.user?.isDisabled ?? false
-        mainView.createTeamButton.isHidden = isDisabled || competition.isClosed || isCompetitionStarted
-        mainView.takePartButton.isHidden = isDisabled || competition.isClosed || isCompetitionStarted
+        mainView.createTeamButton.isHidden = isDisabled || competition.isClosed || isCompetitionStarted || competitionType == .single
+        mainView.takePartButton.isHidden = !isDisabled || competition.isClosed || isCompetitionStarted || competitionType == .team
         
         if isDisabled {
             mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
@@ -175,7 +176,9 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     @objc private func openCreateTeam() {
-        navigationController?.pushViewController(TeamEditViewController(competition: competition, type: .create), animated: true)
+        let viewController = TeamEditViewController(competition: competition, type: .create)
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func takePart() {
@@ -226,7 +229,9 @@ extension TeamsViewController: TeamsSectionControllerDelegate {
         if let isDisabled = team.isDisabled, isDisabled {
             navigationController?.pushViewController(UserProfileViewController(userId: team.ownerId), animated: true)
         } else {
-            navigationController?.pushViewController(TeamViewController(team: team, competition: competition), animated: true)
+            let viewController = TeamViewController(team: team, competition: competition)
+            viewController.delegate = self
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
@@ -234,6 +239,35 @@ extension TeamsViewController: TeamsSectionControllerDelegate {
         if section + 1 >= objects.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
             loadTeams(flush: false)
         }
+    }
+    
+}
+
+// MARK: - TeamViewControllerDelegate
+extension TeamsViewController: TeamViewControllerDelegate {
+    
+    func teamViewController(didUpdate team: Team) {
+        if let index = objects.firstIndex(where: { $0.team?.id == team.id }) {
+            objects[index] = .init(team: team, isDisabled: objects[index].isDisabled)
+            adapter.performUpdates(animated: true)
+        }
+    }
+    
+    func teamViewController(didDelete teamId: Int) {
+        if let index = objects.firstIndex(where: { $0.team?.id == teamId }) {
+            objects.remove(at: index)
+            adapter.performUpdates(animated: true)
+        }
+    }
+    
+}
+
+// MARK: - TeamEditViewControllerDelegate
+extension TeamsViewController: TeamEditViewControllerDelegate {
+    
+    func teamEditViewController(didUpdate team: Team) {
+        objects.insert(.init(team: team, isDisabled: competitionType == .single), at: 1)
+        adapter.performUpdates(animated: true)
     }
     
 }
