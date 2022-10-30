@@ -171,7 +171,7 @@ extension UserListViewController: ListAdapterDataSource {
 extension UserListViewController: UserListSectionControllerDelegate {
     
     func userListSectionController(didSelect user: User) {
-        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
+        navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
     }
     
     func userListSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {

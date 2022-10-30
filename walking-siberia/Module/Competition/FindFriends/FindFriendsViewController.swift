@@ -175,7 +175,7 @@ extension FindFriendsViewController: UISearchBarDelegate {
 extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
     
     func findFriendsSectionController(didSelect user: User) {
-        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
+        navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
     }
     
     func findFriendsSectionController(didSelectAction button: UIButton, user: User) {

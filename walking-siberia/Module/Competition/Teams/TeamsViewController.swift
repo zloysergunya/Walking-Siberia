@@ -47,15 +47,14 @@ class TeamsViewController: ViewController<TeamsView> {
         adapter.dataSource = self
         
         configure()
+        loadTeams(flush: true)
+        updateCompetition()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: false)
-        
-        loadTeams(flush: true)
-        updateCompetition()
     }
     
     private func configure() {
@@ -111,8 +110,8 @@ class TeamsViewController: ViewController<TeamsView> {
                 }
                 
                 switch self.competitionType {
-                case .team: teams = teams.filter({ $0.type != 50 })
-                case .single: teams = teams.filter({ $0.type == 50 })
+                case .team: teams = teams.filter({ $0.isDisabled != true })
+                case .single: teams = teams.filter({ $0.isDisabled == true })
                 }
                 
                 self.objects.append(contentsOf: teams.map({ TeamSectionModel(team: $0, isDisabled: self.competitionType == .single) }))
@@ -224,8 +223,8 @@ extension TeamsViewController: ListAdapterDataSource {
 extension TeamsViewController: TeamsSectionControllerDelegate {
     
     func teamsSectionController(didSelect team: Team) {
-        if UserCategory(rawValue: team.type) == .manWithHIA, let user = team.users.first?.user {
-            navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
+        if let isDisabled = team.isDisabled, isDisabled {
+            navigationController?.pushViewController(UserProfileViewController(userId: team.ownerId), animated: true)
         } else {
             navigationController?.pushViewController(TeamViewController(team: team, competition: competition), animated: true)
         }

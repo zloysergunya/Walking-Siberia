@@ -39,7 +39,6 @@ class TeamEditViewController: ViewController<TeamEditView> {
             mainView.navBar.title = "Редактирование команды"
             mainView.contentView.nameField.text = team.name
             mainView.contentView.closeTeamView.switcherView.isOn = team.isClosed
-            currentParticipants = team.users.map({ $0.user })
             mainView.contentView.addParticipantsButton.isHidden = currentParticipants.count == maxParticipantsCount || competition.isClosed
             updateParticipants()
         }
@@ -182,7 +181,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
               currentParticipants[index].userId != UserSettings.user?.userId
         else { return }
         
-        navigationController?.pushViewController(UserProfileViewController(user: currentParticipants[index]), animated: true)
+        navigationController?.pushViewController(UserProfileViewController(userId: currentParticipants[index].userId), animated: true)
     }
     
 }
