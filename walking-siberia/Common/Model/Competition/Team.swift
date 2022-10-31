@@ -13,6 +13,8 @@ struct Team: Codable {
     var isClosed: Bool
     var isJoined: Bool
     let statistics: ParticipantStatistics
+    let avatar: String?
+    let userCount: Int
 }
 
 extension Team: Equatable {
@@ -24,6 +26,8 @@ extension Team: Equatable {
         && lhs.isDisabled == rhs.isDisabled
         && lhs.isClosed == rhs.isClosed
         && lhs.isJoined == rhs.isJoined
+        && lhs.avatar == rhs.avatar
+        && lhs.userCount == rhs.userCount
     }
     
 }

@@ -84,21 +84,21 @@ class TeamsSectionController: ListSectionController {
         
         let side = 48.0
         if let isDisabled = team.isDisabled, isDisabled {
-//            if let url = team.users.first?.user.profile.avatar {
-//                ImageLoader.setImage(url: url, imgView: cell.imageView)
-//            } else {
+            if let url = team.avatar {
+                ImageLoader.setImage(url: url, imgView: cell.imageView)
+            } else {
                 cell.imageView.image = UIImage.createWithBgColorFromText(text: team.name.getInitials(), color: .clear, circular: true, side: 48.0)
                 let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
                 gradientLayer?.frame = CGRect(side: side)
                 cell.gradientLayer = gradientLayer
-//            }
+            }
         } else if team.isClosed {
             cell.imageView.image = R.image.lock48()
             let gradientLayer = GradientHelper.shared.layer(color: .linearRed)
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
         } else {
-//            cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(team.users.count)/\(5)", color: .clear, circular: true, side: 48.0)
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(team.userCount)", color: .clear, circular: true, side: 48.0)
             let gradientLayer = GradientHelper.shared.layer(color: .linearBlue)
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
