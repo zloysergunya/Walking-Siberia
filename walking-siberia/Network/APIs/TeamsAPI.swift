@@ -42,7 +42,8 @@ class TeamsAPI {
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "filter": teamsUidRequest.filter,
+            "name": teamsUidRequest.name,
+            "disabled": teamsUidRequest.disabled,
             "limit": teamsUidRequest.limit,
             "page": teamsUidRequest.page
         ])

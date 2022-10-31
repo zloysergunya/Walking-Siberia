@@ -11,6 +11,8 @@ class TeamsViewController: ViewController<TeamsView> {
     private let competitionType: CompetitionType
     private let provider = TeamsProvider()
     
+    private var query: String = ""
+    private var pendingRequestWorkItem: DispatchWorkItem?
     private var loadingState: LoadingState = .none {
         didSet {
             adapter.performUpdates(animated: true)
@@ -43,6 +45,7 @@ class TeamsViewController: ViewController<TeamsView> {
         mainView.createTeamButton.addTarget(self, action: #selector(openCreateTeam), for: .touchUpInside)
         mainView.takePartButton.addTarget(self, action: #selector(takePart), for: .touchUpInside)
         
+        mainView.searchBar.delegate = self
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
         
@@ -99,7 +102,7 @@ class TeamsViewController: ViewController<TeamsView> {
             provider.page = 1
         }
 
-        provider.loadTeams(uid: competition.id, filter: filter) { [weak self] result in
+        provider.loadTeams(uid: competition.id, searchText: query, isDisabled: competitionType == .single)  { [weak self] result in
             guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
@@ -239,6 +242,35 @@ extension TeamsViewController: TeamsSectionControllerDelegate {
         if section + 1 >= objects.count - Constants.pageLimit / 2, loadingState != .loading, provider.page != -1 {
             loadTeams(flush: false)
         }
+    }
+    
+}
+
+// MARK: - UISearchBarDelegate
+extension TeamsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard query != searchText.trimmingCharacters(in: .whitespacesAndNewlines) else {
+            return
+        }
+        
+        pendingRequestWorkItem?.cancel()
+        
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            if searchText.isEmpty {
+                self.query = ""
+            } else {
+                self.query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            self.loadTeams(flush: true)
+        }
+        
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250), execute: requestWorkItem)
     }
     
 }
