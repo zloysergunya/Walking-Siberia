@@ -11,6 +11,7 @@ struct User: Codable {
     var isFriend: Bool?
     let isFillProfile: Bool
     let dailyStats: Average
+    let inTeam: Bool?
 }
 
 extension User: Equatable {
@@ -23,6 +24,7 @@ extension User: Equatable {
         && lhs.deviceId == rhs.deviceId
         && lhs.profile == rhs.profile
         && lhs.isFriend == rhs.isFriend
+        && lhs.inTeam == rhs.inTeam
     }
     
 }

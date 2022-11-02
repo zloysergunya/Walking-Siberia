@@ -17,7 +17,7 @@ class TeamView: RootView {
 
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
+        view.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 112.0, right: 0.0)
         view.alwaysBounceVertical = true
         view.showsVerticalScrollIndicator = false
         view.backgroundColor = .clear
@@ -38,7 +38,7 @@ class TeamView: RootView {
         button.setTitle("Удалить команду", for: .normal)
         button.isHidden = true
         button.setTitleColor(R.color.activeElements(), for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = .white
         button.layer.borderWidth = 1.0
         button.layer.borderColor = R.color.activeElements()?.cgColor
         

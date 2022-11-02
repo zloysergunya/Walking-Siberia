@@ -5,6 +5,7 @@ protocol TeamEditSectionControllerDelegate: AnyObject {
     func teamEditSectionController(didSelect user: Participant)
     func teamEditSectionController(didChange teamName: String)
     func teamEditSectionController(didChange isTeamClosed: Bool)
+    func teamEditSectionController(didSelectAction button: UIButton, user: User)
     func teamEditSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
 }
 
@@ -35,9 +36,9 @@ class TeamEditSectionController: ListSectionController {
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        let cell = collectionContext!.dequeue(of: ParticipantCell.self, for: self, at: index)
+        let cell = collectionContext!.dequeue(of: FindFriendsCell.self, for: self, at: index)
         
-        return configure(cell: cell, participant: sectionModel.users[index])
+        return configure(cell: cell, participant: sectionModel.users[index], index: index)
     }
     
     override func didUpdate(to object: Any) {
@@ -51,47 +52,44 @@ class TeamEditSectionController: ListSectionController {
         delegate?.teamEditSectionController(didSelect: sectionModel.users[index])
     }
     
-    private func configure(cell: ParticipantCell, participant: Participant) -> UICollectionViewCell {
-        let user = participant.user
-        
-        let fullName = "\(user.profile.firstName) \(user.profile.lastName)"
+    private func configure(cell: FindFriendsCell, participant: Participant, index: Int) -> UICollectionViewCell {
+        let fullName = "\(participant.user.profile.firstName) \(participant.user.profile.lastName)"
         cell.nameLabel.text = fullName
-        
-        var text = R.string.localizable.stepsCount(number: participant.statistics.total.number,
-                                                   preferredLanguages: ["ru"])
-        if participant.statistics.total.number > 30000 {
-            text = text.replacingOccurrences(of: "\(participant.statistics.total.number)",
-                                             with: participant.statistics.total.number.roundedWithAbbreviations)
-        }
-        cell.stepsCountLabel.text = text
-        cell.distanceLabel.text = "\(participant.statistics.total.km) км"
-        
-        if let url = user.profile.avatar {
+                
+        if let url = participant.user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: cell.imageView)
         } else {
-            let side = 48.0
-            cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(),
-                                                                     color: .clear,
-                                                                     circular: true,
-                                                                     side: side)
-            let gradientLayer = GradientHelper.shared.layer(userId: user.userId)
-            gradientLayer?.frame = CGRect(side: side)
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(), color: .clear, circular: true, side: 48.0)
+            let gradientLayer = GradientHelper.shared.layer(userId: participant.user.userId)
+            gradientLayer?.frame = CGRect(side: 48.0)
             cell.gradientLayer = gradientLayer
         }
         
-        if sectionModel.team?.ownerId == user.userId {
+        cell.actionButton.isSelected = true
+        cell.actionButton.isHidden = participant.user.userId == UserSettings.user?.userId
+        cell.actionButton.tag = index
+        cell.actionButton.removeTarget(nil, action: #selector(action), for: .touchUpInside)
+        cell.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
+        
+        if sectionModel.team?.ownerId == participant.user.userId {
             cell.contentView.layer.borderWidth = 1.0
+        } else {
+            cell.contentView.layer.borderWidth = 0.0
         }
-                
+        
         return cell
     }
     
     @objc private func changeTeamName(_ textField: UITextField) {
-        delegate?.teamEditSectionController(didChange: textField.text ?? ")
+        delegate?.teamEditSectionController(didChange: textField.text ?? "")
     }
     
     @objc private func toggleIsTeamClosed(_ sender: UISwitch) {
         delegate?.teamEditSectionController(didChange: sender.isOn)
+    }
+    
+    @objc private func action(_ sender: UIButton) {
+        delegate?.teamEditSectionController(didSelectAction: sender, user: sectionModel.users[sender.tag].user)
     }
     
 }

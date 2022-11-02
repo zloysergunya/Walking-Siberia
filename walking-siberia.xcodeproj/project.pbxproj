@@ -174,6 +174,9 @@
 		C4AB540727CA664A0004B5CE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */; };
 		C4AB540827CA664A0004B5CE /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540627CA664A0004B5CE /* ProfileEditView.swift */; };
 		C4AB540C27CA66780004B5CE /* ProfileEditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */; };
+		C4B6F04D29128A370070E2BE /* FriendsInvitesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B6F04C29128A370070E2BE /* FriendsInvitesRequest.swift */; };
+		C4B6F04F29128EA20070E2BE /* TeamAddUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B6F04E29128EA20070E2BE /* TeamAddUserRequest.swift */; };
+		C4B6F05129128EC30070E2BE /* TeamDeleteUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B6F05029128EC30070E2BE /* TeamDeleteUserRequest.swift */; };
 		C4B81B4C290A9DE50086C08E /* TeamDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B81B4B290A9DE50086C08E /* TeamDescriptionCell.swift */; };
 		C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB890527DDACA70063C4EB /* ChipsButton.swift */; };
 		C4BB890827DDAF620063C4EB /* TeamsUidRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */; };
@@ -455,6 +458,9 @@
 		C4AB540527CA664A0004B5CE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C4AB540627CA664A0004B5CE /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		C4AB540B27CA66780004B5CE /* ProfileEditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditContentView.swift; sourceTree = "<group>"; };
+		C4B6F04C29128A370070E2BE /* FriendsInvitesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsInvitesRequest.swift; sourceTree = "<group>"; };
+		C4B6F04E29128EA20070E2BE /* TeamAddUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAddUserRequest.swift; sourceTree = "<group>"; };
+		C4B6F05029128EC30070E2BE /* TeamDeleteUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDeleteUserRequest.swift; sourceTree = "<group>"; };
 		C4B81B4B290A9DE50086C08E /* TeamDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDescriptionCell.swift; sourceTree = "<group>"; };
 		C4BB890527DDACA70063C4EB /* ChipsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsButton.swift; sourceTree = "<group>"; };
 		C4BB890727DDAF620063C4EB /* TeamsUidRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsUidRequest.swift; sourceTree = "<group>"; };
@@ -1321,6 +1327,7 @@
 				C478449427E1D34600D9E275 /* FriendsSyncContactsRequest.swift */,
 				C4C385C627E64A08005D48FD /* FriendsAddRequest.swift */,
 				C4C385C827E64A66005D48FD /* FriendsDeleteRequest.swift */,
+				C4B6F04C29128A370070E2BE /* FriendsInvitesRequest.swift */,
 			);
 			path = FriendsAPI;
 			sourceTree = "<group>";
@@ -1944,6 +1951,8 @@
 				C4DA0D4027DF037300066965 /* TeamCreateRequest.swift */,
 				C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */,
 				C41EECE3290E49A400A05802 /* TeamUidUsers.swift */,
+				C4B6F04E29128EA20070E2BE /* TeamAddUserRequest.swift */,
+				C4B6F05029128EC30070E2BE /* TeamDeleteUserRequest.swift */,
 			);
 			path = TeamsAPI;
 			sourceTree = "<group>";
@@ -2586,8 +2595,10 @@
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
 				C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */,
 				C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */,
+				C4B6F04D29128A370070E2BE /* FriendsInvitesRequest.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
+				C4B6F04F29128EA20070E2BE /* TeamAddUserRequest.swift in Sources */,
 				C49AFBB127E6FFC6009787AB /* WalkRequest.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
 				C4C385BB27E62F73005D48FD /* UserProfileViewController.swift in Sources */,
@@ -2734,6 +2745,7 @@
 				C408EA8627AFFC8C004B82CB /* AuthAPI.swift in Sources */,
 				C408EA7027AFFC8C004B82CB /* SwipeNavigationController.swift in Sources */,
 				C450F4D429026A9700BF1EDF /* TeamParticipantSectionModel.swift in Sources */,
+				C4B6F05129128EC30070E2BE /* TeamDeleteUserRequest.swift in Sources */,
 				C408EA9D27AFFC8C004B82CB /* ServiceLocator.swift in Sources */,
 				C408EA7B27AFFC8C004B82CB /* LoadingState.swift in Sources */,
 				C4D8ECB127C3A4FE00BF0767 /* BadgeButton.swift in Sources */,

@@ -46,4 +46,18 @@ class TeamEditProvider {
         }
     }
     
+    func deleteUser(teamId: Int, userId: Int, completion: @escaping(Result<EmptyData, ModelError>) -> Void) {
+        let teamDeleteUserRequest = TeamDeleteUserRequest(teamId: teamId, teamUserId: userId)
+        TeamsAPI.teamDeleteUserPost(teamDeleteUserRequest: teamDeleteUserRequest) { response, error in
+            if let response = response?.data {
+                completion(.success(response))
+            } else if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(ModelError()))
+            }
+        }
+    }
+    
 }

@@ -27,6 +27,30 @@ class FriendsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func friendsInvitesGet(friendsInvitesRequest: FriendsInvitesRequest, completion: @escaping ((_ data: SuccessResponse<[User]>?,_ error: ErrorResponse?) -> Void)) {
+        friendsInvitesGetWithRequestBuilder(friendsInvitesRequest: friendsInvitesRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func friendsInvitesGetWithRequestBuilder(friendsInvitesRequest: FriendsInvitesRequest) -> RequestBuilder<SuccessResponse<[User]>> {
+        let path = "/friends-2"
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "disabled": friendsInvitesRequest.disabled,
+            "search": friendsInvitesRequest.search,
+            "limit": friendsInvitesRequest.limit,
+            "page": friendsInvitesRequest.page
+        ])
+
+        let requestBuilder: RequestBuilder<SuccessResponse<[User]>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
     class func friendsSyncContactsPost(friendsSyncContactsRequest: [FriendsSyncContactsRequest],
                                        completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
         friendsSyncContactsPostWithRequestBuilder(friendsSyncContactsRequest: friendsSyncContactsRequest).execute { (response, error) -> Void in

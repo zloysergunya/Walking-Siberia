@@ -62,7 +62,7 @@ class FindFriendsSectionController: ListSectionController {
             cell.gradientLayer = gradientLayer
         }
         
-        cell.actionButton.isSelected = sectionModel.isJoined        
+        cell.actionButton.isSelected = sectionModel.inTeam
         cell.actionButton.removeTarget(nil, action: #selector(action), for: .touchUpInside)
         cell.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
         
