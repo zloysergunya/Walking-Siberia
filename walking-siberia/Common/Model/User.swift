@@ -5,6 +5,7 @@ struct User: Codable {
     let phone: String?
     let email: String?
     let isDisabled: Bool?
+    let type: Int
     let typeLabel: String
     let deviceId: String?
     var profile: Profile
@@ -21,6 +22,8 @@ extension User: Equatable {
         && lhs.phone == rhs.phone
         && lhs.email == rhs.email
         && lhs.isDisabled == rhs.isDisabled
+        && lhs.type == rhs.type
+        && lhs.typeLabel == rhs.typeLabel
         && lhs.deviceId == rhs.deviceId
         && lhs.profile == rhs.profile
         && lhs.isFriend == rhs.isFriend
