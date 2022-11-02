@@ -78,7 +78,8 @@ class ProfileViewController: ViewController<ProfileView> {
         
         let age = calculateAge(birthday: user.profile.birthDate ?? "")
         mainView.contentView.nameLabel.text = "\(user.profile.firstName) \(user.profile.lastName), \(age ?? 0)"
-        mainView.contentView.idLabel.text = "id: \(user.userId)"
+        let userCategory: UserCategory? = .init(rawValue: user.type)
+        mainView.contentView.idLabel.text = "\(userCategory?.categoryName ?? "Нет данных о категории"), id: \(user.userId)"
         mainView.contentView.bioLabel.text = user.profile.aboutMe
     }
     
