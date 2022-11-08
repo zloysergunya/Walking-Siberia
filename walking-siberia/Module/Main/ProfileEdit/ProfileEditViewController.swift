@@ -106,6 +106,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
             case .success(let response):
                 UserSettings.user = response.data
                 self?.configure()
+                NotificationCenter.default.post(name: .userDidUpdate, object: nil)
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)

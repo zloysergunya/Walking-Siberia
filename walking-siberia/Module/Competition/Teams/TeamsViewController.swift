@@ -52,6 +52,8 @@ class TeamsViewController: ViewController<TeamsView> {
         configure()
         loadTeams(flush: true)
         updateCompetition()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(pullToRefresh), name: .userDidUpdate, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -175,6 +177,7 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     @objc private func pullToRefresh() {
+        updateCompetition()
         loadTeams(flush: true)
     }
     

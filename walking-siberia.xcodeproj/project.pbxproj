@@ -168,6 +168,7 @@
 		C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */; };
 		C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */; };
 		C4A1517527B17E4B00C95344 /* AccountRegisterPrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */; };
+		C4A563C0291A3D58001DDA44 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A563BF291A3D58001DDA44 /* Notification+Name.swift */; };
 		C4A633E727FCB599003D1180 /* Date+EndOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */; };
 		C4A633E927FCC3DF003D1180 /* CompetitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A633E827FCC3DF003D1180 /* CompetitionView.swift */; };
 		C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB540227CA656F0004B5CE /* NavBarView.swift */; };
@@ -452,6 +453,7 @@
 		C4A1516E27B1359C00C95344 /* OTPTextFieldImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldImplementation.swift; sourceTree = "<group>"; };
 		C4A1517227B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryViewController.swift; sourceTree = "<group>"; };
 		C4A1517327B17E4B00C95344 /* AccountRegisterPrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRegisterPrimaryView.swift; sourceTree = "<group>"; };
+		C4A563BF291A3D58001DDA44 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+EndOfDay.swift"; sourceTree = "<group>"; };
 		C4A633E827FCC3DF003D1180 /* CompetitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionView.swift; sourceTree = "<group>"; };
 		C4AB540227CA656F0004B5CE /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 				C4979AB827DE097500CD6465 /* String+Initials.swift */,
 				C49AFBB227E70954009787AB /* Date+DatesBeetwenTwoDates.swift */,
 				C4A633E627FCB599003D1180 /* Date+EndOfDay.swift */,
+				C4A563BF291A3D58001DDA44 /* Notification+Name.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -2547,6 +2550,7 @@
 				C4326A1C27F5CA8700FB53CE /* NotificationCell.swift in Sources */,
 				C478449727E1DF4D00D9E275 /* FindFriendsSectionController.swift in Sources */,
 				C41EECEA290E6D0E00A05802 /* TeamEditSectionController.swift in Sources */,
+				C4A563C0291A3D58001DDA44 /* Notification+Name.swift in Sources */,
 				C40919D227C72FC700E23AD8 /* RouteInfoView.swift in Sources */,
 				C4C9336627DCC1690068D8D2 /* GradientHelper.swift in Sources */,
 				C40919D127C72FC700E23AD8 /* RouteInfoViewController.swift in Sources */,
