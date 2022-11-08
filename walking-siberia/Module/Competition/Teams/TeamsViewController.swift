@@ -65,13 +65,13 @@ class TeamsViewController: ViewController<TeamsView> {
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
         var isCompetitionStarted = false
         if let fromDate = dateFormatter.date(from: competition.fromDate) {
-            isCompetitionStarted = Calendar.current.startOfDay(for: fromDate) < Date()
+            isCompetitionStarted = fromDate < Date()
         }
-        isCompetitionStarted = false
 
         let isDisabled = UserSettings.user?.isDisabled ?? false
-        mainView.createTeamButton.isHidden = isDisabled || competition.isClosed || isCompetitionStarted || competitionType == .single
-        mainView.takePartButton.isHidden = !isDisabled || competition.isClosed || isCompetitionStarted || competitionType == .team
+        let isCompetitionUnavailable = competition.isClosed || isCompetitionStarted || competition.isJoined
+        mainView.createTeamButton.isHidden = isDisabled || competitionType == .single || isCompetitionUnavailable
+        mainView.takePartButton.isHidden = !isDisabled || competitionType == .team || isCompetitionUnavailable
         
         if isDisabled {
             mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
