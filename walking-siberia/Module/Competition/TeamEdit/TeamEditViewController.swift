@@ -185,7 +185,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
     @objc private func addParticipants() {
         guard case .edit(let team) = type else { return }
         
-        let viewController = FindFriendsViewController(teamId: team.id)
+        let viewController = FindFriendsViewController(teamId: team.id, competitionId: competition.id)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

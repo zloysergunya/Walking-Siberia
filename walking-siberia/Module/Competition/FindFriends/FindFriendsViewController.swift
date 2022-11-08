@@ -4,6 +4,7 @@ import IGListKit
 class FindFriendsViewController: ViewController<FindFriendsView> {
         
     private let teamId: Int
+    private let competitionId: Int
     private let provider = FindFriendsProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -16,8 +17,9 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         }
     }
     
-    init(teamId: Int) {
+    init(teamId: Int, competitionId: Int) {
         self.teamId = teamId
+        self.competitionId = competitionId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -75,7 +77,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         
         loadingState = .loading
         
-        provider.loadFriends(isDisabled: isDisabled, search: query) { [weak self] result in
+        provider.loadFriends(competitionId: competitionId, isDisabled: isDisabled, search: query) { [weak self] result in
             guard let self = self else {
                 return
             }
