@@ -146,7 +146,7 @@ class TeamsViewController: ViewController<TeamsView> {
             
             switch result {
             case .success(let team):
-                self.objects.insert(TeamSectionModel(team: team, isDisabled: self.competitionType == .single), at: 0)
+                self.objects.insert(TeamSectionModel(team: team, isDisabled: self.competitionType == .single), at: 1)
                 self.updateCompetition()
                 self.adapter.performUpdates(animated: true)
                 
