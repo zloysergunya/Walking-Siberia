@@ -4,7 +4,7 @@ import MBCheckboxButton
 
 class ManWithHIAView: RootView {
     
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Ограниченные\nВозможности Здоровья"
         label.textColor = .black

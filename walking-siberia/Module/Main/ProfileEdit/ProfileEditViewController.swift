@@ -74,6 +74,8 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.infoNotifyActionView.switcherView.isOn = user.profile.isNoticeInfo
         
         mainView.contentView.manWithHIAView.checkBox.isOn = user.isDisabled ?? false
+        
+        updateStates()
     }
     
     private func save() {
@@ -145,12 +147,34 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
             mainView.contentView.personalInfoEditButton.setTitle(nil, for: .normal)
         }
         
+        updateStates()
+    }
+    
+    private func updateStates() {
         [mainView.contentView.nameTextField, mainView.contentView.surnameTextField, mainView.contentView.cityTextField,
          mainView.contentView.birthdayTextField, mainView.contentView.heightTextField,
          mainView.contentView.weightTextField, mainView.contentView.phoneTextField, mainView.contentView.emailTextField,
          mainView.contentView.bioTextField, mainView.contentView.telegramField, mainView.contentView.instagramField,
-         mainView.contentView.vkField, mainView.contentView.okField, mainView.contentView.manWithHIAView.checkBox].forEach {
+         mainView.contentView.vkField, mainView.contentView.okField, mainView.contentView.manWithHIAView.checkBox,
+         mainView.contentView.manWithHIAView.titleLabel, mainView.contentView.manWithHIAView.separator, mainView.contentView.manWithHIAView.checkBox].forEach {
             $0.isUserInteractionEnabled = isProfileEditing
+            
+            let color = isProfileEditing ? R.color.mainContent() : R.color.greyText()
+            if let textField = $0 as? UITextField {
+                textField.textColor = color
+            } else if let label = $0 as? UILabel {
+                label.textColor = color
+            } else if let checkBox = $0 as? CheckboxButton {
+                DispatchQueue.main.async {
+                    let activeColor = self.isProfileEditing ? R.color.activeElements() : R.color.greyText()
+                    checkBox.checkBoxColor = CheckBoxColor(activeColor: activeColor!,
+                                                           inactiveColor: .white,
+                                                           inactiveBorderColor: activeColor!,
+                                                           checkMarkColor: .white)
+                }
+            } else {
+                $0.backgroundColor = color
+            }
         }
     }
     
