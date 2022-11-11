@@ -9,7 +9,6 @@ struct Competition: Codable {
     let fromDate: String
     let toDate: String
     let partners: [Partner]
-    let teams: [Team]
     let countTeams: Int
     let isClosed: Bool
     let isJoined: Bool
