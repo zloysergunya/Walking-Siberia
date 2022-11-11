@@ -3,7 +3,7 @@ import IGListDiffKit
 class FindFriendsSectionModel {
     
     let user: User
-    let inTeam: Bool
+    var inTeam: Bool
     
     init(user: User, inTeam: Bool) {
         self.user = user

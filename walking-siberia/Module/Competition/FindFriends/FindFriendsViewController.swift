@@ -199,9 +199,13 @@ extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
     func findFriendsSectionController(didSelectAction button: UIButton, user: User) {
         guard let inTeam = user.inTeam else { return }
         Utils.impact()
-        toggleUser(userId: user.userId, inTeam: inTeam) { [weak button] success in
+        toggleUser(userId: user.userId, inTeam: inTeam) { [weak self] success in
             if success {
-                button?.isSelected.toggle()
+                button.isSelected.toggle()
+                if let index = self?.objects.firstIndex(where: { $0.user.userId == user.userId }) {
+                    self?.objects[index].inTeam = button.isSelected
+                    self?.adapter.performUpdates(animated: true)
+                }
             }
         }
     }
