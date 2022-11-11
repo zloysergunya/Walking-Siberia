@@ -2,13 +2,15 @@ import UIKit
 
 class UserProfileViewController: ViewController<UserProfileView> {
     
+    private let userId: Int
     private let provider = UserProfileProvider()
     
-    private var user: User
+    private var currentUser: User?
+    private var loadingState: LoadingState = .none
     private var competitions: [Competition] = []
     
-    init(user: User) {
-        self.user = user
+    init(userId: Int) {
+        self.userId = userId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,7 +29,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
         mainView.contentView.vkButton.addTarget(self, action: #selector(openSocialLink), for: .touchUpInside)
         mainView.contentView.okButton.addTarget(self, action: #selector(openSocialLink), for: .touchUpInside)
         
-        configure()
+        load()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,11 +37,15 @@ class UserProfileViewController: ViewController<UserProfileView> {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
+        load()
+    }
+    
+    private func load() {
         loadUser()
         loadCompetitions()
     }
     
-    private func configure() {
+    private func configure(user: User) {
         if let url = user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: mainView.contentView.avatarImageView)
         } else {
@@ -95,27 +101,33 @@ class UserProfileViewController: ViewController<UserProfileView> {
     }
     
     private func loadUser() {
-        provider.loadUser(id: user.userId) { [weak self] result in
+        guard loadingState != .loading else { return }
+        
+        loadingState = .loading
+        
+        provider.loadUser(id: userId) { [weak self] result in
             guard let self = self else {
                 return
             }
             
             switch result {
             case .success(let user):
-                self.user = user
+                self.currentUser = user
                 if user.userId == UserSettings.user?.userId {
                     UserSettings.user = user
                 }
-                self.configure()
+                self.configure(user: user)
+                self.loadingState = .loaded
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
+                self.loadingState = .failed(error: error)
             }
         }
     }
     
     private func loadCompetitions() {
-        provider.loadCompetitions(userId: user.userId) { [weak self] result in
+        provider.loadCompetitions(userId: userId) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -157,14 +169,14 @@ class UserProfileViewController: ViewController<UserProfileView> {
     
     private func addAsFriend(completion: @escaping(Bool) -> Void) {
         mainView.contentView.addAsFriendButton.isLoading = true
-        provider.addFriend(id: user.userId) { [weak self] result in
+        provider.addFriend(id: userId) { [weak self] result in
             self?.handleToggleIsFriendResult(result, completion: completion)
         }
     }
     
     private func removeFromFriends(completion: @escaping(Bool) -> Void) {
         mainView.contentView.addAsFriendButton.isLoading = true
-        provider.removeFriend(id: user.userId) { [weak self] result in
+        provider.removeFriend(id: userId) { [weak self] result in
             self?.handleToggleIsFriendResult(result, completion: completion)
         }
     }
@@ -199,6 +211,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
     }
     
     @objc private func openUserStatistic() {
+        guard let user = currentUser else { return }
         navigationController?.pushViewController(UserStatisticViewController(user: user), animated: true)
     }
     

@@ -38,6 +38,7 @@ extension AuthService {
     }
     
     func updateApi() {
+        APIConfig.basePath = Constants.basePath
         APIConfig.customHeaders["Authorization"] = "Bearer \(KeychainService().token ?? "")"
         APIConfig.customHeaders["User-Agent"] = Constants.userAgent
     }

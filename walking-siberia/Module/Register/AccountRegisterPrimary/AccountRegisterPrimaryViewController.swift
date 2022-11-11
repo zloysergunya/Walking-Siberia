@@ -1,11 +1,8 @@
 import UIKit
-import MBRadioButton
 
 class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimaryView> {
     
-    private let provider = AccountRegisterPrimaryProvider()
-    
-    private var radioButtonContainer = RadioButtonContainer()
+    private let provider = AccountRegisterPrimaryProvider()    
     private var selectedCategory: String?
 
     override func viewDidLoad() {
@@ -32,19 +29,8 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         
         mainView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.dateOfBirthField.inputView = mainView.datePicker
-        
-        setupRadioButtonContainer()
-        
+                
         mainView.continueButton.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
-    }
-    
-    private func setupRadioButtonContainer() {
-        radioButtonContainer.delegate = self
-        radioButtonContainer.addButtons([mainView.schoolchildRadioButton,
-                                         mainView.studentRadioButton,
-                                         mainView.adultRadioButton,
-                                         mainView.pensionerRadioButton,
-                                         mainView.manWithHIARadioButton])
     }
     
     private func updateContinueButtonState() {
@@ -111,18 +97,15 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             return
         }
         
-        guard let type = mainView.radioButtonsStackView.arrangedSubviews.map({ $0 as? RadioButton }).firstIndex(where: { $0?.title(for: .normal) == selectedCategory }) else {
-            return
-        }
-        
         let formattedPhone = String(phone.phonePattern(pattern: "+###########", replacmentCharacter: "#"))
+        let isDisabled = mainView.manWithHIAView.checkBox.isSelected
         let profileUpdate = ProfileUpdateRequest(phone: UserSettings.authType != .phone ? formattedPhone : UserSettings.user?.phone,
                                                  lastName: surname,
                                                  firstName: name,
                                                  city: city,
                                                  birthDay: dateOfBirth,
                                                  email: email,
-                                                 type: (type + 1) * 10)
+                                                 isDisabled: isDisabled)
         
         mainView.continueButton.isLoading = true
         provider.profileUpdate(profileUpdate: profileUpdate) { [weak self] result in
@@ -153,17 +136,5 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
     @objc private func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text?.phonePattern(pattern: "+# (###) ### ## ##", replacmentCharacter: "#")
     }
-    
-}
-
-// MARK: - RadioButtonDelegate
-extension AccountRegisterPrimaryViewController: RadioButtonDelegate {
-    
-    func radioButtonDidSelect(_ button: RadioButton) {
-        selectedCategory = button.title(for: .normal)
-        updateContinueButtonState()
-    }
-    
-    func radioButtonDidDeselect(_ button: RadioButton) {}
     
 }

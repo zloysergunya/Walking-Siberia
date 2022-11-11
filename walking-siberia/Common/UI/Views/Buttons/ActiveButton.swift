@@ -31,6 +31,10 @@ class ActiveButton: UIButton {
         }
     }
     
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 38.0)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

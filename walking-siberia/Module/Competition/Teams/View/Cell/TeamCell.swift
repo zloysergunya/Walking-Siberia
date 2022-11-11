@@ -35,15 +35,7 @@ class TeamCell: UICollectionViewCell {
         
         return label
     }()
-    
-    let categoryLabel: UILabel = {
-        let label = UILabel()
-        label.font = R.font.geometriaRegular(size: 12.0)
-        label.textColor = R.color.mainContent()
-        
-        return label
-    }()
-    
+
     let stepsCountLabel: UILabel = {
         let label = UILabel()
         label.font = R.font.geometriaRegular(size: 10.0)
@@ -65,7 +57,6 @@ class TeamCell: UICollectionViewCell {
         contentView.addSubview(imageViewBackgroundView)
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(categoryLabel)
         contentView.addSubview(stepsCountLabel)
         
         addShadow(shadowRadius: 16.0, color: .black.withAlphaComponent(0.06))
@@ -84,7 +75,6 @@ class TeamCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
-        
         imageViewBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(imageView.snp.edges)
         }
@@ -96,14 +86,7 @@ class TeamCell: UICollectionViewCell {
         
         nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18.0)
-            make.left.equalTo(imageView.snp.right).offset(12.0)
-            make.right.lessThanOrEqualTo(stepsCountLabel.snp.left).offset(-8.0)
-        }
-        
-        categoryLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
+            make.centerY.equalToSuperview()
             make.left.equalTo(imageView.snp.right).offset(12.0)
             make.right.lessThanOrEqualTo(stepsCountLabel.snp.left).offset(-8.0)
         }
@@ -113,7 +96,6 @@ class TeamCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(18.0)
             make.right.equalToSuperview().offset(-12.0)
         }
-        
     }
     
 }

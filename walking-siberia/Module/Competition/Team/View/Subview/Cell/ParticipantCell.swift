@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class ParticipantView: RootView {
+class ParticipantCell: UICollectionViewCell {
     
     var gradientLayer: CAGradientLayer? {
         didSet {
@@ -18,7 +18,7 @@ class ParticipantView: RootView {
         
         return view
     }()
-
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -31,14 +31,6 @@ class ParticipantView: RootView {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = R.font.geometriaMedium(size: 14.0)
-        label.textColor = R.color.mainContent()
-        
-        return label
-    }()
-    
-    let categoryLabel: UILabel = {
-        let label = UILabel()
-        label.font = R.font.geometriaRegular(size: 12.0)
         label.textColor = R.color.mainContent()
         
         return label
@@ -66,34 +58,37 @@ class ParticipantView: RootView {
         return CGSize(width: UIView.noIntrinsicMetric, height: 72.0)
     }
     
-    override func setup() {
-        backgroundColor = .white
-        isUserInteractionEnabled = true
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        layer.cornerRadius = 12.0
-        layer.borderWidth = 0.0
-        layer.borderColor = R.color.graphicBlue()?.cgColor
+        contentView.backgroundColor = .white
         
-        addSubview(imageViewBackgroundView)
-        addSubview(imageView)
-        addSubview(nameLabel)
-        addSubview(categoryLabel)
-        addSubview(stepsCountLabel)
-        addSubview(distanceLabel)
+        contentView.layer.cornerRadius = 12.0
+        contentView.layer.borderWidth = 0.0
+        contentView.layer.borderColor = R.color.graphicBlue()?.cgColor
+        
+        contentView.addSubview(imageViewBackgroundView)
+        contentView.addSubview(imageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(stepsCountLabel)
+        contentView.addSubview(distanceLabel)
         
         addShadow()
-        
-        super.setup()
+        setupConstraints()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        gradientLayer?.frame = imageViewBackgroundView.bounds
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func setupConstraints() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
+        imageView.image = nil
+        gradientLayer = nil
+    }
+    
+    func setupConstraints() {
         imageViewBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(imageView.snp.edges)
         }
@@ -104,12 +99,7 @@ class ParticipantView: RootView {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18.0)
-            make.left.equalTo(imageView.snp.right).offset(12.0)
-        }
-        
-        categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4.0)
+            make.centerY.equalToSuperview()
             make.left.equalTo(imageView.snp.right).offset(12.0)
         }
         
@@ -124,7 +114,5 @@ class ParticipantView: RootView {
             make.left.equalTo(nameLabel.snp.right).offset(8.0)
             make.right.equalToSuperview().offset(-12.0)
         }
-        
     }
-
 }

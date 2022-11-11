@@ -52,8 +52,6 @@ class UserListSectionController: ListSectionController {
         let fullName = "\(sectionModel.user.profile.firstName) \(sectionModel.user.profile.lastName)"
         cell.nameLabel.text = fullName
         
-        let userCategory: UserCategory? = .init(rawValue: sectionModel.user.type)
-        cell.categoryLabel.text = userCategory?.categoryName
         cell.stepsCountLabel.text = R.string.localizable.stepsCount(number: sectionModel.user.dailyStats.number)
         cell.distanceLabel.text = "\(sectionModel.user.dailyStats.km) км"
         

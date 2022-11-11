@@ -6,8 +6,12 @@ class TrainersViewController: ViewController<TrainersView> {
     private let provider = TrainersProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    private var loadingState: LoadingState = .none
     private var objects: [TrainerSectionModel] = UserSettings.trainers?.map({ TrainerSectionModel(trainer: $0) }) ?? []
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
     
     override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
@@ -57,12 +61,10 @@ class TrainersViewController: ViewController<TrainersView> {
                 UserSettings.trainers?.append(contentsOf: trainers)
                 self.objects.append(contentsOf: trainers.map({ TrainerSectionModel(trainer: $0) }))
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -88,7 +90,7 @@ extension TrainersViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
 
 }

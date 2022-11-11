@@ -1,27 +1,25 @@
 import UIKit
 import IGListKit
 
-protocol FindFriendsViewControllerDelegate: AnyObject {
-    func findFriendsViewController(didSelect users: [User])
-}
-
 class FindFriendsViewController: ViewController<FindFriendsView> {
-    
-    weak var delegate: FindFriendsViewControllerDelegate?
-    
-    private let availableCount: Int
-    private var currentParticipants: [User]
+        
+    private let teamId: Int
+    private let competitionId: Int
     private let provider = FindFriendsProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
-    private var loadingState: LoadingState = .none
     private var objects: [FindFriendsSectionModel] = []
     private var query: String = ""
     private var pendingRequestWorkItem: DispatchWorkItem?
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
     
-    init(availableCount: Int, currentParticipants: [User]) {
-        self.availableCount = availableCount
-        self.currentParticipants = currentParticipants
+    init(teamId: Int, competitionId: Int) {
+        self.teamId = teamId
+        self.competitionId = competitionId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,6 +35,8 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
+        
+        loadFriends(flush: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,14 +44,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        loadFriends(flush: true)
         checkContactsAccess()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        delegate?.findFriendsViewController(didSelect: currentParticipants)
     }
     
     private func checkContactsAccess() {
@@ -77,13 +70,14 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
     }
     
     private func loadFriends(flush: Bool) {
-        guard let type = UserSettings.user?.type else {
+        guard let isDisabled = UserSettings.user?.isDisabled, loadingState != .loading else {
             close()
-            
             return
         }
         
-        provider.loadFriends(filter: "\(type)", search: query) { [weak self] result in
+        loadingState = .loading
+        
+        provider.loadFriends(competitionId: competitionId, isDisabled: isDisabled, search: query) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -94,19 +88,46 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
                     self.objects.removeAll()
                 }
                 
-                self.objects.append(contentsOf: users.map { user in
-                    let isJoined = self.currentParticipants.contains(where: { $0.userId == user.userId })
-                    
-                    return FindFriendsSectionModel(user: user, isJoined: isJoined)
-                })
-                
+                self.objects.append(contentsOf: users.map({ FindFriendsSectionModel(user: $0, inTeam: $0.inTeam ?? false) }))
                 self.loadingState = .loaded
-                self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
+            }
+        }
+    }
+    
+    private func toggleUser(userId: Int, inTeam: Bool, completion: @escaping(Bool) -> Void) {
+        if inTeam {
+            deleteUser(userId: userId, completion: completion)
+        } else {
+            addUser(userId: userId, completion: completion)
+        }
+    }
+    
+    private func addUser(userId: Int, completion: @escaping(Bool) -> Void) {
+        provider.addUser(teamId: teamId, userId: userId) { [weak self] result in
+            switch result {
+            case .success:
+                completion(true)
+                
+            case .failure(let error):
+                completion(false)
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func deleteUser(userId: Int, completion: @escaping(Bool) -> Void) {
+        provider.deleteUser(teamId: teamId, userId: userId) { [weak self] result in
+            switch result {
+            case .success:
+                completion(true)
+                
+            case .failure(let error):
+                completion(false)
+                self?.showError(text: error.localizedDescription)
             }
         }
     }
@@ -133,7 +154,7 @@ extension FindFriendsViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
 
 }
@@ -172,18 +193,21 @@ extension FindFriendsViewController: UISearchBarDelegate {
 extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
     
     func findFriendsSectionController(didSelect user: User) {
-        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
+        navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
     }
     
     func findFriendsSectionController(didSelectAction button: UIButton, user: User) {
+        guard let inTeam = user.inTeam else { return }
         Utils.impact()
-        if let index = currentParticipants.firstIndex(where: { $0.userId == user.userId }) {
-            currentParticipants.remove(at: index)
-        } else {
-            currentParticipants.append(user)
+        toggleUser(userId: user.userId, inTeam: inTeam) { [weak self] success in
+            if success {
+                button.isSelected.toggle()
+                if let index = self?.objects.firstIndex(where: { $0.user.userId == user.userId }) {
+                    self?.objects[index].inTeam = button.isSelected
+                    self?.adapter.performUpdates(animated: true)
+                }
+            }
         }
-        
-        button.isSelected.toggle()
     }
     
     func findFriendsSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {

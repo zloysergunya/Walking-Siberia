@@ -31,7 +31,7 @@ struct ModelError: Error {
                 return message
             }
             
-            log.error("Ошибка \(status): \(error.localizedDescription)")
+            log.error("Ошибка \(status): \(String(describing: error))")
             
             let message = "Ошибка \(status): "
             switch status {

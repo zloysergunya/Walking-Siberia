@@ -89,7 +89,7 @@ class UserListViewController: ViewController<UserListView> {
             
         case .failure(let error):
             showError(text: error.localizedDescription)
-            loadingState = .failed
+            loadingState = .failed(error: error)
         }
         
         adapter.performUpdates(animated: true)
@@ -162,7 +162,7 @@ extension UserListViewController: ListAdapterDataSource {
     }
 
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
     
 }
@@ -171,7 +171,7 @@ extension UserListViewController: ListAdapterDataSource {
 extension UserListViewController: UserListSectionControllerDelegate {
     
     func userListSectionController(didSelect user: User) {
-        navigationController?.pushViewController(UserProfileViewController(user: user), animated: true)
+        navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
     }
     
     func userListSectionController(willDisplay cell: UICollectionViewCell, at section: Int) {

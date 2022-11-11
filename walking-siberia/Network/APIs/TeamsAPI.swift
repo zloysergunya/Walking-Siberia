@@ -42,7 +42,8 @@ class TeamsAPI {
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "filter": teamsUidRequest.filter,
+            "name": teamsUidRequest.name,
+            "disabled": teamsUidRequest.disabled,
             "limit": teamsUidRequest.limit,
             "page": teamsUidRequest.page
         ])
@@ -182,6 +183,68 @@ class TeamsAPI {
         let requestBuilder: RequestBuilder<SuccessResponse<Team>>.Type = APIConfig.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
+    class func teamUidUsersGet(teamId: Int, teamUidUsers: TeamUidUsers, completion: @escaping ((_ data: SuccessResponse<[Participant]>?,_ error: ErrorResponse?) -> Void)) {
+        teamUidUsersGetWithRequestBuilder(teamId: teamId, teamUidUsers: teamUidUsers).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamUidUsersGetWithRequestBuilder(teamId: Int, teamUidUsers: TeamUidUsers) -> RequestBuilder<SuccessResponse<[Participant]>> {
+        var path = "/team/{uid}/users"
+        let routeIdPreEscape = "\(teamId)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "disabled": teamUidUsers.disabled,
+            "limit": teamUidUsers.limit,
+            "page": teamUidUsers.page
+        ])
+
+        let requestBuilder: RequestBuilder<SuccessResponse<[Participant]>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
+    class func teamAddUserPost(teamAddUserRequest: TeamAddUserRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        teamAddUserPostWithRequestBuilder(teamAddUserRequest: teamAddUserRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamAddUserPostWithRequestBuilder(teamAddUserRequest: TeamAddUserRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/team/add-user"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamAddUserRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
+    class func teamDeleteUserPost(teamDeleteUserRequest: TeamDeleteUserRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        teamDeleteUserPostWithRequestBuilder(teamDeleteUserRequest: teamDeleteUserRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamDeleteUserPostWithRequestBuilder(teamDeleteUserRequest: TeamDeleteUserRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/team/delete-user"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamDeleteUserRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
 }

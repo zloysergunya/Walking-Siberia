@@ -52,10 +52,7 @@ class FindFriendsSectionController: ListSectionController {
     private func configure(cell: FindFriendsCell) -> UICollectionViewCell {
         let fullName = "\(sectionModel.user.profile.firstName) \(sectionModel.user.profile.lastName)"
         cell.nameLabel.text = fullName
-        
-        let userCategory: UserCategory? = .init(rawValue: sectionModel.user.type)
-        cell.categoryLabel.text = userCategory?.categoryName
-        
+                
         if let url = sectionModel.user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: cell.imageView)
         } else {
@@ -65,7 +62,7 @@ class FindFriendsSectionController: ListSectionController {
             cell.gradientLayer = gradientLayer
         }
         
-        cell.actionButton.isSelected = sectionModel.isJoined        
+        cell.actionButton.isSelected = sectionModel.inTeam
         cell.actionButton.removeTarget(nil, action: #selector(action), for: .touchUpInside)
         cell.actionButton.addTarget(self, action: #selector(action), for: .touchUpInside)
         

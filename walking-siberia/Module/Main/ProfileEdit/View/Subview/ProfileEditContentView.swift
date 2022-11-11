@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import MBRadioButton
 
 class ProfileEditContentView: RootView {
     
@@ -135,82 +134,11 @@ class ProfileEditContentView: RootView {
         return datePicker
     }()
     
-    let categoryTextField: FloatingTextField = {
-        let textField = FloatingTextField()
-        textField.title = "Категория"
-        textField.placeholder = textField.title
-        textField.isUserInteractionEnabled = false
-        textField.setTitleVisible(true)
+    let manWithHIAView: ManWithHIAView = {
+        let view = ManWithHIAView()
+        view.checkBox.isUserInteractionEnabled = false
         
-        return textField
-    }()
-    
-    private let categoryTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Категория"
-        label.textColor = R.color.mainContent()
-        label.font = R.font.geometriaRegular(size: 12.0)
-        
-        return label
-    }()
-    
-    let schoolchildRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Дети", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let studentRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Молодежь", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let adultRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Взрослые", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let pensionerRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Старшее поколение", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let manWithHIARadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Человек с ОВЗ", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    lazy var radioButtonsStackView: UIStackView = {
-        let stackView = UIStackView(views: [
-            categoryTitleLabel,
-            schoolchildRadioButton,
-            studentRadioButton,
-            adultRadioButton,
-            pensionerRadioButton,
-            manWithHIARadioButton,
-        ], spacing: 8.0)
-        stackView.isHidden = true
-        
-        return stackView
+        return view
     }()
     
     let heightTextField: FloatingTextField = {
@@ -331,14 +259,13 @@ class ProfileEditContentView: RootView {
         surnameTextField,
         cityTextField,
         birthdayTextField,
-        categoryTextField,
-        radioButtonsStackView,
+        manWithHIAView,
         heightAndWeightStackView,
         phoneTextField,
         emailTextField,
         bioTextField,
         socialLinksStackView
-    ], spacing: 8.0, distribution: .fillProportionally)
+    ], spacing: 8.0, distribution: .fill)
     
     private let notifySettingsContainerView: UIView = {
         let view = UIView()

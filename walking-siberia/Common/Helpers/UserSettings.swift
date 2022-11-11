@@ -107,6 +107,15 @@ enum AuthType: Codable {
         }
     }
     
+    static var isDev: Bool {
+        get {
+            return defaults.bool(forKey: #function)
+        }
+        set {
+            defaults.set(newValue, forKey: #function)
+        }
+    }
+    
     @objc static func clear() {
         let domain = Bundle.main.bundleIdentifier!
         defaults.removePersistentDomain(forName: domain)

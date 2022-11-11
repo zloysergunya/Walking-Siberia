@@ -9,8 +9,12 @@ class RoutesViewController: ViewController<RoutesView> {
     private let notificationsAccessService = NotificationsAccessService()
     
     private var objects: [RouteSectionModel] = UserSettings.routes?.map({ RouteSectionModel(route: $0) }) ?? []
-    private var loadingState: LoadingState = .none
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    private var loadingState: LoadingState = .none {
+        didSet {
+            adapter.performUpdates(animated: true)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +66,6 @@ class RoutesViewController: ViewController<RoutesView> {
             case .success(let routes):
                 UserSettings.routes = routes
                 self.objects = routes.map({ RouteSectionModel(route: $0) })
-                
-                self.adapter.reloadData(completion: nil)
                 self.loadingState = .loaded
                 
             case .failure(let error):
@@ -72,8 +74,7 @@ class RoutesViewController: ViewController<RoutesView> {
                    ![500, 503].contains(status) {
                     self.showError(text: error.localizedDescription)
                 }
-                self.loadingState = .failed
-                self.adapter.performUpdates(animated: true)
+                self.loadingState = .failed(error: error)
             }
         }
     }
@@ -177,7 +178,7 @@ extension RoutesViewController: ListAdapterDataSource {
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return EmptyView()
+        return EmptyView(loadingState: loadingState)
     }
     
 }

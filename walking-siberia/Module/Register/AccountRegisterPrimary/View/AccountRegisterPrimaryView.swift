@@ -1,6 +1,5 @@
 import UIKit
 import SnapKit
-import MBRadioButton
 
 class AccountRegisterPrimaryView: RootView {
     
@@ -109,78 +108,12 @@ class AccountRegisterPrimaryView: RootView {
         return textField
     }()
     
-    private let categoryTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Категория:"
-        label.textColor = R.color.mainContent()
-        label.font = R.font.geometriaMedium(size: 14.0)
+    let manWithHIAView: ManWithHIAView = {
+        let view = ManWithHIAView()
+        view.separator.isHidden = true
         
-        return label
+        return view
     }()
-    
-    let schoolchildRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Дети (6+)", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let studentRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Молодежь (16+)", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let adultRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Взрослые (30+)", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let pensionerRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Старшее поколение (65+)", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let manWithHIARadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Человек с ОВЗ", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        
-        return radioButton
-    }()
-    
-    let spacerRadioButton: RadioButton = {
-        let radioButton = RadioButton()
-        radioButton.setTitle("Пустое", for: .normal)
-        radioButton.setTitleColor(R.color.mainContent(), for: .normal)
-        radioButton.titleLabel?.font = R.font.geometriaMedium(size: 14.0)
-        radioButton.alpha = 0
-        
-        return radioButton
-    }()
-    
-    lazy var radioButtonsStackView = UIStackView(views: [
-        schoolchildRadioButton,
-        studentRadioButton,
-        adultRadioButton,
-        pensionerRadioButton,
-        manWithHIARadioButton,
-        spacerRadioButton
-    ], spacing: 8.0)
     
     let continueButton: ActiveButton = {
         let button = ActiveButton()
@@ -199,20 +132,10 @@ class AccountRegisterPrimaryView: RootView {
         addSubview(dateOfBirthField)
         addSubview(emailTitleLabel)
         addSubview(emailField)
-        addSubview(categoryTitleLabel)
-        addSubview(radioButtonsStackView)
+        addSubview(manWithHIAView)
         addSubview(continueButton)
         
         super.setup()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        radioButtonsStackView.arrangedSubviews.map({ $0 as? RadioButton }).forEach({
-            $0?.radioCircle = RadioButtonCircleStyle(outerCircle: 16.0, innerCircle: 8.0, outerCircleBorder: 1.0, contentPadding: 4.0)
-            $0?.radioButtonColor = RadioButtonColor(active: R.color.activeElements() ?? .blue, inactive: R.color.activeElements() ?? .blue)
-        })
     }
     
     override func setupConstraints() {
@@ -252,19 +175,10 @@ class AccountRegisterPrimaryView: RootView {
             make.left.right.equalToSuperview().inset(12.0)
             make.height.equalTo(24.0)
         }
-         
-        categoryTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(emailField.snp.bottom).offset(24.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
         
-        radioButtonsStackView.snp.makeConstraints { make in
-            make.top.equalTo(categoryTitleLabel.snp.bottom).offset(8.0)
+        manWithHIAView.snp.makeConstraints { make in
+            make.top.equalTo(emailField.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview().inset(12.0)
-        }
-        
-        schoolchildRadioButton.snp.makeConstraints { make in
-            make.height.equalTo(32.0)
         }
         
         continueButton.snp.makeConstraints { make in

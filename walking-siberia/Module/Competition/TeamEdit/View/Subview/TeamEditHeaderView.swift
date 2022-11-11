@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class TeamEditContentView: RootView {
+class TeamEditHeaderView: UICollectionReusableView {
     
     private let nameTitleLabel: UILabel = {
         let label = UILabel()
@@ -38,42 +38,24 @@ class TeamEditContentView: RootView {
         return label
     }()
     
-    let participantsStackView = UIStackView(views: [], spacing: 8.0)
-    
-    let addParticipantsButton: ActiveButton = {
-        let button = ActiveButton()
-        button.setTitle("Добавить участников", for: .normal)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        return button
-    }()
-    
-    let saveTeamButton: ActiveButton = {
-        let button = ActiveButton()
-        button.setTitle("Готово", for: .normal)
-        
-        return button
-    }()
-    
-    private lazy var buttonStack = UIStackView(views: [
-        addParticipantsButton,
-        saveTeamButton
-    ], spacing: 8.0)
-    
-    override func setup() {
         backgroundColor = R.color.greyBackground()
         
-        addSubview(participantsStackView)
         addSubview(nameTitleLabel)
         addSubview(nameField)
         addSubview(closeTeamView)
         addSubview(closeTeamDescriptionLabel)
-        addSubview(buttonStack)
         
-        super.setup()
+        setupConstraints()
     }
     
-    override func setupConstraints() {
-        
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupConstraints() {
         nameTitleLabel.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview().inset(12.0)
         }
@@ -91,28 +73,8 @@ class TeamEditContentView: RootView {
         
         closeTeamDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(closeTeamView.snp.bottom)
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.bottom.equalToSuperview().inset(12.0)
         }
-        
-        participantsStackView.snp.makeConstraints { make in
-            make.top.equalTo(closeTeamDescriptionLabel.snp.bottom).offset(20.0)
-            make.left.right.equalToSuperview().inset(12.0)
-        }
-        
-        addParticipantsButton.snp.makeConstraints { make in
-            make.height.equalTo(38.0)
-        }
-        
-        saveTeamButton.snp.makeConstraints { make in
-            make.height.equalTo(38.0)
-        }
-        
-        buttonStack.snp.makeConstraints { make in
-            make.top.equalTo(participantsStackView.snp.bottom).offset(16.0)
-            make.left.right.equalToSuperview().inset(12.0)
-            make.bottom.equalToSuperview().offset(-16.0)
-        }
-        
     }
     
 }

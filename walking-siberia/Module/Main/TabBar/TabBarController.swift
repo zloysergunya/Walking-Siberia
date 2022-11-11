@@ -3,6 +3,9 @@ import SwiftyBeaver
 import Kingfisher
 
 class TabBarController: UITabBarController {
+    
+    @Autowired
+    private var authService: AuthService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +67,11 @@ class TabBarController: UITabBarController {
     
     @objc private func openDeveloperMenu() {
         let alert = UIAlertController(title: "Version: \(Constants.appVersion)", message: "userId: \(UserSettings.user?.userId ?? -1)", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Switch to \(UserSettings.isDev ? "prod" : "dev")", style: .default, handler: { [weak self] _ in
+            UserSettings.isDev.toggle()
+            self?.authService?.deauthorize()
+        }))
         
         alert.addAction(UIAlertAction(title: "Copy userId", style: .default, handler: { _ in
             UIPasteboard.general.string = String(UserSettings.user?.userId ?? -1)

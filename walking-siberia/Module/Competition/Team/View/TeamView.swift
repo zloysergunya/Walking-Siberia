@@ -15,44 +15,65 @@ class TeamView: RootView {
         return view
     }()
 
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.alwaysBounceVertical = true
-        scrollView.showsVerticalScrollIndicator = false
+    let collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 112.0, right: 0.0)
+        view.alwaysBounceVertical = true
+        view.showsVerticalScrollIndicator = false
+        view.backgroundColor = .clear
+        view.refreshControl = UIRefreshControl()
         
-        return scrollView
+        return view
     }()
     
-    let contentView = TeamContentView()
+    let actionButton: ActiveButton = {
+        let button = ActiveButton()
+        button.isHidden = true
+        
+        return button
+    }()
+    
+    let deleteTeamButton: ActiveButton = {
+        let button = ActiveButton()
+        button.setTitle("Удалить команду", for: .normal)
+        button.isHidden = true
+        button.setTitleColor(R.color.activeElements(), for: .normal)
+        button.backgroundColor = .white
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = R.color.activeElements()?.cgColor
+        
+        return button
+    }()
+    
+    private lazy var buttonStack = UIStackView(views: [
+        actionButton,
+        deleteTeamButton
+    ], spacing: 8.0)
         
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
-        addSubview(scrollView)
+        addSubview(collectionView)
         addSubview(navBar)
-        
-        scrollView.addSubview(contentView)
+        addSubview(buttonStack)
         
         super.setup()
     }
     
     override func setupConstraints() {
-        
         navBar.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.left.right.equalToSuperview()
         }
         
-        scrollView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.top.equalTo(navBar.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
         
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalToSuperview()
+        buttonStack.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview().inset(12.0)
         }
-        
     }
     
 }

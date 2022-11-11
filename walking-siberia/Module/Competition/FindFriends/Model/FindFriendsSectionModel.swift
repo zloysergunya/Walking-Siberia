@@ -3,11 +3,11 @@ import IGListDiffKit
 class FindFriendsSectionModel {
     
     let user: User
-    let isJoined: Bool
+    var inTeam: Bool
     
-    init(user: User, isJoined: Bool) {
+    init(user: User, inTeam: Bool) {
         self.user = user
-        self.isJoined = isJoined
+        self.inTeam = inTeam
     }
     
 }
@@ -24,7 +24,7 @@ extension FindFriendsSectionModel: ListDiffable {
             return false
         }
         
-        return object.user == user && object.isJoined == isJoined
+        return object.user == user && object.inTeam == inTeam
     }
     
 }
