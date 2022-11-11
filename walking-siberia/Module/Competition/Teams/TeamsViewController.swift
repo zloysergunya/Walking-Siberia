@@ -285,13 +285,17 @@ extension TeamsViewController: TeamViewControllerDelegate {
         if let index = objects.firstIndex(where: { $0.team?.id == team.id }) {
             objects[index] = .init(team: team, isDisabled: objects[index].isDisabled)
             adapter.performUpdates(animated: true)
+            
+            updateCompetition()
         }
     }
     
     func teamViewController(didDelete teamId: Int) {
         if let index = objects.firstIndex(where: { $0.team?.id == teamId }) {
             objects.remove(at: index)
-            adapter.performUpdates(animated: true)
+            adapter.reloadData()
+            
+            updateCompetition()
         }
     }
     
@@ -301,8 +305,14 @@ extension TeamsViewController: TeamViewControllerDelegate {
 extension TeamsViewController: TeamEditViewControllerDelegate {
     
     func teamEditViewController(didUpdate team: Team) {
-        objects.insert(.init(team: team, isDisabled: competitionType == .single), at: 1)
+        if let index = objects.firstIndex(where: { $0.team?.id == team.id }) {
+            objects[index] = .init(team: team, isDisabled: objects[index].isDisabled)
+        } else {
+            objects.insert(.init(team: team, isDisabled: competitionType == .single), at: 1)
+        }
+        
         adapter.performUpdates(animated: true)
+        updateCompetition()
     }
     
 }

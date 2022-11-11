@@ -163,6 +163,7 @@ class TeamViewController: ViewController<TeamView> {
                 }
                 
                 self.team.isJoined = true
+                self.delegate?.teamViewController(didUpdate: self.team)
                 self.configure()
                 
             case .failure(let error):
@@ -182,6 +183,7 @@ class TeamViewController: ViewController<TeamView> {
                 }
                 
                 self.team.isJoined = false
+                self.delegate?.teamViewController(didUpdate: self.team)
                 self.configure()
                 
             case .failure(let error):
