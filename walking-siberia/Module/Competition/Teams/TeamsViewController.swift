@@ -71,8 +71,8 @@ class TeamsViewController: ViewController<TeamsView> {
         }
 
         let isDisabled = UserSettings.user?.isDisabled ?? false
-        let isCompetitionUnavailable = competition.isClosed || isCompetitionStarted || competition.isJoined
-        mainView.createTeamButton.isHidden = isDisabled || competitionType == .single || isCompetitionUnavailable
+        let isCompetitionUnavailable = competition.isClosed || isCompetitionStarted
+        mainView.createTeamButton.isHidden = isDisabled || competitionType == .single || isCompetitionUnavailable || competition.isJoined
         mainView.takePartButton.isHidden = !isDisabled || competitionType == .team || isCompetitionUnavailable
         
         if isDisabled {
