@@ -1,4 +1,5 @@
 import UIKit
+import AuthenticationServices
 import Atributika
 import SafariServices
 
@@ -6,6 +7,7 @@ class OnboardingViewController: ViewController<OnboardingView> {
     
     private let provider = OnboardingProvider()
     
+    private var fullName: FullName?
     private lazy var appleSignInService = AppleSignInService(viewController: self)
     private lazy var googleSignInService = GoogleSignInService(viewController: self)
 
@@ -64,6 +66,14 @@ class OnboardingViewController: ViewController<OnboardingView> {
                 let authService: AuthService? = ServiceLocator.getService()
                 UserSettings.user = response.user
                 UserSettings.userReady = response.user.isFillProfile
+                
+                if let firstName = self.fullName?.firstName {
+                    UserSettings.user?.profile.firstName = firstName
+                }
+                if let lastName = self.fullName?.lastName {
+                    UserSettings.user?.profile.lastName = lastName
+                }
+                
                 authService?.authorize(with: response.accessToken, currentUserId: response.user.userId, withNotification: response.user.isFillProfile)
                 
                 if !response.user.isFillProfile {
@@ -103,6 +113,10 @@ extension OnboardingViewController: AppleSignInServiceOutput {
     func appleSignIn(didSucceedWith token: String) {
         authByFirebase(token: token)
     }
+    
+    func appleSignIn(didGet fullName: FullName) {
+        self.fullName = fullName
+    }
         
 }
 
@@ -115,6 +129,10 @@ extension OnboardingViewController: GoogleSignInServiceOutput {
     
     func googleSignIn(didSucceedWith token: String) {
         authByFirebase(token: token)
+    }
+    
+    func googleSignIn(didGet fullName: FullName) {
+        self.fullName = fullName
     }
     
 }

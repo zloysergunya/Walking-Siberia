@@ -1,8 +1,8 @@
 import Foundation
 
 struct Profile: Codable, Equatable {
-    let firstName: String
-    let lastName: String
+    var firstName: String
+    var lastName: String
     let city: String
     let birthDate: String?
     let aboutMe: String?

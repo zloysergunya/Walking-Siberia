@@ -19,7 +19,14 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
             $0.addTarget(self, action: #selector(textFieldDidChangeText), for: .editingChanged)
         }
         
+        mainView.nameField.text = UserSettings.user?.profile.firstName
+        mainView.nameField.isUserInteractionEnabled = mainView.nameField.text?.isEmpty == true
+        
+        mainView.surnameField.text = UserSettings.user?.profile.lastName
+        mainView.surnameField.isUserInteractionEnabled = mainView.surnameField.text?.isEmpty == true
+        
         mainView.emailField.text = UserSettings.user?.email
+        mainView.emailField.isUserInteractionEnabled = mainView.emailField.text?.isEmpty == true
         if let authType = UserSettings.authType, authType != .phone {
             mainView.emailField.placeholder = "E-mail, привязанный к учётной записи \(authType.description)"
         }

@@ -95,6 +95,7 @@
 		C442E247287ACE87002D692F /* UIImage+FixedOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C442E246287ACE87002D692F /* UIImage+FixedOrientation.swift */; };
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
+		C44D3A2D291FE5A4006ECCFB /* FullName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44D3A2C291FE5A4006ECCFB /* FullName.swift */; };
 		C450F4C929024D8400BF1EDF /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4C829024D8400BF1EDF /* SearchBar.swift */; };
 		C450F4CC290254B500BF1EDF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4CB290254B500BF1EDF /* LoadingView.swift */; };
 		C450F4CE290254CE00BF1EDF /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4CD290254CE00BF1EDF /* ProgressView.swift */; };
@@ -379,6 +380,7 @@
 		C442E246287ACE87002D692F /* UIImage+FixedOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+FixedOrientation.swift"; sourceTree = "<group>"; };
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
+		C44D3A2C291FE5A4006ECCFB /* FullName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullName.swift; sourceTree = "<group>"; };
 		C450F4C829024D8400BF1EDF /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C450F4CB290254B500BF1EDF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C450F4CD290254CE00BF1EDF /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -853,6 +855,7 @@
 				C4D82A9927BFE7710058334F /* Profile.swift */,
 				C4D8EC9D27C36C9400BF0767 /* Place.swift */,
 				C4C9336327DCBE360068D8D2 /* UserCategory.swift */,
+				C44D3A2C291FE5A4006ECCFB /* FullName.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2591,6 +2594,7 @@
 				C4A1513527B0ECB100C95344 /* OnboardingViewController.swift in Sources */,
 				C4BD9FA427ECCAB000E0CE5F /* UserListView.swift in Sources */,
 				C49AFBC827E8808F009787AB /* ArticlesViewController.swift in Sources */,
+				C44D3A2D291FE5A4006ECCFB /* FullName.swift in Sources */,
 				C4D9A86F27C90E3A004B552A /* ProfileView.swift in Sources */,
 				C41EECE8290E6C3100A05802 /* TeamEditSectionModel.swift in Sources */,
 				C4BD9F9427ECC9F300E0CE5F /* UserStatisticView.swift in Sources */,
@@ -2941,7 +2945,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "walking-siberia/walking-siberia.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BU2XWB73A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
@@ -2960,7 +2964,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pro.iteo.walkingsiberia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2977,7 +2981,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "walking-siberia/walking-siberia.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BU2XWB73A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "walking-siberia/Resource/Info.plist";
@@ -2996,7 +3000,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pro.iteo.walkingsiberia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

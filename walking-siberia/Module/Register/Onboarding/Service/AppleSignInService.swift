@@ -10,6 +10,7 @@ protocol AppleSignInServiceInput {
 protocol AppleSignInServiceOutput: AnyObject {
     func appleSignIn(didFailWith error: Error)
     func appleSignIn(didSucceedWith token: String)
+    func appleSignIn(didGet fullName: FullName)
 }
 
 class AppleSignInService: NSObject {
@@ -116,6 +117,8 @@ extension AppleSignInService: ASAuthorizationControllerDelegate {
             return
         }
         
+        output?.appleSignIn(didGet: .init(firstName: appleIDCredential.fullName?.givenName,
+                                          lastName: appleIDCredential.fullName?.familyName))
         signIn(idToken: idToken, nonce: nonce)
     }
 

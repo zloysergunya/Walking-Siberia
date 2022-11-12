@@ -9,6 +9,7 @@ protocol GoogleSignInServiceInput {
 protocol GoogleSignInServiceOutput: AnyObject {
     func googleSignIn(didFailWith error: Error)
     func googleSignIn(didSucceedWith token: String)
+    func googleSignIn(didGet fullName: FullName)
 }
 
 class GoogleSignInService: NSObject {
@@ -46,6 +47,8 @@ extension GoogleSignInService: GoogleSignInServiceInput {
         let configuration = GIDConfiguration(clientID: clientID)
         
         GIDSignIn.sharedInstance.signIn(with: configuration, presenting: viewController) { [weak self] user, error in
+            self?.output?.googleSignIn(didGet: .init(firstName: user?.profile?.givenName,
+                                              lastName: user?.profile?.familyName))
             if let user = user, let idToken = user.authentication.idToken {
                 self?.signIn(idToken: idToken, accessToken: user.authentication.accessToken)
             } else if let error = error {
