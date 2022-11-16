@@ -3,7 +3,6 @@ import UIKit
 class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimaryView> {
     
     private let provider = AccountRegisterPrimaryProvider()    
-    private var selectedCategory: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +45,7 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         && !(mainView.cityField.text?.isEmpty ?? true)
         && !(mainView.dateOfBirthField.text?.isEmpty ?? true)
         && !(mainView.emailField.text?.isEmpty ?? true)
-        && selectedCategory != nil
-        
+
         mainView.continueButton.isActive = isActive
     }
     
@@ -59,6 +57,7 @@ class AccountRegisterPrimaryViewController: ViewController<AccountRegisterPrimar
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         mainView.dateOfBirthField.text = dateFormatter.string(from: mainView.datePicker.date)
+        updateContinueButtonState()
     }
     
     @objc private func nextStep() {
