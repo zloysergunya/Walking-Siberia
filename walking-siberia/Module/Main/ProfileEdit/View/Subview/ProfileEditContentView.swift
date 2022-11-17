@@ -324,10 +324,22 @@ class ProfileEditContentView: RootView {
         return button
     }()
     
+    let deleteUserButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Удалить аккаунт", for: .normal)
+        button.setTitleColor(.init(hex: 0xE4302B), for: .normal)
+        button.titleLabel?.font = R.font.geometriaBold(size: 16.0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
+        button.contentHorizontalAlignment = .left
+        
+        return button
+    }()
+    
     private lazy var otherStackView = UIStackView(views: [
         instructionActionView,
         aboutAppActionView,
         writeToDevelopersActionView,
+        deleteUserButton,
         logoutButton
     ])
 

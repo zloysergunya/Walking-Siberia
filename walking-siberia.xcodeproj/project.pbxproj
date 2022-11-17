@@ -277,6 +277,7 @@
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
 		C4E481B828647506001396D5 /* UserCompetitionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E481B728647506001396D5 /* UserCompetitionsView.swift */; };
+		C4F5F2012926565800D08D79 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5F2002926565800D08D79 /* UserAPI.swift */; };
 		C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */; };
 		C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */; };
 		C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */; };
@@ -563,6 +564,7 @@
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
 		C4E481B728647506001396D5 /* UserCompetitionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCompetitionsView.swift; sourceTree = "<group>"; };
+		C4F5F2002926565800D08D79 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditProvider.swift; sourceTree = "<group>"; };
 		C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUpdateRequest.swift; sourceTree = "<group>"; };
 		C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 				C49AFBF627E89DC3009787AB /* TrainersAPI.swift */,
 				C4BD9FA727ECCE7B00E0CE5F /* UsersAPI.swift */,
 				C4326A1D27F5D02900FB53CE /* NotificationAPI.swift */,
+				C4F5F2002926565800D08D79 /* UserAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -2682,6 +2685,7 @@
 				C4D82A9827BFE7310058334F /* User.swift in Sources */,
 				C408EA7227AFFC8C004B82CB /* RootView.swift in Sources */,
 				C41EECE4290E49A400A05802 /* TeamUidUsers.swift in Sources */,
+				C4F5F2012926565800D08D79 /* UserAPI.swift in Sources */,
 				C4C9336427DCBE360068D8D2 /* UserCategory.swift in Sources */,
 				C49AFBFE27E8A80D009787AB /* TrainersSectionController.swift in Sources */,
 				C49AFBFA27E89FA2009787AB /* Trainer.swift in Sources */,

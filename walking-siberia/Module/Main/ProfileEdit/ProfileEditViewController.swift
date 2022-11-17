@@ -8,6 +8,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     
     private let provider = ProfileEditProvider()
     
+    @Autowired private var authService: AuthService?
     private var radioButtonContainer = CheckboxButtonContainer()
     private var isProfileEditing = false
 
@@ -26,6 +27,7 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         mainView.contentView.infoNotifyActionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleInfoNotifications)))
         mainView.contentView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         mainView.contentView.phoneTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        mainView.contentView.deleteUserButton.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
         
         mainView.contentView.datePicker.addTarget(self, action: #selector(dateOfBirthDidChange), for: .valueChanged)
         mainView.contentView.birthdayTextField.inputView = mainView.contentView.datePicker
@@ -210,6 +212,24 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
         }
     }
     
+    @objc private func deleteUser() {
+        dialog(title: "Вы действительно хотите удалить свой аккаунт?",
+               message: "",
+               accessText: "Да",
+               cancelText: "Нет",
+               onAgree:  { [weak self] _ in
+            self?.provider.deleteUser { [weak self] result in
+                switch result {
+                case .success:
+                    self?.authService?.deauthorize()
+                    
+                case .failure(let error):
+                    self?.showError(text: error.localizedDescription)
+                }
+            }
+        })
+    }
+    
     @objc private func dateOfBirthDidChange() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
@@ -290,9 +310,12 @@ class ProfileEditViewController: ViewController<ProfileEditView> {
     }
     
     @objc private func logout() {
-        dialog(title: "Выйти из приложения?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { _ in
-            let authService: AuthService? = ServiceLocator.getService()
-            authService?.deauthorize()
+        dialog(title: "Выйти из приложения?",
+               message: "",
+               accessText: "Да",
+               cancelText: "Нет",
+               onAgree:  { [weak self] _ in
+            self?.authService?.deauthorize()
         })
     }
     
