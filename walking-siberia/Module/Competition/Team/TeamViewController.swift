@@ -67,7 +67,7 @@ class TeamViewController: ViewController<TeamView> {
         } else if team.isJoined {
             mainView.actionButton.setTitle("Покинуть команду", for: .normal)
             mainView.actionButton.isHidden = false
-        } else if !team.isClosed && !competition.isClosed && users.count < 5 {
+        } else if !team.isClosed && !competition.isClosed {
             mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
             mainView.actionButton.isHidden = false
         } else {
