@@ -11,7 +11,7 @@ class TeamViewController: ViewController<TeamView> {
     weak var delegate: TeamViewControllerDelegate?
     
     private var team: Team
-    private let competition: Competition
+    private var competition: Competition
     private let provider = TeamProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -58,22 +58,6 @@ class TeamViewController: ViewController<TeamView> {
     
     private func configure() {
         mainView.navBar.title = team.name
-        
-        isOwner = team.ownerId == UserSettings.user?.userId
-        if isOwner {
-            mainView.actionButton.setTitle("Редактировать", for: .normal)
-            mainView.actionButton.isHidden = false
-            mainView.deleteTeamButton.isHidden = false
-        } else if team.isJoined {
-            mainView.actionButton.setTitle("Покинуть команду", for: .normal)
-            mainView.actionButton.isHidden = false
-        } else if !team.isClosed && !competition.isClosed && UserSettings.user?.isDisabled != true {
-            mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
-            mainView.actionButton.isHidden = false
-        } else {
-            mainView.actionButton.isHidden = true
-        }
-        
         loadMyTeam()
     }
     
@@ -129,15 +113,32 @@ class TeamViewController: ViewController<TeamView> {
             
             switch result {
             case .success(let team):
-                if let team = team {
-                    let competitionJoined = team.competitionId == self.team.competitionId
-                    let isHidden = competitionJoined && !self.team.isJoined || self.competition.isClosed
-                    self.mainView.actionButton.isHidden = isHidden
-                }
+                self.competition.isJoined = team?.competitionId == self.team.competitionId
+                self.updateButtonsState()
                 
             case .failure(let error):
                 self.showError(text: error.localizedDescription)
             }
+        }
+    }
+    
+    private func updateButtonsState() {
+        isOwner = team.ownerId == UserSettings.user?.userId
+        if isOwner {
+            mainView.actionButton.setTitle("Редактировать", for: .normal)
+            mainView.actionButton.isHidden = false
+            mainView.deleteTeamButton.isHidden = false
+        } else if team.isJoined {
+            mainView.actionButton.setTitle("Покинуть команду", for: .normal)
+            mainView.actionButton.isHidden = false
+        } else if !team.isClosed
+                    && !competition.isClosed
+                    && !competition.isJoined
+                    && UserSettings.user?.isDisabled != true {
+            mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
+            mainView.actionButton.isHidden = false
+        } else {
+            mainView.actionButton.isHidden = true
         }
     }
     
