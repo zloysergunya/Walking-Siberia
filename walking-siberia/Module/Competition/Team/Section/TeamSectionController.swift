@@ -78,9 +78,7 @@ class TeamSectionController: ListSectionController {
             cell.gradientLayer = gradientLayer
         }
         
-        if team.ownerId == user.userId {
-            cell.contentView.layer.borderWidth = 1.0
-        }
+        cell.contentView.layer.borderWidth = team.ownerId == user.userId ? 1.0 : 0.0
                 
         return cell
     }
