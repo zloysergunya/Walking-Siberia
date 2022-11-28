@@ -123,6 +123,13 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     private func updateButtonsState() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        var isCompetitionStarted = false
+        if let fromDate = dateFormatter.date(from: competition.fromDate) {
+            isCompetitionStarted = fromDate < Date()
+        }
+        
         isOwner = team.ownerId == UserSettings.user?.userId
         if isOwner {
             mainView.actionButton.setTitle("Редактировать", for: .normal)
@@ -134,7 +141,8 @@ class TeamViewController: ViewController<TeamView> {
         } else if !team.isClosed
                     && !competition.isClosed
                     && !competition.isJoined
-                    && UserSettings.user?.isDisabled != true {
+                    && UserSettings.user?.isDisabled != true
+                    && !isCompetitionStarted {
             mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
             mainView.actionButton.isHidden = false
         } else {
