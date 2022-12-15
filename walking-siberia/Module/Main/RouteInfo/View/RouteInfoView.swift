@@ -5,8 +5,9 @@ class RouteInfoView: RootView {
     
     let backButton: UIButton = {
         let button = UIButton()
-        button.setImage(R.image.chevronLeft24(), for: .normal)
-        button.backgroundColor = .white
+        button.setImage(R.image.chevronLeft24()?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = R.color.activeElements()
         button.layer.cornerRadius = 3.0
         
         return button
