@@ -18,6 +18,7 @@ class RouteInfoView: RootView {
         scrollView.alwaysBounceVertical = true
         scrollView.showsVerticalScrollIndicator = false
         scrollView.contentInset = .init(top: 0.0, left: 0.0, bottom: 16.0, right: 0.0)
+        scrollView.contentInsetAdjustmentBehavior = .never
         
         return scrollView
     }()
@@ -43,10 +44,7 @@ class RouteInfoView: RootView {
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in

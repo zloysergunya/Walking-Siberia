@@ -97,20 +97,20 @@ class RouteStatsView: RootView {
     
     override func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(12.0)
+            make.left.equalToSuperview()
             make.right.equalTo(likeButton.snp.left).offset(-16.0)
             make.centerY.equalTo(likeButton.snp.centerY)
         }
         
         likeButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8.0)
-            make.right.equalToSuperview().offset(-12.0)
+            make.right.equalToSuperview()
             make.size.equalTo(32.0)
         }
         
         leftSeparator.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10.0)
-            make.left.equalToSuperview().offset(12.0)
+            make.left.equalToSuperview()
             make.width.equalTo(1.0)
             make.height.equalTo(30.0)
         }
@@ -139,7 +139,7 @@ class RouteStatsView: RootView {
         
         rootStack.snp.makeConstraints { make in
             make.centerY.equalTo(middleSeparator.snp.centerY)
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
@@ -152,7 +152,7 @@ class RouteStatsView: RootView {
         
         rightSeparator.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10.0)
-            make.right.equalToSuperview().offset(-12.0)
+            make.right.equalToSuperview()
             make.width.equalTo(1.0)
             make.height.equalTo(30.0)
         }

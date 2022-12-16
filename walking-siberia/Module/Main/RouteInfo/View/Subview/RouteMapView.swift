@@ -40,18 +40,18 @@ class RouteMapView: RootView {
     override func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
         }
         
         imageView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
             make.height.equalTo(171.0)
         }
         
         openMapButton.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
             make.height.equalTo(38.0)
         }

@@ -31,12 +31,12 @@ class RouteDescriptionView: RootView {
     override func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
         }
         
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(4.0)
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }

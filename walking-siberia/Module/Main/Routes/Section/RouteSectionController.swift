@@ -35,7 +35,7 @@ class RouteSectionController: ListSectionController {
     }
     
     private func configure(cell: RouteCell, for index: Int) -> UICollectionViewCell {
-        ImageLoader.setImage(url: sectionModel.route.photo, imgView: cell.imageView)
+        ImageLoader.setImage(url: sectionModel.route.photos.first, imgView: cell.imageView)
         
         cell.titleLabel.text = sectionModel.route.name
         cell.distanceLabel.text = "Дистанция: \(sectionModel.route.km) км"

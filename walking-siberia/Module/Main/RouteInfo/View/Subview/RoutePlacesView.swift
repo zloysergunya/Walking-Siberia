@@ -35,7 +35,7 @@ class RoutePlacesView: RootView {
     override func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(12.0)
+            make.left.right.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in

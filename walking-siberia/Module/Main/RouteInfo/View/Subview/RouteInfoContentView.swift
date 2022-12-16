@@ -22,6 +22,7 @@ class RouteInfoContentView: RootView {
     let routeMapView = RouteMapView()
     let routeDescriptionView = RouteDescriptionView()
     let routePlacesView = RoutePlacesView()
+    let routeReviewsView = RouteReviewsView()
     
     let writeReviewButton: ActiveButton = {
         let button = ActiveButton()
@@ -30,19 +31,27 @@ class RouteInfoContentView: RootView {
         return button
     }()
     
-    private lazy var rootStack = UIStackView(views: [
-        slideShowView,
+    private lazy var routeInfoStack = UIStackView(views: [
         routeStatsView,
         routeMapView,
         routeDescriptionView,
         routePlacesView,
+        routeReviewsView,
         writeReviewButton
+    ], spacing: 16.0, distribution: .fill)
+    
+    private lazy var rootStack = UIStackView(views: [
+        slideShowView,
+        routeInfoStack
     ], spacing: 16.0, distribution: .fill)
     
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
         addSubview(rootStack)
+        
+        routeInfoStack.layoutMargins = UIEdgeInsets(top: 0.0, left: 12.0, bottom: 0.0, right: 12.0)
+        routeInfoStack.isLayoutMarginsRelativeArrangement = true
         
         super.setup()
     }
@@ -53,8 +62,7 @@ class RouteInfoContentView: RootView {
         }
         
         rootStack.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.right.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
