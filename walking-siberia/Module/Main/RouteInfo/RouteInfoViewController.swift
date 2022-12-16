@@ -1,6 +1,7 @@
 import UIKit
 import Atributika
 import IGListKit
+import ImageSlideshow
 
 class RouteInfoViewController: ViewController<RouteInfoView> {
     
@@ -8,7 +9,11 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
     
     private var route: Route
     private var objects: [RoutePlaceSectionModel] = []
-    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    private lazy var placesAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    
+    private var contentView: RouteInfoContentView {
+        return mainView.contentView
+    }
     
     init(route: Route) {
         self.route = route
@@ -23,39 +28,40 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         super.viewDidLoad()
         
         mainView.backButton.addTarget(self, action: #selector(close), for: .touchUpInside)
-        mainView.contentView.likeButton.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
-        mainView.contentView.rateContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleLike)))
-        mainView.contentView.openMapButton.addTarget(self, action: #selector(openMap), for: .touchUpInside)
+        contentView.routeStatsView.likeButton.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
+        contentView.routeStatsView.rateContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleLike)))
+        contentView.routeMapView.openMapButton.addTarget(self, action: #selector(openMap), for: .touchUpInside)
+        contentView.slideShowView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openSlideShow)))
         
-        adapter.collectionView = mainView.contentView.placesCollectionView
-        adapter.dataSource = self
+        placesAdapter.collectionView = contentView.routePlacesView.collectionView
+        placesAdapter.dataSource = self
         
         configure()
     }
     
     private func configure() {
-        ImageLoader.setImage(url: route.photo, imgView: mainView.contentView.imageView)
-        ImageLoader.setImage(url: route.photoMap, imgView: mainView.contentView.mapImageView)
+        let inputs: [InputSource] = route.photos.compactMap({ URL(string: $0) }).map({ KingfisherSource(url: $0) })
+        mainView.contentView.slideShowView.setImageInputs(inputs)
         
-        mainView.contentView.titleLabel.text = route.name
-        mainView.contentView.descriptionLabel.text = route.routeDescription
+        ImageLoader.setImage(url: route.photoMap, imgView: contentView.routeMapView.imageView)
+        
+        contentView.routeStatsView.titleLabel.text = route.name
+        contentView.routeDescriptionView.descriptionLabel.text = route.routeDescription
         
         objects = route.places.map({ RoutePlaceSectionModel(place: $0) })
-        adapter.performUpdates(animated: true)
+        placesAdapter.performUpdates(animated: true)
         
-        mainView.contentView.placesTitleLabel.isHidden = objects.isEmpty
-        mainView.contentView.placesCollectionView.isHidden = objects.isEmpty
-        mainView.contentView.placesCollectionHeightConstraint.update(offset: objects.isEmpty ? 0.0 : 140.0)
+        contentView.routePlacesView.isHidden = objects.isEmpty
         
         updateStats()
     }
     
     private func updateStats() {
         let big = Style("big").font(R.font.geometriaRegular(size: 14.0) ?? .systemFont(ofSize: 14.0))
-        mainView.contentView.extentLabel.attributedText = "<big>\(route.km) км</big>\nПротяженность".style(tags: big).attributedString
-        mainView.contentView.rateLabel.attributedText = "<big>\(route.countLikes)</big>\nОценили".style(tags: big).attributedString
-        mainView.contentView.likeButton.isSelected = route.isLike
-        mainView.contentView.rateImageView.image = route.isLike ? R.image.likeFill32() : R.image.like32()
+        contentView.routeStatsView.extentLabel.attributedText = "<big>\(route.km) км</big>\nПротяженность".style(tags: big).attributedString
+        contentView.routeStatsView.rateLabel.attributedText = "<big>\(route.countLikes)</big>\nОценили".style(tags: big).attributedString
+        contentView.routeStatsView.likeButton.isSelected = route.isLike
+        contentView.routeStatsView.rateImageView.image = route.isLike ? R.image.likeFill32() : R.image.like32()
     }
     
     @objc private func toggleLike() {
@@ -83,6 +89,10 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         }
         
         UIApplication.shared.open(url)
+    }
+    
+    @objc private func openSlideShow() {
+        contentView.slideShowView.presentFullScreenController(from: self)
     }
     
     @objc private func close() {

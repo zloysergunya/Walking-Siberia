@@ -5,7 +5,7 @@ struct Route: Codable {
     let name: String
     let routeDescription: String
     let km: Double
-    let photo: String
+    let photos: [String]
     let photoMap: String
     let mapLink: String
     let places: [Place]
@@ -17,7 +17,7 @@ struct Route: Codable {
         case name
         case routeDescription = "description"
         case km
-        case photo
+        case photos
         case photoMap
         case mapLink
         case places

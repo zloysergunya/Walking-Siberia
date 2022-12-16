@@ -96,6 +96,10 @@
 		C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */; };
 		C44A5CB727CB6073007FCD30 /* ProfileEditCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */; };
 		C44D3A2D291FE5A4006ECCFB /* FullName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44D3A2C291FE5A4006ECCFB /* FullName.swift */; };
+		C450EB71294B53B90084A061 /* RouteMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450EB70294B53B90084A061 /* RouteMapView.swift */; };
+		C450EB73294B55350084A061 /* RouteDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450EB72294B55350084A061 /* RouteDescriptionView.swift */; };
+		C450EB75294B56E20084A061 /* RouteStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450EB74294B56E20084A061 /* RouteStatsView.swift */; };
+		C450EB77294B57B10084A061 /* RoutePlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450EB76294B57B10084A061 /* RoutePlacesView.swift */; };
 		C450F4C929024D8400BF1EDF /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4C829024D8400BF1EDF /* SearchBar.swift */; };
 		C450F4CC290254B500BF1EDF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4CB290254B500BF1EDF /* LoadingView.swift */; };
 		C450F4CE290254CE00BF1EDF /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C450F4CD290254CE00BF1EDF /* ProgressView.swift */; };
@@ -382,6 +386,10 @@
 		C4447E1427EB3A6500666751 /* StyledSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledSegmentedControl.swift; sourceTree = "<group>"; };
 		C44A5CB627CB6073007FCD30 /* ProfileEditCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCellView.swift; sourceTree = "<group>"; };
 		C44D3A2C291FE5A4006ECCFB /* FullName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullName.swift; sourceTree = "<group>"; };
+		C450EB70294B53B90084A061 /* RouteMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView.swift; sourceTree = "<group>"; };
+		C450EB72294B55350084A061 /* RouteDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDescriptionView.swift; sourceTree = "<group>"; };
+		C450EB74294B56E20084A061 /* RouteStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStatsView.swift; sourceTree = "<group>"; };
+		C450EB76294B57B10084A061 /* RoutePlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePlacesView.swift; sourceTree = "<group>"; };
 		C450F4C829024D8400BF1EDF /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		C450F4CB290254B500BF1EDF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C450F4CD290254CE00BF1EDF /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -1058,6 +1066,10 @@
 			isa = PBXGroup;
 			children = (
 				C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */,
+				C450EB70294B53B90084A061 /* RouteMapView.swift */,
+				C450EB72294B55350084A061 /* RouteDescriptionView.swift */,
+				C450EB74294B56E20084A061 /* RouteStatsView.swift */,
+				C450EB76294B57B10084A061 /* RoutePlacesView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -2605,6 +2617,7 @@
 				C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */,
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
 				C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */,
+				C450EB71294B53B90084A061 /* RouteMapView.swift in Sources */,
 				C4C9334E27DCAD720068D8D2 /* TeamsView.swift in Sources */,
 				C4B6F04D29128A370070E2BE /* FriendsInvitesRequest.swift in Sources */,
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
@@ -2663,6 +2676,7 @@
 				C49AFBE427E88ED3009787AB /* ArticleView.swift in Sources */,
 				C4DA0D3A27DEF1B100066965 /* TeamJoinRequest.swift in Sources */,
 				C49AFBE327E88ED3009787AB /* ArticleViewController.swift in Sources */,
+				C450EB73294B55350084A061 /* RouteDescriptionView.swift in Sources */,
 				C450F4CC290254B500BF1EDF /* LoadingView.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
@@ -2710,6 +2724,7 @@
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */,
+				C450EB77294B57B10084A061 /* RoutePlacesView.swift in Sources */,
 				C422A24B27ED889F00312F14 /* VideosView.swift in Sources */,
 				C49AFBCF27E88152009787AB /* ArticleAPI.swift in Sources */,
 				C422A25427ED89F600312F14 /* Video.swift in Sources */,
@@ -2782,6 +2797,7 @@
 				C408EA7F27AFFC8C004B82CB /* Utils.swift in Sources */,
 				C4C9336B27DCCC6C0068D8D2 /* CGRect+Init.swift in Sources */,
 				C4A1516227B11D2100C95344 /* PhoneCodeAuthView.swift in Sources */,
+				C450EB75294B56E20084A061 /* RouteStatsView.swift in Sources */,
 				C408EA9A27AFFC8C004B82CB /* JSONEncodingHelper.swift in Sources */,
 				C49AFBEE27E89CC8009787AB /* TrainersViewController.swift in Sources */,
 				C49AFBFC27E8A21D009787AB /* TrainerSectionModel.swift in Sources */,

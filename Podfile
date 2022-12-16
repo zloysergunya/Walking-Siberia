@@ -8,6 +8,7 @@ target 'walking-siberia' do
   # Network
   pod 'Kingfisher'
   pod 'Alamofire', '~> 4.9.0'
+  pod "ImageSlideshow/Kingfisher", :git => 'git@github.com:zloysergunya/ImageSlideshow.git'
   
   # Storage
   pod 'KeychainAccess'
@@ -22,6 +23,7 @@ target 'walking-siberia' do
   pod 'SwiftLoader'
   pod 'Swift_PageMenu'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
+  pod 'ImageSlideshow', :git => 'git@github.com:zloysergunya/ImageSlideshow.git'
   
   # Utilities
   pod 'R.swift', '~> 5.4.0'

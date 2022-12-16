@@ -75,6 +75,12 @@ PODS:
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
+  - ImageSlideshow (1.9.2):
+    - ImageSlideshow/Core (= 1.9.2)
+  - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/Kingfisher (1.9.2):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - IQKeyboardManagerSwift (6.5.9)
   - KeychainAccess (4.2.2)
   - Kingfisher (7.1.2)
@@ -108,6 +114,8 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GoogleSignIn
   - IGListKit (~> 4.0)
+  - "ImageSlideshow (from `git@github.com:zloysergunya/ImageSlideshow.git`)"
+  - "ImageSlideshow/Kingfisher (from `git@github.com:zloysergunya/ImageSlideshow.git`)"
   - IQKeyboardManagerSwift
   - KeychainAccess
   - Kingfisher
@@ -156,11 +164,16 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   AAInfographics:
     :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+  ImageSlideshow:
+    :git: "git@github.com:zloysergunya/ImageSlideshow.git"
 
 CHECKOUT OPTIONS:
   AAInfographics:
     :commit: 9b6c25bbbd982c97e5bd99b805b516b8f403b36c
     :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+  ImageSlideshow:
+    :commit: 836b07c89eba8bb911ea727a83d04f2d7b8598be
+    :git: "git@github.com:zloysergunya/ImageSlideshow.git"
 
 SPEC CHECKSUMS:
   AAInfographics: e57c6cc15ddc17df3555db6f586fb0e1b911a0b7
@@ -180,6 +193,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
+  ImageSlideshow: 63a2886dd2c29a1266d340b1f0c916838ad937f6
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
@@ -195,6 +209,6 @@ SPEC CHECKSUMS:
   SwiftLoader: f12f3a6fb42576862a3a5eb80c7e59fc881b6982
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: 57222d7d585a20afb6d12992972dfee0928f20c3
+PODFILE CHECKSUM: 2c21f4ea694a451a14770b97def43f2eee939d7d
 
 COCOAPODS: 1.11.3
