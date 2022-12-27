@@ -106,6 +106,8 @@ PODS:
   - Swift_PageMenu (1.4.2)
   - SwiftLoader (1.0.0)
   - SwiftyBeaver (1.9.5)
+  - SwiftyMenu (1.0.1):
+    - SnapKit (~> 5.0.1)
 
 DEPENDENCIES:
   - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
@@ -129,6 +131,7 @@ DEPENDENCIES:
   - Swift_PageMenu
   - SwiftLoader
   - SwiftyBeaver
+  - SwiftyMenu (~> 1.0.1)
 
 SPEC REPOS:
   trunk:
@@ -163,6 +166,7 @@ SPEC REPOS:
     - Swift_PageMenu
     - SwiftLoader
     - SwiftyBeaver
+    - SwiftyMenu
 
 EXTERNAL SOURCES:
   AAInfographics:
@@ -212,7 +216,8 @@ SPEC CHECKSUMS:
   Swift_PageMenu: 6cc3e92540729606bd66c9b35a0886ed6c8ed899
   SwiftLoader: f12f3a6fb42576862a3a5eb80c7e59fc881b6982
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
+  SwiftyMenu: bffdad1aa7de3a5faf3dc218c989b112a804299b
 
-PODFILE CHECKSUM: 2a9197a9fcf75711d737d3d4b7283be0fe152eb8
+PODFILE CHECKSUM: 26170194b0a184692e9352ead259b7324080d96d
 
 COCOAPODS: 1.11.3

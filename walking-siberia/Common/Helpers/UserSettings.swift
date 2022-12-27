@@ -116,6 +116,15 @@ enum AuthType: Codable {
         }
     }
     
+    static var selectedCityId: Int {
+        get {
+            return defaults.integer(forKey: #function)
+        }
+        set {
+            defaults.set(newValue, forKey: #function)
+        }
+    }
+    
     @objc static func clear() {
         let domain = Bundle.main.bundleIdentifier!
         defaults.removePersistentDomain(forName: domain)
