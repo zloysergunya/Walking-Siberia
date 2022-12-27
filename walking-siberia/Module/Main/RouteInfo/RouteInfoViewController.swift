@@ -141,7 +141,10 @@ extension RouteInfoViewController: ListAdapterDataSource {
         case placesAdapter:
             return RoutePlaceSectionController()
         case reviewsAdapter:
-            return RouteReviewSectionController()
+            let sectionController = RouteReviewSectionController()
+            sectionController.delegate = self
+            
+            return sectionController
         default:
             return .init()
         }
@@ -151,4 +154,12 @@ extension RouteInfoViewController: ListAdapterDataSource {
         return nil
     }
     
+}
+
+// MARK: - RouteReviewSectionControllerDelegate
+extension RouteInfoViewController: RouteReviewSectionControllerDelegate {
+    func routeReviewSectionController(_ sectionController: RouteReviewSectionController, didSelectItemAt index: Int) {
+        let viewController = ReviewDetailsViewController(route: route, review: reviews[index])
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

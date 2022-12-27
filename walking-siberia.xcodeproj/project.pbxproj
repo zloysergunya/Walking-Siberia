@@ -65,6 +65,8 @@
 		C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */; };
 		C41D390A295AA7730043C577 /* AddReviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41D3909295AA7730043C577 /* AddReviewProvider.swift */; };
 		C41D390C295AB3780043C577 /* MapsCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41D390B295AB3780043C577 /* MapsCommentRequest.swift */; };
+		C41D3911295AF41D0043C577 /* ReviewDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41D390F295AF41D0043C577 /* ReviewDetailsViewController.swift */; };
+		C41D3912295AF41D0043C577 /* ReviewDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41D3910295AF41D0043C577 /* ReviewDetailsView.swift */; };
 		C41EECE4290E49A400A05802 /* TeamUidUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EECE3290E49A400A05802 /* TeamUidUsers.swift */; };
 		C41EECE8290E6C3100A05802 /* TeamEditSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EECE7290E6C3100A05802 /* TeamEditSectionModel.swift */; };
 		C41EECEA290E6D0E00A05802 /* TeamEditSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EECE9290E6D0E00A05802 /* TeamEditSectionController.swift */; };
@@ -363,6 +365,8 @@
 		C40919D827C7375C00E23AD8 /* RouteInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteInfoContentView.swift; sourceTree = "<group>"; };
 		C41D3909295AA7730043C577 /* AddReviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewProvider.swift; sourceTree = "<group>"; };
 		C41D390B295AB3780043C577 /* MapsCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsCommentRequest.swift; sourceTree = "<group>"; };
+		C41D390F295AF41D0043C577 /* ReviewDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailsViewController.swift; sourceTree = "<group>"; };
+		C41D3910295AF41D0043C577 /* ReviewDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailsView.swift; sourceTree = "<group>"; };
 		C41EECE3290E49A400A05802 /* TeamUidUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUidUsers.swift; sourceTree = "<group>"; };
 		C41EECE7290E6C3100A05802 /* TeamEditSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditSectionModel.swift; sourceTree = "<group>"; };
 		C41EECE9290E6D0E00A05802 /* TeamEditSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditSectionController.swift; sourceTree = "<group>"; };
@@ -1111,6 +1115,23 @@
 			path = AddReview;
 			sourceTree = "<group>";
 		};
+		C41D390E295AF39D0043C577 /* ReviewDetails */ = {
+			isa = PBXGroup;
+			children = (
+				C41D3913295AF4200043C577 /* View */,
+				C41D390F295AF41D0043C577 /* ReviewDetailsViewController.swift */,
+			);
+			path = ReviewDetails;
+			sourceTree = "<group>";
+		};
+		C41D3913295AF4200043C577 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C41D3910295AF41D0043C577 /* ReviewDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C41EECE5290E6C1C00A05802 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1335,6 +1356,7 @@
 		C46F700A2959FA5700016CB7 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				C41D390E295AF39D0043C577 /* ReviewDetails */,
 				C41D390D295AB71D0043C577 /* AddReview */,
 			);
 			path = Review;
@@ -2624,6 +2646,7 @@
 				C450F4CE290254CE00BF1EDF /* ProgressView.swift in Sources */,
 				C4326A1927F5C9B900FB53CE /* NotificationsSectionController.swift in Sources */,
 				C40919D927C7375C00E23AD8 /* RouteInfoContentView.swift in Sources */,
+				C41D3912295AF41D0043C577 /* ReviewDetailsView.swift in Sources */,
 				C4BD9FA327ECCAB000E0CE5F /* UserListSectionModel.swift in Sources */,
 				C49AFBD227E881B1009787AB /* ArticleRequest.swift in Sources */,
 				C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */,
@@ -2707,6 +2730,7 @@
 				C40442EE27FB27EE002D8E2C /* ProfileDeviceRequest.swift in Sources */,
 				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
+				C41D3911295AF41D0043C577 /* ReviewDetailsViewController.swift in Sources */,
 				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,
 				C408EA7427AFFC8C004B82CB /* UIColor+Hex.swift in Sources */,
 				C4BD9FA227ECCAB000E0CE5F /* UserListProvider.swift in Sources */,

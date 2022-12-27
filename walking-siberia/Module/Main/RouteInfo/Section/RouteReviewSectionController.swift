@@ -1,6 +1,12 @@
 import IGListKit
 
+protocol RouteReviewSectionControllerDelegate: AnyObject {
+    func routeReviewSectionController(_ sectionController: RouteReviewSectionController, didSelectItemAt index: Int)
+}
+
 class RouteReviewSectionController: ListSectionController {
+    
+    weak var delegate: RouteReviewSectionControllerDelegate?
         
     private var sectionModel: RouteReviewSectionModel!
     
@@ -34,6 +40,12 @@ class RouteReviewSectionController: ListSectionController {
     override func didUpdate(to object: Any) {
         precondition(object is RouteReviewSectionModel)
         sectionModel = object as? RouteReviewSectionModel
+    }
+    
+    override func didSelectItem(at index: Int) {
+        super.didSelectItem(at: index)
+        
+        delegate?.routeReviewSectionController(self, didSelectItemAt: section)
     }
     
 }
