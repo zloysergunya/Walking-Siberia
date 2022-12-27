@@ -11,6 +11,7 @@ struct Route: Codable {
     let places: [Place]
     var isLike: Bool
     var countLikes: Int
+    let comments: [RouteReview]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,5 +24,6 @@ struct Route: Codable {
         case places
         case isLike
         case countLikes
+        case comments
     }
 }

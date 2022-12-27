@@ -22,8 +22,8 @@ class RoutePlaceCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imageView)
-        addSubview(nameLabel)
+        contentView.addSubview(imageView)
+        contentView.addSubview(nameLabel)
         
         setupConstraints()
     }

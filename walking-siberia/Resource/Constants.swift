@@ -4,7 +4,7 @@ import UIKit
 enum Constants {
 
     // MARK: - API
-    static let apiVersion = 2
+    static let apiVersion = 1
     static let pageLimit = 20
     static var prodUrl: String { "https://api.walking-siberia.ru/v\(apiVersion)" }
     static var devUrl: String { "http://194.67.126.180:8005/v\(apiVersion)" }
@@ -23,7 +23,7 @@ enum Constants {
         if let lang = Locale.current.languageCode {
 
             // {Api version} {platform}/{version}/{build} {language} {device} 1 ios/1.0/1 en iPhone12,1
-            return "\(APIConfig.apiVersion) ios/\(Constants.releaseVersion)/\(Constants.buildNumber) \(lang) \(deviceModelName)"
+            return "\(apiVersion) ios/\(releaseVersion)/\(buildNumber) \(lang) \(deviceModelName)"
         }
 
         return nil

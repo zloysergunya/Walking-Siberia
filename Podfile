@@ -24,6 +24,7 @@ target 'walking-siberia' do
   pod 'Swift_PageMenu'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   pod 'ImageSlideshow', :git => 'git@github.com:zloysergunya/ImageSlideshow.git'
+  pod 'RSKPlaceholderTextView'
   
   # Utilities
   pod 'R.swift', '~> 5.4.0'

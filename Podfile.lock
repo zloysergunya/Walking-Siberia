@@ -101,6 +101,7 @@ PODS:
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - RSKPlaceholderTextView (6.1.0)
   - SnapKit (5.0.1)
   - Swift_PageMenu (1.4.2)
   - SwiftLoader (1.0.0)
@@ -123,6 +124,7 @@ DEPENDENCIES:
   - PhoneNumberKit
   - PinLayout (~> 1.8)
   - R.swift (~> 5.4.0)
+  - RSKPlaceholderTextView
   - SnapKit (~> 5.0.0)
   - Swift_PageMenu
   - SwiftLoader
@@ -156,6 +158,7 @@ SPEC REPOS:
     - PromisesObjC
     - R.swift
     - R.swift.Library
+    - RSKPlaceholderTextView
     - SnapKit
     - Swift_PageMenu
     - SwiftLoader
@@ -204,11 +207,12 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RSKPlaceholderTextView: 52f26e643b6f9bbf16f45cd2bbe2181b6dfe090c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Swift_PageMenu: 6cc3e92540729606bd66c9b35a0886ed6c8ed899
   SwiftLoader: f12f3a6fb42576862a3a5eb80c7e59fc881b6982
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: 2c21f4ea694a451a14770b97def43f2eee939d7d
+PODFILE CHECKSUM: 2a9197a9fcf75711d737d3d4b7283be0fe152eb8
 
 COCOAPODS: 1.11.3

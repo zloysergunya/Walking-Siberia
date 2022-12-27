@@ -8,8 +8,10 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
     private let provider = RouteInfoProvider()
     
     private var route: Route
-    private var objects: [RoutePlaceSectionModel] = []
+    private var places: [Place] = []
+    private var reviews: [RouteReview] = []
     private lazy var placesAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    private lazy var reviewsAdapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     
     private var contentView: RouteInfoContentView {
         return mainView.contentView
@@ -32,11 +34,21 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         contentView.routeStatsView.rateContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleLike)))
         contentView.routeMapView.openMapButton.addTarget(self, action: #selector(openMap), for: .touchUpInside)
         contentView.slideShowView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openSlideShow)))
+        contentView.writeReviewButton.addTarget(self, action: #selector(openAddReview), for: .touchUpInside)
         
         placesAdapter.collectionView = contentView.routePlacesView.collectionView
         placesAdapter.dataSource = self
         
+        reviewsAdapter.collectionView = contentView.routeReviewsView.collectionView
+        reviewsAdapter.dataSource = self
+        
         configure()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+                
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func configure() {
@@ -48,10 +60,14 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         contentView.routeStatsView.titleLabel.text = route.name
         contentView.routeDescriptionView.descriptionLabel.text = route.routeDescription
         
-        objects = route.places.map({ RoutePlaceSectionModel(place: $0) })
+        places = route.places
         placesAdapter.performUpdates(animated: true)
         
-        contentView.routePlacesView.isHidden = objects.isEmpty
+        reviews = route.comments ?? []
+        reviewsAdapter.performUpdates(animated: true)
+        
+        contentView.routePlacesView.isHidden = places.isEmpty
+        contentView.routeReviewsView.isHidden = reviews.isEmpty
         
         updateStats()
     }
@@ -95,6 +111,11 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
         contentView.slideShowView.presentFullScreenController(from: self)
     }
     
+    @objc private func openAddReview() {
+        let viewController = AddReviewViewController(route: route)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     @objc private func close() {
         navigationController?.popViewController(animated: true)
     }
@@ -105,11 +126,25 @@ class RouteInfoViewController: ViewController<RouteInfoView> {
 extension RouteInfoViewController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return objects
+        switch listAdapter {
+        case placesAdapter:
+            return places.map({ RoutePlaceSectionModel(place: $0) })
+        case reviewsAdapter:
+            return reviews.map({ RouteReviewSectionModel(routeReview: $0) })
+        default:
+            return []
+        }
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return RoutePlaceSectionController()
+        switch listAdapter {
+        case placesAdapter:
+            return RoutePlaceSectionController()
+        case reviewsAdapter:
+            return RouteReviewSectionController()
+        default:
+            return .init()
+        }
     }
     
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
