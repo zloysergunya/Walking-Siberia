@@ -251,6 +251,6 @@ extension RoutesViewController: HealthServiceOutput {
 // MARK: - DropDownViewDelegate
 extension RoutesViewController: DropDownViewDelegate {
     func dropDownView(_ dropDownView: DropDownView, didSelect item: SwiftyMenuDisplayable, at index: Int) {
-        
+        Utils.impact()
     }
 }
