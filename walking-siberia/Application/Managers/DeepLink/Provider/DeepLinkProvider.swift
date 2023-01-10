@@ -1,15 +1,10 @@
 import Foundation
 
-class NotificationsProvider {
+class DeepLinkProvider {
     
-    var page: Int = 1
-    
-    func loadNotifications(filter: String, completion: @escaping(Result<[Notification], ModelError>) -> Void) {
-        let notificationListRequest = NotificationListRequest(filter: filter, limit: Constants.pageLimit, page: page)
-        NotificationAPI.notificationListGet(notificationListRequest: notificationListRequest) { [weak self] response, error in
-            guard let self = self else { return }
+    func loadRoute(id: Int, completion: @escaping(Result<Route, ModelError>) -> Void) {
+        MapsAPI.mapsUidGet(id: id) { response, error in
             if let response = response?.data {
-                self.page = response.isEmpty ? -1 : self.page + 1
                 completion(.success(response))
             } else if let error = error {
                 log.error(ModelError(err: error).message())
@@ -20,9 +15,9 @@ class NotificationsProvider {
         }
     }
     
-    func readNotification(id: Int, completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
-        NotificationAPI.notificationViewGet(id: id) { response, error in
-            if let response = response {
+    func loadArticle(id: Int, completion: @escaping(Result<Article, ModelError>) -> Void) {
+        ArticleAPI.articleUidGet(id: id) { response, error in
+            if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
                 log.error(ModelError(err: error).message())
@@ -33,9 +28,9 @@ class NotificationsProvider {
         }
     }
     
-    func hideNotification(id: Int, completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
-        NotificationAPI.notificationHideGet(id: id) { response, error in
-            if let response = response {
+    func loadVideo(id: Int, completion: @escaping(Result<Video, ModelError>) -> Void) {
+        VideosAPI.videosUidGet(id: id) { response, error in
+            if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
                 log.error(ModelError(err: error).message())
@@ -46,9 +41,9 @@ class NotificationsProvider {
         }
     }
     
-    func clearAll(completion: @escaping(Result<SuccessResponse<EmptyData>, ModelError>) -> Void) {
-        NotificationAPI.notificationClearGet { response, error in
-            if let response = response {
+    func loadСompetition(id: Int, completion: @escaping(Result<Competition, ModelError>) -> Void) {
+        CompetitionAPI.competitionUidGet(competitionId: id) { response, error in
+            if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
                 log.error(ModelError(err: error).message())

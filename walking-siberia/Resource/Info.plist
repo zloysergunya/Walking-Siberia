@@ -16,6 +16,14 @@
 				<string>com.googleusercontent.apps.1096405923820-1ent5uf8gvvunacs3r24jaanra5mduia</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>walkingsiberia</string>
+			</array>
+		</dict>
 	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>

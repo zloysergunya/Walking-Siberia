@@ -8,6 +8,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    private lazy var deepLinkManager = DeepLinkManager()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
@@ -45,20 +47,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication,
-                     didReceiveRemoteNotification notification: [AnyHashable : Any],
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if Auth.auth().canHandleNotification(notification) {
+        if application.applicationState == .inactive {
+            deepLinkManager.handle(userInfo)
+        }
+        
+        if Auth.auth().canHandleNotification(userInfo) {
             completionHandler(.noData)
             return
         }
+        
+        completionHandler(.noData)
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any])-> Bool {
+        log.info("application: open url \(url)")
+        deepLinkManager.handle(url)
+        
         if Auth.auth().canHandle(url) {
             return true
         }
         
         return GIDSignIn.sharedInstance.handle(url)
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        deepLinkManager.routeIfNeeded()
+    }
+    
+    func application(_ application: UIApplication,
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        log.info("application: continue userActivity \(userActivity)")
+        deepLinkManager.handle(userActivity)
+        
+        return true
     }
     
     private func setupKeyboardManager() {

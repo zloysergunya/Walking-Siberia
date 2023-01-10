@@ -46,4 +46,25 @@ class VideosAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func videosUidGet(id: Int, completion: @escaping ((_ data: SuccessResponse<Video>?,_ error: ErrorResponse?) -> Void)) {
+        videosUidGetWithRequestBuilder(id: id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func videosUidGetWithRequestBuilder(id: Int) -> RequestBuilder<SuccessResponse<Video>> {
+        var path = "/videos/{uid}"
+        let routeIdPreEscape = "\(id)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Video>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }
