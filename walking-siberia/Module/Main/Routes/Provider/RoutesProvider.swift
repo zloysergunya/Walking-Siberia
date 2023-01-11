@@ -2,8 +2,8 @@ import Foundation
 
 class RoutesProvider {
     
-    func routes(completion: @escaping(Result<[Route], ModelError>) -> Void) {
-        MapsAPI.mapsGet { response, error in
+    func routes(cityId: Int?, completion: @escaping(Result<[Route], ModelError>) -> Void) {
+        MapsAPI.mapsGet(cityId: cityId) { response, error in
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
@@ -44,19 +44,6 @@ class RoutesProvider {
     
     func updateCountNewNotifications(completion: @escaping(Result<Int, ModelError>) -> Void) {
         NotificationAPI.notificationCountNewGet { response, error in
-            if let response = response?.data {
-                completion(.success(response))
-            } else if let error = error {
-                log.error(ModelError(err: error).message())
-                completion(.failure(ModelError(err: error)))
-            } else {
-                completion(.failure(ModelError()))
-            }
-        }
-    }
-    
-    func loadCities(completion: @escaping(Result<[RouteCity], ModelError>) -> Void) {
-        CitiesAPI.citiesGet { response, error in
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {

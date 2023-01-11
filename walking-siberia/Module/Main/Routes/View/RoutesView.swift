@@ -22,7 +22,7 @@ class RoutesView: RootView {
     
     let stepsCountView = StepsCountView()
     
-    let dropDownMenu = DropDownView()
+    let dropDownMenu = CityDropDownView(type: .routes)
     
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())

@@ -2,18 +2,21 @@ import Foundation
 
 class MapsAPI {
     
-    class func mapsGet(completion: @escaping ((_ data: SuccessResponse<[Route]>?,_ error: ErrorResponse?) -> Void)) {
-        mapsGetWithRequestBuilder().execute { (response, error) -> Void in
+    class func mapsGet(cityId: Int?, completion: @escaping ((_ data: SuccessResponse<[Route]>?,_ error: ErrorResponse?) -> Void)) {
+        mapsGetWithRequestBuilder(cityId: cityId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
-    private class func mapsGetWithRequestBuilder() -> RequestBuilder<SuccessResponse<[Route]>> {
+    private class func mapsGetWithRequestBuilder(cityId: Int?) -> RequestBuilder<SuccessResponse<[Route]>> {
         let path = "/maps"
         let URLString = APIConfig.basePath + path
         let parameters: [String:Any]? = nil
         
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "cityId": cityId
+        ])
         
         let requestBuilder: RequestBuilder<SuccessResponse<[Route]>>.Type = APIConfig.requestBuilderFactory.getBuilder()
 

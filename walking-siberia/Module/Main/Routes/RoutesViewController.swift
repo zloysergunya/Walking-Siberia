@@ -16,6 +16,11 @@ class RoutesViewController: ViewController<RoutesView> {
             adapter.performUpdates(animated: true)
         }
     }
+    private var selectedCity: RouteCity? {
+        didSet {
+            loadRoutes()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,23 +51,17 @@ class RoutesViewController: ViewController<RoutesView> {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        loadRoutes()
-        loadCities()
         updateCountNewNotifications()
         updateCurrentUserActivity()
     }
     
     private func loadRoutes() {
-        guard loadingState != .loading else {
-            return
-        }
+        guard loadingState != .loading else { return }
         
         loadingState = .loading
         
-        provider.routes { [weak self] result in
-            guard let self = self else {
-                return
-            }
+        provider.routes(cityId: selectedCity?.id) { [weak self] result in
+            guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
                         
@@ -79,26 +78,6 @@ class RoutesViewController: ViewController<RoutesView> {
                     self.showError(text: error.localizedDescription)
                 }
                 self.loadingState = .failed(error: error)
-            }
-        }
-    }
-    
-    private func loadCities() {
-        provider.loadCities { [weak self] result in
-            switch result {
-            case .success(let cities):
-                self?.mainView.dropDownMenu.items = cities
-                if UserSettings.selectedCityId == 0 {
-                    UserSettings.selectedCityId = cities.first?.id ?? 0
-                }
-                self?.mainView.dropDownMenu.selectedIndex = max(0, UserSettings.selectedCityId - 1)
-                
-            case .failure(let error):
-                if case .error(let status, _, _) = error.err,
-                   error._code != NSURLErrorTimedOut,
-                   ![500, 503].contains(status) {
-                    self?.showError(text: error.localizedDescription)
-                }
             }
         }
     }
@@ -252,5 +231,8 @@ extension RoutesViewController: HealthServiceOutput {
 extension RoutesViewController: DropDownViewDelegate {
     func dropDownView(_ dropDownView: DropDownView, didSelect item: SwiftyMenuDisplayable, at index: Int) {
         Utils.impact()
+        
+        guard let city = item.retrievableValue as? RouteCity else { return }
+        selectedCity = city
     }
 }
