@@ -3,18 +3,21 @@ import Alamofire
 
 class TrainersAPI {
     
-    class func trainersGet(completion: @escaping ((_ data: SuccessResponse<[Trainer]>?,_ error: ErrorResponse?) -> Void)) {
-        trainersGetWithRequestBuilder().execute { (response, error) -> Void in
+    class func trainersGet(cityId: Int?, completion: @escaping ((_ data: SuccessResponse<[Trainer]>?,_ error: ErrorResponse?) -> Void)) {
+        trainersGetWithRequestBuilder(cityId: cityId).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
     
-    private class func trainersGetWithRequestBuilder() -> RequestBuilder<SuccessResponse<[Trainer]>> {
+    private class func trainersGetWithRequestBuilder(cityId: Int?) -> RequestBuilder<SuccessResponse<[Trainer]>> {
         let path = "/trainers"
         let URLString = APIConfig.basePath + path
         let parameters: [String:Any]? = nil
 
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "cityId": cityId
+        ])
 
         let requestBuilder: RequestBuilder<SuccessResponse<[Trainer]>>.Type = APIConfig.requestBuilderFactory.getBuilder()
 

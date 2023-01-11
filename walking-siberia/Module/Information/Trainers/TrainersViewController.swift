@@ -1,5 +1,6 @@
 import UIKit
 import IGListKit
+import SwiftyMenu
 
 class TrainersViewController: ViewController<TrainersView> {
     
@@ -10,6 +11,11 @@ class TrainersViewController: ViewController<TrainersView> {
     private var loadingState: LoadingState = .none {
         didSet {
             adapter.performUpdates(animated: true)
+        }
+    }
+    private var selectedCity: RouteCity? {
+        didSet {
+            loadTrainers(flush: true)
         }
     }
     
@@ -29,25 +35,17 @@ class TrainersViewController: ViewController<TrainersView> {
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        loadTrainers(flush: true)
+        mainView.dropDownMenu.delegate = self
     }
     
     private func loadTrainers(flush: Bool) {
-        guard loadingState != .loading else {
-            return
-        }
+        guard loadingState != .loading else { return }
         
         loadingState = .loading
         
-        provider.loadTrainers { [weak self] result in
-            guard let self = self else {
-                return
-            }
+        provider.loadTrainers(cityId: selectedCity?.id) { [weak self] result in
+            guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
             
@@ -97,11 +95,19 @@ extension TrainersViewController: ListAdapterDataSource {
 
 // MARK: - TrainersSectionControllerDelegate
 extension TrainersViewController: TrainersSectionControllerDelegate {
-    
     func trainersSectionController(didSelectCallActionFor trainer: Trainer) {
         if let url = URL(string: "telprompt://\(trainer.phone)") {
             UIApplication.shared.open(url)
         }
     }
-    
+}
+
+// MARK: - DropDownViewDelegate
+extension TrainersViewController: DropDownViewDelegate {
+    func dropDownView(_ dropDownView: DropDownView, didSelect item: SwiftyMenuDisplayable, at index: Int) {
+        Utils.impact()
+        
+        guard let city = item.retrievableValue as? RouteCity else { return }
+        selectedCity = city
+    }
 }

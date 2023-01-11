@@ -2,8 +2,8 @@ import Foundation
 
 class TrainersProvider {
     
-    func loadTrainers(completion: @escaping(Result<[Trainer], ModelError>) -> Void) {
-        TrainersAPI.trainersGet { response, error in
+    func loadTrainers(cityId: Int?, completion: @escaping(Result<[Trainer], ModelError>) -> Void) {
+        TrainersAPI.trainersGet(cityId: cityId) { response, error in
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
