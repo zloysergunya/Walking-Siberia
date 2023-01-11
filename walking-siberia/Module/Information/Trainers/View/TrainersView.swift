@@ -32,7 +32,7 @@ class TrainersView: RootView {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(dropDownMenu.snp.bottom).offset(4.0)
+            make.top.equalToSuperview().offset(60.0)
             make.left.bottom.right.equalToSuperview()
         }
     }
