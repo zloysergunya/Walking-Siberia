@@ -78,7 +78,7 @@ extension NotificationsSectionController: ListDisplayDelegate {
     func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying sectionController: ListSectionController) {}
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay sectionController: ListSectionController, cell: UICollectionViewCell, at index: Int) {
-        delegate?.notificationsSectionController(willDisplay: cell, at: section)
+        delegate?.notificationsSectionController(willDisplay: cell, at: index)
     }
     
     func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying sectionController: ListSectionController, cell: UICollectionViewCell, at index: Int) {}
