@@ -300,6 +300,7 @@
 		C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */; };
 		C4E077BF27D78DE000D1711B /* CompetitionPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */; };
 		C4E077C127D7946600D1711B /* CompetitionTakePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E077C027D7946600D1711B /* CompetitionTakePartView.swift */; };
+		C4E0F5F42971AF1100551280 /* UILabel+IsTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0F5F32971AF1100551280 /* UILabel+IsTruncated.swift */; };
 		C4E1C2A827CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */; };
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
@@ -614,6 +615,7 @@
 		C4E077BC27D7890700D1711B /* CompetitionInfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionInfoContentView.swift; sourceTree = "<group>"; };
 		C4E077BE27D78DE000D1711B /* CompetitionPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionPartnerView.swift; sourceTree = "<group>"; };
 		C4E077C027D7946600D1711B /* CompetitionTakePartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTakePartView.swift; sourceTree = "<group>"; };
+		C4E0F5F32971AF1100551280 /* UILabel+IsTruncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+IsTruncated.swift"; sourceTree = "<group>"; };
 		C4E1C2A727CCFB7A00DA7F8F /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				C49AFBBA27E82CE6009787AB /* UIImage+InitFromColor.swift */,
 				C434841127F171280037D5B8 /* UIImage+Compress.swift */,
 				C442E246287ACE87002D692F /* UIImage+FixedOrientation.swift */,
+				C4E0F5F32971AF1100551280 /* UILabel+IsTruncated.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1972,9 +1975,9 @@
 		C4BD9F8C27ECC9F300E0CE5F /* UserStatistic */ = {
 			isa = PBXGroup;
 			children = (
-				C4BD9F8F27ECC9F300E0CE5F /* UserStatisticViewController.swift */,
 				C4BD9F8D27ECC9F300E0CE5F /* Provider */,
 				C4BD9F9027ECC9F300E0CE5F /* View */,
+				C4BD9F8F27ECC9F300E0CE5F /* UserStatisticViewController.swift */,
 			);
 			path = UserStatistic;
 			sourceTree = "<group>";
@@ -2943,6 +2946,7 @@
 				C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */,
 				C422A25127ED890600312F14 /* VideosProvider.swift in Sources */,
 				C4DA0D4127DF037300066965 /* TeamCreateRequest.swift in Sources */,
+				C4E0F5F42971AF1100551280 /* UILabel+IsTruncated.swift in Sources */,
 				C4DA0D4C27DF13F500066965 /* TeamEditHeaderView.swift in Sources */,
 				C49AFBF727E89DC3009787AB /* TrainersAPI.swift in Sources */,
 				C49AFBC227E87653009787AB /* Statistic.swift in Sources */,
