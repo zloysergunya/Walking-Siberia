@@ -31,7 +31,7 @@ class ReviewDetailsView: RootView {
         let label = UILabel()
         label.font = R.font.geometriaRegular(size: 14.0)
         label.textColor = R.color.mainContent()
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         
         return label
     }()

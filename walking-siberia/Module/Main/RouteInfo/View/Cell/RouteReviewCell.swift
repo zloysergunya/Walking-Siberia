@@ -25,9 +25,16 @@ class RouteReviewCell: UICollectionViewCell {
         label.text = "Читать далее"
         label.font = R.font.geometriaMedium(size: 14.0)
         label.textColor = R.color.graphicBlue()
+        label.isHidden = true
         
         return label
     }()
+    
+    override var bounds: CGRect {
+        didSet {
+            moreLabel.isHidden = !textLabel.isTruncated
+        }
+    }
  
     override init(frame: CGRect) {
         super.init(frame: frame)
