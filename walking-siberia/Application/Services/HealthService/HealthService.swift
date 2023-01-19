@@ -172,21 +172,23 @@ extension HealthService: HealthServiceInput {
         let predicate = HKObserverQuery.predicateForSamples(withStart: startOfDay,
                                                             end: date.endOfDate ?? date,
                                                             options: .strictStartDate)
+        let metaDataPredicate = NSPredicate(format: "metadata.%K != YES", HKMetadataKeyWasUserEntered)
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [predicate, metaDataPredicate])
         
         dispatchGroup.enter()
-        executeStatisticsQuery(quantityType: stepsQuantityType, predicate: predicate, unit: HKUnit.count()) { value in
+        executeStatisticsQuery(quantityType: stepsQuantityType, predicate: compoundPredicate, unit: HKUnit.count()) { value in
             stepsCount = Int(value ?? 0.0)
             dispatchGroup.leave()
         }
         
         dispatchGroup.enter()
-        executeStatisticsQuery(quantityType: distanceQuantityType, predicate: predicate, unit: HKUnit.meterUnit(with: .kilo)) { value in
+        executeStatisticsQuery(quantityType: distanceQuantityType, predicate: compoundPredicate, unit: HKUnit.meterUnit(with: .kilo)) { value in
             distance = value ?? 0.0
             dispatchGroup.leave()
         }
         
         dispatchGroup.enter()
-        executeStatisticsQuery(quantityType: caloriesObjectType, predicate: predicate, unit: HKUnit.kilocalorie()) { value in
+        executeStatisticsQuery(quantityType: caloriesObjectType, predicate: compoundPredicate, unit: HKUnit.kilocalorie()) { value in
             calories = Int(value ?? 0.0)
             dispatchGroup.leave()
         }
