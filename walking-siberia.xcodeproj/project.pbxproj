@@ -313,6 +313,15 @@
 		C4E1C2AA27CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */; };
 		C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */; };
 		C4E481B828647506001396D5 /* UserCompetitionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E481B728647506001396D5 /* UserCompetitionsView.swift */; };
+		C4E8FAC0297E997B00C6EBA3 /* ExpertQAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FABE297E997B00C6EBA3 /* ExpertQAViewController.swift */; };
+		C4E8FAC1297E997B00C6EBA3 /* ExpertQAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FABF297E997B00C6EBA3 /* ExpertQAView.swift */; };
+		C4E8FAC5297E9DDC00C6EBA3 /* ExpertQAProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FAC4297E9DDC00C6EBA3 /* ExpertQAProvider.swift */; };
+		C4E8FAC7297E9FB000C6EBA3 /* ExpertQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FAC6297E9FB000C6EBA3 /* ExpertQuestion.swift */; };
+		C4E8FACA297EA05000C6EBA3 /* ExpertQuestionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FAC9297EA05000C6EBA3 /* ExpertQuestionSectionModel.swift */; };
+		C4E8FACD297EA13000C6EBA3 /* ExpertQuestionSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FACC297EA13000C6EBA3 /* ExpertQuestionSectionController.swift */; };
+		C4E8FAD0297EA1EB00C6EBA3 /* ExpertQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FACF297EA1EB00C6EBA3 /* ExpertQuestionCell.swift */; };
+		C4E8FAD4297EACDA00C6EBA3 /* SendToExpertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FAD2297EACDA00C6EBA3 /* SendToExpertViewController.swift */; };
+		C4E8FAD5297EACDA00C6EBA3 /* SendToExpertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FAD3297EACDA00C6EBA3 /* SendToExpertView.swift */; };
 		C4F5F2012926565800D08D79 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5F2002926565800D08D79 /* UserAPI.swift */; };
 		C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */; };
 		C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */; };
@@ -636,6 +645,15 @@
 		C4E1C2A927CCFBE100DA7F8F /* UITextField+FixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FixCaretPosition.swift"; sourceTree = "<group>"; };
 		C4E1C2AC27CD0A2C00DA7F8F /* ProfileEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditProvider.swift; sourceTree = "<group>"; };
 		C4E481B728647506001396D5 /* UserCompetitionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCompetitionsView.swift; sourceTree = "<group>"; };
+		C4E8FABE297E997B00C6EBA3 /* ExpertQAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQAViewController.swift; sourceTree = "<group>"; };
+		C4E8FABF297E997B00C6EBA3 /* ExpertQAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQAView.swift; sourceTree = "<group>"; };
+		C4E8FAC4297E9DDC00C6EBA3 /* ExpertQAProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQAProvider.swift; sourceTree = "<group>"; };
+		C4E8FAC6297E9FB000C6EBA3 /* ExpertQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQuestion.swift; sourceTree = "<group>"; };
+		C4E8FAC9297EA05000C6EBA3 /* ExpertQuestionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQuestionSectionModel.swift; sourceTree = "<group>"; };
+		C4E8FACC297EA13000C6EBA3 /* ExpertQuestionSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQuestionSectionController.swift; sourceTree = "<group>"; };
+		C4E8FACF297EA1EB00C6EBA3 /* ExpertQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertQuestionCell.swift; sourceTree = "<group>"; };
+		C4E8FAD2297EACDA00C6EBA3 /* SendToExpertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToExpertViewController.swift; sourceTree = "<group>"; };
+		C4E8FAD3297EACDA00C6EBA3 /* SendToExpertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToExpertView.swift; sourceTree = "<group>"; };
 		C4F5F2002926565800D08D79 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditProvider.swift; sourceTree = "<group>"; };
 		C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUpdateRequest.swift; sourceTree = "<group>"; };
@@ -1467,6 +1485,7 @@
 			isa = PBXGroup;
 			children = (
 				C46C5907297829D2001152DC /* Expert.swift */,
+				C4E8FAC6297E9FB000C6EBA3 /* ExpertQuestion.swift */,
 			);
 			path = Experts;
 			sourceTree = "<group>";
@@ -1643,6 +1662,8 @@
 		C49AFBC527E87FA3009787AB /* Information */ = {
 			isa = PBXGroup;
 			children = (
+				C4E8FAD1297EACBB00C6EBA3 /* SendToExpert */,
+				C4E8FABD297E995F00C6EBA3 /* ExpertQA */,
 				C4CB758A296ED3E4005AB55A /* Experts */,
 				C422A24727ED888900312F14 /* Videos */,
 				C49AFBEB27E89CBC009787AB /* Trainers */,
@@ -2591,6 +2612,76 @@
 			path = Styled;
 			sourceTree = "<group>";
 		};
+		C4E8FABD297E995F00C6EBA3 /* ExpertQA */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FACB297EA12900C6EBA3 /* Section */,
+				C4E8FAC8297EA04A00C6EBA3 /* Model */,
+				C4E8FAC3297E9DCF00C6EBA3 /* Provider */,
+				C4E8FAC2297E998F00C6EBA3 /* View */,
+				C4E8FABE297E997B00C6EBA3 /* ExpertQAViewController.swift */,
+			);
+			path = ExpertQA;
+			sourceTree = "<group>";
+		};
+		C4E8FAC2297E998F00C6EBA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FACE297EA1DD00C6EBA3 /* Subview */,
+				C4E8FABF297E997B00C6EBA3 /* ExpertQAView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4E8FAC3297E9DCF00C6EBA3 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FAC4297E9DDC00C6EBA3 /* ExpertQAProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C4E8FAC8297EA04A00C6EBA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FAC9297EA05000C6EBA3 /* ExpertQuestionSectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C4E8FACB297EA12900C6EBA3 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FACC297EA13000C6EBA3 /* ExpertQuestionSectionController.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		C4E8FACE297EA1DD00C6EBA3 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FACF297EA1EB00C6EBA3 /* ExpertQuestionCell.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		C4E8FAD1297EACBB00C6EBA3 /* SendToExpert */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FAD6297EACDF00C6EBA3 /* View */,
+				C4E8FAD2297EACDA00C6EBA3 /* SendToExpertViewController.swift */,
+			);
+			path = SendToExpert;
+			sourceTree = "<group>";
+		};
+		C4E8FAD6297EACDF00C6EBA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4E8FAD3297EACDA00C6EBA3 /* SendToExpertView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C4F668CB27DF317200B0DDAC /* Provider */ = {
 			isa = PBXGroup;
 			children = (
@@ -2830,6 +2921,7 @@
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
 				C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */,
+				C4E8FACD297EA13000C6EBA3 /* ExpertQuestionSectionController.swift in Sources */,
 				C4326A0E27F5C3DE00FB53CE /* NotificationsProvider.swift in Sources */,
 				C4326A1727F5C59300FB53CE /* NotificationSectionModel.swift in Sources */,
 				C4326A1C27F5CA8700FB53CE /* NotificationCell.swift in Sources */,
@@ -2848,11 +2940,13 @@
 				C4C385C027E62F96005D48FD /* UserProfileContentView.swift in Sources */,
 				C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */,
 				C49AFBDB27E886A5009787AB /* ArticlesSectionController.swift in Sources */,
+				C4E8FAC0297E997B00C6EBA3 /* ExpertQAViewController.swift in Sources */,
 				C408EA9B27AFFC8C004B82CB /* Models.swift in Sources */,
 				C41D390C295AB3780043C577 /* MapsCommentRequest.swift in Sources */,
 				C4A1516F27B1359C00C95344 /* OTPTextFieldImplementation.swift in Sources */,
 				C408EA7D27AFFC8C004B82CB /* Animations.swift in Sources */,
 				C4D9A84227C7D15F004B552A /* RoutePlaceSectionController.swift in Sources */,
+				C4E8FAC5297E9DDC00C6EBA3 /* ExpertQAProvider.swift in Sources */,
 				C4C9336827DCC4820068D8D2 /* UIImage+BgColorFromText.swift in Sources */,
 				C478448B27E1C8B200D9E275 /* FriendsAPI.swift in Sources */,
 				C41D392A295B602A0043C577 /* DeepLinkUniversalParser.swift in Sources */,
@@ -2888,6 +2982,7 @@
 				C41EECE8290E6C3100A05802 /* TeamEditSectionModel.swift in Sources */,
 				C4BD9F9427ECC9F300E0CE5F /* UserStatisticView.swift in Sources */,
 				C4A1514F27B0FB9300C95344 /* PhoneAuthView.swift in Sources */,
+				C4E8FAD5297EACDA00C6EBA3 /* SendToExpertView.swift in Sources */,
 				C4C9336227DCB6400068D8D2 /* TeamCell.swift in Sources */,
 				C408EA9927AFFC8C004B82CB /* Extensions.swift in Sources */,
 				C4447E1527EB3A6500666751 /* StyledSegmentedControl.swift in Sources */,
@@ -2897,6 +2992,7 @@
 				C408EA7727AFFC8C004B82CB /* Bundle+Version.swift in Sources */,
 				C408EAA127AFFC8C004B82CB /* KeychainService.swift in Sources */,
 				C4B6F04F29128EA20070E2BE /* TeamAddUserRequest.swift in Sources */,
+				C4E8FAC7297E9FB000C6EBA3 /* ExpertQuestion.swift in Sources */,
 				C49AFBB127E6FFC6009787AB /* WalkRequest.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
 				C4C385BB27E62F73005D48FD /* UserProfileViewController.swift in Sources */,
@@ -2909,6 +3005,7 @@
 				C4326A2127F5D0E500FB53CE /* NotificationListRequest.swift in Sources */,
 				C40442EE27FB27EE002D8E2C /* ProfileDeviceRequest.swift in Sources */,
 				C400F45327D5FC7A00B1EAD9 /* CompetitionProvider.swift in Sources */,
+				C4E8FACA297EA05000C6EBA3 /* ExpertQuestionSectionModel.swift in Sources */,
 				C4D82A8C27BFDD480058334F /* AuthConfirmRequest.swift in Sources */,
 				C41D3911295AF41D0043C577 /* ReviewDetailsViewController.swift in Sources */,
 				C4D9A87627CA4511004B552A /* ProfileProvider.swift in Sources */,
@@ -3002,6 +3099,7 @@
 				C4BB890627DDACA70063C4EB /* ChipsButton.swift in Sources */,
 				C4D82AB227C0B8D50058334F /* StyledTextField.swift in Sources */,
 				C4AE76B8294CCBBB0041535D /* RouteReview.swift in Sources */,
+				C4E8FAD0297EA1EB00C6EBA3 /* ExpertQuestionCell.swift in Sources */,
 				C478449027E1CAC000D9E275 /* FindFriendsSectionModel.swift in Sources */,
 				C434841227F171280037D5B8 /* UIImage+Compress.swift in Sources */,
 				C400F46327D6129300B1EAD9 /* CompetitionCell.swift in Sources */,
@@ -3021,6 +3119,7 @@
 				C408EA7627AFFC8C004B82CB /* UIButton+BackgroundColoroForState.swift in Sources */,
 				C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */,
 				C4D8EC9427C363F900BF0767 /* RoutesProvider.swift in Sources */,
+				C4E8FAD4297EACDA00C6EBA3 /* SendToExpertViewController.swift in Sources */,
 				C4D8EC9927C364EA00BF0767 /* Route.swift in Sources */,
 				C49AFBF527E89CF8009787AB /* TrainersProvider.swift in Sources */,
 				C49AFBC427E87660009787AB /* Day.swift in Sources */,
@@ -3044,6 +3143,7 @@
 				C4C385C227E64332005D48FD /* SocialButton.swift in Sources */,
 				C408EA7E27AFFC8C004B82CB /* UserSettings.swift in Sources */,
 				C408EA8727AFFC8C004B82CB /* CodableHelper.swift in Sources */,
+				C4E8FAC1297E997B00C6EBA3 /* ExpertQAView.swift in Sources */,
 				C422A25D27ED902800312F14 /* VideosAPI.swift in Sources */,
 				C4D82AAA27C0AECE0058334F /* AccountRegisterSecondaryView.swift in Sources */,
 				C4D82AAE27C0AEE80058334F /* AccountRegisterSecondaryProvider.swift in Sources */,

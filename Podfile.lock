@@ -116,7 +116,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Messaging
   - GoogleSignIn
-  - IGListKit (~> 4.0)
+  - IGListKit
   - "ImageSlideshow (from `git@github.com:zloysergunya/ImageSlideshow.git`)"
   - "ImageSlideshow/Kingfisher (from `git@github.com:zloysergunya/ImageSlideshow.git`)"
   - IQKeyboardManagerSwift
@@ -218,6 +218,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
   SwiftyMenu: bffdad1aa7de3a5faf3dc218c989b112a804299b
 
-PODFILE CHECKSUM: 26170194b0a184692e9352ead259b7324080d96d
+PODFILE CHECKSUM: 10e5068be3801e952e2650c232c01e637d7bfba7
 
 COCOAPODS: 1.11.3

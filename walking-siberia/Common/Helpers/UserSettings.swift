@@ -107,6 +107,14 @@ enum AuthType: Codable {
         }
     }
     
+    static var expertsQuestions: Set<ExpertQuestion>? {
+        get {
+            return try? defaults.get(objectType: Set<ExpertQuestion>.self, forKey: #function)
+        }
+        set {
+            try? defaults.set(object: newValue, forKey: #function)
+        }
+    }
     
     static var statistic: Statistic? {
         get {
