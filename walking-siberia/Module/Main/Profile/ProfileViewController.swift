@@ -200,13 +200,14 @@ class ProfileViewController: ViewController<ProfileView> {
     }
     
     @objc private func createTeam() {
-        
+        let viewController = TeamEditViewController(type: .create)
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
 // MARK: - TeamViewControllerDelegate
 extension ProfileViewController: TeamViewControllerDelegate {
-    
     func teamViewController(didUpdate team: Team) {
         self.team = team
     }
@@ -215,5 +216,11 @@ extension ProfileViewController: TeamViewControllerDelegate {
         guard team?.id == teamId else { return }
         team = nil
     }
-    
+}
+
+// MARK: - TeamEditViewControllerDelegate
+extension ProfileViewController: TeamEditViewControllerDelegate {
+    func teamEditViewController(didUpdate team: Team) {
+        self.team = team
+    }
 }
