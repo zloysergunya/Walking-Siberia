@@ -49,21 +49,20 @@ class TeamSectionController: ListSectionController {
     }
     
     private func configure(cell: ParticipantCell) -> UICollectionViewCell {
-        let participant = sectionModel.user
         let user = sectionModel.user.user
         let team = sectionModel.team
         
         let fullName = "\(user.profile.firstName) \(user.profile.lastName)"
         cell.nameLabel.text = fullName
         
-        var text = R.string.localizable.stepsCount(number: participant.statistics.total.number,
+        var text = R.string.localizable.stepsCount(number: user.dailyStats.number,
                                                    preferredLanguages: ["ru"])
-        if participant.statistics.total.number > 30000 {
-            text = text.replacingOccurrences(of: "\(participant.statistics.total.number)",
-                                             with: participant.statistics.total.number.roundedWithAbbreviations)
+        if user.dailyStats.number > 30000 {
+            text = text.replacingOccurrences(of: "\(user.dailyStats.number)",
+                                             with: user.dailyStats.number.roundedWithAbbreviations)
         }
         cell.stepsCountLabel.text = text
-        cell.distanceLabel.text = "\(participant.statistics.total.km) км"
+        cell.distanceLabel.text = "\(user.dailyStats.km) км"
         
         if let url = user.profile.avatar {
             ImageLoader.setImage(url: url, imgView: cell.imageView)

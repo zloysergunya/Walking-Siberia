@@ -28,4 +28,14 @@ class ProfileProvider {
         }
     }
     
+    func loadUserTeam(completion: @escaping(Result<Team?, ModelError>) -> Void) {
+        TeamsAPI.userTeamGet { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else{
+                completion(.success(response?.data))
+            }
+        }
+    }
 }

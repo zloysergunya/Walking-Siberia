@@ -5,12 +5,24 @@ class ProfileViewController: ViewController<ProfileView> {
     private let provider = ProfileProvider()
     
     private var competitions: [Competition] = []
+    private var team: Team? {
+        didSet {
+            updateTeam(team: team)
+        }
+    }
+    
+    private var contentView: ProfileContentView! {
+        return mainView.contentView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainView.statsButton.addTarget(self, action: #selector(openUserStatistic), for: .touchUpInside)
         mainView.settingsButton.addTarget(self, action: #selector(openProfileEdit), for: .touchUpInside)
+        
+        contentView.teamView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openTeam)))
+        contentView.createTeamView.actionButton.addTarget(self, action: #selector(createTeam), for: .touchUpInside)
         
         configure()
     }
@@ -20,8 +32,13 @@ class ProfileViewController: ViewController<ProfileView> {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
+        load()
+    }
+    
+    private func load() {
         loadProfile()
         loadCompetitions()
+        loadUserTeam()
     }
     
     private func loadProfile() {
@@ -55,55 +72,90 @@ class ProfileViewController: ViewController<ProfileView> {
         }
     }
     
+    private func loadUserTeam() {
+        provider.loadUserTeam { [weak self] result in
+            switch result {
+            case .success(let team):
+                self?.team = team
+                self?.updateTeam(team: team)
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
     private func configure() {
         guard let user = UserSettings.user else {
             return
         }
         
         if let url = user.profile.avatar {
-            ImageLoader.setImage(url: url, imgView: mainView.contentView.avatarImageView)
+            ImageLoader.setImage(url: url, imgView: contentView.headerView.avatarImageView)
         } else {
             let side = 120.0
             let fullName = "\(user.profile.firstName) \(user.profile.lastName)"
             let textAttributes: [NSAttributedString.Key: Any] = [.font: R.font.geometriaMedium(size: 42.0)!, .foregroundColor: UIColor.white]
-            mainView.contentView.avatarImageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(),
+            contentView.headerView.avatarImageView.image = UIImage.createWithBgColorFromText(text: fullName.getInitials(),
                                                                                            color: .clear,
                                                                                            circular: true,
                                                                                            textAttributes: textAttributes,
                                                                                            side: side)
             let gradientLayer = GradientHelper.shared.layer(userId: user.userId)
             gradientLayer?.frame = CGRect(side: side)
-            mainView.contentView.gradientLayer = gradientLayer
+            contentView.headerView.gradientLayer = gradientLayer
         }
         
         let age = calculateAge(birthday: user.profile.birthDate ?? "")
-        mainView.contentView.nameLabel.text = "\(user.profile.firstName) \(user.profile.lastName), \(age ?? 0)"
+        contentView.headerView.nameLabel.text = "\(user.profile.firstName) \(user.profile.lastName), \(age ?? 0)"
         let userCategory: UserCategory? = .init(rawValue: user.type)
-        mainView.contentView.idLabel.text = "\(userCategory?.categoryName ?? "Нет данных о категории"), id: \(user.userId)"
-        mainView.contentView.bioLabel.text = user.profile.aboutMe
+        contentView.headerView.idLabel.text = "\(userCategory?.categoryName ?? "Нет данных о категории"), id: \(user.userId)"
+        contentView.headerView.bioLabel.text = user.profile.aboutMe
+    }
+    
+    private func updateTeam(team: Team?) {
+        let hasTeam = team != nil
+        contentView.teamView.isHidden = !hasTeam
+        contentView.createTeamView.isHidden = hasTeam
+        
+        if let team {
+            contentView.teamView.nameLabel.text = team.name
+            
+            let side = 48.0
+            contentView.teamView.avatarImageView.image = UIImage.createWithBgColorFromText(
+                text: "\(team.userCount)",
+                color: .clear,
+                circular: true,
+                side: side
+            )
+            
+            let gradientLayer = GradientHelper.shared.layer(color: .linearBlueLight)
+            gradientLayer?.frame = CGRect(side: side)
+            contentView.teamView.gradientLayer = gradientLayer
+        }
     }
     
     private func updateCompetitions() {
-        mainView.contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
-        mainView.contentView.currentCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-        mainView.contentView.closedCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-        
-        competitions.enumerated().forEach { competition in
-            let view = CompetitionView()
-            view.tag = competition.offset
-            view.nameLabel.text = competition.element.name
-            view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
-            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
-            
-            if competition.element.isClosed {
-                mainView.contentView.closedCompetitionsView.rootStack.addArrangedSubview(view)
-            } else {
-                mainView.contentView.currentCompetitionsView.rootStack.addArrangedSubview(view)
-            }
-            
-            mainView.contentView.currentCompetitionsView.isHidden = competitions.filter({ !$0.isClosed }).count == 0
-            mainView.contentView.closedCompetitionsView.isHidden = competitions.filter({ $0.isClosed }).count == 0
-        }
+//        mainView.contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
+//        mainView.contentView.currentCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+//        mainView.contentView.closedCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+//        
+//        competitions.enumerated().forEach { competition in
+//            let view = CompetitionView()
+//            view.tag = competition.offset
+//            view.nameLabel.text = competition.element.name
+//            view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
+//            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
+//            
+//            if competition.element.isClosed {
+//                mainView.contentView.closedCompetitionsView.rootStack.addArrangedSubview(view)
+//            } else {
+//                mainView.contentView.currentCompetitionsView.rootStack.addArrangedSubview(view)
+//            }
+//            
+//            mainView.contentView.currentCompetitionsView.isHidden = competitions.filter({ !$0.isClosed }).count == 0
+//            mainView.contentView.closedCompetitionsView.isHidden = competitions.filter({ $0.isClosed }).count == 0
+//        }
     }
     
     private func calculateAge(birthday: String) -> Int? {
@@ -138,6 +190,30 @@ class ProfileViewController: ViewController<ProfileView> {
         
         let viewController = PagerViewController(type: .competition(competition: competitions[index]))
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func openTeam() {
+        guard let team else { return }
+        let viewController = TeamViewController(team: team)
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func createTeam() {
+        
+    }
+}
+
+// MARK: - TeamViewControllerDelegate
+extension ProfileViewController: TeamViewControllerDelegate {
+    
+    func teamViewController(didUpdate team: Team) {
+        self.team = team
+    }
+    
+    func teamViewController(didDelete teamId: Int) {
+        guard team?.id == teamId else { return }
+        team = nil
     }
     
 }

@@ -40,7 +40,6 @@ class FriendsAPI {
         
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "competitionId": friendsInvitesRequest.competitionId,
             "disabled": friendsInvitesRequest.disabled,
             "search": friendsInvitesRequest.search,
             "limit": friendsInvitesRequest.limit,

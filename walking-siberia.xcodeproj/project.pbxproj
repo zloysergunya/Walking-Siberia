@@ -325,6 +325,9 @@
 		C4F5F2012926565800D08D79 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5F2002926565800D08D79 /* UserAPI.swift */; };
 		C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */; };
 		C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */; };
+		C4F71A0529B877A3007DA420 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F71A0429B877A3007DA420 /* ProfileHeaderView.swift */; };
+		C4F71A0729B87901007DA420 /* ProfileCreateTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F71A0629B87901007DA420 /* ProfileCreateTeamView.swift */; };
+		C4F71A0929B87E67007DA420 /* ProfileTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F71A0829B87E67007DA420 /* ProfileTeamView.swift */; };
 		C4F9FD3C27D12D3100A6A2B0 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */; };
 		C4F9FD3D27D12D3100A6A2B0 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */; };
 		C4F9FD4127D12DBA00A6A2B0 /* AboutAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */; };
@@ -657,6 +660,9 @@
 		C4F5F2002926565800D08D79 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditProvider.swift; sourceTree = "<group>"; };
 		C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUpdateRequest.swift; sourceTree = "<group>"; };
+		C4F71A0429B877A3007DA420 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		C4F71A0629B87901007DA420 /* ProfileCreateTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateTeamView.swift; sourceTree = "<group>"; };
+		C4F71A0829B87E67007DA420 /* ProfileTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTeamView.swift; sourceTree = "<group>"; };
 		C4F9FD3A27D12D3100A6A2B0 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		C4F9FD3B27D12D3100A6A2B0 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		C4F9FD4027D12DBA00A6A2B0 /* AboutAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppContentView.swift; sourceTree = "<group>"; };
@@ -2505,6 +2511,9 @@
 			children = (
 				C4D9A87327C91330004B552A /* ProfileContentView.swift */,
 				C4E481B728647506001396D5 /* UserCompetitionsView.swift */,
+				C4F71A0429B877A3007DA420 /* ProfileHeaderView.swift */,
+				C4F71A0629B87901007DA420 /* ProfileCreateTeamView.swift */,
+				C4F71A0829B87E67007DA420 /* ProfileTeamView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -2970,6 +2979,7 @@
 				C400F44327D5ECDC00B1EAD9 /* CompetitionsViewController.swift in Sources */,
 				C4C9335A27DCB1C60068D8D2 /* TeamsAPI.swift in Sources */,
 				C4A1515B27B1030C00C95344 /* FloatingTextField.swift in Sources */,
+				C4F71A0529B877A3007DA420 /* ProfileHeaderView.swift in Sources */,
 				C4326A0927F5C3B400FB53CE /* NotificationsViewController.swift in Sources */,
 				C4D82A8527BFDC960058334F /* AuthRequest.swift in Sources */,
 				C408EA8927AFFC8C004B82CB /* APIs.swift in Sources */,
@@ -3054,6 +3064,7 @@
 				C49AFBE327E88ED3009787AB /* ArticleViewController.swift in Sources */,
 				C450EB73294B55350084A061 /* RouteDescriptionView.swift in Sources */,
 				C41D3929295B602A0043C577 /* DeepLinkProvider.swift in Sources */,
+				C4F71A0929B87E67007DA420 /* ProfileTeamView.swift in Sources */,
 				C450F4CC290254B500BF1EDF /* LoadingView.swift in Sources */,
 				C4AB540327CA656F0004B5CE /* NavBarView.swift in Sources */,
 				C408EA7C27AFFC8C004B82CB /* ModelError.swift in Sources */,
@@ -3120,6 +3131,7 @@
 				C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */,
 				C4D8EC9427C363F900BF0767 /* RoutesProvider.swift in Sources */,
 				C4E8FAD4297EACDA00C6EBA3 /* SendToExpertViewController.swift in Sources */,
+				C4F71A0729B87901007DA420 /* ProfileCreateTeamView.swift in Sources */,
 				C4D8EC9927C364EA00BF0767 /* Route.swift in Sources */,
 				C49AFBF527E89CF8009787AB /* TrainersProvider.swift in Sources */,
 				C49AFBC427E87660009787AB /* Day.swift in Sources */,

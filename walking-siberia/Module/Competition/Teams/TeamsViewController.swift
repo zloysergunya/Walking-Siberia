@@ -135,8 +135,7 @@ class TeamsViewController: ViewController<TeamsView> {
             return
         }
 
-        let teamCreateRequest = TeamCreateRequest(competitionId: competition.id,
-                                                  name: "\(user.profile.firstName) \(user.profile.lastName)",
+        let teamCreateRequest = TeamCreateRequest(name: "\(user.profile.firstName) \(user.profile.lastName)",
                                                   status: 1,
                                                   userIds: [])
         provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
@@ -182,7 +181,7 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     @objc private func openCreateTeam() {
-        let viewController = TeamEditViewController(competition: competition, type: .create)
+        let viewController = TeamEditViewController(type: .create)
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -232,10 +231,10 @@ extension TeamsViewController: ListAdapterDataSource {
 extension TeamsViewController: TeamsSectionControllerDelegate {
     
     func teamsSectionController(didSelect team: Team) {
-        if let isDisabled = team.isDisabled, isDisabled {
+        if team.isDisabled {
             navigationController?.pushViewController(UserProfileViewController(userId: team.ownerId), animated: true)
         } else {
-            let viewController = TeamViewController(team: team, competition: competition)
+            let viewController = TeamViewController(team: team)
             viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
         }

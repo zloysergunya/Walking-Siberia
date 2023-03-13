@@ -5,7 +5,6 @@ struct Participant: Codable {
     var teamId: Int
     var createdAt: String
     var user: User
-    var statistics: ParticipantStatistics
 }
 
 extension Participant: Equatable {
@@ -14,7 +13,6 @@ extension Participant: Equatable {
         return lhs.teamId == rhs.teamId
         && lhs.userId == rhs.userId
         && lhs.user == rhs.user
-        && lhs.statistics == rhs.statistics
     }
     
 }

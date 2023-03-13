@@ -11,7 +11,6 @@ class TeamViewController: ViewController<TeamView> {
     weak var delegate: TeamViewControllerDelegate?
     
     private var team: Team
-    private var competition: Competition
     private let provider = TeamProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -23,9 +22,8 @@ class TeamViewController: ViewController<TeamView> {
         }
     }
 
-    init(team: Team, competition: Competition) {
+    init(team: Team) {
         self.team = team
-        self.competition = competition
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,7 +56,7 @@ class TeamViewController: ViewController<TeamView> {
     
     private func configure() {
         mainView.navBar.title = team.name
-        loadMyTeam()
+        updateButtonsState()
     }
     
     private func loadUsers(flush: Bool) {
@@ -70,10 +68,8 @@ class TeamViewController: ViewController<TeamView> {
             provider.page = 1
         }
         
-        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled ?? false) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled) { [weak self] result in
+            guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
             
@@ -106,30 +102,8 @@ class TeamViewController: ViewController<TeamView> {
             }
         }
     }
-    
-    private func loadMyTeam() {
-        provider.loadMyTeam(competitionId: team.competitionId) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let team):
-                self.competition.isJoined = team?.competitionId == self.team.competitionId
-                self.updateButtonsState()
-                
-            case .failure(let error):
-                self.showError(text: error.localizedDescription)
-            }
-        }
-    }
-    
+
     private func updateButtonsState() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-        var isCompetitionStarted = false
-        if let fromDate = dateFormatter.date(from: competition.fromDate) {
-            isCompetitionStarted = fromDate < Date()
-        }
-        
         isOwner = team.ownerId == UserSettings.user?.userId
         if isOwner {
             mainView.actionButton.setTitle("Редактировать", for: .normal)
@@ -138,11 +112,7 @@ class TeamViewController: ViewController<TeamView> {
         } else if team.isJoined {
             mainView.actionButton.setTitle("Покинуть команду", for: .normal)
             mainView.actionButton.isHidden = false
-        } else if !team.isClosed
-                    && !competition.isClosed
-                    && !competition.isJoined
-                    && UserSettings.user?.isDisabled != true
-                    && !isCompetitionStarted {
+        } else if !team.isClosed && UserSettings.user?.isDisabled != true {
             mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
             mainView.actionButton.isHidden = false
         } else {
@@ -151,7 +121,7 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     private func openTeamEdit() {
-        let viewController = TeamEditViewController(competition: competition, type: .edit(team: team))
+        let viewController = TeamEditViewController(type: .edit(team: team))
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -163,11 +133,13 @@ class TeamViewController: ViewController<TeamView> {
             switch result {
             case .success:
                 if let user = UserSettings.user {
-                    let participant = Participant(userId: user.userId,
-                                                  teamId: self.team.id,
-                                                  createdAt: self.team.createAt,
-                                                  user: user,
-                                                  statistics: ParticipantStatistics(total: Average(number: 0, km: 0.0), average: nil))
+                    let participant = Participant(
+                        userId: user.userId,
+                        teamId: self.team.id,
+                        createdAt: self.team.createAt,
+                        user: user
+                    )
+                    
                     self.users.append(participant)
                 }
                 

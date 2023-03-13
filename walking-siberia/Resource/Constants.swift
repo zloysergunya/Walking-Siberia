@@ -4,7 +4,7 @@ import UIKit
 enum Constants {
 
     // MARK: - API
-    static let apiVersion = 1
+    static let apiVersion = 2
     static let pageLimit = 20
     static var prodUrl: String { "https://api.walking-siberia.ru/v\(apiVersion)" }
     static var devUrl: String { "http://194.67.126.180:8005/v\(apiVersion)" }
