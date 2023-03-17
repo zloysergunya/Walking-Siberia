@@ -59,7 +59,7 @@ final class ProfileTeamView: RootView {
     
     private let containerShadowView: UIView = {
         let view = UIView()
-        view.addShadow()
+        view.addShadow(shadowRadius: 16)
         
         return view
     }()

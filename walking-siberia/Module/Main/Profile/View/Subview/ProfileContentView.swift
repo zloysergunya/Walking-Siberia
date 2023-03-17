@@ -19,10 +19,18 @@ class ProfileContentView: RootView {
         return view
     }()
     
+    let achievementsView: ProfileAchievementsView = {
+        let view = ProfileAchievementsView()
+        view.isHidden = true
+        
+        return view
+    }()
+    
     private lazy var rootStack = UIStackView(views: [
         headerView,
         createTeamView,
-        teamView
+        teamView,
+        achievementsView
     ], spacing: 8.0, distribution: .fill)
     
 //    let currentCompetitionsView: UserCompetitionsView = {

@@ -1,9 +1,13 @@
 import UIKit
+import IGListKit
 
 class ProfileViewController: ViewController<ProfileView> {
     
     private let provider = ProfileProvider()
     
+    private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    
+    private var achievements: [Achievement] = []
     private var competitions: [Competition] = []
     private var team: Team? {
         didSet {
@@ -24,6 +28,9 @@ class ProfileViewController: ViewController<ProfileView> {
         contentView.teamView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openTeam)))
         contentView.createTeamView.actionButton.addTarget(self, action: #selector(createTeam), for: .touchUpInside)
         
+        adapter.collectionView = contentView.achievementsView.collectionView
+        adapter.dataSource = self
+        
         configure()
     }
     
@@ -39,6 +46,7 @@ class ProfileViewController: ViewController<ProfileView> {
         loadProfile()
         loadCompetitions()
         loadUserTeam()
+        loadAchievements()
     }
     
     private func loadProfile() {
@@ -78,6 +86,20 @@ class ProfileViewController: ViewController<ProfileView> {
             case .success(let team):
                 self?.team = team
                 self?.updateTeam(team: team)
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func loadAchievements() {
+        provider.loadAchievements { [weak self] result in
+            switch result {
+            case .success(let achievements):
+                self?.achievements = achievements
+                self?.contentView.achievementsView.isHidden = achievements.count == 0
+                self?.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
@@ -203,6 +225,21 @@ class ProfileViewController: ViewController<ProfileView> {
         let viewController = TeamEditViewController(type: .create)
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - ListAdapterDataSource
+extension ProfileViewController: ListAdapterDataSource {
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return achievements
+    }
+
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        return ProfileAchievementsSectionController()
+    }
+
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
     }
 }
 
