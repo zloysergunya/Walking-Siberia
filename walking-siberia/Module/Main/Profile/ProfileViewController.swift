@@ -63,11 +63,7 @@ class ProfileViewController: ViewController<ProfileView> {
     }
     
     private func loadCompetitions() {
-        guard let userId = UserSettings.user?.userId else {
-             return
-        }
-        
-        provider.loadCompetitions(userId: userId) { [weak self] result in
+        provider.loadCompetitions() { [weak self] result in
             switch result {
             case .success(let competitions):
                 self?.competitions = competitions
@@ -158,26 +154,30 @@ class ProfileViewController: ViewController<ProfileView> {
     }
     
     private func updateCompetitions() {
-//        mainView.contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
-//        mainView.contentView.currentCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-//        mainView.contentView.closedCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
-//        
-//        competitions.enumerated().forEach { competition in
-//            let view = CompetitionView()
-//            view.tag = competition.offset
-//            view.nameLabel.text = competition.element.name
-//            view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
-//            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
-//            
-//            if competition.element.isClosed {
-//                mainView.contentView.closedCompetitionsView.rootStack.addArrangedSubview(view)
-//            } else {
-//                mainView.contentView.currentCompetitionsView.rootStack.addArrangedSubview(view)
-//            }
-//            
-//            mainView.contentView.currentCompetitionsView.isHidden = competitions.filter({ !$0.isClosed }).count == 0
-//            mainView.contentView.closedCompetitionsView.isHidden = competitions.filter({ $0.isClosed }).count == 0
-//        }
+        contentView.noCompetitionsLabel.isHidden = !competitions.isEmpty
+        contentView.currentCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        contentView.closedCompetitionsView.rootStack.arrangedSubviews.forEach({ $0.removeFromSuperview() })
+        
+        competitions.enumerated().forEach { competition in
+            let view = CompetitionView()
+            view.tag = competition.offset
+            view.nameLabel.text = competition.element.name
+            view.teamLabel.text = competition.element.statusLabel
+            view.placeLabel.text = "Место: 1/\(competition.element.countTeams)"
+            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
+            
+            if competition.element.isClosed {
+                contentView.closedCompetitionsView.rootStack.addArrangedSubview(view)
+            } else {
+                contentView.currentCompetitionsView.rootStack.addArrangedSubview(view)
+            }
+            
+            contentView.currentCompetitionsView.isHidden = competitions.filter({ !$0.isClosed }).count == 0
+            contentView.closedCompetitionsView.isHidden = competitions.filter({ $0.isClosed }).count == 0
+        }
+        
+        contentView.currentCompetitionsView.rootStack.arrangedSubviews.compactMap({ $0 as? CompetitionView }).last?.separator.isHidden = true
+        contentView.closedCompetitionsView.rootStack.arrangedSubviews.compactMap({ $0 as? CompetitionView }).last?.separator.isHidden = true
     }
     
     private func calculateAge(birthday: String) -> Int? {

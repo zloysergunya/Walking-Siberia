@@ -153,7 +153,8 @@ class UserProfileViewController: ViewController<UserProfileView> {
             let view = CompetitionView()
             view.tag = competition.offset
             view.nameLabel.text = competition.element.name
-            view.teamsLabel.text = R.string.localizable.teamsCount(number: competition.element.countTeams, preferredLanguages: ["ru"])
+            view.teamLabel.text = competition.element.statusLabel
+            view.placeLabel.text = "Место: 1/\(competition.element.countTeams)"
             view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
             
             if competition.element.isClosed {

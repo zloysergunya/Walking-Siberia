@@ -327,6 +327,8 @@
 		C4E8FAD5297EACDA00C6EBA3 /* SendToExpertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E8FAD3297EACDA00C6EBA3 /* SendToExpertView.swift */; };
 		C4EC358C29C46B80006D997E /* ProfileAchievementsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC358B29C46B80006D997E /* ProfileAchievementsSectionController.swift */; };
 		C4EC358E29C46C28006D997E /* ProfileAchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC358D29C46C28006D997E /* ProfileAchievementCell.swift */; };
+		C4EC35E129C4850B006D997E /* CompetitionTeamJoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC35E029C4850B006D997E /* CompetitionTeamJoinRequest.swift */; };
+		C4EC35E329C485A1006D997E /* CompetitionTeamLeaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EC35E229C485A1006D997E /* CompetitionTeamLeaveRequest.swift */; };
 		C4F5F2012926565800D08D79 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F5F2002926565800D08D79 /* UserAPI.swift */; };
 		C4F668CD27DF318000B0DDAC /* TeamEditProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */; };
 		C4F668D127DF419700B0DDAC /* TeamUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */; };
@@ -667,6 +669,8 @@
 		C4E8FAD3297EACDA00C6EBA3 /* SendToExpertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToExpertView.swift; sourceTree = "<group>"; };
 		C4EC358B29C46B80006D997E /* ProfileAchievementsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsSectionController.swift; sourceTree = "<group>"; };
 		C4EC358D29C46C28006D997E /* ProfileAchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementCell.swift; sourceTree = "<group>"; };
+		C4EC35E029C4850B006D997E /* CompetitionTeamJoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTeamJoinRequest.swift; sourceTree = "<group>"; };
+		C4EC35E229C485A1006D997E /* CompetitionTeamLeaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTeamLeaveRequest.swift; sourceTree = "<group>"; };
 		C4F5F2002926565800D08D79 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		C4F668CC27DF318000B0DDAC /* TeamEditProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEditProvider.swift; sourceTree = "<group>"; };
 		C4F668D027DF419700B0DDAC /* TeamUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUpdateRequest.swift; sourceTree = "<group>"; };
@@ -1028,6 +1032,7 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C4EC35DF29C484F9006D997E /* CompetitionAPI */,
 				C4326A1F27F5D0D900FB53CE /* NotificationAPI */,
 				C422A25E27ED907F00312F14 /* VideosAPI */,
 				C4BD9FA927ECCEA900E0CE5F /* UsersAPI */,
@@ -2738,6 +2743,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C4EC35DF29C484F9006D997E /* CompetitionAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C4EC35E029C4850B006D997E /* CompetitionTeamJoinRequest.swift */,
+				C4EC35E229C485A1006D997E /* CompetitionTeamLeaveRequest.swift */,
+			);
+			path = CompetitionAPI;
+			sourceTree = "<group>";
+		};
 		C4F668CB27DF317200B0DDAC /* Provider */ = {
 			isa = PBXGroup;
 			children = (
@@ -2975,6 +2989,7 @@
 				C4E077BD27D7890700D1711B /* CompetitionInfoContentView.swift in Sources */,
 				C4D9A84427C7D170004B552A /* RoutePlaceCell.swift in Sources */,
 				C4A1517427B17E4B00C95344 /* AccountRegisterPrimaryViewController.swift in Sources */,
+				C4EC35E129C4850B006D997E /* CompetitionTeamJoinRequest.swift in Sources */,
 				C408EA7527AFFC8C004B82CB /* UIViewController+HideKeyboard.swift in Sources */,
 				C4C9335D27DCB2750068D8D2 /* TeamsRequest.swift in Sources */,
 				C4E8FACD297EA13000C6EBA3 /* ExpertQuestionSectionController.swift in Sources */,
@@ -3054,6 +3069,7 @@
 				C4E8FAC7297E9FB000C6EBA3 /* ExpertQuestion.swift in Sources */,
 				C49AFBB127E6FFC6009787AB /* WalkRequest.swift in Sources */,
 				C408EA7927AFFC8C004B82CB /* Bundle+Current.swift in Sources */,
+				C4EC35E329C485A1006D997E /* CompetitionTeamLeaveRequest.swift in Sources */,
 				C4C385BB27E62F73005D48FD /* UserProfileViewController.swift in Sources */,
 				C4A1515727B0FCCB00C95344 /* ViewProviding.swift in Sources */,
 				C4D82AA927C0AECE0058334F /* AccountRegisterSecondaryViewController.swift in Sources */,
