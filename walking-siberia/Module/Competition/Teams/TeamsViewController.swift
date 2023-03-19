@@ -23,7 +23,7 @@ class TeamsViewController: ViewController<TeamsView> {
     private var objects: [TeamSectionModel] = []
     private var filter = ""
     private var userTeam: Team?
-    private var isJoined: Bool { userTeam?.competitionIDs.contains(where: { $0.id == competition.id }) ?? competition.isJoined }
+    private var isJoined: Bool { userTeam?.competitionIDs?.contains(where: { $0.id == competition.id }) ?? competition.isJoined }
     
     init(competition: Competition, competitionType: CompetitionType) {
         self.competition = competition

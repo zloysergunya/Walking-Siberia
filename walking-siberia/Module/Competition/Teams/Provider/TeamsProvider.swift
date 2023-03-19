@@ -6,7 +6,7 @@ class TeamsProvider {
     
     func loadTeams(uid: Int, searchText: String, isDisabled: Bool, completion: @escaping(Result<[Team], ModelError>) -> Void) {
         let teamsUidRequest = TeamsUidRequest(uid: uid, name: searchText, disabled: isDisabled, limit: Constants.pageLimit, page: page)
-        TeamsAPI.teamsUidGet(teamsUidRequest: teamsUidRequest) { [weak self] response, error in
+        TeamsAPI.teamsUidStatsGet(teamsUidRequest: teamsUidRequest) { [weak self] response, error in
             guard let self = self else { return }
             if let response = response?.data {
                 self.page = response.isEmpty ? -1 : self.page + 1

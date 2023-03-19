@@ -53,6 +53,33 @@ class TeamsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func teamsUidStatsGet(teamsUidRequest: TeamsUidRequest, completion: @escaping ((_ data: SuccessResponse<[Team]>?,_ error: ErrorResponse?) -> Void)) {
+        teamsUidStatsGetWithRequestBuilder(teamsUidRequest: teamsUidRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func teamsUidStatsGetWithRequestBuilder(teamsUidRequest: TeamsUidRequest) -> RequestBuilder<SuccessResponse<[Team]>> {
+        var path = "/teams/{uid}/stats"
+        let routeIdPreEscape = "\(teamsUidRequest.uid)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+            "name": teamsUidRequest.name,
+            "disabled": teamsUidRequest.disabled,
+            "limit": teamsUidRequest.limit,
+            "page": teamsUidRequest.page
+        ])
+
+        let requestBuilder: RequestBuilder<SuccessResponse<[Team]>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
     class func teamCreatePost(teamCreateRequest: TeamCreateRequest, completion: @escaping ((_ data: SuccessResponse<Team>?,_ error: ErrorResponse?) -> Void)) {
         teamCreatePostWithRequestBuilder(teamCreateRequest: teamCreateRequest).execute { (response, error) -> Void in
             completion(response?.body, error)

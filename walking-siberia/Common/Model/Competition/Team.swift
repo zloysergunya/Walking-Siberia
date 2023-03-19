@@ -6,7 +6,8 @@ struct CompetitionId: Codable, Equatable {
 
 struct Team: Codable {
     let id: Int
-    let competitionIDs: [CompetitionId]
+    let place: Int?
+    let competitionIDs: [CompetitionId]?
     let name: String
     let status: Int
     let statusLabel: String
@@ -21,6 +22,7 @@ struct Team: Codable {
     var isClosed: Bool
     var isJoined: Bool
     let achievements: [Achievement]?
+    let statistics: ParticipantStatistics?
 }
 
 extension Team: Equatable {
