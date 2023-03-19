@@ -20,6 +20,17 @@ class TeamsProvider {
         }
     }
     
+    func loadUserTeam(completion: @escaping(Result<Team?, ModelError>) -> Void) {
+        TeamsAPI.userTeamGet { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else{
+                completion(.success(response?.data))
+            }
+        }
+    }
+    
     func updateCompetition(competitionId: Int, completion: @escaping(Result<Competition, ModelError>) -> Void) {
         CompetitionAPI.competitionUidGet(competitionId: competitionId) { response, error in
             if let response = response?.data {
@@ -59,4 +70,27 @@ class TeamsProvider {
         }
     }
     
+    func joinCompetition(competitionId: Int, teamId: Int, completion: @escaping(Result<EmptyData?, ModelError>) -> Void) {
+        let competitionTeamJoinRequest = CompetitionTeamJoinRequest(competitionId: competitionId, teamId: teamId)
+        CompetitionAPI.competitionTeamJoinPost(competitionTeamJoinRequest: competitionTeamJoinRequest) { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.success(response?.data))
+            }
+        }
+    }
+    
+    func leaveCompetition(competitionId: Int, teamId: Int, completion: @escaping(Result<EmptyData?, ModelError>) -> Void) {
+        let competitionTeamLeaveRequest = CompetitionTeamLeaveRequest(competitionId: competitionId, teamId: teamId)
+        CompetitionAPI.competitionTeamLeavePost(competitionTeamLeaveRequest: competitionTeamLeaveRequest) { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.success(response?.data))
+            }
+        }
+    }
 }

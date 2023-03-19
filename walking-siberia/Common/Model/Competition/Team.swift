@@ -1,8 +1,12 @@
 import Foundation
 
+struct CompetitionId: Codable, Equatable {
+    let id: Int
+}
+
 struct Team: Codable {
     let id: Int
-    let competitionIDs: [Int]
+    let competitionIDs: [CompetitionId]
     let name: String
     let status: Int
     let statusLabel: String
@@ -16,7 +20,7 @@ struct Team: Codable {
     let createAt: String
     var isClosed: Bool
     var isJoined: Bool
-    let achievements: [String]
+    let achievements: [Achievement]?
 }
 
 extension Team: Equatable {
