@@ -133,8 +133,9 @@ class ProfileViewController: ViewController<ProfileView> {
     
     private func updateTeam(team: Team?) {
         let hasTeam = team != nil
-        contentView.teamView.isHidden = !hasTeam
-        contentView.createTeamView.isHidden = hasTeam
+        let isDisabled = UserSettings.user?.isDisabled ?? false
+        contentView.teamView.isHidden = !hasTeam || isDisabled
+        contentView.createTeamView.isHidden = hasTeam || isDisabled
         
         if let team {
             contentView.teamView.nameLabel.text = team.name
@@ -216,7 +217,7 @@ class ProfileViewController: ViewController<ProfileView> {
     
     @objc private func openTeam() {
         guard let team else { return }
-        let viewController = TeamViewController(team: team)
+        let viewController = TeamViewController(team: team, competition: nil)
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
