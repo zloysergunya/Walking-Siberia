@@ -60,7 +60,7 @@ class ExpertCell: UICollectionViewCell {
     
     private let phoneTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Номер телефона:"
+        label.text = "Контакты:"
         label.font = R.font.geometriaBold(size: 12.0)
         label.textColor = R.color.mainContent()
         
