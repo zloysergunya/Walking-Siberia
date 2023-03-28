@@ -11,6 +11,7 @@ class TeamViewController: ViewController<TeamView> {
     weak var delegate: TeamViewControllerDelegate?
     
     private var team: Team
+    private var competition: Competition?
     private let provider = TeamProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -22,8 +23,9 @@ class TeamViewController: ViewController<TeamView> {
         }
     }
 
-    init(team: Team) {
+    init(team: Team, competition: Competition?) {
         self.team = team
+        self.competition = competition
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -68,7 +70,7 @@ class TeamViewController: ViewController<TeamView> {
             provider.page = 1
         }
         
-        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled) { [weak self] result in
+        provider.loadParticipants(teamId: team.id, competitionsId: competition?.id, disabled: team.isDisabled) { [weak self] result in
             guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
@@ -90,7 +92,7 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     private func updateTeam() {
-        provider.updateTeam(teamId: team.id) { [weak self] result in
+        provider.updateTeam(teamId: team.id, competitionsId: competition?.id) { [weak self] result in
             switch result {
             case .success(let team):
                 self?.team = team
@@ -137,7 +139,8 @@ class TeamViewController: ViewController<TeamView> {
                         userId: user.userId,
                         teamId: self.team.id,
                         createdAt: self.team.createAt,
-                        user: user
+                        user: user,
+                        statistics: nil
                     )
                     
                     self.users.append(participant)

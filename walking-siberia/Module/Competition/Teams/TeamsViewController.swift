@@ -241,7 +241,7 @@ extension TeamsViewController: TeamsSectionControllerDelegate {
         if team.isDisabled {
             navigationController?.pushViewController(UserProfileViewController(userId: team.ownerId), animated: true)
         } else {
-            let viewController = TeamViewController(team: team)
+            let viewController = TeamViewController(team: team, competition: competition)
             viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
         }
