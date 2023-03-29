@@ -345,4 +345,26 @@ class TeamsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     
+    class func userTeamByUserUidGet(id: Int, completion: @escaping ((_ data: SuccessResponse<Team>?,_ error: ErrorResponse?) -> Void)) {
+        userTeamByUserUidGetWithRequestBuilder(id: id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func userTeamByUserUidGetWithRequestBuilder(id: Int) -> RequestBuilder<SuccessResponse<Team>> {
+        var path = "/user-team-by-user/{uid}"
+        let idPreEscape = "\(id)"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: idPostEscape, options: .literal, range: nil)
+        
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+        
+        let requestBuilder: RequestBuilder<SuccessResponse<Team>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

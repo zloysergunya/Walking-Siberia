@@ -143,6 +143,7 @@
 		C478449D27E1E99F00D9E275 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449C27E1E99F00D9E275 /* AddButton.swift */; };
 		C47DD8E529D4502000875444 /* SendToExpertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47DD8E429D4502000875444 /* SendToExpertProvider.swift */; };
 		C47DD8E829D452EF00875444 /* ExpertsQuestionPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47DD8E729D452EF00875444 /* ExpertsQuestionPostRequest.swift */; };
+		C47DD8EA29D45E1000875444 /* UserProfileNoTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47DD8E929D45E1000875444 /* UserProfileNoTeamView.swift */; };
 		C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AB827DE097500CD6465 /* String+Initials.swift */; };
 		C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */; };
 		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
@@ -486,6 +487,7 @@
 		C478449C27E1E99F00D9E275 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		C47DD8E429D4502000875444 /* SendToExpertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToExpertProvider.swift; sourceTree = "<group>"; };
 		C47DD8E729D452EF00875444 /* ExpertsQuestionPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertsQuestionPostRequest.swift; sourceTree = "<group>"; };
+		C47DD8E929D45E1000875444 /* UserProfileNoTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNoTeamView.swift; sourceTree = "<group>"; };
 		C4979AB827DE097500CD6465 /* String+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Initials.swift"; sourceTree = "<group>"; };
 		C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -2199,6 +2201,7 @@
 			children = (
 				C4C385BF27E62F96005D48FD /* UserProfileContentView.swift */,
 				C4A633E827FCC3DF003D1180 /* CompetitionView.swift */,
+				C47DD8E929D45E1000875444 /* UserProfileNoTeamView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -3204,6 +3207,7 @@
 				C478448227E1C23800D9E275 /* FindFriendsViewController.swift in Sources */,
 				C4D8ECAF27C3867400BF0767 /* StepsCountView.swift in Sources */,
 				C408EAA027AFFC8C004B82CB /* LoggerService.swift in Sources */,
+				C47DD8EA29D45E1000875444 /* UserProfileNoTeamView.swift in Sources */,
 				C408EA9E27AFFC8C004B82CB /* Autowired.swift in Sources */,
 				C4E1C2AD27CD0A2C00DA7F8F /* ProfileEditProvider.swift in Sources */,
 				C450EB77294B57B10084A061 /* RoutePlacesView.swift in Sources */,

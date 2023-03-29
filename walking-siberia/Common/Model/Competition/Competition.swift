@@ -12,6 +12,8 @@ struct Competition: Codable {
     let countTeams: Int
     let isClosed: Bool
     var isJoined: Bool
+    let place: Int?
+    let teamName: String?
 }
 
 extension Competition: Equatable {

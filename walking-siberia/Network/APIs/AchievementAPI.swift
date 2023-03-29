@@ -28,7 +28,7 @@ class AchievementAPI {
     }
     
     private class func achievementTeamUidGetWithRequestBuilder(id: Int) -> RequestBuilder<SuccessResponse<[Achievement]>> {
-        var path = "/achievement/team/{uid}"
+        var path = "/achievement/user/{uid}"
         let uidPreEscape = "\(id)"
         let uidPostEscape = uidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{uid}", with: uidPostEscape, options: .literal, range: nil)

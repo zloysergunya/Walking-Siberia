@@ -153,14 +153,13 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     private func joinCompetition() {
-        guard let userTeam else { return }
-        provider.joinCompetition(competitionId: competition.id, teamId: userTeam.id) { [weak self] result in
+        guard let teamId = userTeam?.id ?? UserSettings.user?.userId else { return }
+        provider.joinCompetition(competitionId: competition.id, teamId: teamId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success:
-                self.objects.insert(TeamSectionModel(team: userTeam, isDisabled: self.competitionType == .single), at: 1)
-                self.loadUserTeam()
+                self.loadTeams(flush: true)
                 self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
@@ -170,13 +169,13 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     private func leaveCompetition() {
-        guard let userTeam else { return }
-        provider.leaveCompetition(competitionId: competition.id, teamId: userTeam.id) { [weak self] result in
+        guard let teamId = userTeam?.id ?? UserSettings.user?.userId else { return }
+        provider.leaveCompetition(competitionId: competition.id, teamId: teamId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success:
-                if let index = self.objects.firstIndex(where: { $0.team?.id == userTeam.id }) {
+                if let index = self.objects.firstIndex(where: { $0.team?.id == teamId }) {
                     self.objects.remove(at: index)
                 }
                 self.loadUserTeam()
@@ -194,7 +193,7 @@ class TeamsViewController: ViewController<TeamsView> {
     }
     
     @objc private func takePart() {
-        if userTeam == nil {
+        if userTeam == nil, let isDisabled = UserSettings.user?.isDisabled, !isDisabled {
             dialog(
                 title: "У вас нет команды",
                 message: "Прежде чем принять участие в соревновании, вам необходимо вступить в команду или создать свою в профиле"

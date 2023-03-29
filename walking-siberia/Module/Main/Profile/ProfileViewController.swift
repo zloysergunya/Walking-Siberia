@@ -163,8 +163,9 @@ class ProfileViewController: ViewController<ProfileView> {
             let view = CompetitionView()
             view.tag = competition.offset
             view.nameLabel.text = competition.element.name
-            view.teamLabel.text = competition.element.statusLabel
-            view.placeLabel.text = "Место: 1/\(competition.element.countTeams)"
+            view.teamLabel.text = competition.element.teamName ?? "Нет имени"
+            let place = competition.element.place ?? 0
+            view.placeLabel.text = "Место: \(place)/\(competition.element.countTeams)"
             view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCompetition)))
             
             if competition.element.isClosed {

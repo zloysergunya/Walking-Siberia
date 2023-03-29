@@ -95,26 +95,42 @@ class UserProfileContentView: RootView {
         okButton
     ], axis: .horizontal, spacing: 8.0)
     
+    let noTeamView: UserProfileNoTeamView = {
+        let view = UserProfileNoTeamView()
+        view.isHidden = true
+        
+        return view
+    }()
+    
+    let teamView: ProfileTeamView = {
+        let view = ProfileTeamView()
+        view.isHidden = true
+        
+        return view
+    }()
+    
+    let achievementsView: ProfileAchievementsView = {
+        let view = ProfileAchievementsView()
+        view.isHidden = true
+        
+        return view
+    }()
+    
     let currentCompetitionsView: UserCompetitionsView = {
         let view = UserCompetitionsView()
-        view.titleLabel.text = "Текущие соревнования:"
+        view.titleLabel.text = "Текущие соревнования"
         view.isHidden = true
-        
+
         return view
     }()
-    
+
     let closedCompetitionsView: UserCompetitionsView = {
         let view = UserCompetitionsView()
-        view.titleLabel.text = "Завершившиеся соревнования:"
+        view.titleLabel.text = "Завершившиеся соревнования"
         view.isHidden = true
-        
+
         return view
     }()
-    
-    private lazy var userCompetitionsStack = UIStackView(views: [
-        currentCompetitionsView,
-        closedCompetitionsView
-    ], spacing: 16.0, distribution: .fill)
     
     let noCompetitionsLabel: UILabel = {
         let label = UILabel()
@@ -122,17 +138,26 @@ class UserProfileContentView: RootView {
         label.font = R.font.geometriaMedium(size: 14.0)
         label.textColor = R.color.mainContent()
         label.numberOfLines = 0
+        label.textAlignment = .center
         label.isHidden = true
-        
+
         return label
     }()
+    
+    private lazy var rootStack = UIStackView(views: [
+        containerView,
+        noTeamView,
+        teamView,
+        currentCompetitionsView,
+        achievementsView,
+        closedCompetitionsView,
+        noCompetitionsLabel
+    ], spacing: 8.0, distribution: .fill)
     
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
-        addSubview(containerView)
-        addSubview(noCompetitionsLabel)
-        addSubview(userCompetitionsStack)
+        addSubview(rootStack)
         
         containerView.addSubview(imageViewBackgroundView)
         containerView.addSubview(avatarImageView)
@@ -146,8 +171,8 @@ class UserProfileContentView: RootView {
     }
     
     override func setupConstraints() {
-        containerView.snp.makeConstraints { make in
-            make.left.top.right.equalToSuperview()
+        rootStack.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         imageViewBackgroundView.snp.makeConstraints { make in
@@ -199,18 +224,6 @@ class UserProfileContentView: RootView {
         telegramButton.snp.makeConstraints { make in
             make.width.equalTo(40.0)
             make.height.equalTo(36.0)
-        }
-        
-        noCompetitionsLabel.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.bottom).offset(16.0)
-            make.left.right.equalToSuperview().inset(12.0)
-            make.bottom.lessThanOrEqualToSuperview().offset(-20.0)
-        }
-        
-        userCompetitionsStack.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.bottom).offset(12.0)
-            make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-20.0)
         }
     }
     
