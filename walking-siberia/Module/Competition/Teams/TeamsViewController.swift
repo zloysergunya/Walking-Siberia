@@ -73,7 +73,14 @@ class TeamsViewController: ViewController<TeamsView> {
         }
         
         let isCompetitionUnavailable = competition.isClosed || isCompetitionStarted
-        mainView.takePartButton.isHidden = isCompetitionUnavailable
+        let isDisabled = UserSettings.user?.isDisabled ?? false
+        switch competitionType {
+        case .single:
+            mainView.takePartButton.isHidden = isCompetitionUnavailable || !isDisabled
+            
+        case .team:
+            mainView.takePartButton.isHidden = isCompetitionUnavailable || isDisabled
+        }
         
         mainView.takePartButton.setTitle(isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
     }
