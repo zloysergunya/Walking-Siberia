@@ -42,4 +42,22 @@ class ExpertsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func expertsQuestionPost(expertsQuestionPostRequest: ExpertsQuestionPostRequest, completion: @escaping ((_ data: SuccessResponse<EmptyData>?,_ error: ErrorResponse?) -> Void)) {
+        expertsQuestionPostWithRequestBuilder(expertsQuestionPostRequest: expertsQuestionPostRequest).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func expertsQuestionPostWithRequestBuilder(expertsQuestionPostRequest: ExpertsQuestionPostRequest) -> RequestBuilder<SuccessResponse<EmptyData>> {
+        let path = "/experts/question"
+        let URLString = APIConfig.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: expertsQuestionPostRequest)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<EmptyData>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    
 }

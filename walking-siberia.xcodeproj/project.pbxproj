@@ -141,6 +141,8 @@
 		C478449727E1DF4D00D9E275 /* FindFriendsSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449627E1DF4D00D9E275 /* FindFriendsSectionController.swift */; };
 		C478449A27E1DF6D00D9E275 /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449927E1DF6D00D9E275 /* FindFriendsCell.swift */; };
 		C478449D27E1E99F00D9E275 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C478449C27E1E99F00D9E275 /* AddButton.swift */; };
+		C47DD8E529D4502000875444 /* SendToExpertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47DD8E429D4502000875444 /* SendToExpertProvider.swift */; };
+		C47DD8E829D452EF00875444 /* ExpertsQuestionPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47DD8E729D452EF00875444 /* ExpertsQuestionPostRequest.swift */; };
 		C4979AB927DE097500CD6465 /* String+Initials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979AB827DE097500CD6465 /* String+Initials.swift */; };
 		C4979ABD27DE0A6A00CD6465 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */; };
 		C4979ABE27DE0A6A00CD6465 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4979ABC27DE0A6A00CD6465 /* TeamView.swift */; };
@@ -482,6 +484,8 @@
 		C478449627E1DF4D00D9E275 /* FindFriendsSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsSectionController.swift; sourceTree = "<group>"; };
 		C478449927E1DF6D00D9E275 /* FindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
 		C478449C27E1E99F00D9E275 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		C47DD8E429D4502000875444 /* SendToExpertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendToExpertProvider.swift; sourceTree = "<group>"; };
+		C47DD8E729D452EF00875444 /* ExpertsQuestionPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertsQuestionPostRequest.swift; sourceTree = "<group>"; };
 		C4979AB827DE097500CD6465 /* String+Initials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Initials.swift"; sourceTree = "<group>"; };
 		C4979ABB27DE0A6A00CD6465 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C4979ABC27DE0A6A00CD6465 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -1032,6 +1036,7 @@
 		C408EA4E27AFFC8C004B82CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C47DD8E629D452E600875444 /* ExpertsAPI */,
 				C4EC35DF29C484F9006D997E /* CompetitionAPI */,
 				C4326A1F27F5D0D900FB53CE /* NotificationAPI */,
 				C422A25E27ED907F00312F14 /* VideosAPI */,
@@ -1626,6 +1631,22 @@
 				C478449C27E1E99F00D9E275 /* AddButton.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		C47DD8E329D4501800875444 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				C47DD8E429D4502000875444 /* SendToExpertProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		C47DD8E629D452E600875444 /* ExpertsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C47DD8E729D452EF00875444 /* ExpertsQuestionPostRequest.swift */,
+			);
+			path = ExpertsAPI;
 			sourceTree = "<group>";
 		};
 		C4979ABA27DE0A5B00CD6465 /* Team */ = {
@@ -2695,6 +2716,7 @@
 		C4E8FAD1297EACBB00C6EBA3 /* SendToExpert */ = {
 			isa = PBXGroup;
 			children = (
+				C47DD8E329D4501800875444 /* Provider */,
 				C4E8FAD6297EACDF00C6EBA3 /* View */,
 				C4E8FAD2297EACDA00C6EBA3 /* SendToExpertViewController.swift */,
 			);
@@ -2973,6 +2995,7 @@
 			files = (
 				C400F44C27D5EDFF00B1EAD9 /* PagerViewController.swift in Sources */,
 				C408EA8127AFFC8C004B82CB /* APIHelper.swift in Sources */,
+				C47DD8E829D452EF00875444 /* ExpertsQuestionPostRequest.swift in Sources */,
 				C4BD9F9327ECC9F300E0CE5F /* UserStatisticViewController.swift in Sources */,
 				C46F700D2959FAE400016CB7 /* AddReviewViewController.swift in Sources */,
 				C4BD9F7027EC294500E0CE5F /* GoogleSignInService.swift in Sources */,
@@ -3195,6 +3218,7 @@
 				C49AFBBB27E82CE6009787AB /* UIImage+InitFromColor.swift in Sources */,
 				C4D8EC9427C363F900BF0767 /* RoutesProvider.swift in Sources */,
 				C4E8FAD4297EACDA00C6EBA3 /* SendToExpertViewController.swift in Sources */,
+				C47DD8E529D4502000875444 /* SendToExpertProvider.swift in Sources */,
 				C4F71A0729B87901007DA420 /* ProfileCreateTeamView.swift in Sources */,
 				C4D8EC9927C364EA00BF0767 /* Route.swift in Sources */,
 				C49AFBF527E89CF8009787AB /* TrainersProvider.swift in Sources */,
