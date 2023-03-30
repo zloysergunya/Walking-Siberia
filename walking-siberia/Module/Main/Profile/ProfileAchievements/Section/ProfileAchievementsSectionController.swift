@@ -15,7 +15,7 @@ final class ProfileAchievementsSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: 88.0, height: 104.0)
+        return CGSize(width: 88.0, height: 120.0)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {

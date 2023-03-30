@@ -44,7 +44,7 @@ final class ProfileAchievementsView: RootView {
             make.top.equalTo(titleLabel.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-20.0)
-            make.height.equalTo(110.0)
+            make.height.equalTo(120.0)
         }
     }
 }

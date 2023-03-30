@@ -18,6 +18,7 @@ final class ProfileAchievementCell: UICollectionViewCell {
         let label = UILabel()
         label.font = R.font.geometriaRegular(size: 12.0)
         label.textColor = R.color.mainContent()
+        label.numberOfLines = 2
         
         return label
     }()
