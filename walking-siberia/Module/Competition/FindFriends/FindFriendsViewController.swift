@@ -194,8 +194,7 @@ extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
         navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
     }
     
-    func findFriendsSectionController(didSelectAction button: UIButton, user: User) {
-        guard let inTeam = user.inTeam else { return }
+    func findFriendsSectionController(didSelectAction button: UIButton, inTeam: Bool, user: User) {
         Utils.impact()
         toggleUser(userId: user.userId, inTeam: inTeam) { [weak self] success in
             if success {

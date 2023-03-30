@@ -68,6 +68,8 @@ class TeamEditViewController: ViewController<TeamEditView> {
             isTeamClosed = team.isClosed
             mainView.navBar.title = "Редактирование команды"
         }
+        
+        mainView.addParticipantsButton.isHidden = type == .create
     }
     
     private func loadUsers(flush: Bool) {
