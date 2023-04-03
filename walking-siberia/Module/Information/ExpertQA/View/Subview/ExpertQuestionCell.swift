@@ -60,7 +60,6 @@ class ExpertQuestionCell: UICollectionViewCell {
             .right(12.0)
             .vCenter(to: questionLabel.edge.vCenter)
         
-        contentView.backgroundColor = .white
         if !answerLabel.isHidden {
             answerLabel.pin
                 .below(of: questionLabel).marginTop(8.0)
@@ -69,7 +68,6 @@ class ExpertQuestionCell: UICollectionViewCell {
                 .sizeToFit(.widthFlexible)
             
             maxY = answerLabel.frame.maxY
-            contentView.backgroundColor = .red
         }
         
         print("!!!!maxY + 12.0", maxY + 12.0)
