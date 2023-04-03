@@ -35,6 +35,19 @@ class TeamCell: UICollectionViewCell {
         
         return label
     }()
+    
+    let placeLabel: UILabel = {
+        let label = UILabel()
+        label.font = R.font.geometriaRegular(size: 12.0)
+        label.textColor = R.color.mainContent()
+        
+        return label
+    }()
+    
+    private lazy var rootLabels = UIStackView(views: [
+        nameLabel,
+        placeLabel
+    ], spacing: 4.0)
 
     let stepsCountLabel: UILabel = {
         let label = UILabel()
@@ -56,7 +69,7 @@ class TeamCell: UICollectionViewCell {
         
         contentView.addSubview(imageViewBackgroundView)
         contentView.addSubview(imageView)
-        contentView.addSubview(nameLabel)
+        contentView.addSubview(rootLabels)
         contentView.addSubview(stepsCountLabel)
         
         addShadow(shadowRadius: 16.0, color: .black.withAlphaComponent(0.06))
@@ -84,8 +97,8 @@ class TeamCell: UICollectionViewCell {
             make.size.equalTo(48.0)
         }
         
-        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        nameLabel.snp.makeConstraints { make in
+        rootLabels.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        rootLabels.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(imageView.snp.right).offset(12.0)
             make.right.lessThanOrEqualTo(stepsCountLabel.snp.left).offset(-8.0)

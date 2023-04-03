@@ -69,6 +69,7 @@ class TeamsSectionController: ListSectionController {
     
     private func configure(cell: TeamCell, team: Team) -> UICollectionViewCell {
         cell.nameLabel.text = team.name
+        cell.placeLabel.text = "\(team.place ?? -1) место"
         
         let bold = Style("bold")
             .font(R.font.geometriaBold(size: 20.0) ?? .systemFont(ofSize: 20.0))
