@@ -61,12 +61,12 @@ class TeamProvider {
         }
     }
     
-    func loadMyTeam(competitionId: Int, completion: @escaping(Result<Team?, ModelError>) -> Void) {
-        TeamsAPI.myteamUidGet(competitionId: competitionId) { response, error in
+    func loadUserTeam(completion: @escaping(Result<Team?, ModelError>) -> Void) {
+        TeamsAPI.userTeamGet { response, error in
             if let error = error {
                 log.error(ModelError(err: error).message())
                 completion(.failure(ModelError(err: error)))
-            } else {
+            } else{
                 completion(.success(response?.data))
             }
         }

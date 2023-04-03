@@ -17,6 +17,7 @@ class TeamViewController: ViewController<TeamView> {
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var users: [Participant] = []
     private var isOwner = false
+    private var hasAnotherTeam = false
     private var loadingState: LoadingState = .none {
         didSet {
             adapter.performUpdates(animated: true)
@@ -44,7 +45,8 @@ class TeamViewController: ViewController<TeamView> {
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
         
-        configure()
+        mainView.navBar.title = team.name
+        
         loadUsers(flush: true)
     }
 
@@ -57,7 +59,6 @@ class TeamViewController: ViewController<TeamView> {
     }
     
     private func configure() {
-        mainView.navBar.title = team.name
         updateButtonsState()
     }
     
@@ -97,7 +98,7 @@ class TeamViewController: ViewController<TeamView> {
             case .success(let team):
                 self?.team = team
                 self?.delegate?.teamViewController(didUpdate: team)
-                self?.configure()
+                self?.loadUserTeam()
                 
             case .failure(let error):
                 self?.showError(text: error.localizedDescription)
@@ -105,6 +106,21 @@ class TeamViewController: ViewController<TeamView> {
         }
     }
 
+    private func loadUserTeam() {
+        provider.loadUserTeam { [weak self] result in
+            switch result {
+            case .success(let team):
+                if let team {
+                    self?.hasAnotherTeam = team.id != self?.team.id
+                }
+                self?.configure()
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
+    }
+    
     private func updateButtonsState() {
         isOwner = team.ownerId == UserSettings.user?.userId
         if isOwner {
@@ -114,7 +130,7 @@ class TeamViewController: ViewController<TeamView> {
         } else if team.isJoined {
             mainView.actionButton.setTitle("Покинуть команду", for: .normal)
             mainView.actionButton.isHidden = false
-        } else if !team.isClosed && UserSettings.user?.isDisabled != true {
+        } else if !team.isClosed && UserSettings.user?.isDisabled != true, !hasAnotherTeam {
             mainView.actionButton.setTitle("Подать заявку в команду", for: .normal)
             mainView.actionButton.isHidden = false
         } else {
