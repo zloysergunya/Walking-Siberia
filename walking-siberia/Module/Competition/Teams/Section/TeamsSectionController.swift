@@ -69,20 +69,29 @@ class TeamsSectionController: ListSectionController {
     
     private func configure(cell: TeamCell, team: Team) -> UICollectionViewCell {
         cell.nameLabel.text = team.name
-        cell.placeLabel.text = "\(team.place ?? -1) место"
         
-        let bold = Style("bold")
-            .font(R.font.geometriaBold(size: 20.0) ?? .systemFont(ofSize: 20.0))
-            .foregroundColor(R.color.graphicBlue() ?? .blue)
-        
-        let text: String
-        if let number = team.statistics?.average?.number, number > 30000 {
-            text = "<bold>\(number.roundedWithAbbreviations)</bold>\nшаги"
+        if let place = team.place {
+            cell.placeLabel.text = "\(place) место"
+            cell.placeLabel.isHidden = false
         } else {
-            text = "<bold>\(team.statistics?.average?.number ?? 0)</bold>\nшаги"
+            cell.placeLabel.isHidden = true
         }
-        cell.stepsCountLabel.attributedText = text.style(tags: bold).attributedString
         
+        if let number = team.statistics?.average?.number {
+            let bold = Style("bold")
+                .font(R.font.geometriaBold(size: 20.0) ?? .systemFont(ofSize: 20.0))
+                .foregroundColor(R.color.graphicBlue() ?? .blue)
+            
+            let text: String
+            if number > 30000 {
+                text = "<bold>\(number.roundedWithAbbreviations)</bold>\nшаги"
+            } else {
+                text = "<bold>\(team.statistics?.average?.number ?? 0)</bold>\nшаги"
+            }
+            
+            cell.stepsCountLabel.attributedText = text.style(tags: bold).attributedString
+        }
+
         let side = 48.0
         if team.isDisabled {
             if let url = team.avatar {
