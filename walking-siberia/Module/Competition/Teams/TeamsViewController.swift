@@ -160,6 +160,7 @@ class TeamsViewController: ViewController<TeamsView> {
             switch result {
             case .success:
                 self.loadTeams(flush: true)
+                self.loadUserTeam()
                 self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
