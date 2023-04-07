@@ -142,7 +142,7 @@ class ProfileViewController: ViewController<ProfileView> {
             
             let side = 48.0
             contentView.teamView.avatarImageView.image = UIImage.createWithBgColorFromText(
-                text: "\(team.userCount)",
+                text: "\(team.userCount ?? 0)",
                 color: .clear,
                 circular: true,
                 side: side

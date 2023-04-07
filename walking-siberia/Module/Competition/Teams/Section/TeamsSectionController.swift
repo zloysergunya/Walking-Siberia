@@ -108,7 +108,7 @@ class TeamsSectionController: ListSectionController {
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer
         } else {
-            cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(team.userCount)", color: .clear, circular: true, side: 48.0)
+            cell.imageView.image = UIImage.createWithBgColorFromText(text: "\(team.userCount ?? 0)", color: .clear, circular: true, side: 48.0)
             let gradientLayer = GradientHelper.shared.layer(color: .linearBlue)
             gradientLayer?.frame = CGRect(side: side)
             cell.gradientLayer = gradientLayer

@@ -16,7 +16,7 @@ struct Team: Codable {
     let isDisabled: Bool
     let typeLabel: String
     let ownerId: Int
-    let userCount: Int
+    let userCount: Int?
     let avatar: String?
     let createAt: String
     var isClosed: Bool
