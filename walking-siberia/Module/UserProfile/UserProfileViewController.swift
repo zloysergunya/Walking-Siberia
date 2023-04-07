@@ -127,6 +127,7 @@ class UserProfileViewController: ViewController<UserProfileView> {
                     UserSettings.user = user
                 }
                 self.configure(user: user)
+                self.updateTeam(team: self.team)
                 self.loadingState = .loaded
                 
             case .failure(let error):
