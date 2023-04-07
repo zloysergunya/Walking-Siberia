@@ -6,7 +6,7 @@ class TeamsProvider {
     
     func loadTeams(uid: Int, searchText: String, isDisabled: Bool, completion: @escaping(Result<[Team], ModelError>) -> Void) {
         let teamsUidRequest = TeamsUidRequest(uid: uid, name: searchText, disabled: isDisabled, limit: Constants.pageLimit, page: page)
-        TeamsAPI.teamsUidGet(teamsUidRequest: teamsUidRequest) { [weak self] response, error in
+        TeamsAPI.teamsUidStatsGet(teamsUidRequest: teamsUidRequest) { [weak self] response, error in
             guard let self = self else { return }
             if let response = response?.data {
                 self.page = response.isEmpty ? -1 : self.page + 1
@@ -16,6 +16,17 @@ class TeamsProvider {
                 completion(.failure(ModelError(err: error)))
             } else {
                 completion(.failure(ModelError()))
+            }
+        }
+    }
+    
+    func loadUserTeam(completion: @escaping(Result<Team?, ModelError>) -> Void) {
+        TeamsAPI.userTeamGet { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else{
+                completion(.success(response?.data))
             }
         }
     }
@@ -59,4 +70,27 @@ class TeamsProvider {
         }
     }
     
+    func joinCompetition(competitionId: Int, teamId: Int, completion: @escaping(Result<EmptyData?, ModelError>) -> Void) {
+        let competitionTeamJoinRequest = CompetitionTeamJoinRequest(competitionId: competitionId, teamId: teamId)
+        CompetitionAPI.competitionTeamJoinPost(competitionTeamJoinRequest: competitionTeamJoinRequest) { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.success(response?.data))
+            }
+        }
+    }
+    
+    func leaveCompetition(competitionId: Int, teamId: Int, completion: @escaping(Result<EmptyData?, ModelError>) -> Void) {
+        let competitionTeamLeaveRequest = CompetitionTeamLeaveRequest(competitionId: competitionId, teamId: teamId)
+        CompetitionAPI.competitionTeamLeavePost(competitionTeamLeaveRequest: competitionTeamLeaveRequest) { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.success(response?.data))
+            }
+        }
+    }
 }

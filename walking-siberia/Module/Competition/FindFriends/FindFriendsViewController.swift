@@ -4,7 +4,6 @@ import IGListKit
 class FindFriendsViewController: ViewController<FindFriendsView> {
         
     private let teamId: Int
-    private let competitionId: Int
     private let provider = FindFriendsProvider()
     
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -17,9 +16,8 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         }
     }
     
-    init(teamId: Int, competitionId: Int) {
+    init(teamId: Int) {
         self.teamId = teamId
-        self.competitionId = competitionId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -77,7 +75,7 @@ class FindFriendsViewController: ViewController<FindFriendsView> {
         
         loadingState = .loading
         
-        provider.loadFriends(competitionId: competitionId, isDisabled: isDisabled, search: query) { [weak self] result in
+        provider.loadFriends(isDisabled: isDisabled, search: query) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -196,8 +194,7 @@ extension FindFriendsViewController: FindFriendsSectionControllerDelegate {
         navigationController?.pushViewController(UserProfileViewController(userId: user.userId), animated: true)
     }
     
-    func findFriendsSectionController(didSelectAction button: UIButton, user: User) {
-        guard let inTeam = user.inTeam else { return }
+    func findFriendsSectionController(didSelectAction button: UIButton, inTeam: Bool, user: User) {
         Utils.impact()
         toggleUser(userId: user.userId, inTeam: inTeam) { [weak self] success in
             if success {

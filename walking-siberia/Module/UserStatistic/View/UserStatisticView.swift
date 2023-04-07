@@ -16,6 +16,7 @@ class UserStatisticView: RootView {
         let segmentControl = StyledSegmentedControl(frame: .zero)
         segmentControl.insertSegment(withTitle: "Шаги", at: 0, animated: false)
         segmentControl.insertSegment(withTitle: "Километры", at: 1, animated: false)
+        segmentControl.insertSegment(withTitle: "Калории", at: 2, animated: false)
         segmentControl.selectedSegmentIndex = 0
         
         return segmentControl

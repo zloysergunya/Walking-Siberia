@@ -17,7 +17,7 @@ class NotificationsView: RootView {
 
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        view.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
+        view.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 100.0, right: 0.0)
         view.alwaysBounceVertical = true
         view.showsVerticalScrollIndicator = false
         view.backgroundColor = .clear
@@ -25,12 +25,20 @@ class NotificationsView: RootView {
         
         return view
     }()
+    
+    let clearAllButton: ActiveButton = {
+        let button = ActiveButton()
+        button.setTitle("Очистить все", for: .normal)
+        
+        return button
+    }()
 
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
         addSubview(navBar)
         addSubview(collectionView)
+        addSubview(clearAllButton)
         
         super.setup()
     }
@@ -47,6 +55,10 @@ class NotificationsView: RootView {
             make.left.right.bottom.equalToSuperview()
         }
         
+        clearAllButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(12.0)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(24.0)
+        }
     }
     
 }

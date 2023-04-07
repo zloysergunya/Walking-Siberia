@@ -17,6 +17,7 @@ class NotificationsViewController: ViewController<NotificationsView> {
         super.viewDidLoad()
         
         mainView.navBar.leftButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        mainView.clearAllButton.addTarget(self, action: #selector(clearAll), for: .touchUpInside)
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         
         adapter.collectionView = mainView.collectionView
@@ -103,8 +104,28 @@ class NotificationsViewController: ViewController<NotificationsView> {
         }
     }
     
+    private func handleNotification(_ notification: Notification) {
+        guard let notificationType = NotificationType(rawValue: notification.type) else { return }
+        
+        let url = Constants.deepLinkPath + notificationType.rawValue + "/\(notification.extra.id)"
+        UIApplication.shared.open(URL(string: url)!)
+    }
+    
     @objc private func pullToRefresh() {
         loadNotifications(flush: true)
+    }
+    
+    @objc private func clearAll() {
+        provider.clearAll { [weak self] result in
+            switch result {
+            case .success:
+                self?.notifications.removeAll()
+                self?.adapter.performUpdates(animated: true)
+                
+            case .failure(let error):
+                self?.showError(text: error.localizedDescription)
+            }
+        }
     }
     
     @objc private func close() {
@@ -137,7 +158,7 @@ extension NotificationsViewController: ListAdapterDataSource {
 extension NotificationsViewController: NotificationsSectionControllerDelegate {
     
     func notificationsSectionController(didSelect notification: Notification) {
-        
+        handleNotification(notification)
     }
     
     func notificationsSectionController(didSelectRemoveActionFor notification: Notification) {

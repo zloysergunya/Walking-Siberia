@@ -54,4 +54,27 @@ class UserProfileProvider {
         }
     }
     
+    func loadUserTeam(id: Int, completion: @escaping(Result<Team?, ModelError>) -> Void) {
+        TeamsAPI.userTeamByUserUidGet(id: id) { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else{
+                completion(.success(response?.data))
+            }
+        }
+    }
+    
+    func loadAchievements(id: Int, completion: @escaping(Result<[Achievement], ModelError>) -> Void) {
+        AchievementAPI.achievementTeamUidGet(id: id) { response, error in
+            if let response = response?.data {
+                completion(.success(response))
+            } else if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(ModelError()))
+            }
+        }
+    }
 }

@@ -11,7 +11,6 @@ open class APIConfig {
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
-    public static var apiVersion: Int = 1
 }
 
 open class RequestBuilder<T> {

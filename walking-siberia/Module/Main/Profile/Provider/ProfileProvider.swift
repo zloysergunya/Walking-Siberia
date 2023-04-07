@@ -15,8 +15,8 @@ class ProfileProvider {
         }
     }
     
-    func loadCompetitions(userId: Int, completion: @escaping(Result<[Competition], ModelError>) -> Void) {
-        CompetitionAPI.competitionsUserUidGet(userId: userId) { response, error in
+    func loadCompetitions(completion: @escaping(Result<[Competition], ModelError>) -> Void) {
+        CompetitionAPI.myCompetitionsGet() { response, error in
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
@@ -28,4 +28,27 @@ class ProfileProvider {
         }
     }
     
+    func loadUserTeam(completion: @escaping(Result<Team?, ModelError>) -> Void) {
+        TeamsAPI.userTeamGet { response, error in
+            if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else{
+                completion(.success(response?.data))
+            }
+        }
+    }
+    
+    func loadAchievements(completion: @escaping(Result<[Achievement], ModelError>) -> Void) {
+        AchievementAPI.achievementGet { response, error in
+            if let response = response?.data {
+                completion(.success(response))
+            } else if let error = error {
+                log.error(ModelError(err: error).message())
+                completion(.failure(ModelError(err: error)))
+            } else {
+                completion(.failure(ModelError()))
+            }
+        }
+    }
 }

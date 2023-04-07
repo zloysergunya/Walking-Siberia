@@ -46,4 +46,25 @@ class ArticleAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     
+    class func articleUidGet(id: Int, completion: @escaping ((_ data: SuccessResponse<Article>?,_ error: ErrorResponse?) -> Void)) {
+        articleUidGetWithRequestBuilder(id: id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+    
+    private class func articleUidGetWithRequestBuilder(id: Int) -> RequestBuilder<SuccessResponse<Article>> {
+        var path = "/article/{uid}"
+        let routeIdPreEscape = "\(id)"
+        let routeIdPostEscape = routeIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{uid}", with: routeIdPostEscape, options: .literal, range: nil)
+        let URLString = APIConfig.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<SuccessResponse<Article>>.Type = APIConfig.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    
 }

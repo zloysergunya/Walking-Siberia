@@ -1,6 +1,7 @@
 import UIKit
 import IGListKit
 import Atributika
+import SwiftyMenu
 
 class RoutesViewController: ViewController<RoutesView> {
     
@@ -15,6 +16,11 @@ class RoutesViewController: ViewController<RoutesView> {
             adapter.performUpdates(animated: true)
         }
     }
+    private var selectedCity: RouteCity? {
+        didSet {
+            loadRoutes()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,8 @@ class RoutesViewController: ViewController<RoutesView> {
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
+        
+        mainView.dropDownMenu.delegate = self
         
         notificationsAccessService.output = self
         notificationsAccessService.requestAccess()
@@ -43,22 +51,17 @@ class RoutesViewController: ViewController<RoutesView> {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        loadRoutes()
         updateCountNewNotifications()
         updateCurrentUserActivity()
     }
     
     private func loadRoutes() {
-        guard loadingState != .loading else {
-            return
-        }
+        guard loadingState != .loading else { return }
         
         loadingState = .loading
         
-        provider.routes { [weak self] result in
-            guard let self = self else {
-                return
-            }
+        provider.routes(cityId: selectedCity?.id) { [weak self] result in
+            guard let self = self else { return }
             
             self.mainView.collectionView.refreshControl?.endRefreshing()
                         
@@ -69,7 +72,7 @@ class RoutesViewController: ViewController<RoutesView> {
                 self.loadingState = .loaded
                 
             case .failure(let error):
-                if case .error(let status, _, let err) = error.err,
+                if case .error(let status, _, _) = error.err,
                    error._code != NSURLErrorTimedOut,
                    ![500, 503].contains(status) {
                     self.showError(text: error.localizedDescription)
@@ -85,7 +88,7 @@ class RoutesViewController: ViewController<RoutesView> {
                 switch result {
                 case .success: break
                 case .failure(let error):
-                    if case .error(let status, _, let err) = error.err,
+                    if case .error(let status, _, _) = error.err,
                        error._code != NSURLErrorTimedOut,
                        ![500, 503].contains(status) {
                         self?.showError(text: error.localizedDescription)
@@ -117,7 +120,7 @@ class RoutesViewController: ViewController<RoutesView> {
             switch result {
             case .success: break
             case .failure(let error):
-                if case .error(let status, _, let err) = error.err,
+                if case .error(let status, _, _) = error.err,
                    error._code != NSURLErrorTimedOut,
                    ![500, 503].contains(status) {
                     self?.showError(text: error.localizedDescription)
@@ -133,7 +136,7 @@ class RoutesViewController: ViewController<RoutesView> {
                 self?.mainView.notifyButton.badge = count > 0 ? "\(count)" : nil
                 
             case .failure(let error):
-                if case .error(let status, _, let err) = error.err,
+                if case .error(let status, _, _) = error.err,
                    error._code != NSURLErrorTimedOut,
                    ![500, 503].contains(status) {
                     self?.showError(text: error.localizedDescription)
@@ -195,7 +198,6 @@ extension RoutesViewController: RouteSectionControllerDelegate {
 
 // MARK: - NotificationsAccessServiceOutput
 extension RoutesViewController: NotificationsAccessServiceOutput {
-    
     func successRequest(granted: Bool) {}
     
     func didReceiveRegistrationToken(token: String) {
@@ -210,7 +212,6 @@ extension RoutesViewController: NotificationsAccessServiceOutput {
 
 // MARK: - HealthServiceOutput
 extension RoutesViewController: HealthServiceOutput {
-    
     func successHealthAccessRequest(granted: Bool) {
         if granted {
             syncUserActivity()
@@ -224,13 +225,14 @@ extension RoutesViewController: HealthServiceOutput {
             showError(text: error.localizedDescription)
         }
     }
-    
 }
 
-extension Date {
-    
-    func add(_ unit: Calendar.Component, value: Int) -> Date? {
-        return Calendar.current.date(byAdding: unit, value: value, to: self)
+// MARK: - DropDownViewDelegate
+extension RoutesViewController: DropDownViewDelegate {
+    func dropDownView(_ dropDownView: DropDownView, didSelect item: SwiftyMenuDisplayable, at index: Int) {
+        Utils.impact()
+        
+        guard let city = item.retrievableValue as? RouteCity else { return }
+        selectedCity = city
     }
-    
 }

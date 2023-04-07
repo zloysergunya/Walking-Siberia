@@ -14,7 +14,6 @@ class TeamEditViewController: ViewController<TeamEditView> {
     
     weak var delegate: TeamEditViewControllerDelegate?
 
-    private let competition: Competition
     private var type: EditType
     private let provider = TeamEditProvider()
     
@@ -28,8 +27,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
         }
     }
     
-    init(competition: Competition, type: EditType) {
-        self.competition = competition
+    init(type: EditType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
     }
@@ -64,14 +62,14 @@ class TeamEditViewController: ViewController<TeamEditView> {
         switch type {
         case .create:
             mainView.navBar.title = "Создание команды"
-            mainView.addParticipantsButton.isHidden = true
             
         case .edit(let team):
             teamName = team.name
             isTeamClosed = team.isClosed
             mainView.navBar.title = "Редактирование команды"
-            mainView.addParticipantsButton.isHidden = competition.isClosed
         }
+        
+        mainView.addParticipantsButton.isHidden = type == .create
     }
     
     private func loadUsers(flush: Bool) {
@@ -83,7 +81,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
             provider.page = 1
         }
         
-        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled ?? false) { [weak self] result in
+        provider.loadParticipants(teamId: team.id, disabled: team.isDisabled) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -114,8 +112,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
         }
 
         let status = isTeamClosed ? 1 : 0
-        let teamCreateRequest = TeamCreateRequest(competitionId: competition.id,
-                                                  name: teamName,
+        let teamCreateRequest = TeamCreateRequest(name: teamName,
                                                   status: status,
                                                   userIds: users.map({ $0.userId }))
         provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
@@ -185,7 +182,7 @@ class TeamEditViewController: ViewController<TeamEditView> {
     @objc private func addParticipants() {
         guard case .edit(let team) = type else { return }
         
-        let viewController = FindFriendsViewController(teamId: team.id, competitionId: competition.id)
+        let viewController = FindFriendsViewController(teamId: team.id)
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -260,5 +257,4 @@ extension TeamEditViewController: TeamEditSectionControllerDelegate {
             loadUsers(flush: false)
         }
     }
-    
 }

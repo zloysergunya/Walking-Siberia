@@ -39,6 +39,7 @@ class PagerViewController: PageMenuController {
             
         case .information:
             viewControllers.append(TrainersViewController())
+            viewControllers.append(ExpertsViewController())
             viewControllers.append(ArticlesViewController())
             viewControllers.append(VideosViewController())
         }

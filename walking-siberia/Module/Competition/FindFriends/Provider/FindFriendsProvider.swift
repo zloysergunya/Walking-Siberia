@@ -4,9 +4,8 @@ class FindFriendsProvider {
     
     var page: Int = 1
     
-    func loadFriends(competitionId: Int, isDisabled: Bool, search: String, completion: @escaping(Result<[User], ModelError>) -> Void) {
-        let friendsInvitesRequest = FriendsInvitesRequest(competitionId: competitionId,
-                                                          disabled: isDisabled,
+    func loadFriends(isDisabled: Bool, search: String, completion: @escaping(Result<[User], ModelError>) -> Void) {
+        let friendsInvitesRequest = FriendsInvitesRequest(disabled: isDisabled,
                                                           search: search,
                                                           limit: Constants.pageLimit,
                                                           page: page)

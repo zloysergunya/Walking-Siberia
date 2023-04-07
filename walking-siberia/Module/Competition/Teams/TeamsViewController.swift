@@ -22,7 +22,9 @@ class TeamsViewController: ViewController<TeamsView> {
     private lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     private var objects: [TeamSectionModel] = []
     private var filter = ""
-        
+    private var userTeam: Team?
+    private var isJoined: Bool { userTeam?.competitionIDs?.contains(where: { $0.id == competition.id }) ?? competition.isJoined }
+    
     init(competition: Competition, competitionType: CompetitionType) {
         self.competition = competition
         self.competitionType = competitionType
@@ -42,7 +44,6 @@ class TeamsViewController: ViewController<TeamsView> {
         super.viewDidLoad()
         
         mainView.collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-        mainView.createTeamButton.addTarget(self, action: #selector(openCreateTeam), for: .touchUpInside)
         mainView.takePartButton.addTarget(self, action: #selector(takePart), for: .touchUpInside)
         
         mainView.searchBar.delegate = self
@@ -51,8 +52,6 @@ class TeamsViewController: ViewController<TeamsView> {
         
         configure()
         loadTeams(flush: true)
-        updateCompetition()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(pullToRefresh), name: .userDidUpdate, object: nil)
     }
     
@@ -60,6 +59,9 @@ class TeamsViewController: ViewController<TeamsView> {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        loadUserTeam()
+        updateCompetition()
     }
     
     private func configure() {
@@ -69,14 +71,34 @@ class TeamsViewController: ViewController<TeamsView> {
         if let fromDate = dateFormatter.date(from: competition.fromDate) {
             isCompetitionStarted = fromDate < Date()
         }
-
-        let isDisabled = UserSettings.user?.isDisabled ?? false
-        let isCompetitionUnavailable = competition.isClosed || isCompetitionStarted
-        mainView.createTeamButton.isHidden = isDisabled || competitionType == .single || isCompetitionUnavailable || competition.isJoined
-        mainView.takePartButton.isHidden = !isDisabled || competitionType == .team || isCompetitionUnavailable
         
-        if isDisabled {
-            mainView.takePartButton.setTitle(competition.isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
+        let isCompetitionUnavailable = competition.isClosed || isCompetitionStarted
+        let isDisabled = UserSettings.user?.isDisabled ?? false
+        switch competitionType {
+        case .single:
+            mainView.takePartButton.isHidden = isCompetitionUnavailable || !isDisabled
+            
+        case .team:
+            mainView.takePartButton.isHidden = isCompetitionUnavailable || isDisabled
+        }
+        
+        mainView.takePartButton.setTitle(isJoined ? "Покинуть соревнование" : "Принять участие", for: .normal)
+    }
+    
+    private func loadUserTeam() {
+        provider.loadUserTeam { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let team):
+                self.userTeam = team
+                self.configure()
+                
+            case .failure(let error):
+                self.showError(text: error.localizedDescription)
+            }
+            
+            self.mainView.takePartButton.isUserInteractionEnabled = true
         }
     }
     
@@ -103,7 +125,7 @@ class TeamsViewController: ViewController<TeamsView> {
         if flush {
             provider.page = 1
         }
-
+        
         provider.loadTeams(uid: competition.id, searchText: query, isDisabled: competitionType == .single)  { [weak self] result in
             guard let self = self else { return }
             
@@ -130,24 +152,15 @@ class TeamsViewController: ViewController<TeamsView> {
         }
     }
     
-    private func createTeam() {
-        guard let user = UserSettings.user else {
-            return
-        }
-
-        let teamCreateRequest = TeamCreateRequest(competitionId: competition.id,
-                                                  name: "\(user.profile.firstName) \(user.profile.lastName)",
-                                                  status: 1,
-                                                  userIds: [])
-        provider.createTeam(teamCreateRequest: teamCreateRequest) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+    private func joinCompetition() {
+        guard let teamId = userTeam?.id ?? UserSettings.user?.userId else { return }
+        provider.joinCompetition(competitionId: competition.id, teamId: teamId) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
-            case .success(let team):
-                self.objects.insert(TeamSectionModel(team: team, isDisabled: self.competitionType == .single), at: 1)
-                self.updateCompetition()
+            case .success:
+                self.loadTeams(flush: true)
+                self.loadUserTeam()
                 self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
@@ -156,18 +169,17 @@ class TeamsViewController: ViewController<TeamsView> {
         }
     }
     
-    private func deleteTeam(teamId: Int) {
-        provider.deleteTeam(teamId: teamId) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+    private func leaveCompetition() {
+        guard let teamId = userTeam?.id ?? UserSettings.user?.userId else { return }
+        provider.leaveCompetition(competitionId: competition.id, teamId: teamId) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
             case .success:
                 if let index = self.objects.firstIndex(where: { $0.team?.id == teamId }) {
                     self.objects.remove(at: index)
                 }
-                self.updateCompetition()
+                self.loadUserTeam()
                 self.adapter.performUpdates(animated: true)
                 
             case .failure(let error):
@@ -181,29 +193,30 @@ class TeamsViewController: ViewController<TeamsView> {
         loadTeams(flush: true)
     }
     
-    @objc private func openCreateTeam() {
-        let viewController = TeamEditViewController(competition: competition, type: .create)
-        viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     @objc private func takePart() {
-        if competition.isJoined {
-            if let teamId = objects.first(where: { $0.team?.ownerId == UserSettings.user?.userId })?.team?.id {
-                dialog(title: "Вы хотите покинуть соревнование?", message: "", accessText: "Да", cancelText: "Нет", onAgree:  { [weak self] _ in
-                    self?.deleteTeam(teamId: teamId)
-                })
-            }
+        if userTeam == nil, let isDisabled = UserSettings.user?.isDisabled, !isDisabled {
+            dialog(
+                title: "У вас нет команды",
+                message: "Прежде чем принять участие в соревновании, вам необходимо вступить в команду или создать свою в профиле"
+            )
+        } else if isJoined {
+            dialog(
+                title: "Вы хотите покинуть соревнование?",
+                message: "",
+                accessText: "Да",
+                cancelText: "Нет",
+                onAgree:  { [weak self] _ in
+                self?.leaveCompetition()
+            })
         } else {
-            createTeam()
+            joinCompetition()
         }
     }
-    
 }
 
 // MARK: - ListAdapterDataSource
 extension TeamsViewController: ListAdapterDataSource {
-   
+    
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         if objects.contains(where: { $0.team == nil }) {
             return objects
@@ -232,7 +245,7 @@ extension TeamsViewController: ListAdapterDataSource {
 extension TeamsViewController: TeamsSectionControllerDelegate {
     
     func teamsSectionController(didSelect team: Team) {
-        if let isDisabled = team.isDisabled, isDisabled {
+        if team.isDisabled {
             navigationController?.pushViewController(UserProfileViewController(userId: team.ownerId), animated: true)
         } else {
             let viewController = TeamViewController(team: team, competition: competition)

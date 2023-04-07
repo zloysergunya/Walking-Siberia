@@ -3,7 +3,7 @@ import UIKit
 
 protocol FindFriendsSectionControllerDelegate: AnyObject {
     func findFriendsSectionController(didSelect user: User)
-    func findFriendsSectionController(didSelectAction button: UIButton, user: User)
+    func findFriendsSectionController(didSelectAction button: UIButton, inTeam: Bool, user: User)
     func findFriendsSectionController(willDisplay cell: UICollectionViewCell, at section: Int)
 }
 
@@ -70,7 +70,7 @@ class FindFriendsSectionController: ListSectionController {
     }
     
     @objc private func action(_ sender: UIButton) {
-        delegate?.findFriendsSectionController(didSelectAction: sender, user: sectionModel.user)
+        delegate?.findFriendsSectionController(didSelectAction: sender, inTeam: sectionModel.inTeam, user: sectionModel.user)
     }
     
 }

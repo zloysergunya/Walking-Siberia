@@ -22,14 +22,7 @@ class RoutesView: RootView {
     
     let stepsCountView = StepsCountView()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Выберите маршрут:"
-        label.textColor = R.color.mainContent()
-        label.font = R.font.geometriaBold(size: 20.0)
-        
-        return label
-    }()
+    let dropDownMenu = CityDropDownView(type: .routes)
     
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -48,14 +41,13 @@ class RoutesView: RootView {
         addSubview(statsButton)
         addSubview(notifyButton)
         addSubview(stepsCountView)
-        addSubview(titleLabel)
         addSubview(collectionView)
+        addSubview(dropDownMenu)
         
         super.setup()
     }
     
     override func setupConstraints() {
-        
         statsButton.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
             make.left.equalToSuperview().offset(24.0)
@@ -73,16 +65,15 @@ class RoutesView: RootView {
             make.left.right.equalToSuperview().inset(12.0)
         }
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(stepsCountView.snp.bottom).offset(30.0)
+        dropDownMenu.snp.makeConstraints { make in
+            make.top.equalTo(stepsCountView.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview().inset(12.0)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(stepsCountView.snp.bottom).offset(40.0)
             make.left.bottom.right.equalToSuperview()
         }
-        
     }
     
 }

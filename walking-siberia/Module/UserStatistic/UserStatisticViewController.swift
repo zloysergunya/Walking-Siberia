@@ -44,9 +44,7 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
     
     private func loadWalkChart() {
         provider.loadWalkChart(userId: user.userId) { [weak self] result in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .success(let statistic):
@@ -65,9 +63,9 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
     }
     
     private func updateChart() {
-        guard let period = period, let statistic = statistic else {
-            return
-        }
+        guard let period = period,
+              let statistic = statistic
+        else { return }
         
         let days: [Day]
         switch period {
@@ -79,17 +77,25 @@ class UserStatisticViewController: ViewController<UserStatisticView> {
         
         var data: [Any] = []
         days.forEach { day in
-            if mainView.segmentControl.selectedSegmentIndex == 0 {
-                data.append([day.date, Double(day.number)])
-            } else {
-                data.append([day.date, day.km])
+            switch mainView.segmentControl.selectedSegmentIndex {
+            case 0: data.append([day.date, Double(day.number)])
+            case 1: data.append([day.date, day.km])
+            case 2: data.append([day.date, day.calories])
+            default: break
             }
         }
         
         let element = AASeriesElement()
         element.color = AAGradientColor.linearGradient(startColor: "#69CEF5", endColor: "#2DA6DE")
-        element.name(mainView.segmentControl.selectedSegmentIndex == 0 ? "Шаги" : "Километры")
         
+        let name: String
+        switch mainView.segmentControl.selectedSegmentIndex {
+        case 0: name = "Шаги"
+        case 1: name = "Километры"
+        case 2: name = "Калории"
+        default: name = ""
+        }
+        element.name(name)
         element.data(data)
         
         let chartModel = AAChartModel()

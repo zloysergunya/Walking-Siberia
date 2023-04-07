@@ -24,14 +24,17 @@ class HealthService: NSObject {
     private let healthStore = HKHealthStore()
     private let stepsCountObject = HKObjectType.quantityType(forIdentifier: .stepCount)
     private let distanceObject = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
+    private let caloriesObject = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)
     
     private var authService: AuthService? = ServiceLocator.getService()
     
     override init() {
         super.init()
                 
-        if let stepsQuantityType = stepsCountObject, let distanceQuantityType = distanceObject {
-            setupBackgroundDeliveryFor(types: [stepsQuantityType, distanceQuantityType])
+        if let stepsQuantityType = stepsCountObject,
+           let distanceQuantityType = distanceObject,
+           let caloriesObjectType = caloriesObject {
+            setupBackgroundDeliveryFor(types: [stepsQuantityType, distanceQuantityType, caloriesObjectType])
         }
     }
     
@@ -59,11 +62,15 @@ class HealthService: NSObject {
         }
     }
     
-    private func updateUserActivity(date: Date, stepsCount: Int, distance: Double) {
+    private func updateUserActivity(date: Date, stepsCount: Int, distance: Double, calories: Int) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let dateString = dateFormatter.string(from: date)
-        sendUserActivity(walkRequest: WalkRequest(date: dateString, number: stepsCount, km: distance))
+        let walkRequest = WalkRequest(date: dateString,
+                                      number: stepsCount,
+                                      km: distance,
+                                      calories: calories)
+        sendUserActivity(walkRequest: walkRequest)
     }
     
     private func sendUserActivity(walkRequest: WalkRequest) {
@@ -87,6 +94,25 @@ class HealthService: NSObject {
         }
     }
     
+    private func executeStatisticsQuery(
+        quantityType: HKQuantityType,
+        predicate: NSPredicate,
+        unit: HKUnit,
+        completion: @escaping(Double?) -> Void
+    ) {
+        let query = HKStatisticsQuery(quantityType: quantityType,
+                                      quantitySamplePredicate: predicate,
+                                      options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(nil)
+                return
+            }
+            
+            completion(sum.doubleValue(for: unit))
+        }
+        healthStore.execute(query)
+    }
+    
 }
 
 // MARK: - HealthServiceInput
@@ -100,19 +126,20 @@ extension HealthService: HealthServiceInput {
             return
         }
         
-        guard let stepCount = stepsCountObject, let distance = distanceObject else {
+        guard let stepCount = stepsCountObject,
+              let distance = distanceObject,
+              let calories = caloriesObject
+        else {
             log.error("DataTypeNotAvailable error: \(HealthkitSetupError.dataTypeNotAvailable)")
             output?.failureHealthAccessRequest(error: ModelError(text: "Разрешите доступ к данным в приложении Здоровья\nЗдоровье -> Доступ -> Приложения -> Сибирь Шагающая -> Разрешить все"))
             
             return
         }
         
-        let healthKitTypesToRead: Set<HKObjectType> = [stepCount, distance]
+        let healthKitTypesToRead: Set<HKObjectType> = [stepCount, distance, calories]
         
         healthStore.requestAuthorization(toShare: nil, read: healthKitTypesToRead) { [weak self] granted, error in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
             
             DispatchQueue.main.async {
                 if let error = error {
@@ -122,7 +149,6 @@ extension HealthService: HealthServiceInput {
                     self.output?.successHealthAccessRequest(granted: granted)
                 }
             }
-            
         }
         
     }
@@ -130,8 +156,12 @@ extension HealthService: HealthServiceInput {
     func getUserActivity(date: Date, completion: ((Int, Double) -> Void)?) {
         var stepsCount = 0
         var distance = 0.0
+        var calories = 0
         
-        guard let stepsQuantityType = stepsCountObject, let distanceQuantityType = distanceObject else {
+        guard let stepsQuantityType = stepsCountObject,
+              let distanceQuantityType = distanceObject,
+              let caloriesObjectType = caloriesObject
+        else {
             completion?(stepsCount, distance)
             return
         }
@@ -142,42 +172,34 @@ extension HealthService: HealthServiceInput {
         let predicate = HKObserverQuery.predicateForSamples(withStart: startOfDay,
                                                             end: date.endOfDate ?? date,
                                                             options: .strictStartDate)
+        let metaDataPredicate = NSPredicate(format: "metadata.%K != YES", HKMetadataKeyWasUserEntered)
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [predicate, metaDataPredicate])
         
         dispatchGroup.enter()
-        let stepsQuery = HKStatisticsQuery(quantityType: stepsQuantityType,
-                                           quantitySamplePredicate: predicate,
-                                           options: .cumulativeSum) { _, result, _ in
-            guard let result = result, let sum = result.sumQuantity() else {
-                dispatchGroup.leave()
-                return
-            }
-            
-            stepsCount = Int(sum.doubleValue(for: HKUnit.count()))
-            
+        executeStatisticsQuery(quantityType: stepsQuantityType, predicate: compoundPredicate, unit: HKUnit.count()) { value in
+            stepsCount = Int(value ?? 0.0)
             dispatchGroup.leave()
         }
-        healthStore.execute(stepsQuery)
         
         dispatchGroup.enter()
-        let distanceQuery = HKStatisticsQuery(quantityType: distanceQuantityType,
-                                              quantitySamplePredicate: predicate,
-                                              options: .cumulativeSum) { _, result, _ in
-            guard let result = result, let sum = result.sumQuantity() else {
-                dispatchGroup.leave()
-                return
-            }
-            
-            distance = sum.doubleValue(for: HKUnit.meterUnit(with: .kilo))
-            
+        executeStatisticsQuery(quantityType: distanceQuantityType, predicate: compoundPredicate, unit: HKUnit.meterUnit(with: .kilo)) { value in
+            distance = value ?? 0.0
             dispatchGroup.leave()
         }
-        healthStore.execute(distanceQuery)
+        
+        dispatchGroup.enter()
+        executeStatisticsQuery(quantityType: caloriesObjectType, predicate: compoundPredicate, unit: HKUnit.kilocalorie()) { value in
+            calories = Int(value ?? 0.0)
+            dispatchGroup.leave()
+        }
         
         dispatchGroup.notify(queue: .main) { [weak self] in
-            self?.updateUserActivity(date: date, stepsCount: stepsCount, distance: distance)
+            self?.updateUserActivity(date: date,
+                                     stepsCount: stepsCount,
+                                     distance: distance,
+                                     calories: calories)
             completion?(stepsCount, distance)
         }
-        
     }
     
 }

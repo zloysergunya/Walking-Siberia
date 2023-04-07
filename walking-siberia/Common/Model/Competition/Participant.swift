@@ -5,7 +5,7 @@ struct Participant: Codable {
     var teamId: Int
     var createdAt: String
     var user: User
-    var statistics: ParticipantStatistics
+    let statistics: ParticipantStatistics?
 }
 
 extension Participant: Equatable {

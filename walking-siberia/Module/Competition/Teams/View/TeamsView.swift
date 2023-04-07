@@ -16,27 +16,20 @@ class TeamsView: RootView {
         return view
     }()
     
-    let createTeamButton: UIButton = {
-        let button = UIButton()
-        button.setImage(R.image.add72()?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = R.color.activeElements()
-        button.layer.cornerRadius = 28.0
+    let takePartButton: ActiveButton = {
+        let button = ActiveButton()
+        button.isUserInteractionEnabled = false
         
         return button
     }()
-    
-    let takePartButton = ActiveButton()
 
     override func setup() {
         backgroundColor = R.color.greyBackground()
         
         addSubview(searchBar)
         addSubview(collectionView)
-        addSubview(createTeamButton)
         addSubview(takePartButton)
         
-        createTeamButton.addShadow()
         takePartButton.addShadow()
         
         super.setup()
@@ -53,17 +46,11 @@ class TeamsView: RootView {
             make.left.right.bottom.equalToSuperview()
         }
         
-        createTeamButton.snp.makeConstraints { make in
-            make.right.bottom.equalToSuperview().inset(12.0)
-            make.size.equalTo(56.0)
-        }
-        
         takePartButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(12.0)
             make.bottom.equalToSuperview().offset(-8.0)
             make.height.equalTo(38.0)
         }
-        
     }
     
 }
