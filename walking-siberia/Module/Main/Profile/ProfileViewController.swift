@@ -90,7 +90,8 @@ class ProfileViewController: ViewController<ProfileView> {
     }
     
     private func loadAchievements() {
-        provider.loadAchievements { [weak self] result in
+        guard let userId = UserSettings.user?.userId else { return }
+        provider.loadAchievements(id: userId) { [weak self] result in
             switch result {
             case .success(let achievements):
                 self?.achievements = achievements

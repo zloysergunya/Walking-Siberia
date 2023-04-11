@@ -39,8 +39,8 @@ class ProfileProvider {
         }
     }
     
-    func loadAchievements(completion: @escaping(Result<[Achievement], ModelError>) -> Void) {
-        AchievementAPI.achievementGet { response, error in
+    func loadAchievements(id: Int, completion: @escaping(Result<[Achievement], ModelError>) -> Void) {
+        AchievementAPI.achievementTeamUidGet(id: id) { response, error in
             if let response = response?.data {
                 completion(.success(response))
             } else if let error = error {
